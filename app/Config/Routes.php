@@ -43,6 +43,9 @@ $routes->get('/mitra', 'Mitra::index');
 $routes->get('/mitra-detail/(:any)', 'Mitra::detail/$1');
 $routes->get('/menu', 'Menu::index');
 
+// BACKEND
+$routes->get('/login', 'Pages::login');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
