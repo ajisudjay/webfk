@@ -63,10 +63,23 @@ body {
   color: #626262;
   text-align: left;
   background-color: #f8f8f8; }
-
+  .capcode {
+    font-size: 46px;
+    text-align: center;
+    display: block;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+    letter-spacing: 1px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+    font-style: italic;
+  }
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
+  
 hr {
   box-sizing: content-box;
   height: 0;
