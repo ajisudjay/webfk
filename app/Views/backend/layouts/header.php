@@ -7,7 +7,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Fakultas Kedokteran - Univeritas Mulawarman</title>
+    <title>Fakultas Kedokteran - UNMUL</title>
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('/img/unmul.png'); ?>">
     <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -33,6 +33,8 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- END: Custom CSS-->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <!-- END: Head-->
