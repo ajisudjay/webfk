@@ -105,6 +105,14 @@ class Pages extends BaseController
     // END FRONTEND
 
     // START BACKEND
+    public function beranda()
+    {
+        $data = [
+            'title' => 'Beranda'
+        ];
+        return view('backend/pages/beranda', $data);
+    }
+
     public function login()
     {
         $captcha1 = rand(0, 9);
