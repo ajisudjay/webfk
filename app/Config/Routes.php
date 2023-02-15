@@ -48,9 +48,8 @@ $routes->get('/menu', 'Pages::menu');
 // BACKEND
 $routes->get('/login', 'Pages::login');
 $routes->get('/beranda', 'Pages::beranda');
-// $routes->get('/hasil/(:any)', 'Pages::hasil');
-
-// menu
+$routes->get('/mainmenu', 'Mainmenu::index');
+$routes->get('/submenu', 'Submenu::index');
 $routes->get('/user', 'User::index');
 $routes->get('/profil', 'Profil::index');
-$routes->get('/jenis', 'Jenis::index');
+// $routes->get('/hasil/(:any)', 'Pages::hasil');

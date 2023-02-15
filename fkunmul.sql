@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2023 at 02:57 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Waktu pembuatan: 15 Feb 2023 pada 08.44
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis`
+-- Struktur dari tabel `jenis`
 --
 
 CREATE TABLE `jenis` (
@@ -34,7 +34,7 @@ CREATE TABLE `jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jenis`
+-- Dumping data untuk tabel `jenis`
 --
 
 INSERT INTO `jenis` (`id`, `jenis`, `area`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `jenis` (`id`, `jenis`, `area`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelompok`
+-- Struktur dari tabel `kelompok`
 --
 
 CREATE TABLE `kelompok` (
@@ -66,7 +66,7 @@ CREATE TABLE `kelompok` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kelompok`
+-- Dumping data untuk tabel `kelompok`
 --
 
 INSERT INTO `kelompok` (`id`, `nama`, `registrasi`, `alamat`, `ketua`, `jumlah_anggota`, `sudah_pelatihan`, `belum_pelatihan`, `rknf`, `parsif`, `tanggal_sk`, `keterangan`, `koordinat`, `jenis`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `kelompok` (`id`, `nama`, `registrasi`, `alamat`, `ketua`, `jumlah_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konfigurasi`
+-- Struktur dari tabel `konfigurasi`
 --
 
 CREATE TABLE `konfigurasi` (
@@ -87,7 +87,7 @@ CREATE TABLE `konfigurasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `konfigurasi`
+-- Dumping data untuk tabel `konfigurasi`
 --
 
 INSERT INTO `konfigurasi` (`id`, `judul`, `isi`, `urutan`) VALUES
@@ -101,7 +101,52 @@ INSERT INTO `konfigurasi` (`id`, `judul`, `isi`, `urutan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `mainmenu`
+--
+
+CREATE TABLE `mainmenu` (
+  `id` int(100) NOT NULL,
+  `mainmenu` varchar(255) NOT NULL,
+  `urutan` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mainmenu`
+--
+
+INSERT INTO `mainmenu` (`id`, `mainmenu`, `urutan`) VALUES
+(1, 'Beranda', 1),
+(2, 'SDM', 3),
+(3, 'Program Studi', 2),
+(4, 'Tentang Kami', 4),
+(5, 'Informasi', 5),
+(6, 'Laboratorium', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `submenu`
+--
+
+CREATE TABLE `submenu` (
+  `id` int(100) NOT NULL,
+  `submenu` varchar(255) NOT NULL,
+  `urutan` int(100) NOT NULL,
+  `id_mainmenu` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `submenu`
+--
+
+INSERT INTO `submenu` (`id`, `submenu`, `urutan`, `id_mainmenu`) VALUES
+(1, 'Dosen', 1, 2),
+(2, 'Tendik', 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -112,7 +157,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`username`, `password`, `nama`, `level`) VALUES
@@ -123,50 +168,75 @@ INSERT INTO `users` (`username`, `password`, `nama`, `level`) VALUES
 --
 
 --
--- Indexes for table `jenis`
+-- Indeks untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kelompok`
+-- Indeks untuk tabel `kelompok`
 --
 ALTER TABLE `kelompok`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `konfigurasi`
+-- Indeks untuk tabel `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `mainmenu`
+--
+ALTER TABLE `mainmenu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `submenu`
+--
+ALTER TABLE `submenu`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_mainmenu` (`id_mainmenu`);
+
+--
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `jenis`
+-- AUTO_INCREMENT untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `kelompok`
+-- AUTO_INCREMENT untuk tabel `kelompok`
 --
 ALTER TABLE `kelompok`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `konfigurasi`
+-- AUTO_INCREMENT untuk tabel `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `mainmenu`
+--
+ALTER TABLE `mainmenu`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `submenu`
+--
+ALTER TABLE `submenu`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
