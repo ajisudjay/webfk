@@ -16,9 +16,7 @@
 <script type="text/javascript" src="libraries\bower_components\jquery-slimscroll\js\jquery.slimscroll.js"></script>
 
 <script src="libraries\assets\js\pcoded.min.js"></script>
-<script src="libraries\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="libraries\assets\js\vartical-layout.min.js"></script>
-<script type="text/javascript" src="libraries\assets\js\script.js"></script>
 <script type="text/javascript" src="libraries\assets\pages\message\message.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script src="libraries\bower_components\sweetalert\js\sweetalert2.all.min.js"></script>
