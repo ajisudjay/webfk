@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Feb 2023 pada 08.44
+-- Waktu pembuatan: 20 Feb 2023 pada 04.13
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -230,7 +230,7 @@ ALTER TABLE `konfigurasi`
 -- AUTO_INCREMENT untuk tabel `mainmenu`
 --
 ALTER TABLE `mainmenu`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `submenu`

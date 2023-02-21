@@ -3,7 +3,7 @@
 <?= $this->include('backend/layouts/header') ?>
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
+<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-floating footer-static" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
     <?= $this->include('backend/layouts/topnavbar') ?>
     <?= $this->include('backend/layouts/sidenavbar/superadmin') ?>
 
@@ -20,9 +20,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Sub Menu</h4>
-                                </div>
+
                                 <div class="bg-transparent border-0" id="result"></div>
                             </div>
                         </div>

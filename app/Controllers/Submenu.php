@@ -2,14 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\MainmenuModel;
 use App\Models\SubmenuModel;
 use App\Controllers\BaseController;
 
 class Submenu extends BaseController
 {
+    protected $MainmenuModel;
     protected $SubmenuModel;
     public function __construct()
     {
+        $this->MainmenuModel = new MainmenuModel();
         $this->SubmenuModel = new SubmenuModel();
     }
     public function index()
@@ -36,7 +39,7 @@ class Submenu extends BaseController
             $username = session()->get('username');
             if ($request->isAJAX()) {
                 $data = [
-                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.urutan as submenu_urutan')->select('mainmenu.urutan as mainmenu_urutan')->select('mainmenu.mainmenu as mainmenu_nama')->join('mainmenu', 'mainmenu.id=submenu.id_mainmenu')->orderBy('mainmenu_urutan', 'ASC')->orderBy('submenu_urutan', 'ASC')->get()->getResultArray(),
+                    'submenu' => $this->SubmenuModel->select('*')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
                 ];
                 $msg = [
@@ -50,144 +53,141 @@ class Submenu extends BaseController
             return redirect()->to(base_url('/login'));
         }
     }
-    // public function tambah()
-    // {
-    //     if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
-    //         return redirect()->to(base_url('/login'));
-    //     }
-    //     $request = \Config\Services::request();
-    //     if ($request->isAJAX()) {
-    //         $jenis = $request->getVar('jenis');
-    //         $latitude = $request->getVar('latitude');
-    //         $longitude = $request->getVar('longitude');
-    //         $validation = \Config\Services::validation();
-    //         $valid = $this->validate([
-    //             'jenis' => [
-    //                 'label' => 'Jenis',
-    //                 'rules' => 'required',
-    //                 'errors' => [
-    //                     'required' => '{field} Tidak Boleh Kosong',
-    //                 ]
-    //             ],
-    //             'latitude' => [
-    //                 'label' => 'Latitude',
-    //                 'rules' => 'required',
-    //                 'errors' => [
-    //                     'required' => '{field} Tidak Boleh Kosong',
-    //                 ]
-    //             ],
-    //             'longitude' => [
-    //                 'label' => 'Longitude',
-    //                 'rules' => 'required',
-    //                 'errors' => [
-    //                     'required' => '{field} Tidak Boleh Kosong',
-    //                 ]
-    //             ],
-    //         ]);
-    //         if (!$valid) {
-    //             $msg = [
-    //                 'error' => [
-    //                     'jenis' => $validation->getError('jenis'),
-    //                     'latitude' => $validation->getError('latitude'),
-    //                     'longitude' => $validation->getError('longitude'),
-    //                 ],
-    //             ];
-    //             echo json_encode($msg);
-    //         } else {
-    //             $data = [
-    //                 'jenis' => $jenis,
-    //                 'latitude' => $latitude,
-    //                 'longitude' => $longitude,
-    //             ];
-    //             $this->SubmenuModel->insert($data);
+    public function tambah()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $request = \Config\Services::request();
+        if ($request->isAJAX()) {
+            $urutan = $request->getVar('urutan');
+            $mainmenu = $request->getVar('mainmenu');
+            $submenu = $request->getVar('submenu');
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'mainmenu' => [
+                    'label' => 'Main Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'submenu' => [
+                    'label' => 'Sub Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'urutan' => $validation->getError('urutan'),
+                        'mainmenu' => $validation->getError('mainmenu'),
+                        'submenu' => $validation->getError('submenu'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'submenu' => $submenu,
+                    'id_mainmenu' => $mainmenu,
+                ];
+                $this->SubmenuModel->insert($data);
 
-    //             $data2 = [
-    //                 'jenis' => $this->SubmenuModel->orderBy('jenis', 'ASC')->get()->getResultArray(),
-    //             ];
-    //             $msg = [
-    //                 'sukses' => 'Jenis Berhasil Ditambahkan !',
-    //                 'status' => 'berhasil',
-    //                 'data' => view('jenis/view-data', $data2)
-    //             ];
-    //             echo json_encode($msg);
-    //         }
-    //     } else {
-    //         exit('Data Tidak Dapat diproses');
-    //     }
-    // }
+                $data2 = [
+                    'submenu' => $this->SubmenuModel->select('*')->select('mainmenu.id as mainmenu_id')->select('submenu.urutan as submenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                ];
+                $msg = [
+                    'sukses' => 'Sub Menu Berhasil Ditambahkan !',
+                    'status' => 'berhasil',
+                    'data' => view('backend/submenu/view', $data2)
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
+    }
 
-    // public function edit()
-    // {
-    //     if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
-    //         return redirect()->to(base_url('/login'));
-    //     }
-    //     $request = \Config\Services::request();
-    //     if ($request->isAJAX()) {
-    //         $id = $request->getVar('id');
-    //         $jenis = $request->getVar('jenis');
-    //         $latitude = $request->getVar('latitude');
-    //         $longitude = $request->getVar('longitude');
-    //         $validation = \Config\Services::validation();
-    //         $valid = $this->validate([
-    //             'latitude' => [
-    //                 'label' => 'Latitude',
-    //                 'rules' => 'required',
-    //                 'errors' => [
-    //                     'required' => '{field} Tidak Boleh Kosong',
-    //                 ]
-    //             ],
-    //             'longitude' => [
-    //                 'label' => 'Longitude',
-    //                 'rules' => 'required',
-    //                 'errors' => [
-    //                     'required' => '{field} Tidak Boleh Kosong',
-    //                 ]
-    //             ],
-    //         ]);
+    public function edit()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $request = \Config\Services::request();
+        if ($request->isAJAX()) {
+            $id = $request->getVar('id');
+            $urutan = $request->getVar('urutan');
+            $mainmenu = $request->getVar('mainmenu');
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'mainmenu' => [
+                    'label' => 'Main Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
 
-    //         if (!$valid) {
-    //             $msg = [
-    //                 'error' => [
-    //                     'jenis' => $validation->getError('jenis'),
-    //                     'latitude' => $validation->getError('latitude'),
-    //                     'longitude' => $validation->getError('longitude'),
-    //                 ],
-    //             ];
-    //             echo json_encode($msg);
-    //         } else {
-    //             $data = [
-    //                 'jenis' => $jenis,
-    //                 'latitude' => $latitude,
-    //                 'longitude' => $longitude,
-    //             ];
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'urutan' => $validation->getError('urutan'),
+                        'mainmenu' => $validation->getError('mainmenu'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'mainmenu' => $mainmenu,
+                ];
 
-    //             $this->SubmenuModel->update($id, $data);
+                $this->MainmenuModel->update($id, $data);
 
-    //             $data2 = [
-    //                 'jenis' => $this->SubmenuModel->orderBy('jenis', 'ASC')->get()->getResultArray(),
-    //             ];
-    //             $msg = [
-    //                 'sukses' => 'Jenis Berhasil Diubah !',
-    //                 'status' => 'Berhasil',
-    //                 'data' => view('jenis/view-data', $data2)
-    //             ];
-    //             echo json_encode($msg);
-    //         }
-    //     } else {
-    //         exit('Data Tidak Dapat diproses');
-    //     }
-    // }
+                $data2 = [
+                    'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+                ];
+                $msg = [
+                    'sukses' => 'Main Menu Berhasil Diubah !',
+                    'status' => 'Berhasil',
+                    'data' => view('backend/mainmenu/view', $data2)
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
+    }
 
 
 
-    // public function hapus($id)
-    // {
-    //     if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
-    //         return redirect()->to(base_url('/login'));
-    //     }
-    //     $this->SubmenuModel->delete($id);
+    public function hapus($id)
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $this->MainmenuModel->delete($id);
 
-    //     session()->setFlashdata('pesanHapus', 'Jenis Berhasil Di Hapus !');
-    //     return redirect()->to(base_url('/jenis'));
-    // }
+        session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
+        return redirect()->to(base_url('/mainmenu'));
+    }
 }
