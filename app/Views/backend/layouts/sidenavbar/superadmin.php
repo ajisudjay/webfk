@@ -48,7 +48,7 @@
                     <ul class="menu-content">
                         <li class="<?= $menu2 ?>"><a href="<?= base_url('mainmenu'); ?>"><i class="feather icon-menu"></i><span class="menu-item" data-i18n="Analytics">Main Menu</span></a>
                         </li>
-                        <li class="<?= $menu3 ?>"><a href="<?= base_url('submenu'); ?>"><i class="feather icon-list"></i><span class="menu-item" data-i18n="eCommerce">Sub Menu</span></a>
+                        <li class="<?= $menu3 ?>"><a href="<?= base_url('submenu2'); ?>"><i class="feather icon-list"></i><span class="menu-item" data-i18n="eCommerce">Sub Menu</span></a>
                         </li>
                     </ul>
                 </li>
