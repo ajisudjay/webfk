@@ -6,10 +6,10 @@
 </div>
 <!-- tambah modal-->
 <div class="modal fade" id="tambahmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Menu</h5>
+                <h5 class="modal-title">Tambah</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -40,6 +40,11 @@
                                 <label class="text-primary">Sub Menu</label>
                                 <input type="text" name="submenu" class="form-control submenu" placeholder="Sub Menu">
                                 <div class="invalid-feedback errorSubmenu"></div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="text-primary">Content</label>
+                                <textarea name="isi" id="isi"></textarea>
+                                <div class="invalid-feedback errorIsi"></div>
                             </div>
                             <hr>
                         </div>
@@ -79,7 +84,7 @@
                             </button>
                             <!-- edit modal-->
                             <div class="modal fade" id="editmodal<?= $id = $item['submenu_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Ubah</h5>
@@ -115,6 +120,11 @@
                                                             <input type="text" name="submenu" class="form-control submenu" value="<?= $item['submenu'] ?>">
                                                             <div class="invalid-feedback errorSubmenu"></div>
                                                         </div>
+                                                        <div class="col-lg-12">
+                                                            <label class="text-primary">Content</label>
+                                                            <textarea name="isi" id="isi2"><?= $item['content'] ?></textarea>
+                                                            <div class="invalid-feedback errorIsi"></div>
+                                                        </div>
                                                         <hr>
                                                     </div>
                                                 </div>
@@ -128,17 +138,17 @@
                                 </div>
                             </div>
                             <!-- button hapus modal-->
-                            <a href="<?= base_url('mainmenu/hapus/' . $item['id']); ?>" class="hapus">
+                            <a href="<?= base_url('submenu/hapus/' . $item['submenu_id']); ?>" class="hapus">
                                 <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                             </a>
                         <td><?= $item['mainmenu'] ?></td>
                         <td><?= $item['submenu'] ?></td>
-                        <td><?= $item['timestamp'] . '|' . $item['penulis'] ?></td>
+                        <td><?= $item['timestamp'] . ' | ' . $item['penulis'] ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
     </div>
 </div>
-<?= $this->include('backend/mainmenu/ajax') ?>
+<?= $this->include('backend/submenu/ajax') ?>
 <?= $this->include('backend/layouts/js_view') ?>

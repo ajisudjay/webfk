@@ -22,8 +22,6 @@ class Submenu extends BaseController
             $lvl = session()->get('level');
             $data = [
                 'title' => 'Sub Menu',
-                'top_header' => 'Beranda',
-                'header' => 'Sub Menu',
                 'admin' => $admin,
                 'lvl' => $lvl,
             ];
@@ -64,7 +62,8 @@ class Submenu extends BaseController
             $urutan = $request->getVar('urutan');
             $mainmenu = $request->getVar('mainmenu');
             $submenu = $request->getVar('submenu');
-            $timestamp = date("Y-m-d H:i:s");
+            $content = $request->getVar('isi');
+            $timestamp = date("Y-m-d");
             $penulis = $username;
             $validation = \Config\Services::validation();
             $valid = $this->validate([
@@ -104,6 +103,7 @@ class Submenu extends BaseController
                     'urutan' => $urutan,
                     'submenu' => $submenu,
                     'id_mainmenu' => $mainmenu,
+                    'content' => $content,
                     'timestamp' => $timestamp,
                     'penulis' => $penulis,
                 ];
@@ -137,7 +137,8 @@ class Submenu extends BaseController
             $urutan = $request->getVar('urutan');
             $mainmenu = $request->getVar('mainmenu');
             $submenu = $request->getVar('submenu');
-            $timestamp = date("Y-m-d H:i:s");
+            $content = $request->getVar('isi');
+            $timestamp = date("Y-m-d");
             $penulis = $username;
             $validation = \Config\Services::validation();
             $valid = $this->validate([
@@ -178,6 +179,7 @@ class Submenu extends BaseController
                     'urutan' => $urutan,
                     'id_mainmenu' => $mainmenu,
                     'submenu' => $submenu,
+                    'content' => $content,
                     'timestamp' => $timestamp,
                     'penulis' => $penulis,
                 ];
@@ -207,9 +209,9 @@ class Submenu extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
-        $this->MainmenuModel->delete($id);
+        $this->SubmenuModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
-        return redirect()->to(base_url('/mainmenu'));
+        session()->setFlashdata('pesanHapus', 'Sub Menu Berhasil Di Hapus !');
+        return redirect()->to(base_url('/submenu'));
     }
 }

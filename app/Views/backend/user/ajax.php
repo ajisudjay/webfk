@@ -2,13 +2,25 @@
 <script>
     $(document).ready(function() {
         //  function tambah
-        $('.tambah').submit(function(e) {
-            e.preventDefault();
+        $('.tambah').submit(function() {
+            var nama = $('#nama').val();
+            var username = $('#username').val();
+            var level = $('#level').val();
+            var password = $('#password').val();
+            var repassword = $('#repassword').val();
+            var fd = new FormData();
+
+            fd.append('nama', nama);
+            fd.append('username', username);
+            fd.append('level', level);
+            fd.append('password', password);
+            fd.append('repassword', repassword);
             $.ajax({
                 type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: fd,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 beforeSend: function() {
                     $('.btnSimpan').attr('disable', 'disabled');
                     $('.btnSimpan').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -19,37 +31,24 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.urutan) {
-                            $('.urutan').addClass('is-invalid');
-                            $('.errorUrutan').html(response.error.urutan);
+                        if (response.error.nama) {
+                            $('.nama').addClass('is-invalid');
+                            $('.errorNama').html(response.error.nama);
                         } else {
-                            $('.urutan').removeClass('is-invalid');
-                            $('.errorUrutan').html('');
-                        }
-                        if (response.error.submenu) {
-                            $('.submenu').addClass('is-invalid');
-                            $('.errorSubmenu').html(response.error.submenu);
-                        } else {
-                            $('.submenu').removeClass('is-invalid');
-                            $('.errorSubmenu').html('');
+                            $('.nama').removeClass('is-invalid');
+                            $('.errorNama').html('');
                         }
                     } else {
-                        if (response.status == 'gagal') {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal',
-                                text: response.sukses,
-                            })
-                        } else if (response.status == 'berhasil') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: response.sukses,
-                            });
-                        }
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'berhasil',
+                            text: response.sukses,
+                        });
                         $('body').removeClass('modal-open');
+                        //modal-open class is added on body so it has to be removed
                         $('.modal-backdrop').remove();
-                        $('#result').html(response.data);
+                        //need to remove div with modal-backdrop class
+                        $("#result").html(response.data);
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
@@ -58,41 +57,47 @@
             })
         });
 
-        $('.edit').submit(function(e) {
-            e.preventDefault();
+        // function edit
+        $('.edit').submit(function() {
+            var nama = $('#nama').val();
+            var username = $('#username').val();
+            var level = $('#level').val();
+            var password = $('#password').val();
+            var repassword = $('#repassword').val();
+            var fd = new FormData();
+
+            fd.append('nama', nama);
+            fd.append('username', username);
+            fd.append('level', level);
+            fd.append('password', password);
+            fd.append('repassword', repassword);
             $.ajax({
                 type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: fd,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 beforeSend: function() {
-                    $('.btnEdit').attr('disable', 'disabled');
-                    $('.btnEdit').html('<i class="fa fa-spin fa-spinner"></i>');
+                    $('.btnSimpan').attr('disable', 'disabled');
+                    $('.btnSimpan').html('<i class="fa fa-spin fa-spinner"></i>');
                 },
                 complete: function() {
-                    $('.btnEdit').removeAttr('disable', 'disabled');
-                    $('.btnEdit').html('Simpan');
+                    $('.btnSimpan').removeAttr('disable', 'disabled');
+                    $('.btnSimpan').html('Simpan');
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.urutan) {
-                            $('.urutan').addClass('is-invalid');
-                            $('.errorUrutan').html(response.error.urutan);
+                        if (response.error.nama) {
+                            $('.nama').addClass('is-invalid');
+                            $('.errorNama').html(response.error.nama);
                         } else {
-                            $('.urutan').removeClass('is-invalid');
-                            $('.errorUrutan').html('');
-                        }
-                        if (response.error.mainmenu) {
-                            $('.mainmenu').addClass('is-invalid');
-                            $('.errorMainmenu').html(response.error.mainmenu);
-                        } else {
-                            $('.mainmenu').removeClass('is-invalid');
-                            $('.errorMainmenu').html('');
+                            $('.nama').removeClass('is-invalid');
+                            $('.errorNama').html('');
                         }
                     } else {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Berhasil',
+                            title: 'berhasil',
                             text: response.sukses,
                         });
                         $('body').removeClass('modal-open');
@@ -126,6 +131,8 @@
                 }
             });
         });
+
+
         window.setTimeout(function() {
             $(".flashAjax").fadeTo(500, 0).slideUp(500, function() {
                 $(this).remove();

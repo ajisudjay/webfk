@@ -107,8 +107,15 @@ class Pages extends BaseController
     // START BACKEND
     public function beranda()
     {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $admin = session()->get('nama');
+        $lvl = session()->get('level');
         $data = [
-            'title' => 'Beranda'
+            'title' => 'Beranda',
+            'lvl' => $lvl,
+            'admin' => $admin,
         ];
         return view('backend/pages/beranda', $data);
     }

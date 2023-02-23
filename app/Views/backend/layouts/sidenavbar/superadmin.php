@@ -7,21 +7,43 @@
             $menu1 = 'active';
             $menu2 = '';
             $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
             break;
         case "mainmenu":
             $menu1 = '';
             $menu2 = 'active';
             $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
             break;
         case "submenu":
             $menu1 = '';
             $menu2 = '';
             $menu3 = 'active';
+            $menu4 = '';
+            $menu5 = '';
+            break;
+        case "berita":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = 'active';
+            $menu5 = '';
+            break;
+        case "galeri":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = '';
+            $menu5 = 'active';
             break;
         default:
             $menu1 = '';
             $menu2 = '';
             $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
     }
     ?>
 
@@ -40,6 +62,7 @@
         <div class="main-menu-content">
 
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class="navigation-header"><span>Superadmin</span>
                 <li class="<?= $menu1 ?>"><a href="<?= base_url('beranda'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Beranda</span></a>
                 </li>
                 <li class="navigation-header"><span>Menu</span>
@@ -48,21 +71,20 @@
                     <ul class="menu-content">
                         <li class="<?= $menu2 ?>"><a href="<?= base_url('mainmenu'); ?>"><i class="feather icon-menu"></i><span class="menu-item" data-i18n="Analytics">Main Menu</span></a>
                         </li>
-                        <li class="<?= $menu3 ?>"><a href="<?= base_url('submenu2'); ?>"><i class="feather icon-list"></i><span class="menu-item" data-i18n="eCommerce">Sub Menu</span></a>
+                        <li class="<?= $menu3 ?>"><a href="<?= base_url('submenu'); ?>"><i class="feather icon-list"></i><span class="menu-item" data-i18n="eCommerce">Sub Menu</span></a>
                         </li>
                     </ul>
+                </li>
+                <li class="navigation-header"><span>Data</span>
+                </li>
+                <li class="<?= $menu4 ?>"><a href="<?= base_url('berita'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Berita</span></a>
+                </li>
+                <li class="<?= $menu5 ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
+                </li>
                 </li>
                 <li class="navigation-header"><span>Pengguna</span>
                 </li>
-                <li><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
-                    <ul class="menu-content">
-                        <li><a href="<?= base_url('menu'); ?>"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
-                        </li>
-                        <li><a href="<?= base_url('menu'); ?>"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">View</span></a>
-                        </li>
-                        <li><a href="<?= base_url('menu'); ?>"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Edit</span></a>
-                        </li>
-                    </ul>
+                <li class="<?= $menu5 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
                 </li>
             </ul>
         </div>

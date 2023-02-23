@@ -19,8 +19,6 @@ class Mainmenu extends BaseController
             $lvl = session()->get('level');
             $data = [
                 'title' => 'Main Menu',
-                'top_header' => 'Beranda',
-                'header' => 'Main Menu',
                 'admin' => $admin,
                 'lvl' => $lvl,
             ];

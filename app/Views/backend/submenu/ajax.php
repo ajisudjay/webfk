@@ -1,4 +1,19 @@
 <!-- SCRIPT AJAX -->
+<script src="<?= base_url('ckeditor5/build/ckeditor.js') ?>"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#isi'), {}).then(editor => {
+            console.log(editor);
+        }).catch(error => {
+            console.log(error);
+        });
+    ClassicEditor
+        .create(document.querySelector('#isi2'), {}).then(editor => {
+            console.log(editor);
+        }).catch(error => {
+            console.log(error);
+        });
+</script>
 <script>
     $(document).ready(function() {
         //  function tambah

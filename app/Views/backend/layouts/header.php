@@ -7,7 +7,7 @@
         <meta name="description" content="FK UNMUL">
         <meta name="keywords" content="FK UNMUL">
         <meta name="author" content="PIXINVENT">
-        <title>Fakultas Kedokteran - UNMUL</title>
+        <title><?= $title ?> - FK UNMUL</title>
         <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('/img/unmul.png'); ?>">
         <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
