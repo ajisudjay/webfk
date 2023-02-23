@@ -36,10 +36,10 @@ class Submenu extends BaseController
     {
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
             $request = \Config\Services::request();
-            $username = session()->get('username');
             if ($request->isAJAX()) {
                 $data = [
-                    'submenu' => $this->SubmenuModel->select('*')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
                 ];
                 $msg = [
@@ -58,11 +58,14 @@ class Submenu extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
+        $username = session()->get('username');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $urutan = $request->getVar('urutan');
             $mainmenu = $request->getVar('mainmenu');
             $submenu = $request->getVar('submenu');
+            $timestamp = date("Y-m-d H:i:s");
+            $penulis = $username;
             $validation = \Config\Services::validation();
             $valid = $this->validate([
                 'urutan' => [
@@ -101,11 +104,14 @@ class Submenu extends BaseController
                     'urutan' => $urutan,
                     'submenu' => $submenu,
                     'id_mainmenu' => $mainmenu,
+                    'timestamp' => $timestamp,
+                    'penulis' => $penulis,
                 ];
                 $this->SubmenuModel->insert($data);
 
                 $data2 = [
-                    'submenu' => $this->SubmenuModel->select('*')->select('mainmenu.id as mainmenu_id')->select('submenu.urutan as submenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'mainmenu' => $this->MainmenuModel->select('*')->select('mainmenu.id as mainmenu_id')->orderBy('urutan', 'ASC')->get()->getResultArray(),
                 ];
                 $msg = [
                     'sukses' => 'Sub Menu Berhasil Ditambahkan !',
@@ -124,11 +130,15 @@ class Submenu extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
+        $username = session()->get('username');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $id = $request->getVar('id');
             $urutan = $request->getVar('urutan');
             $mainmenu = $request->getVar('mainmenu');
+            $submenu = $request->getVar('submenu');
+            $timestamp = date("Y-m-d H:i:s");
+            $penulis = $username;
             $validation = \Config\Services::validation();
             $valid = $this->validate([
                 'urutan' => [
@@ -145,6 +155,13 @@ class Submenu extends BaseController
                         'required' => '{field} Tidak Boleh Kosong',
                     ]
                 ],
+                'submenu' => [
+                    'label' => 'Sub Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
             ]);
 
             if (!$valid) {
@@ -152,24 +169,29 @@ class Submenu extends BaseController
                     'error' => [
                         'urutan' => $validation->getError('urutan'),
                         'mainmenu' => $validation->getError('mainmenu'),
+                        'submenu' => $validation->getError('submenu'),
                     ],
                 ];
                 echo json_encode($msg);
             } else {
                 $data = [
                     'urutan' => $urutan,
-                    'mainmenu' => $mainmenu,
+                    'id_mainmenu' => $mainmenu,
+                    'submenu' => $submenu,
+                    'timestamp' => $timestamp,
+                    'penulis' => $penulis,
                 ];
 
-                $this->MainmenuModel->update($id, $data);
+                $this->SubmenuModel->update($id, $data);
 
                 $data2 = [
-                    'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'mainmenu' => $this->MainmenuModel->select('*')->select('mainmenu.id as mainmenu_id')->orderBy('urutan', 'ASC')->get()->getResultArray(),
                 ];
                 $msg = [
-                    'sukses' => 'Main Menu Berhasil Diubah !',
+                    'sukses' => 'Sub Menu Berhasil Diubah !',
                     'status' => 'Berhasil',
-                    'data' => view('backend/mainmenu/view', $data2)
+                    'data' => view('backend/submenu/view', $data2)
                 ];
                 echo json_encode($msg);
             }

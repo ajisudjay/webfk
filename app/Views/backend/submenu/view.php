@@ -21,7 +21,12 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label class="text-primary">Main Menu</label>
-                                <input type="text" name="mainmenu" class="form-control mainmenu" placeholder="Main Menu">
+                                <select name="mainmenu" class="form-control mainmenu">
+                                    <option value="">Pilih Main Menu</option>
+                                    <?php foreach ($mainmenu as $item_mainmenu) : ?>
+                                        <option value="<?= $item_mainmenu['id'] ?>"><?= $item_mainmenu['mainmenu'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
                                 <div class="invalid-feedback errorMainmenu"></div>
                                 <br>
                             </div>
@@ -54,22 +59,26 @@
             <thead>
                 <tr>
                     <th width="5%">No</th>
+                    <th width="5%">Urutan</th>
                     <th width="5%" style="text-align: center;">AKSI</th>
-                    <th width="25%">MAIN MENU</th>
-                    <th width="65%">SUB MENU</th>
+                    <th width="15%">MAIN MENU</th>
+                    <th width="15%">SUB MENU</th>
+                    <th width="55%">LOG</th>
                 </tr>
             </thead>
             <tbody>
+                <?php $no = 1 ?>
                 <?php foreach ($submenu as $item) : ?>
                     <tr>
                         <!-- ISI VIEW -->
-                        <td><?= $item['urutan_submenu'] ?></td>
+                        <td><?= $no++ ?></td>
+                        <td style="text-align: center;"><?= $item['urutan_submenu'] ?></td>
                         <td>
-                            <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['id'] ?>">
+                            <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['submenu_id'] ?>">
                                 <span class="feather icon-edit-1 text-default"></span>
                             </button>
                             <!-- edit modal-->
-                            <div class="modal fade" id="editmodal<?= $id = $item['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="editmodal<?= $id = $item['submenu_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -79,28 +88,39 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="<?= base_url('mainmenu/edit'); ?>" method="post" class="edit">
+                                            <form action="<?= base_url('submenu/edit'); ?>" method="post" class="edit">
                                                 <?php csrf_field() ?>
-                                                <div class="modal-body" style="text-align:left ;">
+                                                <div class="modal-body">
                                                     <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <label class="text-primary">Main Menu</label>
+                                                            <input type="text" name="id" value="<?= $item['submenu_id'] ?>" hidden>
+                                                            <select name="mainmenu" class="form-control mainmenu">
+                                                                <option value="<?= $item['mainmenu_id'] ?>"><?= $item['mainmenu'] ?></option>
+                                                                <?php foreach ($mainmenu as $item_mainmenu) : ?>
+                                                                    <option value="<?= $item_mainmenu['id'] ?>"><?= $item_mainmenu['mainmenu'] ?></option>
+                                                                <?php endforeach ?>
+                                                            </select>
+                                                            <div class="invalid-feedback errorMainmenu"></div>
+                                                            <br>
+                                                        </div>
                                                         <div class="col-lg-3">
                                                             <label class="text-primary">Urutan</label>
-                                                            <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
-                                                            <input type="text" name="urutan" value="<?= $item['urutan'] ?>" class="form-control urutan" placeholder="Urutan">
+                                                            <input type="text" name="urutan" class="form-control urutan" value="<?= $item['urutan_submenu'] ?>">
                                                             <div class="invalid-feedback errorUrutan"></div>
                                                             <br>
                                                         </div>
                                                         <div class="col-lg-9">
-                                                            <label class="text-primary">Main Menu</label>
-                                                            <input type="text" name="mainmenu" value="<?= $item['id_mainmenu'] ?>" class="form-control mainmenu" placeholder="Main Menu">
-                                                            <div class="invalid-feedback errorMainmenu"></div>
-                                                            <br>
+                                                            <label class="text-primary">Sub Menu</label>
+                                                            <input type="text" name="submenu" class="form-control submenu" value="<?= $item['submenu'] ?>">
+                                                            <div class="invalid-feedback errorSubmenu"></div>
                                                         </div>
+                                                        <hr>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
-                                                    <button type="submit" class="btn btn-primary btnEdit">Simpan</button>
+                                                    <button type="submit" class="btn btn-primary btnSimpan">Simpan</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -113,6 +133,7 @@
                             </a>
                         <td><?= $item['mainmenu'] ?></td>
                         <td><?= $item['submenu'] ?></td>
+                        <td><?= $item['timestamp'] . '|' . $item['penulis'] ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

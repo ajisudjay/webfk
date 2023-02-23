@@ -96,6 +96,13 @@
                             $('.mainmenu').removeClass('is-invalid');
                             $('.errorMainmenu').html('');
                         }
+                        if (response.error.submenu) {
+                            $('.submenu').addClass('is-invalid');
+                            $('.errorSubmenu').html(response.error.submenu);
+                        } else {
+                            $('.submenu').removeClass('is-invalid');
+                            $('.errorSubmenu').html('');
+                        }
                     } else {
                         Swal.fire({
                             icon: 'success',

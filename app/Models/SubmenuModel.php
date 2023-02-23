@@ -14,7 +14,7 @@ class SubmenuModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'submenu', 'urutan', 'id_mainmenu'];
+    protected $allowedFields    = ['id', 'submenu', 'urutan', 'id_mainmenu', 'timestamp', 'penulis', 'content', 'tag'];
 
     // Dates
     protected $useTimestamps = false;
