@@ -116,7 +116,7 @@
         </table>
     </div>
 </div>
-<script src="<?= base_url('ckeditor6/build/ckeditor.js') ?>"></script>
+<script src="<?= base_url('ckeditor7/build/ckeditor.js') ?>"></script>
 <script>
     ClassicEditor
         .create(document.querySelector('#isi'), {}).then(editor => {
