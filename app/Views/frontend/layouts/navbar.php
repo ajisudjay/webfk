@@ -33,7 +33,7 @@
                      <div class="col-xl-1 col-lg-1">
                          <div class="logo">
                              <a href="/">
-                                 <img src="<?= base_url('/img/unmul.png'); ?>" alt="" width="50">
+                                 <img src="<?= base_url('/img/unmul.png'); ?>" alt="" width="70">
                              </a>
                          </div>
                      </div>
@@ -42,6 +42,13 @@
                              <nav>
                                  <ul id="navigation">
                                      <li><a class="<?= $title == 'Beranda' ? 'text-primary' : '' ?>" href="<?= base_url('/'); ?>">Beranda</a></li>
+                                     <li><a href="#" class="<?= $title == 'Profil' ? 'text-primary' : '' ?>"> Tentang Kami <i class="ti-angle-down"></i></a>
+                                         <ul class="submenu">
+                                             <li><a href="<?= base_url('profil/Visi-dan-Misi'); ?>">Visi dan Misi</a></li>
+                                             <li><a href="<?= base_url('profil/Sejarah'); ?>">Sejarah</a></li>
+                                             <li><a href="<?= base_url('profil/Struktur-Organisasi'); ?>">Struktur Organisasi</a></li>
+                                         </ul>
+                                     </li>
                                      <li><a href="#" class="<?= $title == 'Program Studi' ? 'text-primary' : '' ?>"> Program Studi <i class="ti-angle-down"></i></a>
                                          <ul class="submenu">
                                              <li><a href="<?= base_url('prodi/kedokteran'); ?>">Kedokteran</a></li>
@@ -52,21 +59,32 @@
                                              <li><a href="<?= base_url('prodi/d-3-keperawatan'); ?>">D-3 Keperawatan</a></li>
                                          </ul>
                                      </li>
-                                     <li><a href="#" class="<?= $title == 'SDM' ? 'text-primary' : '' ?>">Kepegawaian <i class="ti-angle-down"></i></a>
+                                     <li><a href="#" class="<?= $title == 'Kepegawaian' ? 'text-primary' : '' ?>">SDM <i class="ti-angle-down"></i></a>
                                          <ul class="submenu">
-                                             <li><a href="<?= base_url('sdm/dosen'); ?>">Dosen Pengajar</a></li>
-                                             <li><a href="<?= base_url('sdm/tendik'); ?>">Tenaga Kependidikan</a></li>
+                                             <li><a href="<?= base_url('profil-sdm/dosen'); ?>">Dosen Pengajar</a></li>
+                                             <li><a href="<?= base_url('profil-sdm/tendik'); ?>">Tenaga Kependidikan</a></li>
                                          </ul>
                                      </li>
-                                     <li><a href="#" class="<?= $title == 'Tentang Kami' ? 'text-primary' : '' ?>"> Tentang Kami <i class="ti-angle-down"></i></a>
+                                     <li><a href="#" class="<?= $title == 'Laboratorium' ? 'text-primary' : '' ?>">Fasilitas <i class="ti-angle-down"></i></a>
                                          <ul class="submenu">
-                                             <li><a href="<?= base_url('tentangkami/Visi-dan-Misi'); ?>">Visi dan Misi</a></li>
-                                             <li><a href="<?= base_url('tentangkami/Sejarah'); ?>">Sejarah</a></li>
-                                             <li><a href="<?= base_url('tentangkami/Struktur-Organisasi'); ?>">Struktur Organisasi</a></li>
+                                             <li><a class="<?= $title == 'Laboratorium' ? 'text-primary' : '' ?>" href="<?= base_url('/laboratorium'); ?>">Laboratorium</a></li>
+                                         </ul>
+                                     </li>
+                                     <br>
+                                     <hr style="width: 60%;">
+                                     <li><a href="#" class="<?= $title == 'Kemahasiswaan' ? 'text-primary' : '' ?>">Kemahasiswaan <i class="ti-angle-down"></i></a>
+                                         <ul class="submenu">
+                                             <li><a class="<?= $title == 'Kemahasiswaan' ? 'text-primary' : '' ?>" href="<?= base_url('/kemahasiswaan'); ?>">Kemahasiswaan</a></li>
+                                         </ul>
+                                     </li>
+                                     <li><a href="<?= base_url('/penelitian'); ?>" class="<?= $title == 'Penelitian' ? 'text-primary' : '' ?>"> Penelitian dan PKM</a> </li>
+                                     <li><a href="<?= base_url('/spmi'); ?>" class="<?= $title == 'Spmi' ? 'text-primary' : '' ?>"> SPMI</a> </li>
+                                     <li><a href="#" class="<?= $title == 'Akreditasi' ? 'text-primary' : '' ?>">Akreditasi <i class="ti-angle-down"></i></a>
+                                         <ul class="submenu">
+                                             <li><a class="<?= $title == 'Akreditasi' ? 'text-primary' : '' ?>" href="<?= base_url('/akreditasi'); ?>">Akreditasi</a></li>
                                          </ul>
                                      </li>
                                      <li><a href="<?= base_url('/informasi'); ?>" class="<?= $title == 'Informasi' ? 'text-primary' : '' ?>"> Informasi</a> </li>
-                                     <li><a class="<?= $title == 'Laboratorium' ? 'text-primary' : '' ?>" href="<?= base_url('/laboratorium'); ?>">Laboratorium</a></li>
                                      <li><a class="<?= $title == 'Menu' ? 'text-primary' : '' ?>" href="<?= base_url('/menu'); ?>">Semua Menu</a></li>
                                  </ul>
                              </nav>

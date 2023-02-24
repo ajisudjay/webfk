@@ -56,35 +56,65 @@
     <div class="box">
         <div class="service_area">
             <div class="container p-0">
-                <div class="row no-gutters">
-                    <div class="col-xl-4 col-md-4">
+                <div class="row no-gutters" style="text-align:center">
+                    <div class="col-xl-2">
                         <div class="single_service">
                             <div class="icon">
                                 <i class="flaticon-electrocardiogram"></i>
                             </div>
                             <h3>E-lib</h3>
-                            <p>Integrated Library System <br> Fakultas Kedokteran</p>
+
                             <a target="_blank" href="https://elib.fk.unmul.ac.id/" class="boxed-btn3-white">Klik Disini</a>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-4">
+                    <div class="col-xl-2">
                         <div class="single_service">
                             <div class="icon">
                                 <i class="flaticon-first-aid-kit"></i>
                             </div>
                             <h3>ApKed</h3>
-                            <p>Sistem Informasi Digital <br> Fakultas Kedokteran</p>
+
                             <a href="#" class="boxed-btn3-white">Klik Disini</a>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-4">
+                    <div class="col-xl-2" style="background-color: #53ADFE">
                         <div class="single_service">
                             <div class="icon">
                                 <i class="flaticon-right"></i>
                             </div>
-                            <h3>E-Resource</h3>
-                            <p>Perpustakaan Nasional Republik Indonesia</p>
+                            <h3>eResource</h3>
+
                             <a target="_blank" href="https://e-resources.perpusnas.go.id/" class="boxed-btn3-white">Klik Disini</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-2" style="background-color: #53ADFE">
+                        <div class="single_service">
+                            <div class="icon">
+                                <i class="flaticon-first-aid-kit"></i>
+                            </div>
+                            <h3>ApKed</h3>
+
+                            <a href="#" class="boxed-btn3-white">Klik Disini</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div class="single_service">
+                            <div class="icon">
+                                <i class="flaticon-first-aid-kit"></i>
+                            </div>
+                            <h3>ApKed</h3>
+
+                            <a href="#" class="boxed-btn3-white">Klik Disini</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div class="single_service">
+                            <div class="icon">
+                                <i class="flaticon-first-aid-kit"></i>
+                            </div>
+                            <h3>ApKed</h3>
+
+                            <a href="#" class="boxed-btn3-white">Klik Disini</a>
                         </div>
                     </div>
                 </div>
@@ -116,11 +146,14 @@
                             <h3>Visi dan Misi</h3>
                             <br>
                             <h2>Visi</h2>
-                            <p style="margin-top: -25px;">"Ini Adalah visi dari fakultas kedokteran universitas mulawarman Ini Adalah visi dari fakultas kedokteran universitas mulawarman Ini Adalah visi dari fakultas kedokteran universitas mulawarman".</p>
+
+                            <p style="margin-top: -25px;">"Menjadi Fakultas Kedokteran Berstandar Internasional yang unggul di tingkat Nasional dalam pengembangan pendidikan, penelitian, pengabdian masyarakat di bidang kedokteran dan kesehatan yang bertumpu pada hutan tropis lembap (tropical rain forest) dan lingkungannya pada tahun 2034."</p>
                             <h2>Misi</h2>
                             <ul style="margin-top: -25px">
-                                <li> <i class="flaticon-right"></i> ini adalah misi dari kedokteran ini adalah misi dari kedokteranini adalah misi dari kedokteranini adalah misi dari kedokteran </li>
-                                <li> <i class="flaticon-right"></i> ini adalah misi dari kedokteran </li>
+                                <li> <i class="flaticon-right"></i> Menyelenggarakan Pendidikan Kedokteran dan Kesehatan yang berkualitas. </li>
+                                <li> <i class="flaticon-right"></i> Menyelenggarakan Penelitian yang Berstandar Internasional dibidang Ilmu Kedokteran dan Kesehatan yang bertumpu pada hutan tropis lembap dan lingkungannya. </li>
+                                <li> <i class="flaticon-right"></i> Menyelenggarakan pengabdian masyarakat yang berorientasi pada peningkatan perilaku sehat masyarakat. </li>
+                                <li> <i class="flaticon-right"></i> Mengembangkan dan menjalin kerja sama dengan berbagai pihak untuk meningkatkan kapasitas, sarana, prasana, dan sumber daya manusia yang berkualitas.</li>
                             </ul>
                             <a href="<?= base_url('profil/visi-dan-misi'); ?>" class="boxed-btn3-white-2">Lihat Detail</a>
                         </div>

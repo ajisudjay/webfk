@@ -11,7 +11,7 @@
                 <div class="col-xl-12">
                     <div class="bradcam_text">
                         <h3><?= $slug ?></h3>
-                        <p><a href="<?= base_url('/'); ?>">Beranda /</a> <?= $title ?></p>
+                        <p><a href="<?= base_url('/'); ?>">FK UNMUL /</a> <?= $title ?></p>
                     </div>
                 </div>
             </div>

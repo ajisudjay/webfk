@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2023 at 12:14 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Feb 24, 2023 at 08:39 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `id` int(100) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `isi` text DEFAULT NULL,
+  `banner` varchar(255) NOT NULL,
+  `tag` varchar(255) DEFAULT NULL,
+  `dilihat` int(100) DEFAULT NULL,
+  `timestamp` date DEFAULT NULL,
+  `penulis` varchar(255) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id`, `judul`, `slug`, `isi`, `banner`, `tag`, `dilihat`, `timestamp`, `penulis`, `tanggal`) VALUES
+(1, 'berita pertama', 'berita-pertama', 'ini isi dari berita 1', 'banner1.jpg', 'pertama', 5, '2023-02-24', 'ajisudjay', '2023-02-24');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `galeri`
 --
 
@@ -31,7 +57,7 @@ CREATE TABLE `galeri` (
   `id` int(100) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `gambar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `galeri`
@@ -50,7 +76,7 @@ CREATE TABLE `jenis` (
   `id` int(100) NOT NULL,
   `jenis` varchar(255) NOT NULL,
   `area` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jenis`
@@ -82,7 +108,7 @@ CREATE TABLE `kelompok` (
   `keterangan` varchar(255) DEFAULT NULL,
   `koordinat` text DEFAULT NULL,
   `jenis` int(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kelompok`
@@ -103,7 +129,7 @@ CREATE TABLE `konfigurasi` (
   `judul` varchar(255) NOT NULL,
   `isi` text NOT NULL,
   `urutan` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `konfigurasi`
@@ -127,7 +153,7 @@ CREATE TABLE `mainmenu` (
   `id` int(100) NOT NULL,
   `mainmenu` varchar(255) NOT NULL,
   `urutan` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `mainmenu`
@@ -154,7 +180,7 @@ CREATE TABLE `submenu` (
   `tag` varchar(255) DEFAULT NULL,
   `penulis` varchar(255) NOT NULL,
   `timestamp` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `submenu`
@@ -175,22 +201,24 @@ CREATE TABLE `users` (
   `nama` varchar(255) NOT NULL,
   `level` varchar(255) NOT NULL,
   `file` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`username`, `password`, `nama`, `level`, `file`) VALUES
-('ajisudjay', 'MTIzNDU2', 'Aji Sudjay', 'Superadmin', '1677191261_4359d8c87f13ad17ac39.png'),
-('ajisudjayfdgdfgdf', 'MTIzNDU2', 'gdfggd', 'Superadmin', NULL),
-('ajisudjaywerwr', 'MTIzNDU2', 'erwrw', 'Admin', NULL),
-('terbaru', 'TVRJek5EVTI=', 'baru terbaru mau dihappus', 'Superadmin', '1677191261_4359d8c87f13ad17ac39.png'),
-('yaya', 'TVRJek5EVTI=', 'Shafiyyah Azizah', 'Superadmin', '1677189456_d70cbb7f01ed886f2cc3.jpeg');
+('ajisudjay', 'MTIzNDU2', 'Aji Sudjay', 'Superadmin', '1677191261_4359d8c87f13ad17ac39.png');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `galeri`
@@ -238,6 +266,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `galeri`
