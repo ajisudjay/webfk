@@ -42,49 +42,16 @@
                              <nav>
                                  <ul id="navigation">
                                      <li><a class="<?= $title == 'Beranda' ? 'text-primary' : '' ?>" href="<?= base_url('/'); ?>">Beranda</a></li>
-                                     <li><a href="#" class="<?= $title == 'Profil' ? 'text-primary' : '' ?>"> Tentang Kami <i class="ti-angle-down"></i></a>
-                                         <ul class="submenu">
-                                             <li><a href="<?= base_url('profil/Visi-dan-Misi'); ?>">Visi dan Misi</a></li>
-                                             <li><a href="<?= base_url('profil/Sejarah'); ?>">Sejarah</a></li>
-                                             <li><a href="<?= base_url('profil/Struktur-Organisasi'); ?>">Struktur Organisasi</a></li>
-                                         </ul>
-                                     </li>
-                                     <li><a href="#" class="<?= $title == 'Program Studi' ? 'text-primary' : '' ?>"> Program Studi <i class="ti-angle-down"></i></a>
-                                         <ul class="submenu">
-                                             <li><a href="<?= base_url('prodi/kedokteran'); ?>">Kedokteran</a></li>
-                                             <li><a href="<?= base_url('prodi/profesi-dokter'); ?>">Profesi Dokter</a></li>
-                                             <li><a href="<?= base_url('prodi/sp-1-spesialis-bedah'); ?>">Sp-1 Spesialis Bedah</a></li>
-                                             <li><a href="<?= base_url('prodi/s-1-kedokteran-gigi'); ?>">S-1 Kedokteran Gigi</a></li>
-                                             <li><a href="<?= base_url('prodi/profesidokter-gigi'); ?>">Profesi Dokter Gigi</a></li>
-                                             <li><a href="<?= base_url('prodi/d-3-keperawatan'); ?>">D-3 Keperawatan</a></li>
-                                         </ul>
-                                     </li>
-                                     <li><a href="#" class="<?= $title == 'Kepegawaian' ? 'text-primary' : '' ?>">SDM <i class="ti-angle-down"></i></a>
-                                         <ul class="submenu">
-                                             <li><a href="<?= base_url('profil-sdm/dosen'); ?>">Dosen Pengajar</a></li>
-                                             <li><a href="<?= base_url('profil-sdm/tendik'); ?>">Tenaga Kependidikan</a></li>
-                                         </ul>
-                                     </li>
-                                     <li><a href="#" class="<?= $title == 'Laboratorium' ? 'text-primary' : '' ?>">Fasilitas <i class="ti-angle-down"></i></a>
-                                         <ul class="submenu">
-                                             <li><a class="<?= $title == 'Laboratorium' ? 'text-primary' : '' ?>" href="<?= base_url('/laboratorium'); ?>">Laboratorium</a></li>
-                                         </ul>
-                                     </li>
-                                     <br>
-                                     <hr style="width: 60%;">
-                                     <li><a href="#" class="<?= $title == 'Kemahasiswaan' ? 'text-primary' : '' ?>">Kemahasiswaan <i class="ti-angle-down"></i></a>
-                                         <ul class="submenu">
-                                             <li><a class="<?= $title == 'Kemahasiswaan' ? 'text-primary' : '' ?>" href="<?= base_url('/kemahasiswaan'); ?>">Kemahasiswaan</a></li>
-                                         </ul>
-                                     </li>
-                                     <li><a href="<?= base_url('/penelitian'); ?>" class="<?= $title == 'Penelitian' ? 'text-primary' : '' ?>"> Penelitian dan PKM</a> </li>
-                                     <li><a href="<?= base_url('/spmi'); ?>" class="<?= $title == 'Spmi' ? 'text-primary' : '' ?>"> SPMI</a> </li>
-                                     <li><a href="#" class="<?= $title == 'Akreditasi' ? 'text-primary' : '' ?>">Akreditasi <i class="ti-angle-down"></i></a>
-                                         <ul class="submenu">
-                                             <li><a class="<?= $title == 'Akreditasi' ? 'text-primary' : '' ?>" href="<?= base_url('/akreditasi'); ?>">Akreditasi</a></li>
-                                         </ul>
-                                     </li>
-                                     <li><a href="<?= base_url('/informasi'); ?>" class="<?= $title == 'Informasi' ? 'text-primary' : '' ?>"> Informasi</a> </li>
+                                     <?php foreach ($mainmenu as $item_mainmenu) : ?>
+                                         <?php $menu = $item_mainmenu['mainmenu'] ?>
+                                         <li><a href="#" class="<?= $title == $menu ? 'text-primary' : '' ?>"> <?= $menu ?> <i class="ti-angle-down"></i></a>
+                                             <ul class="submenu">
+                                                 <?php foreach ($submenu as $item_submenu) : ?>
+                                                     <li><a href="<?= base_url('pages/' . $item_submenu['submenu']); ?>"><?= $item_submenu['submenu'] ?></a></li>
+                                                 <?php endforeach ?>
+                                             </ul>
+                                         </li>
+                                     <?php endforeach ?>
                                      <li><a class="<?= $title == 'Menu' ? 'text-primary' : '' ?>" href="<?= base_url('/menu'); ?>">Semua Menu</a></li>
                                  </ul>
                              </nav>

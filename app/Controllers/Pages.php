@@ -2,15 +2,38 @@
 
 namespace App\Controllers;
 
+use App\Models\MainmenuModel;
+use App\Models\SubmenuModel;
+
 class Pages extends BaseController
 {
+    protected $MainmenuModel;
+    protected $SubmenuModel;
+    public function __construct()
+    {
+        $this->MainmenuModel = new MainmenuModel();
+        $this->SubmenuModel = new SubmenuModel();
+    }
     // BEGIN FRONTEND
     public function index()
     {
         $data = [
-            'title' => 'Beranda'
+            'title' => 'Beranda',
+            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
         ];
         return view('frontend/pages/beranda', $data);
+    }
+
+    public function pages($slug)
+    {
+        $data = [
+            'title' => 'Program Studi',
+            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'slug'  => $slug,
+        ];
+        return view('frontend/pages/prodi-detail', $data);
     }
 
     public function prodi($slug)
