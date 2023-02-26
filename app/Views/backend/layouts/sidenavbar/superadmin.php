@@ -9,6 +9,7 @@
             $menu3 = '';
             $menu4 = '';
             $menu5 = '';
+            $menu6 = '';
             break;
         case "mainmenu":
             $menu1 = '';
@@ -16,6 +17,7 @@
             $menu3 = '';
             $menu4 = '';
             $menu5 = '';
+            $menu6 = '';
             break;
         case "submenu":
             $menu1 = '';
@@ -23,6 +25,7 @@
             $menu3 = 'active';
             $menu4 = '';
             $menu5 = '';
+            $menu6 = '';
             break;
         case "berita":
             $menu1 = '';
@@ -30,6 +33,7 @@
             $menu3 = '';
             $menu4 = 'active';
             $menu5 = '';
+            $menu6 = '';
             break;
         case "galeri":
             $menu1 = '';
@@ -37,6 +41,15 @@
             $menu3 = '';
             $menu4 = '';
             $menu5 = 'active';
+            $menu6 = '';
+            break;
+        case "user":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
+            $menu6 = 'active';
             break;
         default:
             $menu1 = '';
@@ -44,6 +57,7 @@
             $menu3 = '';
             $menu4 = '';
             $menu5 = '';
+            $menu6 = '';
     }
     ?>
 
@@ -84,7 +98,7 @@
                 </li>
                 <li class="navigation-header"><span>Pengguna</span>
                 </li>
-                <li class="<?= $menu5 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
+                <li class="<?= $menu6 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
                 </li>
             </ul>
         </div>

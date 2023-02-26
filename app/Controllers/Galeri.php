@@ -14,15 +14,23 @@ class Galeri extends BaseController
     }
     public function index()
     {
+
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
         $admin = session()->get('nama');
         $lvl = session()->get('level');
+        $file = session()->get('file');
+        if ($file <  1) {
+            $gambar = 'app-assets/images/profile/user-profile.png';
+        } else {
+            $gambar = 'content/user/' . $file;
+        }
         $data = [
             'title' => 'Galeri',
             'admin' => $admin,
             'lvl' => $lvl,
+            'foto' => $gambar,
         ];
         return view('backend/galeri/index', $data);
     }

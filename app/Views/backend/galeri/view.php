@@ -26,8 +26,6 @@
                                 <div class="invalid-feedback errorNama"></div>
                                 <br>
                             </div>
-                        </div>
-                        <div class="row">
                             <br>
                             <div class="col-lg-6">
                                 <label class="text-primary">Gambar</label>
@@ -54,8 +52,8 @@
                 <tr>
                     <th width="5%">No</th>
                     <th width="5%" style="text-align: center;">AKSI</th>
-                    <th width="25%">Nama</th>
-                    <th width="35%" style="text-align: center;">Gambar</th>
+                    <th width="35%">Nama</th>
+                    <th width="25%" style="text-align: center;">Gambar</th>
                     <th width="30%">URL</th>
                 </tr>
             </thead>
@@ -72,7 +70,7 @@
                             </a>
                         <td><?= $item['nama'] ?></td>
 
-                        <td style="text-align: center;"><img src="content/galeri/<?= $item['gambar'] ?>" width="50%"></td>
+                        <td style="text-align: center;"><img src="content/galeri/<?= $item['gambar'] ?>" width="100%"></td>
                         <td>
                             <div class="row">
                                 <div class="col-lg-9">

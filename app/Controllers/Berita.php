@@ -2,15 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\GaleriModel;
+use App\Models\BeritaModel;
 use App\Controllers\BaseController;
+use PhpParser\Node\Expr\Empty_;
 
-class Galeri extends BaseController
+class Berita extends BaseController
 {
-    protected $GaleriModel;
+    protected $BeritaModel;
     public function __construct()
     {
-        $this->GaleriModel = new GaleriModel();
+        $this->BeritaModel = new BeritaModel();
     }
     public function index()
     {
@@ -19,12 +20,19 @@ class Galeri extends BaseController
         }
         $admin = session()->get('nama');
         $lvl = session()->get('level');
+        $file = session()->get('file');
+        if ($file <  1) {
+            $gambar = 'app-assets/images/profile/user-profile.png';
+        } else {
+            $gambar = 'content/user/' . $file;
+        }
         $data = [
-            'title' => 'Galeri',
+            'title' => 'Berita',
             'admin' => $admin,
             'lvl' => $lvl,
+            'foto' => $gambar,
         ];
-        return view('backend/galeri/index', $data);
+        return view('backend/berita/index', $data);
     }
     public function view()
     {
@@ -34,11 +42,11 @@ class Galeri extends BaseController
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $data = [
-                'galeri' => $this->GaleriModel->orderBy('id', 'DESC')->get()->getResultArray(),
+                'berita' => $this->BeritaModel->orderBy('id', 'DESC')->get()->getResultArray(),
                 'validation' => \Config\Services::validation(),
             ];
             $msg = [
-                'data' => view('backend/galeri/view', $data)
+                'data' => view('backend/berita/view', $data)
             ];
             echo json_encode($msg);
         } else {
@@ -51,28 +59,104 @@ class Galeri extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
+        $username = session()->get('username');
         $request = \Config\Services::request();
-
-        $nama = $request->getVar('nama');
+        $judul = $request->getVar('judul');
+        $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)));
+        $tanggal = $request->getVar('tanggal');
+        $isi = $request->getVar('isi');
+        $tag = $request->getVar('tag');
+        $timestamp = date("Y-m-d");
+        $penulis = $username;
         $file = $request->getFile('file');
         $input = $this->validate([
             'file' => 'uploaded[file]|max_size[file,2048],'
         ]);
         if (!$input) { // Not valid
             session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 2MB');
-            return redirect()->to(base_url('/galeri'));
+            return redirect()->to(base_url('/berita'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/galeri/', $newName);
+            $file->move('content/berita/', $newName);
             $nama_foto = $newName;
             $data = [
-                'nama' => $nama,
-                'gambar' => $nama_foto,
+                'judul' => $judul,
+                'slug' => $slug,
+                'tanggal' => $tanggal,
+                'tag' => $tag,
+                'isi' => $isi,
+                'banner' => $nama_foto,
+                'dilihat' => 0,
+                'timestamp' => $timestamp,
+                'penulis' => $penulis,
             ];
-            $this->GaleriModel->insert($data);
+            $this->BeritaModel->insert($data);
 
-            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Gambar');
-            return redirect()->to(base_url('/galeri'));
+            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Berita');
+            return redirect()->to(base_url('/berita'));
+        }
+    }
+
+    public function edit()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $username = session()->get('username');
+        $request = \Config\Services::request();
+        $id = $request->getVar('id');
+        $judul = $request->getVar('judul');
+        $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)));
+        $tanggal = $request->getVar('tanggal');
+        $isi = $request->getVar('isi');
+        $tag = $request->getVar('tag');
+        $timestamp = date("Y-m-d");
+        $penulis = $username;
+        $file = $request->getFile('file');
+        if (!file_exists($_FILES['file']['tmp_name'])) {
+            $data = [
+                'judul' => $judul,
+                'slug' => $slug,
+                'tanggal' => $tanggal,
+                'tag' => $tag,
+                'isi' => $isi,
+                'timestamp' => $timestamp,
+                'penulis' => $penulis,
+            ];
+            $this->BeritaModel->update($id, $data);
+
+            session()->setFlashdata('pesanInput', 'Berhasil Mengubah Berita');
+            return redirect()->to(base_url('/berita'));
+        } else {
+            $input = $this->validate([
+                'file' => 'uploaded[file]|max_size[file,2048],'
+            ]);
+            if (!$input) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 2MB');
+                return redirect()->to(base_url('/berita'));
+            } else {
+                $file = $request->getFile('file');
+                $cekfile = $this->BeritaModel->where('id', $id)->first();
+                $namafile = $cekfile['banner'];
+                unlink('content/berita/' . $namafile);
+                $newName = $file->getRandomName();
+                $file->move('content/berita/', $newName);
+                $nama_foto = $newName;
+                $data = [
+                    'judul' => $judul,
+                    'slug' => $slug,
+                    'tanggal' => $tanggal,
+                    'tag' => $tag,
+                    'isi' => $isi,
+                    'banner' => $nama_foto,
+                    'timestamp' => $timestamp,
+                    'penulis' => $penulis,
+                ];
+                $this->BeritaModel->update($id, $data);
+
+                session()->setFlashdata('pesanInput', 'Berhasil Mengubah Berita');
+                return redirect()->to(base_url('/berita'));
+            }
         }
     }
 
@@ -81,12 +165,12 @@ class Galeri extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
-        $cekfile = $this->GaleriModel->where('id', $id)->first();
-        $namafile = $cekfile['gambar'];
-        unlink('content/galeri/' . $namafile);
-        $this->GaleriModel->delete($id);
+        $cekfile = $this->BeritaModel->where('id', $id)->first();
+        $namafile = $cekfile['banner'];
+        unlink('content/berita/' . $namafile);
+        $this->BeritaModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Galeri Berhasil Di Hapus !');
-        return redirect()->to(base_url('/galeri'));
+        session()->setFlashdata('pesanHapus', 'Berita Berhasil Di Hapus !');
+        return redirect()->to(base_url('/berita'));
     }
 }

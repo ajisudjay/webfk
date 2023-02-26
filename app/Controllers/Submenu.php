@@ -20,10 +20,17 @@ class Submenu extends BaseController
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
+            $file = session()->get('file');
+            if ($file <  1) {
+                $gambar = 'app-assets/images/profile/user-profile.png';
+            } else {
+                $gambar = 'content/user/' . $file;
+            }
             $data = [
                 'title' => 'Sub Menu',
                 'admin' => $admin,
                 'lvl' => $lvl,
+                'foto' => $gambar,
             ];
             return view('backend/submenu/index', $data);
         } else {

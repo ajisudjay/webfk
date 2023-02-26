@@ -112,10 +112,17 @@ class Pages extends BaseController
         }
         $admin = session()->get('nama');
         $lvl = session()->get('level');
+        $file = session()->get('file');
+        if ($file <  1) {
+            $gambar = 'app-assets/images/profile/user-profile.png';
+        } else {
+            $gambar = 'content/user/' . $file;
+        }
         $data = [
             'title' => 'Beranda',
             'lvl' => $lvl,
             'admin' => $admin,
+            'foto' => $gambar,
         ];
         return view('backend/pages/beranda', $data);
     }

@@ -19,17 +19,17 @@
                 <section id="dashboard-analytics">
                     <div class="row">
                         <div class="col-12">
+                            <?php if (session()->get('pesanInput')) { ?>
+                                <div class="alert alert-success alert-dismissible fade show flash" role="alert">
+                                    <strong>Berhasil !</strong> <?= session()->getFlashdata('pesanInput') ?>
+                                </div>
+                            <?php } ?>
+                            <?php if (session()->get('pesanGagal')) { ?>
+                                <div class="alert alert-danger alert-dismissible fade show flash" role="alert">
+                                    <strong>Gagal !</strong> <?= session()->getFlashdata('pesanGagal') ?>
+                                </div>
+                            <?php } ?>
                             <div class="card">
-                                <?php if (session()->get('pesanInput')) { ?>
-                                    <div class="alert alert-success alert-dismissible fade show flash" role="alert">
-                                        <strong>Berhasil !</strong> <?= session()->getFlashdata('pesanInput') ?>
-                                    </div>
-                                <?php } ?>
-                                <?php if (session()->get('pesanGagal')) { ?>
-                                    <div class="alert alert-danger alert-dismissible fade show flash" role="alert">
-                                        <strong>Gagal !</strong> <?= session()->getFlashdata('pesanGagal') ?>
-                                    </div>
-                                <?php } ?>
                                 <div class="bg-transparent border-0" id="result"></div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: '<?= base_url('galeri/view') ?>',
+                url: '<?= base_url('berita/view') ?>',
                 dataType: 'json',
                 success: function(response) {
                     $("#result").html(response.data);

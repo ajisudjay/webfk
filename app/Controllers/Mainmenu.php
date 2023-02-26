@@ -17,10 +17,17 @@ class Mainmenu extends BaseController
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
+            $file = session()->get('file');
+            if ($file <  1) {
+                $gambar = 'app-assets/images/profile/user-profile.png';
+            } else {
+                $gambar = 'content/user/' . $file;
+            }
             $data = [
                 'title' => 'Main Menu',
                 'admin' => $admin,
                 'lvl' => $lvl,
+                'foto' => $gambar,
             ];
             return view('backend/mainmenu/index', $data);
         } else {
