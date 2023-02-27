@@ -44,10 +44,12 @@
                                      <li><a class="<?= $title == 'Beranda' ? 'text-primary' : '' ?>" href="<?= base_url('/'); ?>">Beranda</a></li>
                                      <?php foreach ($menu as $item_mainmenu) : ?>
                                          <?php $menu = $item_mainmenu['mainmenu'] ?>
-                                         <li><a href="#" class="<?= $title == $menu ? 'text-primary' : '' ?>"> <?= $menu ?> <i class="ti-angle-down"></i></a>
+                                         <li><a href="#" class="<?= $title_pages == $menu ? 'text-primary' : '' ?>"> <?= $menu ?> <i class="ti-angle-down"></i></a>
                                              <ul class="submenu">
                                                  <?php foreach ($submenu as $item_submenu) : ?>
-                                                     <li><a href="<?= base_url('pages/' . $item_submenu['slug']); ?>"><?= $item_submenu['submenu'] ?></a></li>
+                                                     <?php if ($item_submenu['mainmenu'] == $menu) { ?>
+                                                         <li><a href="<?= base_url('pages/' . $item_submenu['slug']); ?>"><?= $item_submenu['submenu'] ?></a></li>
+                                                     <?php } ?>
                                                  <?php endforeach ?>
                                              </ul>
                                          </li>
