@@ -21,17 +21,27 @@ class Pages extends BaseController
             'title' => 'Beranda',
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+
         ];
         return view('frontend/pages/beranda', $data);
     }
 
     public function pages($slug)
     {
+        $uri = current_url(true);
+        $slugx = $uri->getSegment(3); // Method - instrument
+        $cek_menu = $this->SubmenuModel->where('slug', $slugx)->first();
+        $judul = $cek_menu['submenu'];
         $data = [
-            'title' => 'Program Studi',
+            'title' => $judul,
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'slug'  => $slug,
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'content' => $this->SubmenuModel->where('slug', $slugx)->findAll(),
         ];
         return view('frontend/pages/pages', $data);
     }

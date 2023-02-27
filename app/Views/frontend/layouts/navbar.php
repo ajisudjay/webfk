@@ -42,12 +42,24 @@
                              <nav>
                                  <ul id="navigation">
                                      <li><a class="<?= $title == 'Beranda' ? 'text-primary' : '' ?>" href="<?= base_url('/'); ?>">Beranda</a></li>
-                                     <?php foreach ($mainmenu as $item_mainmenu) : ?>
+                                     <?php foreach ($menu as $item_mainmenu) : ?>
                                          <?php $menu = $item_mainmenu['mainmenu'] ?>
                                          <li><a href="#" class="<?= $title == $menu ? 'text-primary' : '' ?>"> <?= $menu ?> <i class="ti-angle-down"></i></a>
                                              <ul class="submenu">
                                                  <?php foreach ($submenu as $item_submenu) : ?>
-                                                     <li><a href="<?= base_url('pages/' . $item_submenu['submenu']); ?>"><?= $item_submenu['submenu'] ?></a></li>
+                                                     <li><a href="<?= base_url('pages/' . $item_submenu['slug']); ?>"><?= $item_submenu['submenu'] ?></a></li>
+                                                 <?php endforeach ?>
+                                             </ul>
+                                         </li>
+                                     <?php endforeach ?>
+                                     <br>
+                                     <hr style="width: 60%;">
+                                     <?php foreach ($menu2 as $item_mainmenu2) : ?>
+                                         <?php $menu2 = $item_mainmenu2['mainmenu'] ?>
+                                         <li><a href="#" class="<?= $title == $menu ? 'text-primary' : '' ?>"> <?= $menu2 ?> <i class="ti-angle-down"></i></a>
+                                             <ul class="submenu">
+                                                 <?php foreach ($submenu as $item_submenu) : ?>
+                                                     <li><a href="<?= base_url('pages/' . $item_submenu['slug']); ?>"><?= $item_submenu['submenu'] ?></a></li>
                                                  <?php endforeach ?>
                                              </ul>
                                          </li>
