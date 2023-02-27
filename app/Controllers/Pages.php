@@ -33,7 +33,7 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'slug'  => $slug,
         ];
-        return view('frontend/pages/prodi-detail', $data);
+        return view('frontend/pages/pages', $data);
     }
 
     public function prodi($slug)
