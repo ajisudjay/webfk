@@ -69,6 +69,7 @@ class Submenu extends BaseController
             $urutan = $request->getVar('urutan');
             $mainmenu = $request->getVar('mainmenu');
             $submenu = $request->getVar('submenu');
+            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)));
             $content = $request->getVar('isi');
             $timestamp = date("Y-m-d");
             $penulis = $username;
@@ -109,6 +110,7 @@ class Submenu extends BaseController
                 $data = [
                     'urutan' => $urutan,
                     'submenu' => $submenu,
+                    'slug' => $slug,
                     'id_mainmenu' => $mainmenu,
                     'content' => $content,
                     'timestamp' => $timestamp,
@@ -144,6 +146,7 @@ class Submenu extends BaseController
             $urutan = $request->getVar('urutan');
             $mainmenu = $request->getVar('mainmenu');
             $submenu = $request->getVar('submenu');
+            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)));
             $content = $request->getVar('isi');
             $timestamp = date("Y-m-d");
             $penulis = $username;
@@ -186,6 +189,7 @@ class Submenu extends BaseController
                     'urutan' => $urutan,
                     'id_mainmenu' => $mainmenu,
                     'submenu' => $submenu,
+                    'slug' => $slug,
                     'content' => $content,
                     'timestamp' => $timestamp,
                     'penulis' => $penulis,
