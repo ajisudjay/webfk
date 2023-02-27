@@ -58,10 +58,12 @@
                                      <hr style="width: 60%;">
                                      <?php foreach ($menu2 as $item_mainmenu2) : ?>
                                          <?php $menu2 = $item_mainmenu2['mainmenu'] ?>
-                                         <li><a href="#" class="<?= $title == $menu ? 'text-primary' : '' ?>"> <?= $menu2 ?> <i class="ti-angle-down"></i></a>
+                                         <li><a href="#" class="<?= $title_pages == $menu2 ? 'text-primary' : '' ?>"> <?= $menu2 ?> <i class="ti-angle-down"></i></a>
                                              <ul class="submenu">
                                                  <?php foreach ($submenu as $item_submenu) : ?>
-                                                     <li><a href="<?= base_url('pages/' . $item_submenu['slug']); ?>"><?= $item_submenu['submenu'] ?></a></li>
+                                                     <?php if ($item_submenu['mainmenu'] == $menu2) { ?>
+                                                         <li><a href="<?= base_url('pages/' . $item_submenu['slug']); ?>"><?= $item_submenu['submenu'] ?></a></li>
+                                                     <?php } ?>
                                                  <?php endforeach ?>
                                              </ul>
                                          </li>
