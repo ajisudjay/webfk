@@ -128,7 +128,7 @@
                                                         </div>
                                                         <div class="col-lg-12">
                                                             <label class="text-primary">Content</label>
-                                                            <?= $idx = 'isi' . $item['id'] ?>
+                                                            <?php $idx = 'isi' . $item['id'] ?>
                                                             <textarea name="isi" id="<?= $idx ?>"><?= $item['isi'] ?></textarea>
                                                             <div class="invalid-feedback errorIsi"></div>
                                                         </div>

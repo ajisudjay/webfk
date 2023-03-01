@@ -122,7 +122,8 @@
                                                         </div>
                                                         <div class="col-lg-12">
                                                             <label class="text-primary">Content</label>
-                                                            <textarea name="isi" id="isi2"><?= $item['content'] ?></textarea>
+                                                            <?php $idx = 'isi' . $item['submenu_id'] ?>
+                                                            <textarea name="isi" id="<?= $idx ?>"><?= $item['content'] ?></textarea>
                                                             <div class="invalid-feedback errorIsi"></div>
                                                         </div>
                                                         <hr>

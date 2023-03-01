@@ -7,13 +7,20 @@
         }).catch(error => {
             console.log(error);
         });
-    ClassicEditor
-        .create(document.querySelector('#isi2'), {}).then(editor => {
-            console.log(editor);
-        }).catch(error => {
-            console.log(error);
-        });
 </script>
+<?php foreach ($submenu as $item_submenu) :
+    $idx = 'isi' . $item_submenu['submenu_id'];
+?>
+    <script>
+        ClassicEditor
+            .create(document.querySelector("#<?= $idx ?>"), {}).then(editor => {
+                console.log(editor);
+            }).catch(error => {
+                console.log(error);
+            });
+    </script>
+<?php endforeach
+?>
 <script>
     $(document).ready(function() {
         //  function tambah
