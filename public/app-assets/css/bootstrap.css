@@ -465,10 +465,8 @@ pre {
 
 .container {
   width: 100%;
-  padding-right: 14px;
-  padding-left: 14px;
-  margin-right: auto;
-  margin-left: auto; }
+  margin-right: 14px;
+  margin-left: 14px; }
   @media (min-width: 576px) {
     .container {
       max-width: 540px; } }
@@ -484,8 +482,8 @@ pre {
 
 .container-fluid {
   width: 100%;
-  padding-right: 14px;
-  padding-left: 14px;
+  padding-right: 50px;
+  padding-left: 50px;
   margin-right: auto;
   margin-left: auto; }
 

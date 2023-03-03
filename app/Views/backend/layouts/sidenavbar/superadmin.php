@@ -100,6 +100,8 @@
                 </li>
                 <li class="<?= $menu6 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
                 </li>
+                <li><a href="<?= base_url('auth/logout'); ?>"><i class="feather icon-log-out"></i><span class="menu-item" data-i18n="Analytics">Logout</span></a>
+                </li>
             </ul>
         </div>
     </div>

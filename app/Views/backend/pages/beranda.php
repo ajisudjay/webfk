@@ -21,7 +21,9 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="mb-0">Beranda</h4>
+                                    <div class="container-fluid">
+                                        <h4 class="mb-0">Beranda</h4>
+                                    </div>
                                 </div>
                                 <div class="card-content">
                                     <!-- ini isi -->
