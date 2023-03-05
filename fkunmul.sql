@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2023 at 11:53 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Waktu pembuatan: 06 Mar 2023 pada 00.36
+-- Versi server: 10.4.27-MariaDB
+-- Versi PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `berita`
+-- Struktur dari tabel `berita`
 --
 
 CREATE TABLE `berita` (
@@ -38,10 +38,10 @@ CREATE TABLE `berita` (
   `timestamp` date DEFAULT NULL,
   `penulis` varchar(255) DEFAULT NULL,
   `tanggal` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `berita`
 --
 
 INSERT INTO `berita` (`id`, `judul`, `slug`, `isi`, `banner`, `tag`, `dilihat`, `timestamp`, `penulis`, `tanggal`) VALUES
@@ -52,17 +52,17 @@ INSERT INTO `berita` (`id`, `judul`, `slug`, `isi`, `banner`, `tag`, `dilihat`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galeri`
+-- Struktur dari tabel `galeri`
 --
 
 CREATE TABLE `galeri` (
   `id` int(100) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `gambar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `galeri`
+-- Dumping data untuk tabel `galeri`
 --
 
 INSERT INTO `galeri` (`id`, `nama`, `gambar`) VALUES
@@ -73,17 +73,17 @@ INSERT INTO `galeri` (`id`, `nama`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis`
+-- Struktur dari tabel `jenis`
 --
 
 CREATE TABLE `jenis` (
   `id` int(100) NOT NULL,
   `jenis` varchar(255) NOT NULL,
   `area` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `jenis`
+-- Dumping data untuk tabel `jenis`
 --
 
 INSERT INTO `jenis` (`id`, `jenis`, `area`) VALUES
@@ -94,7 +94,7 @@ INSERT INTO `jenis` (`id`, `jenis`, `area`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelompok`
+-- Struktur dari tabel `kelompok`
 --
 
 CREATE TABLE `kelompok` (
@@ -112,10 +112,10 @@ CREATE TABLE `kelompok` (
   `keterangan` varchar(255) DEFAULT NULL,
   `koordinat` text DEFAULT NULL,
   `jenis` int(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `kelompok`
+-- Dumping data untuk tabel `kelompok`
 --
 
 INSERT INTO `kelompok` (`id`, `nama`, `registrasi`, `alamat`, `ketua`, `jumlah_anggota`, `sudah_pelatihan`, `belum_pelatihan`, `rknf`, `parsif`, `tanggal_sk`, `keterangan`, `koordinat`, `jenis`) VALUES
@@ -125,42 +125,42 @@ INSERT INTO `kelompok` (`id`, `nama`, `registrasi`, `alamat`, `ketua`, `jumlah_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konfigurasi`
+-- Struktur dari tabel `konfigurasi`
 --
 
 CREATE TABLE `konfigurasi` (
   `id` int(100) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `isi` text NOT NULL,
-  `urutan` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `visi` text NOT NULL,
+  `misi` text NOT NULL,
+  `telepon` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `ig` varchar(255) NOT NULL,
+  `fb` varchar(255) NOT NULL,
+  `yt` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `konfigurasi`
+-- Dumping data untuk tabel `konfigurasi`
 --
 
-INSERT INTO `konfigurasi` (`id`, `judul`, `isi`, `urutan`) VALUES
-(1, 'Kontak', 'Kontak Kami\r\nEmail : @gmail.com\r\nTelepon : 08252525\r\n', 6),
-(2, 'Pedoman Media Siber', 'Kemerdekaan berpendapat, kemerdekaan berekspresi, dan kemerdekaan pers adalah hak asasi manusia yang dilindungi Pancasila, Undang-Undang Dasar 1945, dan Deklarasi Universal Hak Asasi Manusia PBB.\r\n\r\nKeberadaan media siber di Indonesia juga merupakan bagian dari kemerdekaan berpendapat, kemerdekaan berekspresi, dan kemerdekaan pers.\r\n\r\nMedia siber memiliki karakter khusus sehingga memerlukan pedoman agar pengelolaannya dapat dilaksanakan secara profesional, memenuhi fungsi, hak, dan kewajibannya sesuai Undang-Undang Nomor 40 Tahun 1999 tentang Pers dan Kode Etik Jurnalistik.\r\n\r\nUntuk itu Dewan Persbersama organisasi pers, pengelola media siber, dan masyarakat menyusun Pedoman', 5),
-(3, 'Kode Etik', 'Kemerdekaan berpendapat, berekspresi, dan pers adalah hak asasi manusia yang dilindungi Pancasila, Undang-Undang Dasar 1945, dan Deklarasi Universal Hak Asasi Manusia PBB.\r\n\r\nKemerdekaan pers adalah sarana masyarakat untuk memperoleh informasi dan berkomunikasi, guna memenuhi kebutuhan hakiki dan meningkatkan kualitas kehidupan manusia.\r\n\r\nDalam mewujudkan kemerdekaan pers itu, wartawan Indonesia juga menyadari adanya kepentingan bangsa, tanggung jawab sosial, keberagaman masyarakat, dan norma-norma agama.\r\n\r\nDalam melaksanakan fungsi, hak, kewajiban dan peranannya, pers menghormati hak asasi setiap orang, karena itu pers dituntut profesional dan terbuka untuk dikontrol oleh masyarakat.\r\n\r\nUntuk menjamin kemerdekaan pers dan memenuhi hak publik untuk memperoleh informasi yang benar, wartawan Indonesia memerlukan landasan moral dan etika profesi sebagai pedoman operasional dalam menjaga kepercayaan publik dan menegakkan integritas serta profesionalisme.', 3),
-(4, 'Disclaimer', 'Informasi yang terdapat dalam website ini adalah untuk tujuan umum saja. Informasi ini disediakan oleh Liputan6.com dan kami senantiasa berusaha untuk menjaga informasi yang aktual dan benar.\r\n\r\nKami tidak membuat pernyataan atau jaminan apapun, tersurat maupun tersirat, tentang akurasi kelengkapan, kesesuaian, atau ketersediaan ke situs web atau informasi, produk, jasa, atau gambar terkait yang terdapat pada website ini untuk tujuan apapun.\r\n\r\nSetiap ketergantungan yang anda tempatkan pada informasi tersebut adalah risiko anda sendiri.\r\n\r\nDalam hal apapun kami tidak bertanggung jawab atas kerugian atau kerusakan termasuk tanpa batasan, kerugian tidak langsung atau kerusakan apapun yang timbul dari hilangnya data atau keuntungan yang timbul dari penggunaan website ini.', 2),
-(5, 'Privacy Policy', 'Who we are\r\nOur website address is: http://demo.idtheme.com/bloggingpro.\r\n\r\nWhat personal data we collect and why we collect it\r\nComments\r\nWhen visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user agent string to help spam detection.\r\n\r\nAn anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.\r\n\r\nMedia\r\nIf you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.\r\n\r\nContact forms\r\nCookies\r\nIf you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.\r\n\r\nIf you have an account and you log in to this site, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.\r\n\r\nWhen you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select “Remember Me”, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.\r\n\r\nIf you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.\r\n\r\nEmbedded content from other websites\r\nArticles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.\r\n\r\nThese websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.\r\n\r\nAnalytics\r\nWho we share your data with\r\nHow long we retain your data\r\nIf you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.\r\n\r\nFor users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.\r\n\r\nWhat rights you have over your data\r\nIf you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.\r\n\r\nWhere we send your data\r\nVisitor comments may be checked through an automated spam detection service.', 4),
-(9, 'Tentang Kami', 'Divisi.id (Detail Inovatif dan Berintegritas)\r\nLaman Berita terupdate dan teraktual', 1);
+INSERT INTO `konfigurasi` (`id`, `visi`, `misi`, `telepon`, `email`, `alamat`, `ig`, `fb`, `yt`) VALUES
+(1, '\"Menjadi Fakultas Kedokteran Berstandar Internasional yang unggul di tingkat Nasional dalam pengembangan pendidikan, penelitian, pengabdian masyarakat di bidang kedokteran dan kesehatan yang bertumpu pada hutan tropis lembap (tropical rain forest) dan lingkungannya pada tahun 2034.\"', '1. Menyelenggarakan Pendidikan Kedokteran dan Kesehatan yang berkualitas.\r\n2. Menyelenggarakan Penelitian yang Berstandar Internasional dibidang Ilmu Kedokteran dan Kesehatan yang bertumpu pada hutan tropis lembap dan lingkungannya.\r\n3. Menyelenggarakan pengabdian masyarakat yang berorientasi pada peningkatan perilaku sehat masyarakat.\r\n4. Mengembangkan dan menjalin kerja sama dengan berbagai pihak untuk meningkatkan kapasitas, sarana, prasana, dan sumber daya manusia yang berkualitas.', '(0541) 748581', 'office@fk.unmul.ac.idewrwrw', 'Jl. Krayan, Gn. Kelua, Kec. Samarinda Utara, Kota Samarinda, Kalimantan Timur 75119', '@fkunmul', '@fkunmul', '@fkunmul');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mainmenu`
+-- Struktur dari tabel `mainmenu`
 --
 
 CREATE TABLE `mainmenu` (
   `id` int(100) NOT NULL,
   `mainmenu` varchar(255) NOT NULL,
   `urutan` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `mainmenu`
+-- Dumping data untuk tabel `mainmenu`
 --
 
 INSERT INTO `mainmenu` (`id`, `mainmenu`, `urutan`) VALUES
@@ -177,7 +177,7 @@ INSERT INTO `mainmenu` (`id`, `mainmenu`, `urutan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `submenu`
+-- Struktur dari tabel `submenu`
 --
 
 CREATE TABLE `submenu` (
@@ -190,10 +190,10 @@ CREATE TABLE `submenu` (
   `tag` varchar(255) DEFAULT NULL,
   `penulis` varchar(255) NOT NULL,
   `timestamp` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `submenu`
+-- Dumping data untuk tabel `submenu`
 --
 
 INSERT INTO `submenu` (`id`, `submenu`, `slug`, `urutan`, `id_mainmenu`, `content`, `tag`, `penulis`, `timestamp`) VALUES
@@ -223,7 +223,7 @@ INSERT INTO `submenu` (`id`, `submenu`, `slug`, `urutan`, `id_mainmenu`, `conten
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -232,10 +232,10 @@ CREATE TABLE `users` (
   `nama` varchar(255) NOT NULL,
   `level` varchar(255) NOT NULL,
   `file` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`username`, `password`, `nama`, `level`, `file`) VALUES
@@ -246,106 +246,106 @@ INSERT INTO `users` (`username`, `password`, `nama`, `level`, `file`) VALUES
 --
 
 --
--- Indexes for table `berita`
+-- Indeks untuk tabel `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `galeri`
+-- Indeks untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jenis`
+-- Indeks untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kelompok`
+-- Indeks untuk tabel `kelompok`
 --
 ALTER TABLE `kelompok`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `konfigurasi`
+-- Indeks untuk tabel `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mainmenu`
+-- Indeks untuk tabel `mainmenu`
 --
 ALTER TABLE `mainmenu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `submenu`
+-- Indeks untuk tabel `submenu`
 --
 ALTER TABLE `submenu`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_mainmenu` (`id_mainmenu`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `berita`
+-- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `galeri`
+-- AUTO_INCREMENT untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `jenis`
+-- AUTO_INCREMENT untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `kelompok`
+-- AUTO_INCREMENT untuk tabel `kelompok`
 --
 ALTER TABLE `kelompok`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `konfigurasi`
+-- AUTO_INCREMENT untuk tabel `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `mainmenu`
+-- AUTO_INCREMENT untuk tabel `mainmenu`
 --
 ALTER TABLE `mainmenu`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `submenu`
+-- AUTO_INCREMENT untuk tabel `submenu`
 --
 ALTER TABLE `submenu`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `submenu`
+-- Ketidakleluasaan untuk tabel `submenu`
 --
 ALTER TABLE `submenu`
   ADD CONSTRAINT `submenu_ibfk_1` FOREIGN KEY (`id_mainmenu`) REFERENCES `mainmenu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
