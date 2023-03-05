@@ -10,6 +10,7 @@
             $menu4 = '';
             $menu5 = '';
             $menu6 = '';
+            $menu7 = '';
             break;
         case "mainmenu":
             $menu1 = '';
@@ -18,6 +19,7 @@
             $menu4 = '';
             $menu5 = '';
             $menu6 = '';
+            $menu7 = '';
             break;
         case "submenu":
             $menu1 = '';
@@ -26,6 +28,7 @@
             $menu4 = '';
             $menu5 = '';
             $menu6 = '';
+            $menu7 = '';
             break;
         case "berita":
             $menu1 = '';
@@ -34,6 +37,7 @@
             $menu4 = 'active';
             $menu5 = '';
             $menu6 = '';
+            $menu7 = '';
             break;
         case "galeri":
             $menu1 = '';
@@ -42,6 +46,7 @@
             $menu4 = '';
             $menu5 = 'active';
             $menu6 = '';
+            $menu7 = '';
             break;
         case "user":
             $menu1 = '';
@@ -49,7 +54,8 @@
             $menu3 = '';
             $menu4 = '';
             $menu5 = '';
-            $menu6 = 'active';
+            $menu6 = '';
+            $menu7 = 'active';
             break;
         default:
             $menu1 = '';
@@ -58,6 +64,7 @@
             $menu4 = '';
             $menu5 = '';
             $menu6 = '';
+            $menu7 = '';
     }
     ?>
 
@@ -95,10 +102,12 @@
                 </li>
                 <li class="<?= $menu5 ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
                 </li>
+                <li class="<?= $menu6 ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Konfigurasi</span></a>
+                </li>
                 </li>
                 <li class="navigation-header"><span>Pengguna</span>
                 </li>
-                <li class="<?= $menu6 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
+                <li class="<?= $menu7 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
                 </li>
                 <li><a href="<?= base_url('auth/logout'); ?>"><i class="feather icon-log-out"></i><span class="menu-item" data-i18n="Analytics">Logout</span></a>
                 </li>
