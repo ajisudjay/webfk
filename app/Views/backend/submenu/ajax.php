@@ -1,23 +1,12 @@
 <!-- SCRIPT AJAX -->
-<script src="<?= base_url('ckeditor5/build/ckeditor.js') ?>"></script>
 <script>
-    ClassicEditor
-        .create(document.querySelector('#isi'), {}).then(editor => {
-            console.log(editor);
-        }).catch(error => {
-            console.log(error);
-        });
+    CKEDITOR.replace('isi');
 </script>
 <?php foreach ($submenu as $item_submenu) :
     $idx = 'isi' . $item_submenu['submenu_id'];
 ?>
     <script>
-        ClassicEditor
-            .create(document.querySelector("#<?= $idx ?>"), {}).then(editor => {
-                console.log(editor);
-            }).catch(error => {
-                console.log(error);
-            });
+        CKEDITOR.replace('<?= $idx ?>');
     </script>
 <?php endforeach
 ?>

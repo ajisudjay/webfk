@@ -44,9 +44,10 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <label class="text-primary">Content</label>
-                                    <textarea name="isi" id="isi"></textarea>
+                                    <textarea name="isi" id="isi" rows="10" cols="80"></textarea>
                                     <div class="invalid-feedback errorIsi"></div>
                                 </div>
+
                                 <hr>
                             </div>
                         </div>

@@ -21,3 +21,5 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script src="libraries\bower_components\sweetalert\js\sweetalert2.all.min.js"></script>
 <!-- END: Theme JS-->
+<!-- CKEDITOR -->
+<script src="\ckeditor4\ckeditor.js"></script>
