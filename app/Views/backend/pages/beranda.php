@@ -21,8 +21,10 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="container-fluid">
-                                        <h4 class="mb-0">Beranda</h4>
+                                    <div class="container-fluid" align="center">
+                                        <h4 class="mb-0">Selamat datang <?= $admin ?></h4>
+                                        <span><img class="round" src="<?= $foto ?>" height="400" width="400"></span>
+                                        <h4 class="mb-0">Fakultas Kedokteran Universitas Mulawarman</h4>
                                     </div>
                                 </div>
                                 <div class="card-content">

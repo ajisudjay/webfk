@@ -42,7 +42,7 @@ $routes->get('/informasi-detail/(:any)', 'Pages::informasi_detail/$1');
 $routes->get('/laboratorium', 'Pages::laboratorium/$1');
 $routes->get('/laboratorium-detail/(:any)', 'Pages::laboratorium_detail/$1');
 $routes->get('/tentangkami/(:any)', 'Pages::tentangkami/$1');
-$routes->get('/mitra', 'Pages::mitra');
+// $routes->get('/mitra', 'Pages::mitra');
 $routes->get('/mitra-detail/(:any)', 'Pages::mitra_detail/$1');
 $routes->get('/menu', 'Pages::menu');
 

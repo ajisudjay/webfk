@@ -27,7 +27,7 @@ class Konfigurasi extends BaseController
             $gambar = 'content/user/' . $file;
         }
         $data = [
-            'title' => 'Galeri',
+            'title' => 'Konfigurasi',
             'admin' => $admin,
             'lvl' => $lvl,
             'foto' => $gambar,

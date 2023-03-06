@@ -11,6 +11,8 @@
             $menu5 = '';
             $menu6 = '';
             $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
             break;
         case "mainmenu":
             $menu1 = '';
@@ -20,6 +22,8 @@
             $menu5 = '';
             $menu6 = '';
             $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
             break;
         case "submenu":
             $menu1 = '';
@@ -29,6 +33,8 @@
             $menu5 = '';
             $menu6 = '';
             $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
             break;
         case "berita":
             $menu1 = '';
@@ -38,6 +44,8 @@
             $menu5 = '';
             $menu6 = '';
             $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
             break;
         case "galeri":
             $menu1 = '';
@@ -47,6 +55,41 @@
             $menu5 = 'active';
             $menu6 = '';
             $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
+            break;
+        case "mitra":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
+            $menu6 = 'active';
+            $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
+            break;
+        case "slideshow":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
+            $menu6 = '';
+            $menu7 = 'active';
+            $menu8 = '';
+            $menu9 = '';
+            break;
+        case "konfigurasi":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
+            $menu6 = '';
+            $menu7 = '';
+            $menu8 = 'active';
+            $menu9 = '';
             break;
         case "user":
             $menu1 = '';
@@ -55,8 +98,11 @@
             $menu4 = '';
             $menu5 = '';
             $menu6 = '';
-            $menu7 = 'active';
+            $menu7 = '';
+            $menu8 = '';
+            $menu9 = 'active';
             break;
+
         default:
             $menu1 = '';
             $menu2 = '';
@@ -65,6 +111,8 @@
             $menu5 = '';
             $menu6 = '';
             $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
     }
     ?>
 
@@ -81,7 +129,6 @@
         </div>
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
-
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="navigation-header"><span>Superadmin</span>
                 <li class="<?= $menu1 ?>"><a href="<?= base_url('beranda'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Beranda</span></a>
@@ -102,12 +149,18 @@
                 </li>
                 <li class="<?= $menu5 ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
                 </li>
-                <li class="<?= $menu6 ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Konfigurasi</span></a>
+                <li class="navigation-header"><span>Konfigurasi</span>
+                </li>
+                <li class="<?= $menu6 ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
+                </li>
+                <li class="<?= $menu7 ?>"><a href="<?= base_url('slideshow'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Slideshow</span></a>
+                </li>
+                <li class="<?= $menu8 ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Konfigurasi</span></a>
                 </li>
                 </li>
                 <li class="navigation-header"><span>Pengguna</span>
                 </li>
-                <li class="<?= $menu7 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
+                <li class="<?= $menu9 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
                 </li>
                 <li><a href="<?= base_url('auth/logout'); ?>"><i class="feather icon-log-out"></i><span class="menu-item" data-i18n="Analytics">Logout</span></a>
                 </li>
