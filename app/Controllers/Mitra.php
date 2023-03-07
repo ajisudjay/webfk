@@ -79,7 +79,7 @@ class Mitra extends BaseController
             ];
             $this->MitraModel->insert($data);
 
-            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Gambar');
+            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Mitra');
             return redirect()->to(base_url('/mitra'));
         }
     }

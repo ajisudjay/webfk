@@ -170,7 +170,7 @@
                             <td><?= $item['username'] ?></td>
                             <td><?= $item['nama'] ?></td>
                             <td><?= $item['level'] ?></td>
-                            <td><span><img class="round" src="<?= $gambar ?>" alt="avatar" height="40" width="40"></span></td>
+                            <td><span><img class="round" src="content/user/<?= $item['file'] ?>" height="80" width="80"></span></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

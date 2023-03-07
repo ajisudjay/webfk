@@ -13,6 +13,8 @@
             $menu7 = '';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
             break;
         case "mainmenu":
             $menu1 = '';
@@ -24,6 +26,8 @@
             $menu7 = '';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
             break;
         case "submenu":
             $menu1 = '';
@@ -35,6 +39,8 @@
             $menu7 = '';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
             break;
         case "berita":
             $menu1 = '';
@@ -46,6 +52,8 @@
             $menu7 = '';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
             break;
         case "galeri":
             $menu1 = '';
@@ -57,8 +65,10 @@
             $menu7 = '';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
             break;
-        case "mitra":
+        case "laboratorium":
             $menu1 = '';
             $menu2 = '';
             $menu3 = '';
@@ -68,8 +78,10 @@
             $menu7 = '';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
             break;
-        case "slideshow":
+        case "mitra":
             $menu1 = '';
             $menu2 = '';
             $menu3 = '';
@@ -79,8 +91,10 @@
             $menu7 = 'active';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
             break;
-        case "konfigurasi":
+        case "slideshow":
             $menu1 = '';
             $menu2 = '';
             $menu3 = '';
@@ -90,6 +104,34 @@
             $menu7 = '';
             $menu8 = 'active';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
+            break;
+        case "pejabat":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
+            $menu6 = '';
+            $menu7 = '';
+            $menu8 = '';
+            $menu9 = 'active';
+            $menu10 = '';
+            $menu11 = '';
+            break;
+        case "konfigurasi":
+            $menu1 = '';
+            $menu2 = '';
+            $menu3 = '';
+            $menu4 = '';
+            $menu5 = '';
+            $menu6 = '';
+            $menu7 = '';
+            $menu8 = '';
+            $menu9 = '';
+            $menu10 = 'active';
+            $menu11 = '';
             break;
         case "user":
             $menu1 = '';
@@ -100,7 +142,9 @@
             $menu6 = '';
             $menu7 = '';
             $menu8 = '';
-            $menu9 = 'active';
+            $menu9 = '';
+            $menu10 = '';
+            $menu11 = 'active';
             break;
 
         default:
@@ -113,6 +157,8 @@
             $menu7 = '';
             $menu8 = '';
             $menu9 = '';
+            $menu10 = '';
+            $menu11 = '';
     }
     ?>
 
@@ -149,18 +195,22 @@
                 </li>
                 <li class="<?= $menu5 ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
                 </li>
+                <li class="<?= $menu6 ?>"><a href="<?= base_url('laboratorium'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Laboratorium</span></a>
+                </li>
                 <li class="navigation-header"><span>Konfigurasi</span>
                 </li>
-                <li class="<?= $menu6 ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
+                <li class="<?= $menu7 ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
                 </li>
-                <li class="<?= $menu7 ?>"><a href="<?= base_url('slideshow'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Slideshow</span></a>
+                <li class="<?= $menu8 ?>"><a href="<?= base_url('slideshow'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Slideshow</span></a>
                 </li>
-                <li class="<?= $menu8 ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Konfigurasi</span></a>
+                <li class="<?= $menu9 ?>"><a href="<?= base_url('pejabat'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Pejabat</span></a>
+                </li>
+                <li class="<?= $menu10 ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Konfigurasi</span></a>
                 </li>
                 </li>
                 <li class="navigation-header"><span>Pengguna</span>
                 </li>
-                <li class="<?= $menu9 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
+                <li class="<?= $menu11 ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
                 </li>
                 <li><a href="<?= base_url('auth/logout'); ?>"><i class="feather icon-log-out"></i><span class="menu-item" data-i18n="Analytics">Logout</span></a>
                 </li>

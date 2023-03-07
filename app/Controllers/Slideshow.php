@@ -79,7 +79,7 @@ class Slideshow extends BaseController
             ];
             $this->SlideshowModel->insert($data);
 
-            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Gambar');
+            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Slideshow');
             return redirect()->to(base_url('/slideshow'));
         }
     }

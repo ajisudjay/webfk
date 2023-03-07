@@ -2,8 +2,8 @@
 <script>
     CKEDITOR.replace('isi');
 </script>
-<?php foreach ($berita as $item_berita) :
-    $idx = 'isi' . $item_berita['id'];
+<?php foreach ($laboratorium as $item_laboratorium) :
+    $idx = 'isi' . $item_laboratorium['id'];
 ?>
     <script>
         CKEDITOR.replace('<?= $idx ?>');
@@ -15,17 +15,13 @@
     $(document).ready(function() {
         //  function tambah
         $('.tambah').submit(function() {
-            var judul = $('#judul').val();
-            var tanggal = $('#tanggal').val();
-            var tag = $('#tag').val();
+            var nama = $('#nama').val();
             var isi = $('#isi').val();
             var files = $('#file')[0].files;
             var fd = new FormData();
 
             fd.append('file', files[0]);
-            fd.append('judul', judul);
-            fd.append('tanggal', tanggal);
-            fd.append('tag', tag);
+            fd.append('nama', nama);
             fd.append('isi', isi);
             $.ajax({
                 type: "post",
@@ -43,33 +39,12 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.judul) {
-                            $('.judul').addClass('is-invalid');
-                            $('.errorJudul').html(response.error.judul);
+                        if (response.error.nama) {
+                            $('.nama').addClass('is-invalid');
+                            $('.errorNama').html(response.error.nama);
                         } else {
-                            $('.judul').removeClass('is-invalid');
-                            $('.errorJudul').html('');
-                        }
-                        if (response.error.tanggal) {
-                            $('.tanggal').addClass('is-invalid');
-                            $('.errorTanggal').html(response.error.tanggal);
-                        } else {
-                            $('.tanggal').removeClass('is-invalid');
-                            $('.errorTanggal').html('');
-                        }
-                        if (response.error.file) {
-                            $('.file').addClass('is-invalid');
-                            $('.errorFile').html(response.error.file);
-                        } else {
-                            $('.file').removeClass('is-invalid');
-                            $('.errorFile').html('');
-                        }
-                        if (response.error.tag) {
-                            $('.tag').addClass('is-invalid');
-                            $('.errorTag').html(response.error.tag);
-                        } else {
-                            $('.tag').removeClass('is-invalid');
-                            $('.errorTag').html('');
+                            $('.nama').removeClass('is-invalid');
+                            $('.errorNama').html('');
                         }
                         if (response.error.isi) {
                             $('.isi').addClass('is-invalid');
@@ -77,6 +52,13 @@
                         } else {
                             $('.isi').removeClass('is-invalid');
                             $('.errorIsi').html('');
+                        }
+                        if (response.error.file) {
+                            $('.file').addClass('is-invalid');
+                            $('.errorFile').html(response.error.file);
+                        } else {
+                            $('.file').removeClass('is-invalid');
+                            $('.errorFile').html('');
                         }
                     } else {
                         Swal.fire({
@@ -99,17 +81,13 @@
 
         //  function edit
         $('.edit').submit(function() {
-            var judul = $('#judul').val();
-            var tanggal = $('#tanggal').val();
-            var tag = $('#tag').val();
+            var nama = $('#nama').val();
             var isi = $('#isi').val();
             var files = $('#file')[0].files;
             var fd = new FormData();
 
             fd.append('file', files[0]);
-            fd.append('judul', judul);
-            fd.append('tanggal', tanggal);
-            fd.append('tag', tag);
+            fd.append('nama', nama);
             fd.append('isi', isi);
             $.ajax({
                 type: "post",
@@ -127,33 +105,12 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.judul) {
-                            $('.judul').addClass('is-invalid');
-                            $('.errorJudul').html(response.error.judul);
+                        if (response.error.nama) {
+                            $('.nama').addClass('is-invalid');
+                            $('.errorNama').html(response.error.nama);
                         } else {
-                            $('.judul').removeClass('is-invalid');
-                            $('.errorJudul').html('');
-                        }
-                        if (response.error.tanggal) {
-                            $('.tanggal').addClass('is-invalid');
-                            $('.errorTanggal').html(response.error.tanggal);
-                        } else {
-                            $('.tanggal').removeClass('is-invalid');
-                            $('.errorTanggal').html('');
-                        }
-                        if (response.error.file) {
-                            $('.file').addClass('is-invalid');
-                            $('.errorFile').html(response.error.file);
-                        } else {
-                            $('.file').removeClass('is-invalid');
-                            $('.errorFile').html('');
-                        }
-                        if (response.error.tag) {
-                            $('.tag').addClass('is-invalid');
-                            $('.errorTag').html(response.error.tag);
-                        } else {
-                            $('.tag').removeClass('is-invalid');
-                            $('.errorTag').html('');
+                            $('.nama').removeClass('is-invalid');
+                            $('.errorNama').html('');
                         }
                         if (response.error.isi) {
                             $('.isi').addClass('is-invalid');
@@ -161,6 +118,13 @@
                         } else {
                             $('.isi').removeClass('is-invalid');
                             $('.errorIsi').html('');
+                        }
+                        if (response.error.file) {
+                            $('.file').addClass('is-invalid');
+                            $('.errorFile').html(response.error.file);
+                        } else {
+                            $('.file').removeClass('is-invalid');
+                            $('.errorFile').html('');
                         }
                     } else {
                         Swal.fire({

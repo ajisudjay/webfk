@@ -49,7 +49,7 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: '<?= base_url('berita/view') ?>',
+                url: '<?= base_url('pejabat/view') ?>',
                 dataType: 'json',
                 success: function(response) {
                     $("#result").html(response.data);
