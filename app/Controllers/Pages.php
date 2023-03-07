@@ -4,15 +4,27 @@ namespace App\Controllers;
 
 use App\Models\MainmenuModel;
 use App\Models\SubmenuModel;
+use App\Models\MitraModel;
+use App\Models\SlideshowModel;
+use App\Models\PejabatModel;
+use App\Models\KonfigurasiModel;
 
 class Pages extends BaseController
 {
     protected $MainmenuModel;
     protected $SubmenuModel;
+    protected $MitraModel;
+    protected $SlideshowModel;
+    protected $PejabatModel;
+    protected $KonfigurasiModel;
     public function __construct()
     {
         $this->MainmenuModel = new MainmenuModel();
         $this->SubmenuModel = new SubmenuModel();
+        $this->MitraModel = new MitraModel();
+        $this->SlideshowModel = new SlideshowModel();
+        $this->PejabatModel = new PejabatModel();
+        $this->KonfigurasiModel = new KonfigurasiModel();
     }
     // BEGIN FRONTEND
     public function index()
@@ -24,6 +36,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konfigurasi' => $this->KonfigurasiModel->get()->getResultArray(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
 
         ];
         return view('frontend/pages/beranda', $data);

@@ -142,20 +142,15 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome_docmed_info">
                         <div class="slide-in-text">
+                            <?php foreach ($konfigurasi as $konf) : ?>
+                                <h3>Visi dan Misi</h3>
+                                <br>
+                                <h2>Visi</h2>
 
-                            <h3>Visi dan Misi</h3>
-                            <br>
-                            <h2>Visi</h2>
-
-                            <p style="margin-top: -25px;">"Menjadi Fakultas Kedokteran Berstandar Internasional yang unggul di tingkat Nasional dalam pengembangan pendidikan, penelitian, pengabdian masyarakat di bidang kedokteran dan kesehatan yang bertumpu pada hutan tropis lembap (tropical rain forest) dan lingkungannya pada tahun 2034."</p>
-                            <h2>Misi</h2>
-                            <ul style="margin-top: -25px">
-                                <li> <i class="flaticon-right"></i> Menyelenggarakan Pendidikan Kedokteran dan Kesehatan yang berkualitas. </li>
-                                <li> <i class="flaticon-right"></i> Menyelenggarakan Penelitian yang Berstandar Internasional dibidang Ilmu Kedokteran dan Kesehatan yang bertumpu pada hutan tropis lembap dan lingkungannya. </li>
-                                <li> <i class="flaticon-right"></i> Menyelenggarakan pengabdian masyarakat yang berorientasi pada peningkatan perilaku sehat masyarakat. </li>
-                                <li> <i class="flaticon-right"></i> Mengembangkan dan menjalin kerja sama dengan berbagai pihak untuk meningkatkan kapasitas, sarana, prasana, dan sumber daya manusia yang berkualitas.</li>
-                            </ul>
-                            <a href="<?= base_url('profil/visi-dan-misi'); ?>" class="boxed-btn3-white-2">Lihat Detail</a>
+                                <p style="margin-top: -25px;">"<?= $konf['visi'] ?>"</p>
+                                <h2>Misi</h2>
+                                <p style="margin-top: -25px;">"<?= $konf['misi'] ?>"</p>
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>
@@ -436,94 +431,20 @@
                 <div class="col-xl-12">
                     <div class="cards">
                         <div class="expert_active owl-carousel">
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/1.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Dekan</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Wakil Dekan I</span>
+                            <?php foreach ($pejabat as $pej) : ?>
+                                <div class="single_expert">
+                                    <div class="box-berita">
+                                        <div class="expert_thumb">
+                                            <img src="content/pejabat/<?= $pej['gambar'] ?>" alt="">
+                                        </div>
+                                        <div class="experts_name text-center">
+                                            <h3><?= $pej['nama'] ?></h3>
+                                            <span><?= $pej['jabatan'] ?></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/3.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Wakil Dekan II</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/4.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi S-1 Kedokteran</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/1.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi Profesi Kedokteran</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi Profesi Gigi</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi S-1 Kedokteran Gigi</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi D-3 Keperawatan</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach ?>
+
                         </div>
                     </div>
                 </div>
