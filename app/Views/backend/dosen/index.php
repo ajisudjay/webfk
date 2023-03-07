@@ -24,6 +24,11 @@
                                     <strong>Berhasil !</strong> <?= session()->getFlashdata('pesanInput') ?>
                                 </div>
                             <?php } ?>
+                            <?php if (session()->get('pesanGagal')) { ?>
+                                <div class="alert alert-danger alert-dismissible fade show flash" role="alert">
+                                    <strong>Gagal !</strong> <?= session()->getFlashdata('pesanGagal') ?>
+                                </div>
+                            <?php } ?>
                             <?php if (session()->get('pesanHapus')) { ?>
                                 <div class="alert alert-success alert-dismissible fade show flash" role="alert">
                                     <strong>Berhasil !</strong> <?= session()->getFlashdata('pesanHapus') ?>
@@ -44,7 +49,7 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: '<?= base_url('submenu/view') ?>',
+                url: '<?= base_url('dosen/view') ?>',
                 dataType: 'json',
                 success: function(response) {
                     $("#result").html(response.data);

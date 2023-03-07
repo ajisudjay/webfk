@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="card-header">
-        <h4 class="mb-0">Sub Menu</h4><!-- button tambah modal -->
+        <h4 class="mb-0">Sub Menu</h4>
+        <!-- button tambah modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal">
             <span class="feather icon-plus text-light"></span>
         </button>
@@ -16,7 +17,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('submenu/tambah'); ?>" method="post" class="tambah">
+                    <form action="<?= base_url('submenu/tambah'); ?>" method="post" enctype="multipart/form-data" class="tambah">
                         <?php csrf_field() ?>
                         <div class="modal-body">
                             <div class="row">
@@ -47,7 +48,6 @@
                                     <textarea name="isi" id="isi" rows="10" cols="80"></textarea>
                                     <div class="invalid-feedback errorIsi"></div>
                                 </div>
-
                                 <hr>
                             </div>
                         </div>
@@ -60,6 +60,7 @@
             </div>
         </div>
     </div>
+
     <div class="card-block">
         <div class="dt-responsive table-responsive">
             <table id="simpletable" class="table table-striped table-hover-animation nowrap">
@@ -79,13 +80,13 @@
                         <tr>
                             <!-- ISI VIEW -->
                             <td><?= $no++ ?></td>
-                            <td style="text-align: center;"><?= $item['urutan_submenu'] ?></td>
-                            <td>
-                                <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['submenu_id'] ?>">
+                            <td align="center"><?= $item['urutan'] ?></td>
+                            <td style="text-align: center;">
+                                <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['id'] ?>">
                                     <span class="feather icon-edit-1 text-default"></span>
                                 </button>
                                 <!-- edit modal-->
-                                <div class="modal fade" id="editmodal<?= $id = $item['submenu_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="editmodal<?= $id = $item['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -95,7 +96,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="<?= base_url('submenu/edit'); ?>" method="post" class="edit">
+                                                <form action="<?= base_url('submenu/edit'); ?>" enctype="multipart/form-data" method="post" class="edit">
                                                     <?php csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">
@@ -141,7 +142,7 @@
                                     </div>
                                 </div>
                                 <!-- button hapus modal-->
-                                <a href="<?= base_url('submenu/hapus/' . $item['submenu_id']); ?>" class="hapus">
+                                <a href="<?= base_url('submenu/hapus/' . $item['id']); ?>" class="hapus">
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             <td><?= $item['mainmenu'] ?></td>
@@ -154,5 +155,7 @@
         </div>
     </div>
 </div>
+
+
 <?= $this->include('backend/submenu/ajax') ?>
 <?= $this->include('backend/layouts/js_view') ?>
