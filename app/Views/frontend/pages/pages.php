@@ -26,7 +26,7 @@
         <section class="sample-text-area">
             <div class="container box_1170">
                 <?php foreach ($content as $item) : ?>
-                    <?= $menu = $item['content'] ?>
+                    <?= $item['content'] ?>
                 <?php endforeach ?>
             </div>
         </section>
