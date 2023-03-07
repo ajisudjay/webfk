@@ -4,7 +4,8 @@
     <?= $this->include('frontend/layouts/navbar') ?>
     <?= $this->include('frontend/content/slider') ?>
     <?= $this->include('frontend/content/aplikasi') ?>
-    <?= $this->include('frontend/content/visimisi') ?>
+    <?= $this->include('frontend/content/visi') ?>
+    <?= $this->include('frontend/content/misi') ?>
     <?= $this->include('frontend/content/berita-artikel') ?>
     <?= $this->include('frontend/content/kerjasama') ?>
     <?= $this->include('frontend/content/pimpinan') ?>

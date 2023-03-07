@@ -1,10 +1,11 @@
 <script>
     const box = document.querySelector(".box");
-    const boxvisi = document.querySelector(".box-visi");
+
     const boxmisi = document.querySelector(".box-misi");
+    const boxvisi = document.querySelector(".box-visi");
     const boxberita = document.querySelector(".box-berita");
     const slideInText = document.querySelector(".slide-in-text");
-    const slideMisi = document.querySelector(".slide-misi");
+    const slideInText2 = document.querySelector(".slide-in-text-2");
 
     function checkIfBoxIsInView() {
         const windowHeight = window.innerHeight;
@@ -24,26 +25,47 @@
         }
     }
 
+    window.addEventListener("scroll", checkIfBoxIsInView);
+
+    window.addEventListener("scroll", checkIfBoxIsInView2);
+
     function checkIfBoxIsInView2() {
         const windowHeight = window.innerHeight;
-        const boxTop = boxmisi.getBoundingClientRect().top;
-        const boxBottom = boxmisi.getBoundingClientRect().bottom;
+        const boxTop = misi.getBoundingClientRect().top;
+        const boxBottom = misi.getBoundingClientRect().bottom;
 
         if (boxTop <= windowHeight && boxBottom >= 0) {
-            boxmisi.classList.add("active");
+            misi.classList.add("active");
             setTimeout(function() {
-                boxmisi.classList.add("show");
+                misi.classList.add("show");
                 boxmisi.classList.add("show");
             }, 500);
 
             setTimeout(function() {
-                slideMisi.classList.add("show");
+                slideInText2.classList.add("show");
             }, 1000);
         }
     }
 
-    window.addEventListener("scroll", checkIfBoxIsInView);
-    window.addEventListener("scroll", checkIfBoxIsInView2);
+    const misi = document.querySelectorAll(".box-misi");
+
+    function checkIfCardIsInView(card, index) {
+        const windowHeight = window.innerHeight;
+        const cardTop = card.getBoundingClientRect().top;
+        const cardBottom = card.getBoundingClientRect().bottom;
+
+        if (cardTop <= windowHeight && cardBottom >= 0) {
+            setTimeout(function() {
+                card.classList.add("active");
+            }, index * 500);
+        }
+    }
+
+    misi.forEach((card, index) => {
+        window.addEventListener("scroll", function() {
+            checkIfCardIsInView(card, index);
+        });
+    });
 
     const cards = document.querySelectorAll(".box-berita");
 
