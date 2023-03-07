@@ -69,6 +69,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Program Studi',
+            'title_pages' => '',
             'slug'  => $slug,
         ];
         return view('frontend/pages/prodi-detail', $data);
@@ -78,6 +79,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Sumber Daya Manusia',
+            'title_pages' => '',
             'slug'  => $slug,
         ];
         return view('frontend/pages/sdm', $data);
@@ -87,6 +89,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Tentang Kami',
+            'title_pages' => '',
             'slug'  => $slug,
         ];
         return view('frontend/pages/tentangkami', $data);
@@ -105,6 +108,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Informasi',
+            'title_pages' => '',
             'slug'  => $slug,
         ];
         return view('frontend/pages/informasi-detail', $data);
@@ -114,6 +118,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Laboratorium',
+            'title_pages' => '',
             'slug'  => $slug,
         ];
         return view('frontend/pages/laboratorium', $data);
@@ -124,6 +129,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Laboratorium',
+            'title_pages' => '',
             'slug'  => $slug,
         ];
         return view('frontend/pages/laboratorium-detail', $data);
@@ -150,6 +156,7 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Mitra Kerjasama',
+            'title_pages' => '',
             'slug'  => $slug,
         ];
         return view('frontend/pages/mitra-detail', $data);
