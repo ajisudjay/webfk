@@ -40,9 +40,8 @@ class Pages extends BaseController
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'konfigurasi' => $this->KonfigurasiModel->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
             'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
-
         ];
         return view('frontend/pages/beranda', $data);
     }
@@ -62,6 +61,11 @@ class Pages extends BaseController
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
             'content' => $this->SubmenuModel->where('slug', $slugx)->findAll(),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/pages', $data);
     }
@@ -76,6 +80,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/prodi-detail', $data);
     }
@@ -90,6 +99,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/sdm', $data);
     }
@@ -104,6 +118,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/tentangkami', $data);
     }
@@ -117,6 +136,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/informasi', $data);
     }
@@ -131,6 +155,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/informasi-detail', $data);
     }
@@ -145,6 +174,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/laboratorium', $data);
     }
@@ -160,6 +194,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/laboratorium-detail', $data);
     }
@@ -173,6 +212,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/menu', $data);
     }
@@ -186,6 +230,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/mitra', $data);
     }
@@ -201,6 +250,11 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/mitra-detail', $data);
     }

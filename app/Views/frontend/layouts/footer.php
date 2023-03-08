@@ -15,20 +15,20 @@
                              Universitas Mulawarman
                          </p>
                          <div class="socail_links">
-                             <?php foreach ($konfigurasi as $konf) : ?>
+                             <?php foreach ($konf as $item) : ?>
                                  <ul>
                                      <li>
-                                         <a href="<?= $konf['fb'] ?>">
+                                         <a href="<?= $item['fb'] ?>">
                                              <i class="ti-facebook"></i>
                                          </a>
                                      </li>
                                      <li>
-                                         <a href="<?= $konf['yt'] ?>">
+                                         <a href="<?= $item['yt'] ?>">
                                              <i class="fa fa-youtube-play"></i>
                                          </a>
                                      </li>
                                      <li>
-                                         <a href="<?= $konf['ig'] ?>">
+                                         <a href="<?= $item['ig'] ?>">
                                              <i class="fa fa-instagram"></i>
                                          </a>
                                      </li>
@@ -57,14 +57,14 @@
                              Alamat
                          </h3>
                          <p>
-                             <?php foreach ($konfigurasi as $konf) : ?>
-                                 <?= $konf['alamat'] ?>
+                             <?php foreach ($konf as $item) : ?>
+                                 <?= $item['alamat'] ?>
                                  <br><br>
-                                 Phone: <?= $konf['telepon'] ?>
+                                 Phone: <?= $item['telepon'] ?>
                                  <br><br>
                                  Email:
                                  <br>
-                                 <?= $konf['email'] ?>
+                                 <?= $item['email'] ?>
                              <?php endforeach ?>
                          </p>
                      </div>
