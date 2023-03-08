@@ -16,7 +16,7 @@
                 <div class="col-xl-2">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-first-aid-kit"></i>
+                            <i class="flaticon-electrocardiogram"></i>
                         </div>
                         <h3>ApKed</h3>
 
@@ -26,7 +26,7 @@
                 <div class="col-xl-2" style="background-color: #53ADFE">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-right"></i>
+                            <i class="flaticon-electrocardiogram"></i>
                         </div>
                         <h3>eResource</h3>
 
@@ -36,9 +36,9 @@
                 <div class="col-xl-2" style="background-color: #53ADFE">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-first-aid-kit"></i>
+                            <i class="flaticon-electrocardiogram"></i>
                         </div>
-                        <h3>ApKed</h3>
+                        <h3>eLogbook</h3>
 
                         <a href="#" class="boxed-btn3-white">Klik Disini</a>
                     </div>
@@ -46,17 +46,17 @@
                 <div class="col-xl-2">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-first-aid-kit"></i>
+                            <i class="flaticon-electrocardiogram"></i>
                         </div>
-                        <h3>ApKed</h3>
+                        <h3>Portofolio</h3>
 
-                        <a href="#" class="boxed-btn3-white">Klik Disini</a>
+                        <a href="https://portofolio.fk.unmul.ac.id" target="_blank" class="boxed-btn3-white">Klik Disini</a>
                     </div>
                 </div>
                 <div class="col-xl-2">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-first-aid-kit"></i>
+                            <i class="flaticon-electrocardiogram"></i>
                         </div>
                         <h3>ApKed</h3>
 

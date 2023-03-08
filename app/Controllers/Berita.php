@@ -28,6 +28,7 @@ class Berita extends BaseController
         }
         $data = [
             'title' => 'Berita',
+            'title_pages' => '',
             'admin' => $admin,
             'lvl' => $lvl,
             'foto' => $gambar,
