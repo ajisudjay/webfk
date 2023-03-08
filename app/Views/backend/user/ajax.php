@@ -2,13 +2,25 @@
 <script>
     $(document).ready(function() {
         //  function tambah
-        $('.tambah').submit(function(e) {
-            e.preventDefault();
+        $('.tambah').submit(function() {
+            var nama = $('#nama').val();
+            var username = $('#username').val();
+            var level = $('#level').val();
+            var password = $('#password').val();
+            var files = $('#file')[0].files;
+            var fd = new FormData();
+
+            fd.append('file', files[0]);
+            fd.append('nama', nama);
+            fd.append('username', username);
+            fd.append('level', level);
+            fd.append('password', password);
             $.ajax({
                 type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: fd,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 beforeSend: function() {
                     $('.btnSimpan').attr('disable', 'disabled');
                     $('.btnSimpan').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -19,13 +31,6 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.username) {
-                            $('.username').addClass('is-invalid');
-                            $('.errorUsername').html(response.error.username);
-                        } else {
-                            $('.username').removeClass('is-invalid');
-                            $('.errorUsername').html('');
-                        }
                         if (response.error.nama) {
                             $('.nama').addClass('is-invalid');
                             $('.errorNama').html(response.error.nama);
@@ -33,12 +38,19 @@
                             $('.nama').removeClass('is-invalid');
                             $('.errorNama').html('');
                         }
-                        if (response.error.level) {
-                            $('.level').addClass('is-invalid');
-                            $('.errorLevel').html(response.error.level);
+                        if (response.error.username) {
+                            $('.username').addClass('is-invalid');
+                            $('.errorUsername').html(response.error.username);
                         } else {
-                            $('.level').removeClass('is-invalid');
-                            $('.errorLevel').html('');
+                            $('.username').removeClass('is-invalid');
+                            $('.errorUsername').html('');
+                        }
+                        if (response.error.file) {
+                            $('.file').addClass('is-invalid');
+                            $('.errorFile').html(response.error.file);
+                        } else {
+                            $('.file').removeClass('is-invalid');
+                            $('.errorFile').html('');
                         }
                         if (response.error.password) {
                             $('.password').addClass('is-invalid');
@@ -47,30 +59,17 @@
                             $('.password').removeClass('is-invalid');
                             $('.errorPassword').html('');
                         }
-                        if (response.error.repassword) {
-                            $('.repassword').addClass('is-invalid');
-                            $('.errorRepassword').html(response.error.repassword);
-                        } else {
-                            $('.repassword').removeClass('is-invalid');
-                            $('.errorRepassword').html('');
-                        }
                     } else {
-                        if (response.status == 'gagal') {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal',
-                                text: response.sukses,
-                            })
-                        } else if (response.status == 'berhasil') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: response.sukses,
-                            });
-                        }
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'berhasil',
+                            text: response.sukses,
+                        });
                         $('body').removeClass('modal-open');
+                        //modal-open class is added on body so it has to be removed
                         $('.modal-backdrop').remove();
-                        $('#result').html(response.data);
+                        //need to remove div with modal-backdrop class
+                        $("#result").html(response.data);
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
@@ -79,30 +78,36 @@
             })
         });
 
-        $('.edit').submit(function(e) {
-            e.preventDefault();
+        //  function edit
+        $('.edit').submit(function() {
+            var nama = $('#nama').val();
+            var username = $('#username').val();
+            var level = $('#level').val();
+            var password = $('#password').val();
+            var files = $('#file')[0].files;
+            var fd = new FormData();
+
+            fd.append('file', files[0]);
+            fd.append('nama', nama);
+            fd.append('username', username);
+            fd.append('level', level);
+            fd.append('password', password);
             $.ajax({
                 type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: fd,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 beforeSend: function() {
-                    $('.btnEdit').attr('disable', 'disabled');
-                    $('.btnEdit').html('<i class="fa fa-spin fa-spinner"></i>');
+                    $('.btnSimpan').attr('disable', 'disabled');
+                    $('.btnSimpan').html('<i class="fa fa-spin fa-spinner"></i>');
                 },
                 complete: function() {
-                    $('.btnEdit').removeAttr('disable', 'disabled');
-                    $('.btnEdit').html('Simpan');
+                    $('.btnSimpan').removeAttr('disable', 'disabled');
+                    $('.btnSimpan').html('Simpan');
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.username) {
-                            $('.username').addClass('is-invalid');
-                            $('.errorUsername').html(response.error.username);
-                        } else {
-                            $('.username').removeClass('is-invalid');
-                            $('.errorUsername').html('');
-                        }
                         if (response.error.nama) {
                             $('.nama').addClass('is-invalid');
                             $('.errorNama').html(response.error.nama);
@@ -110,12 +115,19 @@
                             $('.nama').removeClass('is-invalid');
                             $('.errorNama').html('');
                         }
-                        if (response.error.level) {
-                            $('.level').addClass('is-invalid');
-                            $('.errorLevel').html(response.error.level);
+                        if (response.error.username) {
+                            $('.username').addClass('is-invalid');
+                            $('.errorUsername').html(response.error.username);
                         } else {
-                            $('.level').removeClass('is-invalid');
-                            $('.errorLevel').html('');
+                            $('.username').removeClass('is-invalid');
+                            $('.errorUsername').html('');
+                        }
+                        if (response.error.file) {
+                            $('.file').addClass('is-invalid');
+                            $('.errorFile').html(response.error.file);
+                        } else {
+                            $('.file').removeClass('is-invalid');
+                            $('.errorFile').html('');
                         }
                         if (response.error.password) {
                             $('.password').addClass('is-invalid');
@@ -124,17 +136,10 @@
                             $('.password').removeClass('is-invalid');
                             $('.errorPassword').html('');
                         }
-                        if (response.error.repassword) {
-                            $('.repassword').addClass('is-invalid');
-                            $('.errorRepassword').html(response.error.repassword);
-                        } else {
-                            $('.repassword').removeClass('is-invalid');
-                            $('.errorRepassword').html('');
-                        }
                     } else {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Berhasil',
+                            title: 'berhasil',
                             text: response.sukses,
                         });
                         $('body').removeClass('modal-open');
@@ -168,6 +173,8 @@
                 }
             });
         });
+
+
         window.setTimeout(function() {
             $(".flashAjax").fadeTo(500, 0).slideUp(500, function() {
                 $(this).remove();

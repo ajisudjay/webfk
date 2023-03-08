@@ -70,7 +70,7 @@
                                 </a>
                             <td><?= $item['nama'] ?></td>
 
-                            <td style="text-align: center;"><img src="content/slideshow/<?= $item['gambar'] ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/slideshow/' . $item['gambar'] . ''); ?>" width="100%"></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

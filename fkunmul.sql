@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Mar 2023 pada 00.26
+-- Waktu pembuatan: 08 Mar 2023 pada 15.17
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -40,14 +40,6 @@ CREATE TABLE `berita` (
   `tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `berita`
---
-
-INSERT INTO `berita` (`id`, `judul`, `slug`, `isi`, `banner`, `tag`, `dilihat`, `timestamp`, `penulis`, `tanggal`) VALUES
-(4, 'berita pake swal', 'berita-pake-swal', '<p>coba coba</p>', '1677441966_2b560d2558080eea0118.png', 'coba', 0, '2023-02-26', 'ajisudjay', '2023-12-31'),
-(5, 'berita 2', 'berita-2', '<p>sdfsfsd123123123123</p>\r\n', '1678158331_6c5fcda291ed0b544d62.jpg', 'dsfsfsd', 0, '2023-03-07', 'ajisudjay', '2023-12-31');
-
 -- --------------------------------------------------------
 
 --
@@ -66,14 +58,6 @@ CREATE TABLE `dosen` (
   `id_ps` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `dosen`
---
-
-INSERT INTO `dosen` (`id`, `nama`, `nip`, `jabatan`, `bidang`, `akun`, `gambar`, `pendidikan`, `id_ps`) VALUES
-(2, 'aaaaaaaaaaaaa', '2222222222222222', 'aaaa', 'asdadads', '<p>adadad</p>\r\n', '1678226363_5e950c724e5ebfddb82f.png', '<p>sadadad</p>\r\n', 1),
-(3, 'ddddddddddddddddd3', '11111111111111111333333', 'dfffffffffffffff3', 'ggggggggggggggggg3', '<p>fghfhhfhfg3</p>\r\n', '1678226499_bdc957e6b0a217b6b820.jpeg', '<p>fghfhfhfg3</p>\r\n', 6);
-
 -- --------------------------------------------------------
 
 --
@@ -85,15 +69,6 @@ CREATE TABLE `galeri` (
   `nama` varchar(255) NOT NULL,
   `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `galeri`
---
-
-INSERT INTO `galeri` (`id`, `nama`, `gambar`) VALUES
-(10, '234324', '1677162864_ddd6e79632f99e3b2598.png'),
-(11, 'struktur organisasi', '1677741860_e1fbdc4b437f4954a53a.png'),
-(12, 'profil', '1677765514_6966748c1a1d0dcc5d30.png');
 
 -- --------------------------------------------------------
 
@@ -185,13 +160,6 @@ CREATE TABLE `laboratorium` (
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `laboratorium`
---
-
-INSERT INTO `laboratorium` (`id`, `nama`, `gambar`, `content`) VALUES
-(3, 'lab 1', '1678151759_70b42e0d00f4dd837739.png', '<p>sddasda</p>\r\n');
-
 -- --------------------------------------------------------
 
 --
@@ -244,17 +212,6 @@ CREATE TABLE `pejabat` (
   `gambar` varchar(255) NOT NULL,
   `urutan` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `pejabat`
---
-
-INSERT INTO `pejabat` (`id`, `nama`, `jabatan`, `gambar`, `urutan`) VALUES
-(3, 'DR. dr. Fulan., MARS', 'Dekan', '1678156728_f59cac2f1978cc0510ca.jpg', 1),
-(4, 'DR. dr. Fulanah., MARS', 'Wakil Dekan 1', '1678156768_08663ca07234222794b1.jpg', 2),
-(5, 'DR. dr. Fulan.', 'Wakil Dekan II', '1678156799_057f3bd42205cd61dcb6.jpg', 3),
-(6, 'DR. dr. Fulan., M.Kes', 'Koor. Prodi S1-Kedokteran', '1678156846_82b5b4cd30936e4f37f4.jpg', 4),
-(7, 'DR. dr. Fulanah., M.Kes', 'Koor. Prodi S1-Kedokteran Gigi', '1678157067_a4d04a84a9db24258aa6.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -314,7 +271,7 @@ CREATE TABLE `submenu` (
 --
 
 INSERT INTO `submenu` (`id`, `submenu`, `slug`, `urutan`, `id_mainmenu`, `content`, `tag`, `penulis`, `timestamp`) VALUES
-(30, 'Visi dan Misi', 'visi-dan-misi', 1, 24, '<h2>Visi</h2>\r\n\r\n<p>&quot;Menjadi Fakultas Kedokteran Berstandar Internasional yang unggul di tingkat Nasional dalam pengembangan pendidikan, penelitian, pengabdian masyarakat di bidang kedokteran dan kesehatan yang bertumpu pada hutan tropis lembap (tropical rain forest) dan lingkungannya pada tahun 2034.&quot;</p>\r\n\r\n<h2>Misi</h2>\r\n\r\n<p>1. Menyelenggarakan Pendidikan Kedokteran dan Kesehatan yang berkualitas.</p>\r\n\r\n<p>2. Menyelenggarakan Penelitian yang Berstandar Internasional dibidang Ilmu Kedokteran dan Kesehatan yang bertumpu pada hutan tropis lembap dan lingkungannya.</p>\r\n\r\n<p>3. Menyelenggarakan pengabdian masyarakat yang berorientasi pada peningkatan perilaku sehat masyarakat.</p>\r\n\r\n<p>4. Mengembangkan dan menjalin kerja sama dengan berbagai pihak untuk meningkatkan kapasitas, sarana, prasana, dan sumber daya manusia yang berkualitas.</p>\r\n', NULL, 'ajisudjay', '2023-03-07'),
+(30, 'Visi dan Misi', 'visi-dan-misi', 1, 24, '<h2>Visi</h2>\r\n\r\n<p>&quot;Menjadi Fakultas Kedokteran Berstandar Internasional yang unggul di tingkat Nasional dalam pengembangan pendidikan, penelitian, pengabdian masyarakat di bidang kedokteran dan kesehatan yang bertumpu pada hutan tropis lembap (tropical rain forest) dan lingkungannya pada tahun 2034.&quot;</p>\r\n\r\n<h2>Misi</h2>\r\n\r\n<p>1. Menyelenggarakan Pendidikan Kedokteran dan Kesehatan yang berkualitas.</p>\r\n\r\n<p>2. Menyelenggarakan Penelitian yang Berstandar Internasional dibidang Ilmu Kedokteran dan Kesehatan yang bertumpu pada hutan tropis lembap dan lingkungannya.</p>\r\n\r\n<p>3. Menyelenggarakan pengabdian masyarakat yang berorientasi pada peningkatan perilaku sehat masyarakat.</p>\r\n\r\n<p>4. Mengembangkan dan menjalin kerja sama dengan berbagai pihak untuk meningkatkan kapasitas, sarana, prasana, dan sumber daya manusia yang berkualitas.</p>\r\n', NULL, 'ajisudjay', '2023-03-08'),
 (31, 'Sejarah', 'sejarah', 2, 24, '<h4><strong>Tahun Pembentukan</strong></h4><p>Pada suatu kesempatan kunjungan kerja di wilayah pedalaman dan perbatasan (pertengahan tahun 1999), Gubernur Provinsi Kalimantan Timur menghadapi suatu kenyataan bahwa pelayanan kesehatan sangat menyedihkan. Secara spontan beliau mengatakan bahwa seandainya para putra/putri Kalimantan Timur memperoleh kesempatan lebih besar untuk mengikuti pendidikan dokter, terbersit harapan bahwa kondisi pelayanan kesehatan yang sangat menyedihkan tersebut dapat diperbaiki. Keinginan gubernur yang sangat kuat ternyata juga merupakan cerminan keinginan masyarakat Kalimantan Timur, segera ditindak lanjuti dengan mengundang Fakultas Kedokteran Universitas Brawijaya Malang untuk mengadakan studi kelayakan kemungkinan pendirian dan penyelenggaraan pendidikan kedokteran di Provinsi Kalimantan Timur.</p><p>Sejak saat itu, sejalan dengan Program Prioritas Pemerintah Daerah Provinsi Kalimantan Timur untuk meningkatkan kualitas SDM Kaltim, berbagai pihak mulai dari Pemerintah Daerah Provinsi Kalimantan Timur yang akan mendukung penyelenggaraan pendidikan dokter di Samarinda ini, DPRD Prov. Kaltim, Universitas Mulawarman, Universitas Brawijaya Malang, RSUD. AW. Sjahranie Samarinda serta berbagai lapisan dan elemen masyarakat bahu membahu mempersiapkan pendirian, penyelenggaraan dan pengembangan pendidikan dokter di Kalimantan Timur. Berbagai rapat koordinasi, pertemuan informal, rapat kerja, visitasi, studi banding, konsultasi serta berbagai upaya keras lainnya telah, sedang, dan akan terus dilakukan. Bimbangan dan bantuan dari Komisi Disiplin Ilmu Kesehatan (KDIK), Direktorat Jendral Pendidikan Tinggi Depdiknas, Fakultas Kedokteran Mitra (UNIBRAW, UI, UGM, UNDIP, UNAIR, UNHAS) ikut mewarnai impian dan perjuangan masyarakat Kalimantan Timur untuk mempunyai lembaga (institusi) Pendidikan Kedokteran.</p><p>Rangkaian panjang perjuangan yang meliputi berbagai upaya dan kerja keras tersebut mengantar pada peresmian pembukaan Program Pendidikan Dokter Universitas Mulawarman (PPD-UNMUL) di Samarinda, Kalimantan Timur pada Tanggal 01 Nopember 2001 berdasarkan Surat Ijin Operasional Direktur Jenderal Pendidikan Tinggi Depdiknas Nomor 3083/D/T/2001 tanggal 25 September 2001 tentang Ijin Penyelenggaraan Program Pendidikan Dokter pada Universitas Mulawarman, dengan upacara peresmian dimulainya Pendidikan Dokter ini oleh Bapak Gubernur yang dihadiri oleh para Kepala Daerah. Mahasiswa PPD-UNMUL diutamakan berasal dari Putra-Putri Kalimantan Timur. Sistem seleksinya adalah melalui jalur PBUD (Penjaringan Bibit Unggul Daerah), testl lokal yang diselenggarakan di Universitas Mulawarman Samarinda. Dengan demikian, prioritas utama peserta didik adalah berasal dari Putra-Putri Daerah, yang nantinya akan kembali mengabdi ke daerahnya masing-masing.</p><p>Pendirian PPD-UNMUL diiringi dengan persiapan dan pengembangan tenaga pengajar yang kompeten. Hingga empat tahun setelah diresmikan, PPD-UNMUL telah mengirimkan 42 staf pengajar untuk menempuh program Magister di beberapa Universitas terkemuka dengan biaya dari APBD I, beberapa diantaranya melanjutkan hingga ke jenjang doktoral. Disamping itu, berbagai fasilitas sarana dan prasarana pembelajaran telah dibangun baik di lingkungan Kampus Unmul, maupun di lingkungan RSUD AW. Sjahranie Samarinda sebagai Rumah Sakit Pendidikan FK-UNMUL, yang hampir seluruhnya bersumber dari APBD I Provinsi Kaltim. PPD-UNMUL juga menjalin kerjasama dengan Universitas Maastricht sejak 30 September 2002 hingga sekarang. Bahkan dalam perkembangannya mahasiswa kedokteran Universitas Masstricht dikirim ke FK. Unmul untuk menimba ilmu dan pengalaman di bidang Tropical Medicine. Berbagai upaya telah dilakukan untuk memajukan FK-UNMUL, antara lain kegiatan studi banding, diskusi dengan pakar kedokteran dari UNIBRAW, UNAIR, UGM dan UNHAS. Pada tahun 2002, FK-UNMUL juga mendapat bantuan dari Bank Dunia dalam bentuk pengembangan keterampilan medik yang ditujukan untuk melatih kompetensi para calon dokter.</p><p>Pada tanggal 1 Juli 2004 Ijin PPD-UNMUL berubah menjadi Program Studi Kedokteran Umum Universitas Mulawarman (PSKU-UNMUL) sesuai ijin operasional Perpanjangan dari DIKTI Nomor 2316/D/T/2004, tanggal 1 Juli 2004 dan akhirnya pada tanggal 24 Juli 2008, PSKU-UNMUL resmi menjadi Fakultas Kedokteran Universitas Mulawarman sebagaimana ditetapkan melalui Surat Keputusan Rektor No. 315/KP/2008. Keberadaan dan fungsi lembaga pendidikan kedoteran ini merupakan awal dari perjuangan untuk mengatasi tantangan yang lebih besar. FK UNMUL ditunjukan untuk kesejahteraan bangsa Indonesia, termasuk masyarakat di wilayah Kalimantan Timur, yang diwarnai dengan semangat reformasi dan otonomi daerah. Akhirnya pada tanggal 17 Januari 2009, FK-UNMUL untuk pertamakalinya meluluskan Dokter.</p><p>&nbsp;</p><p>Sejak tahun 2001 s/d 206, kurikulum yang dipergunakan adalah kurikulum Konvensional yakni Kurikulum Inti Pendidikan Dokter Indonesia (KIPDI II) dengan masa studi 7 (tujuh) tahun dan pada tahun 2007 s/d sekarang menggunakan Kurikulum Berbasis Kompetensi dengan metode Problem Basic Learning (PBL) dengan lama kuliah 5 (lima).</p><p>&nbsp;</p><p><strong>Sejak berdiri Fakultas Kedokteran Unmul telah berganti pimpinan sebagai berikut :</strong></p><figure class=\"table\" style=\"width:100%;\"><table class=\"ck-table-resized\"><colgroup><col style=\"width:3.83%;\"><col style=\"width:41.79%;\"><col style=\"width:54.38%;\"></colgroup><tbody><tr><td>1</td><td>Program Pendidikan Dokter Universitas Mulawarman periode 2001 s/d 2004</td><td><figure class=\"table\" style=\"width:72.47%;\"><table class=\"ck-table-resized\"><colgroup><col style=\"width:47.86%;\"><col style=\"width:52.14%;\"></colgroup><tbody><tr><td>Ketua PPD-Unmul</td><td>: dr. Latief Choibar, Sp.PD</td></tr><tr><td>Pembantu Ketua 1&nbsp;</td><td>: dr. Sukartini, Sp.A</td></tr><tr><td>Pembantu Ketua&nbsp;</td><td>: dr. Emil Bachtiar Moerad, Sp.P</td></tr><tr><td>Pembantu Ketua III&nbsp;</td><td>: dr. Arie Ibrahim, Sp.BS</td></tr></tbody></table></figure></td></tr><tr><td>2</td><td>Program Studi Kedokteran Umum Universitas Mulawarman periode 2004 s/d 2008</td><td><figure class=\"table\" style=\"width:72.24%;\"><table class=\"ck-table-resized\"><colgroup><col style=\"width:48.1%;\"><col style=\"width:51.9%;\"></colgroup><tbody><tr><td>Ketua PSKU-Unmul&nbsp;</td><td>: dr. Emil Bachtiar Moerad, Sp.P</td></tr><tr><td>Wakil Ketua I&nbsp;</td><td>: dr. Syaiful Mukhtar, Sp.B-KBD</td></tr><tr><td>Wakil Ketua II&nbsp;</td><td>: dr. Abdillah Iskandar, M.Kes</td></tr><tr><td>Wakil Ketua III&nbsp;</td><td>: dr. Natanael Shem, DDSC</td></tr><tr><td>Wakil Ketua IV&nbsp;</td><td>: Dr. dr. Arie Ibrahim, Sp.BS</td></tr></tbody></table></figure></td></tr><tr><td>3</td><td>Fakultas Kedokteran Universitas Mulawarman Periode 2008 s/d 2012 dan Periode 2012 s/d 2016</td><td><figure class=\"table\" style=\"width:72.02%;\"><table class=\"ck-table-resized\"><colgroup><col style=\"width:48.39%;\"><col style=\"width:51.61%;\"></colgroup><tbody><tr><td>Dekan&nbsp;</td><td>: dr. Emil Bachtiar Moerad, Sp.P</td></tr><tr><td>Pembantu Dekan I&nbsp;</td><td>: dr. Eva Rachmi, M.Kes</td></tr><tr><td>Pembantu Dekan II&nbsp;</td><td>: dr. Abdillah Iskandar, M.Kes</td></tr><tr><td>Pembantu Dekan III&nbsp;</td><td>: dr. Arie Ibrahim, Sp.BS</td></tr><tr><td>Pembantu Dekan IV&nbsp;</td><td>: dr. Lukas D. Leatemia, M.Kes</td></tr></tbody></table></figure></td></tr><tr><td>4</td><td>Fakultas Kedokteran Universitas Mulawarman periode 2016-2020</td><td><figure class=\"table\" style=\"width:72.47%;\"><table class=\"ck-table-resized\"><colgroup><col style=\"width:47.9%;\"><col style=\"width:52.1%;\"></colgroup><tbody><tr><td>Dekan&nbsp;</td><td>: dr. Ika Fikriah, M.Kes</td></tr><tr><td>Wakil Dekan&nbsp;</td><td>: Dr. dr. Endang Sawitri, M.Kes</td></tr><tr><td>Wakil Dekan&nbsp;</td><td>: dr. Verry Asfirizal, M.Kes</td></tr></tbody></table></figure></td></tr></tbody></table></figure>', NULL, 'ajisudjay', '2023-03-02'),
 (33, 'S1 - Kedokteran', 's1-kedokteran', 1, 25, '<h3>Deskripsi</h3><p>Program Studi Kedokteran berdiri sejak tahun 2001 berdasarkan SK Pendirian : SK Dirjen DIKTI No. 3083/D/T/2001. Sampai saat ini Program Studi Kedokteran FK Unmul masih menjadi satu-satunya Program Studi Kedokteran di Kalimantan Timur. Saat ini Program Studi Kedokteran telah terakreditasi A berdasarkan SK LAM PT-Kes No. 003/LAM PT-Kes/Akr.Bd/Sar/X/2019 tanggal 26 Oktober 2019.<br><br>Profil Lulusan Program Studi Kedokteran FK Unmul sebagai berikut:<br><br>Calon Praktisi/Klinisi<br>Sarjana kedokteran yang menguasai ilmu kedokteran dengan unggulan kedokteran tropis yang menjadi dasar pelayanan Kesehatan kepada masyarakat disertai keimanan dan ketakwaan pada Tuhan YME, pribadi berkarakter, akhlak mulia, beretika, berbudi pekerti, dan menjunjung tinggi moralitas, sebagai pembelajar sepanjang hayat, bertanggungjawab sosial, cinta tanah air, dan berkomitmen untuk menyehatkan kehidupan masyarakat<br><br>Calon Pendidik/Peneliti<br>Sarjana kedokteran yang berpikir kritis dan kreatif dan memiliki kemampuan literasi di bidang sains, finansial, sosial budaya, serta teknologi informasi dalam menghadapi permasalahan kesehatan dan dapat bersaing di era global dan mampu terlibat dalam penyelenggaraan pendidikan Kesehatan.<br><br>Agen Perubahan dan Pembangunan Sosial<br>Sarjana kedokteran sebagai agen perubah dan penggerak masyarakat berdasarkan etika kedokteran dengan berperan sebagai profesional, komunikator, kolaborator, advokator, manajer, pemimpin, untuk berkontribusi dalam meningkatkan derajat kesehatan masyarakat.</p><p>&nbsp;</p><h3>Visi</h3><blockquote><p>“Menjadi Program Studi berstandar Internasional dengan keunggulan kedokteran tropis pada tahun 2034”</p></blockquote><h3>Misi</h3><blockquote><p>“1. Menyelenggarakan pendidikan kedokteran yang berkualitas untuk menghasilkan lulusan yang profesional”</p><p>“2. Melaksanakan penelitian yang berkualitas Internasional dengan keunggulan kedokteran tropis”</p><p>“3. Melaksanakan pengabdian kepada masyarakat dengan keunggulan kedokteran tropis”</p></blockquote><h3>Penjelasan Visi Misi</h3><p>Berkualitas:<br>Pada bidang pendidikan, bidang kedokteran tropis akan menjadi unggulan prodi kedokteran dan profesi dokter. Pengembangan keilmuan kedokteran berbasis hasil penelitian dan pengabdian kepada masyarakat<br><br>Profesional:<br>adalah orang yang memiliki profesionalitas yang luhur meliputi (SKDI 2012): berketuhanan Yang Maha Esa, bermoral, beretika dan berdisiplin sadar dan taat hukum berwawasan sosial budaya berperilaku profesional</p><p>&nbsp;</p><h3>Tujuan</h3><blockquote><p>“1. Tercapainya hasil pengembangan keilmuan Program Studi di bidang kedokteran untuk menghasilkan lulusan sarjana kedokteran yang profesional ”</p><p>“2. Tercapainya hasil penyelenggaraan program studi di bidang penelitian berupa karya ilmiah dan produk inovasi dengan keunggulan kedokteran tropis yang berkualitas internasional ”</p><p>“3. Tercapainya hasil penyelenggaraan program studi di bidang pengabdian kepada masyarakat di bidang kedokteran berupa karya ilmiah dan produk inovasi ”</p></blockquote><h3>&nbsp;</h3><h3>Penelitian dan Pengabdian Masyarakat</h3><ul><li><a href=\"http://e-journals.unmul.ac.id/index.php/JKM\"><span style=\"background-color:hsl(60,75%,60%);\">Jurnal Kedokteran Mulawarman</span></a></li><li><a href=\"http://e-journals.unmul.ac.id/index.php/MOLAR\"><span style=\"background-color:hsl(90,75%,60%);\">Mulawarman Dental Jurnal</span></a><span style=\"background-color:hsl(90,75%,60%);\">&nbsp;</span></li><li><a href=\"http://e-journals.unmul.ac.id/index.php/JKPBK\"><span style=\"background-color:hsl(240,75%,60%);color:hsl(0,0%,100%);\">Jurnal Kesehatan Pasak Bumi Kalimantan</span></a></li></ul>', NULL, 'ajisudjay', '2023-03-02'),
 (34, 'Dosen', 'dosen', 1, 27, '<h4 style=\"text-align:center;\">JAJARAN TENAGA PENDIDIK&nbsp;</h4><h4 style=\"text-align:center;\">FAKULTAS KEDOKTERAN UNIVERSITAS MULAWARAMAN</h4><figure class=\"table\" style=\"width:31.87%;\"><table class=\"ck-table-resized\"><colgroup><col style=\"width:49.52%;\"><col style=\"width:50.48%;\"></colgroup><tbody><tr><td><figure class=\"image image_resized\" style=\"width:35.13%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulan</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Dekan</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279)</span></p></td><td><figure class=\"image image_resized\" style=\"width:37.53%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulanah</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Wakil Dekan I</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279)</span></p></td></tr><tr><td><figure class=\"image image_resized\" style=\"width:35.13%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulan</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Wakil Dekan II</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279)</span></p></td><td><figure class=\"image image_resized\" style=\"width:35.13%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulanah</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Koordinator Prodi</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279)</span></p></td></tr><tr><td><figure class=\"image image_resized\" style=\"width:35.13%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulan</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Koordinator Prodi</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279)</span></p></td><td><figure class=\"image image_resized\" style=\"width:35.13%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulan</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Dosen</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279</span></p></td></tr><tr><td><figure class=\"image image_resized\" style=\"width:35.13%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulanah</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Dosen</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279)</span></p></td><td><figure class=\"image image_resized\" style=\"width:35.13%;\"><img src=\"/content/galeri/1677765514_6966748c1a1d0dcc5d30.png\"></figure><p style=\"text-align:center;\"><span class=\"text-small\">NAMA : Fulanah</span></p><p style=\"text-align:center;\"><span class=\"text-small\">NIP : 202212 2000 1 001</span></p><p style=\"text-align:center;\"><span class=\"text-small\">JABATAN : Dosen</span></p><p style=\"text-align:center;\"><span class=\"text-small\">BIDANG KEAHLIAN : Dokter</span></p><p style=\"text-align:center;\"><span class=\"text-small\">ACCOUNT ID:</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SINTA (0012347)</span></p><p style=\"text-align:center;\"><span class=\"text-small\">SCOPUS (57193652279)</span></p></td></tr></tbody></table></figure>', NULL, 'ajisudjay', '2023-03-02'),
@@ -352,13 +309,6 @@ CREATE TABLE `tendik` (
   `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `tendik`
---
-
-INSERT INTO `tendik` (`id`, `nip`, `nama`, `jabatan`, `ruangan`, `gambar`) VALUES
-(2, 'ertetert', 'fdgdgdf', 'dfgd', 'fdgdg', '1678231163_23f29528497fcfdc0864.png');
-
 -- --------------------------------------------------------
 
 --
@@ -378,7 +328,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `nama`, `level`, `file`) VALUES
-('ajisudjay', 'MTIzNDU2', 'Aji Sudjay', 'Superadmin', '1677191261_4359d8c87f13ad17ac39.png');
+('admin', 'MTIzNDU2', 'admin', 'Superadmin', '1678284961_c15baf32de8443948316.png'),
+('ajisudjay', 'MTIzNDU2', 'Aji Sudjai Aswar', 'Superadmin', '1678284031_a0a3e3edbd23850a9a3a.png');
 
 --
 -- Indexes for dumped tables
@@ -451,6 +402,12 @@ ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `slideshow`
+--
+ALTER TABLE `slideshow`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `submenu`
 --
 ALTER TABLE `submenu`
@@ -477,19 +434,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis`
@@ -513,7 +470,7 @@ ALTER TABLE `konfigurasi`
 -- AUTO_INCREMENT untuk tabel `laboratorium`
 --
 ALTER TABLE `laboratorium`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `mainmenu`
@@ -525,19 +482,25 @@ ALTER TABLE `mainmenu`
 -- AUTO_INCREMENT untuk tabel `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `pejabat`
 --
 ALTER TABLE `pejabat`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `prodi`
 --
 ALTER TABLE `prodi`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `slideshow`
+--
+ALTER TABLE `slideshow`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `submenu`
@@ -549,7 +512,7 @@ ALTER TABLE `submenu`
 -- AUTO_INCREMENT untuk tabel `tendik`
 --
 ALTER TABLE `tendik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

@@ -73,7 +73,7 @@ class Laboratorium extends BaseController
             return redirect()->to(base_url('/laboratorium'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/laboratorium/', $newName);
+            $file->store('content/laboratorium/', $newName);
             $nama_foto = $newName;
             $data = [
                 'nama' => $nama,
@@ -117,9 +117,11 @@ class Laboratorium extends BaseController
                 $file = $request->getFile('file');
                 $cekfile = $this->LaboratoriumModel->where('id', $id)->first();
                 $namafile = $cekfile['gambar'];
-                unlink('content/laboratorium/' . $namafile);
+                $filesource = '../writable/uploads/content/laboratorium/' . $namafile . '';
+                chmod($filesource, 0777);
+                unlink($filesource);
                 $newName = $file->getRandomName();
-                $file->move('content/laboratorium/', $newName);
+                $file->store('content/laboratorium/', $newName);
                 $nama_foto = $newName;
                 $data = [
                     'nama' => $nama,
@@ -141,7 +143,9 @@ class Laboratorium extends BaseController
         }
         $cekfile = $this->LaboratoriumModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        unlink('content/laboratorium/' . $namafile);
+        $filesource = '../writable/uploads/content/laboratorium/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->LaboratoriumModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Laboratorium Berhasil Di Hapus !');

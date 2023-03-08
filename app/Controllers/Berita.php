@@ -78,7 +78,7 @@ class Berita extends BaseController
             return redirect()->to(base_url('/berita'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/berita/', $newName);
+            $file->store('content/berita/', $newName);
             $nama_foto = $newName;
             $data = [
                 'judul' => $judul,
@@ -139,9 +139,11 @@ class Berita extends BaseController
                 $file = $request->getFile('file');
                 $cekfile = $this->BeritaModel->where('id', $id)->first();
                 $namafile = $cekfile['banner'];
-                unlink('content/berita/' . $namafile);
+                $filesource = '../writable/uploads/content/berita/' . $namafile . '';
+                chmod($filesource, 0777);
+                unlink($filesource);
                 $newName = $file->getRandomName();
-                $file->move('content/berita/', $newName);
+                $file->store('content/berita/', $newName);
                 $nama_foto = $newName;
                 $data = [
                     'judul' => $judul,
@@ -168,7 +170,9 @@ class Berita extends BaseController
         }
         $cekfile = $this->BeritaModel->where('id', $id)->first();
         $namafile = $cekfile['banner'];
-        unlink('content/berita/' . $namafile);
+        $filesource = '../writable/uploads/content/berita/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->BeritaModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Berita Berhasil Di Hapus !');

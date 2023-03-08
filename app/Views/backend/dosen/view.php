@@ -192,7 +192,7 @@
                             <td><?= $item['jabatan'] ?></td>
                             <td><?= $item['bidang'] ?></td>
                             <td><?= $item['prodi'] ?></td>
-                            <td style="text-align: center;"><img src="content/dosen/<?= $item['gambar'] ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/dosen/' . $item['gambar'] . ''); ?>" width="100%"></td>
 
                         </tr>
                     <?php endforeach ?>

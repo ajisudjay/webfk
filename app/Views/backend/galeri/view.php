@@ -71,7 +71,7 @@
                                 </a>
                             <td><?= $item['nama'] ?></td>
 
-                            <td style="text-align: center;"><img src="content/galeri/<?= $item['gambar'] ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/galeri/' . $item['gambar'] . ''); ?>" width="100%"></td>
                             <td>
                                 <div class="row">
                                     <div class="col-lg-9">

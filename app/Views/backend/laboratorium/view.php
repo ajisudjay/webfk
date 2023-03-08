@@ -85,7 +85,7 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="col-lg-12">
-                                                            <img src="content/laboratorium/<?= $item['gambar'] ?>" width="30%">
+                                                            <img src="<?= base_url('writable/uploads/content/laboratorium/' . $item['gambar'] . ''); ?>" width="30%">
                                                             <br>
                                                             <br>
                                                         </div>
@@ -156,7 +156,7 @@
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             <td><?= $item['nama'] ?></td>
-                            <td style="text-align: center;"><img src="content/laboratorium/<?= $item['gambar'] ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/laboratorium/' . $item['gambar'] . ''); ?>" width="100%"></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

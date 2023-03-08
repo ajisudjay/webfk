@@ -8,7 +8,7 @@
     </div>
     <!-- tambah modal-->
     <div class="modal fade" id="tambahmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah</h5>
@@ -17,7 +17,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('user/tambah'); ?>" method="post" class="tambah">
+                    <form action="<?= base_url('user/tambah'); ?>" method="post" enctype="multipart/form-data" class="tambah">
                         <?php csrf_field() ?>
                         <div class="modal-body">
                             <div class="row">
@@ -37,7 +37,7 @@
                                     <label class="text-primary">Level</label>
                                     <select name="level" class="form-control level">
                                         <option value="">Pilih Level</option>
-                                        <option value="Admin">Admin</option>
+                                        <!-- <option value="Admin">Admin</option> -->
                                         <option value="Superadmin">Superadmin</option>
                                     </select>
                                     <div class="invalid-feedback errorLevel"></div>
@@ -56,6 +56,11 @@
                                     <br>
                                 </div>
                                 <hr>
+                                <div class="col-lg-12">
+                                    <label class="text-primary">Foto</label>
+                                    <input type="file" name="file" class="form-control gambar" accept="image/*" required>
+                                    <div class="invalid-feedback errorGambar"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -67,6 +72,7 @@
             </div>
         </div>
     </div>
+
     <div class="card-block">
         <div class="dt-responsive table-responsive">
             <table id="simpletable" class="table table-striped table-hover-animation nowrap">
@@ -81,18 +87,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no = 1; ?>
+                    <?php $no = 1 ?>
                     <?php foreach ($user as $item) : ?>
                         <tr>
-                            <!-- ISI VIEW -->
                             <td><?= $no++ ?></td>
+                            <!-- ISI VIEW -->
                             <td style="text-align: center;">
                                 <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['username'] ?>">
                                     <span class="feather icon-edit-1 text-default"></span>
                                 </button>
                                 <!-- edit modal-->
                                 <div class="modal fade" id="editmodal<?= $id = $item['username'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Ubah</h5>
@@ -101,7 +107,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="<?= base_url('user/edit'); ?>" method="post" class="edit">
+                                                <form action="<?= base_url('user/edit'); ?>" enctype="multipart/form-data" method="post" class="edit">
                                                     <?php csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">
@@ -121,7 +127,7 @@
                                                                 <label class="text-primary">Level</label>
                                                                 <select name="level" class="form-control level">
                                                                     <option value="<?= $item['level'] ?>"><?= $item['level'] ?></option>
-                                                                    <option value="Admin">Admin</option>
+                                                                    <!-- <option value="Admin">Admin</option> -->
                                                                     <option value="Superadmin">Superadmin</option>
                                                                 </select>
                                                                 <div class="invalid-feedback errorLevel"></div>
@@ -139,12 +145,17 @@
                                                                 <div class="invalid-feedback errorRepassword"></div>
                                                                 <br>
                                                             </div>
+                                                            <div class="col-lg-12">
+                                                                <label class="text-primary">Foto</label>
+                                                                <input type="file" name="file" class="form-control gambar" accept="image/*">
+                                                                <div class="invalid-feedback errorGambar"></div>
+                                                            </div>
                                                             <hr>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
-                                                            <button type="submit" class="btn btn-primary btnEdit">Simpan</button>
-                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
+                                                        <button type="submit" class="btn btn-primary btnSimpan">Simpan</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -170,7 +181,7 @@
                             <td><?= $item['username'] ?></td>
                             <td><?= $item['nama'] ?></td>
                             <td><?= $item['level'] ?></td>
-                            <td><span><img class="round" src="content/user/<?= $item['file'] ?>" height="80" width="80"></span></td>
+                            <td><span><img class="round" src="<?= base_url('writable/uploads/content/user/' . $item['file']); ?>" height="80" width="80"></span></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -178,5 +189,7 @@
         </div>
     </div>
 </div>
+
+
 <?= $this->include('backend/user/ajax') ?>
 <?= $this->include('backend/layouts/js_view') ?>

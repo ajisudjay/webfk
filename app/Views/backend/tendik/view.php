@@ -150,7 +150,7 @@
                             <td><?= $item['nama'] ?></td>
                             <td><?= $item['jabatan'] ?></td>
                             <td><?= $item['ruangan'] ?></td>
-                            <td style="text-align: center;"><img src="content/tendik/<?= $item['gambar'] ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/tendik/' . $item['gambar'] . ''); ?>" width="100%"></td>
 
                         </tr>
                     <?php endforeach ?>

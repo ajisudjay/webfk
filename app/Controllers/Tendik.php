@@ -74,7 +74,7 @@ class Tendik extends BaseController
             return redirect()->to(base_url('/tendik'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/tendik/', $newName);
+            $file->store('content/tendik/', $newName);
             $nama_foto = $newName;
             $data = [
                 'nip' => $nip,
@@ -125,9 +125,11 @@ class Tendik extends BaseController
                 $file = $request->getFile('file');
                 $cekfile = $this->TendikModel->where('id', $id)->first();
                 $namafile = $cekfile['gambar'];
-                unlink('content/tendik/' . $namafile);
+                $filesource = '../writable/uploads/content/tendik/' . $namafile . '';
+                chmod($filesource, 0777);
+                unlink($filesource);
                 $newName = $file->getRandomName();
-                $file->move('content/tendik/', $newName);
+                $file->store('content/tendik/', $newName);
                 $nama_foto = $newName;
                 $data = [
                     'nip' => $nip,
@@ -151,7 +153,9 @@ class Tendik extends BaseController
         }
         $cekfile = $this->TendikModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        unlink('content/tendik/' . $namafile);
+        $filesource = '../writable/uploads/content/tendik/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->TendikModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Tendik Berhasil Di Hapus !');

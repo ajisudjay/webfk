@@ -71,7 +71,7 @@ class Slideshow extends BaseController
             return redirect()->to(base_url('/slideshow'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/slideshow/', $newName);
+            $file->store('content/slideshow/', $newName);
             $nama_foto = $newName;
             $data = [
                 'nama' => $nama,
@@ -91,7 +91,9 @@ class Slideshow extends BaseController
         }
         $cekfile = $this->SlideshowModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        unlink('content/slideshow/' . $namafile);
+        $filesource = '../writable/uploads/content/slideshow/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->SlideshowModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Slideshow Berhasil Di Hapus !');

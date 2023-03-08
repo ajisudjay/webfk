@@ -109,7 +109,7 @@
                                                             </div>
                                                             <br>
                                                             <div class="col-lg-3">
-                                                                <img src="content/berita/<?= $item['banner'] ?>" alt="avatar" height="100" width="100">
+                                                                <img src="<?= base_url('writable/uploads/content/berita/' . $item['banner']); ?>" alt="avatar" height="100" width="100">
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <label class="text-primary">Banner</label>
@@ -151,7 +151,7 @@
                                 </a>
                             <td><?= $item['judul'] ?></td>
                             <td><?= $item['tanggal'] ?></td>
-                            <td style="text-align: center;"><img src="content/berita/<?= $item['banner'] ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/berita/' . $item['banner'] . ''); ?>" width="100%"></td>
                             <td><?= $item['dilihat'] ?></td>
                             <td><?= $item['timestamp'] . ' | ' . $item['penulis'] ?></td>
                         </tr>

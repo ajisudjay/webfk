@@ -71,7 +71,7 @@ class Galeri extends BaseController
             return redirect()->to(base_url('/galeri'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/galeri/', $newName);
+            $file->store('content/galeri/', $newName);
             $nama_foto = $newName;
             $data = [
                 'nama' => $nama,
@@ -91,7 +91,9 @@ class Galeri extends BaseController
         }
         $cekfile = $this->GaleriModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        unlink('content/galeri/' . $namafile);
+        $filesource = '../writable/uploads/content/galeri/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->GaleriModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Galeri Berhasil Di Hapus !');

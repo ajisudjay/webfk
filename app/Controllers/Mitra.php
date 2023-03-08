@@ -91,7 +91,9 @@ class Mitra extends BaseController
         }
         $cekfile = $this->MitraModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        unlink('content/mitra/' . $namafile);
+        $filesource = '../writable/uploads/content/mitra/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->MitraModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Mitra Berhasil Di Hapus !');

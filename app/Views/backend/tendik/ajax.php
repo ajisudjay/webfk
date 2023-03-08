@@ -81,7 +81,7 @@
         //  function edit
         $('.edit').submit(function() {
             var nama = $('#nama').val();
-            var nama = $('#nama').val();
+            var nip = $('#nip').val();
             var jabatan = $('#jabatan').val();
             var ruangan = $('#ruangan').val();
             var files = $('#file')[0].files;

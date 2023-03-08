@@ -73,7 +73,7 @@ class Pejabat extends BaseController
             return redirect()->to(base_url('/pejabat'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/pejabat/', $newName);
+            $file->store('content/pejabat/', $newName);
             $nama_foto = $newName;
             $data = [
                 'nama' => $nama,
@@ -120,9 +120,11 @@ class Pejabat extends BaseController
                 $file = $request->getFile('file');
                 $cekfile = $this->PejabatModel->where('id', $id)->first();
                 $namafile = $cekfile['gambar'];
-                unlink('content/pejabat/' . $namafile);
+                $filesource = '../writable/uploads/content/pejabat/' . $namafile . '';
+                chmod($filesource, 0777);
+                unlink($filesource);
                 $newName = $file->getRandomName();
-                $file->move('content/pejabat/', $newName);
+                $file->store('content/pejabat/', $newName);
                 $nama_foto = $newName;
                 $data = [
                     'nama' => $nama,
@@ -145,7 +147,9 @@ class Pejabat extends BaseController
         }
         $cekfile = $this->PejabatModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        unlink('content/pejabat/' . $namafile);
+        $filesource = '../writable/uploads/content/pejabat/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->PejabatModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Pejabat Berhasil Di Hapus !');

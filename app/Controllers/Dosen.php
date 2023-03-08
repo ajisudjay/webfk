@@ -81,7 +81,7 @@ class Dosen extends BaseController
             return redirect()->to(base_url('/dosen'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/dosen/', $newName);
+            $file->store('content/dosen/', $newName);
             $nama_foto = $newName;
             $data = [
                 'nip' => $nip,
@@ -141,9 +141,11 @@ class Dosen extends BaseController
                 $file = $request->getFile('file');
                 $cekfile = $this->DosenModel->where('id', $id)->first();
                 $namafile = $cekfile['gambar'];
-                unlink('content/dosen/' . $namafile);
+                $filesource = '../writable/uploads/content/dosen/' . $namafile . '';
+                chmod($filesource, 0777);
+                unlink($filesource);
                 $newName = $file->getRandomName();
-                $file->move('content/dosen/', $newName);
+                $file->store('content/dosen/', $newName);
                 $nama_foto = $newName;
                 $data = [
                     'nip' => $nip,
@@ -170,7 +172,9 @@ class Dosen extends BaseController
         }
         $cekfile = $this->DosenModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        unlink('content/dosen/' . $namafile);
+        $filesource = '../writable/uploads/content/dosen/' . $namafile . '';
+        chmod($filesource, 0777);
+        unlink($filesource);
         $this->DosenModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Dosen Berhasil Di Hapus !');
