@@ -71,7 +71,7 @@ class Mitra extends BaseController
             return redirect()->to(base_url('/mitra'));
         } else {
             $newName = $file->getRandomName();
-            $file->move('content/mitra/', $newName);
+            $file->store('content/mitra/', $newName);
             $nama_foto = $newName;
             $data = [
                 'nama' => $nama,

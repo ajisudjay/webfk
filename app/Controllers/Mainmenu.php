@@ -99,6 +99,7 @@ class Mainmenu extends BaseController
                 $data2 = [
                     'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                 ];
+
                 $msg = [
                     'sukses' => 'Main Menu Berhasil Ditambahkan !',
                     'status' => 'berhasil',

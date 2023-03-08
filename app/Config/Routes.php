@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 
 // WEBSITE //
 $routes->get('/', 'Pages::index');
+$routes->get('/writable/(:any)', 'Pages::showFile');
+
 $routes->get('/pages/(:any)', 'Pages::pages/$1');
 $routes->get('/prodi/(:any)', 'Pages::prodi/$1');
 $routes->get('/sdm/(:any)', 'Pages::sdm/$1');
