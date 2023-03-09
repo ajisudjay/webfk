@@ -82,11 +82,11 @@
                             <td><?= $no++ ?></td>
                             <td align="center"><?= $item['urutan'] ?></td>
                             <td style="text-align: center;">
-                                <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['id'] ?>">
+                                <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['submenu_id'] ?>">
                                     <span class="feather icon-edit-1 text-default"></span>
                                 </button>
                                 <!-- edit modal-->
-                                <div class="modal fade" id="editmodal<?= $id = $item['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="editmodal<?= $id = $item['submenu_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
