@@ -2,16 +2,13 @@
 <script>
     $(document).ready(function() {
         //  function tambah
-        $('.tambah').submit(function() {
-            var nama = $('#nama').val();
-            var files = $('#file')[0].files;
-            var fd = new FormData();
-
-            fd.append('file', files[0]);
-            fd.append('nama', nama);
+        $('.tambah').submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
             $.ajax({
                 type: "post",
-                data: fd,
+                url: $(this).attr('action'),
+                data: formData,
                 dataType: "json",
                 contentType: false,
                 processData: false,
@@ -32,17 +29,26 @@
                             $('.nama').removeClass('is-invalid');
                             $('.errorNama').html('');
                         }
+                        if (response.error.gambar) {
+                            $('.gambar').addClass('is-invalid');
+                            $('.errorGambar').html(response.error.gambar);
+                        } else {
+                            $('.gambar').removeClass('is-invalid');
+                            $('.errorGambar').html('');
+                        }
                     } else {
                         Swal.fire({
                             icon: 'success',
                             title: 'berhasil',
                             text: response.sukses,
                         });
-                        $('body').removeClass('modal-open');
-                        //modal-open class is added on body so it has to be removed
-                        $('.modal-backdrop').remove();
-                        //need to remove div with modal-backdrop class
-                        $("#result").html(response.data);
+                        // $('body').removeClass('modal-open');
+                        // $('.modal-backdrop').remove();
+                        // $(".close_btn").trigger("click");
+                        // $("#result").html(response.data);
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 1500);
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
@@ -70,11 +76,5 @@
             });
         });
 
-
-        window.setTimeout(function() {
-            $(".flashAjax").fadeTo(500, 0).slideUp(500, function() {
-                $(this).remove();
-            });
-        }, 5000);
     });
 </script>

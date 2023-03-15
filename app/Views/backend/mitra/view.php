@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="card-header">
-        <h4 class="mb-0">Mitra</h4>
+        <h4 class="mb-0">MITRA</h4>
         <!-- button tambah modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal">
             <span class="feather icon-plus text-light"></span>
@@ -12,28 +12,29 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close close_btn" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('mitra/tambah'); ?>" method="post" enctype="multipart/form-data" class="tambah">
-                        <?php csrf_field() ?>
+                    <form action="<?= base_url('mitra/tambah'); ?>" method="post" class="tambah">
+                        <?= csrf_field() ?>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label class="text-primary">Nama</label>
-                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama" required>
+                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama">
                                     <div class="invalid-feedback errorNama"></div>
                                     <br>
                                 </div>
                                 <br>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <label class="text-primary">Gambar</label>
-                                    <input type="file" name="file" class="form-control gambar" accept="image/*" required>
+                                    <input type="file" name="gambar" class="form-control gambar" accept="image/*">
                                     <div class="invalid-feedback errorGambar"></div>
                                     <br>
                                 </div>
+                                <hr>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -45,8 +46,8 @@
             </div>
         </div>
     </div>
-
     <div class="card-block">
+
         <div class="dt-responsive table-responsive">
             <table id="simpletable" class="table table-striped table-hover-animation nowrap">
                 <thead>
@@ -78,7 +79,5 @@
         </div>
     </div>
 </div>
-
-
 <?= $this->include('backend/mitra/ajax') ?>
 <?= $this->include('backend/layouts/js_view') ?>

@@ -21,7 +21,7 @@ $routes->setAutoRoute(true);
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -51,7 +51,7 @@ $routes->get('/menu', 'Pages::menu');
 // BACKEND
 $routes->get('/login', 'Pages::login');
 $routes->get('/beranda', 'Pages::beranda');
-$routes->get('/mainmenu', 'Mainmenu::index');
+// $routes->get('/mainmenu', 'Mainmenu::index');
 $routes->get('/submenu', 'Submenu::index');
 $routes->get('/user', 'User::index');
 $routes->get('/profil', 'Profil::index');
