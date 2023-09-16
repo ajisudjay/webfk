@@ -503,12 +503,14 @@ $(document).ready(function() {
     // Styling js end
 
 
-    $('#simpletable').DataTable();
-
+    $('#simpletable').DataTable({
+        "displayLength": 100,
+    });
+    
     $('#order-table').DataTable({
         "order": [
             [3, "desc"]
-        ]
+        ],
     });
 
     $('#multi-colum-dt').DataTable({

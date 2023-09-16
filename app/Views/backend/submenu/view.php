@@ -80,7 +80,7 @@
                         <tr>
                             <!-- ISI VIEW -->
                             <td><?= $no++ ?></td>
-                            <td align="center"><?= $item['urutan'] ?></td>
+                            <td align="center"><?= $item['urutan_submenu'] ?></td>
                             <td style="text-align: center;">
                                 <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['submenu_id'] ?>">
                                     <span class="feather icon-edit-1 text-default"></span>

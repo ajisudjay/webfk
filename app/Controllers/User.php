@@ -84,7 +84,7 @@ class User extends BaseController
                 $data = [
                     'username' => $username,
                     'nama' => $nama,
-                    'password' => base64_encode("$password"),
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
                     'level' => $level,
                     'file' => $nama_foto,
                 ];
@@ -120,7 +120,7 @@ class User extends BaseController
                 $data = [
                     'username' => $username,
                     'nama' => $nama,
-                    'password' => base64_encode("$password"),
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
                     'level' => $level,
                 ];
                 $this->UsersModel->update($username, $data);
@@ -147,7 +147,7 @@ class User extends BaseController
                     $data = [
                         'username' => $username,
                         'nama' => $nama,
-                        'password' => base64_encode("$password"),
+                        'password' => password_hash($password, PASSWORD_DEFAULT),
                         'level' => $level,
                         'file' => $nama_foto,
                     ];

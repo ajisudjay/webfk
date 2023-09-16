@@ -60,7 +60,8 @@ class Auth extends BaseController
                     ];
                     echo json_encode($msg);
                 } else {
-                    if ($user['username'] === $username && $user['password'] === base64_encode("$password")) {
+                    $hash_pass = $user['password'];
+                    if ($user['username'] === $username && password_verify($password, $hash_pass)) {
                         session()->set('username', $user['username']);
                         session()->set('password', $user['password']);
                         session()->set('nama', $user['nama']);

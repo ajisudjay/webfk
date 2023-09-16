@@ -245,23 +245,23 @@
                 </li>
                 <li class="navigation-header"><span>Data</span>
                 </li>
-                <li class="<?= $menu4 ?>"><a href="<?= base_url('berita'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Berita</span></a>
+                <li class="<?= $menu4 ?>"><a href="<?= base_url('berita'); ?>"><i class="feather icon-file-text"></i><span class="menu-item" data-i18n="Analytics">Berita</span></a>
                 </li>
-                <li class="<?= $menu5 ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
+                <li class="<?= $menu5 ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-image"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
                 </li>
-                <li class="<?= $menu6 ?>"><a href="<?= base_url('laboratorium'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Laboratorium</span></a>
+                <li class="<?= $menu6 ?>"><a href="<?= base_url('laboratorium'); ?>"><i class="feather icon-octagon"></i><span class="menu-item" data-i18n="Analytics">Laboratorium</span></a>
                 </li>
-                <li class=""><a href="#"><i class="feather icon-menu"></i><span class="menu-title" data-i18n="Dashboard">SDM</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
+                <!-- <li class=""><a href="#"><i class="feather icon-menu"></i><span class="menu-title" data-i18n="Dashboard">SDM</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
                     <ul class="menu-content">
                         <li class="<?= $menu7 ?>"><a href="<?= base_url('dosen'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Dosen</span></a>
                         </li>
                         <li class="<?= $menu8 ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Tendik</span></a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="navigation-header"><span>Konfigurasi</span>
                 </li>
-                <li class=""><a href="#"><i class="feather icon-menu"></i><span class="menu-title" data-i18n="Dashboard">Konfigurasi</span><span class="badge badge badge-warning badge-pill float-right mr-2">4</span></a>
+                <li class=""><a href="#"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Dashboard">Konfigurasi</span><span class="badge badge badge-warning badge-pill float-right mr-2">4</span></a>
                     <ul class="menu-content">
                         <li class="<?= $menu9 ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Atur Beranda</span></a>
                         </li>
