@@ -1,7 +1,7 @@
 <!-- Berita dan Artikel -->
 <div class="our_department_area">
     <div class="container">
-        <div class="row" style="margin-top: -40px;">
+        <div class="row">
             <div class="col-xl-12">
                 <div class="section_title text-center mb-55">
                     <h3>Berita Terbaru</h3>

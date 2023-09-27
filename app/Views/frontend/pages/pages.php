@@ -7,12 +7,11 @@
     <!-- bradcam_area_start  -->
     <div class="bradcam_area bradcam_overlay">
         <div class="container">
-            <div class="row" style="margin-top: -50px;">
-                <div class="col-xl-12">
+            <div class="row">
+                <div class=" col-xl-12">
                     <div class="bradcam_text">
                         <?php foreach ($content as $item) : ?>
                             <h3><?= $item['submenu'] ?></h3>
-                            <p><a href="<?= base_url('/'); ?>">FK UNMUL /</a> <?= $item['submenu'] ?></p>
                         <?php endforeach ?>
                     </div>
                 </div>
@@ -26,6 +25,9 @@
         <section class="sample-text-area">
             <div class="container box_1170">
                 <?php foreach ($content as $item) : ?>
+                    <div align="right">
+                        <p class="text-secondary"><a href="<?= base_url('/'); ?>">FK UNMUL /</a> <?= $item['submenu'] ?></p>
+                    </div>
                     <?= $item['content'] ?>
                 <?php endforeach ?>
             </div>
