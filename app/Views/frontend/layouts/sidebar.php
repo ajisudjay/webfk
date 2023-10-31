@@ -1,21 +1,25 @@
-<div class="col-lg-4">
+<div class="col-lg-3">
     <div class="blog_right_sidebar">
 
-        <!-- Menu Pencarian -->
-        <aside class="single_sidebar_widget search_widget">
-            <form action="#">
-                <div class="form-group">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder='Kata Kunci' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kata Kunci'">
-                        <div class="input-group-append">
-                            <button class="btn" type="button"><i class="ti-search"></i></button>
+        <!-- Kategori -->
+        <aside class="single_sidebar_widget post_category_widget">
+            <h4 class="widget_title">Populer</h4>
+            <ul class="list cat-list">
+                <?php foreach ($populer as $item) : ?>
+                    <li>
+                        <div align="center">
+                            <img src="<?= base_url('/writable/uploads/content/berita/' . $item['banner'] . ''); ?>" width="150px"> &nbsp;&nbsp;&nbsp;
+                            <p> <i class="fa fa-eye"></i> : <?= $item['dilihat'] ?>
+                            </p>
                         </div>
-                    </div>
-                </div>
-                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Cari</button>
-            </form>
+                        <a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" class="d-flex">
+                            <p style="font-size: small;"><?= $item['judul'] ?></p>
+                            &nbsp;&nbsp;&nbsp;
+                        </a>
+                    </li>
+                <?php endforeach ?>
+            </ul>
         </aside>
-        <!-- Akhir Menu Pencarian -->
 
         <!-- Kategori -->
         <aside class="single_sidebar_widget post_category_widget">
@@ -23,34 +27,30 @@
             <ul class="list cat-list">
                 <li>
                     <a href="#" class="d-flex">
-                        <p>Akademik</p>
+                        <p>Berita</p>
                         <p>(37)</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="d-flex">
-                        <p>Pengabdian Masyarakat</p>
+                        <p>Pengumuman</p>
                         <p>(10)</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="d-flex">
-                        <p>Penelitian</p>
+                        <p>Kegiatan</p>
                         <p>(03)</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="d-flex">
-                        <p>Pendidikan</p>
-                        <p>(11)</p>
                     </a>
                 </li>
             </ul>
         </aside>
+
+
         <!-- Akhir Kategori -->
 
         <!-- Tag -->
-        <aside class="single_sidebar_widget tag_cloud_widget">
+        <!-- <aside class="single_sidebar_widget tag_cloud_widget">
             <h4 class="widget_title">Tag Informasi</h4>
             <ul class="list">
                 <li>
@@ -69,7 +69,7 @@
                     <a href="#">prodiprofesigigi</a>
                 </li>
             </ul>
-        </aside>
+        </aside> -->
         <!-- Akhir Tag -->
     </div>
 </div>

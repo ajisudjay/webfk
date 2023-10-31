@@ -133,18 +133,6 @@
                                                                 <div class="invalid-feedback errorLevel"></div>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-6">
-                                                                <label class="text-primary">Password</label>
-                                                                <input type="password" name="password" class="form-control password" value="<?= $item['password'] ?>">
-                                                                <div class="invalid-feedback errorPassword"></div>
-                                                                <br>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <label class="text-primary">Ulangi Password</label>
-                                                                <input type="password" name="repassword" class="form-control repassword" value="<?= $item['password'] ?>">
-                                                                <div class="invalid-feedback errorRepassword"></div>
-                                                                <br>
-                                                            </div>
                                                             <div class="col-lg-12">
                                                                 <label class="text-primary">Foto</label>
                                                                 <input type="file" name="file" class="form-control gambar" accept="image/*">
@@ -156,6 +144,51 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
                                                         <button type="submit" class="btn btn-primary btnSimpan">Simpan</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- editpassword -->
+                                <button type="button" class="btn-sm btn-warning border-0" data-toggle="modal" data-target="#editpassmodal<?= $id = $item['username'] ?>">
+                                    <span class="fa fa-key text-default"></span>
+                                </button>
+                                <!-- editpassword modal-->
+                                <div class="modal fade" id="editpassmodal<?= $id = $item['username'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Ubah Password</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="<?= base_url('user/editpass'); ?>" enctype="multipart/form-data" method="post" class="editpass">
+                                                    <?php csrf_field() ?>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label class="text-primary">Password</label>
+                                                                <input type="username" name="username" value="<?= $item['username'] ?>" hidden>
+                                                                <input type="password" name="password" class="form-control password">
+                                                                <div class="invalid-feedback errorPassword"></div>
+                                                                <br>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <label class="text-primary">Ulangi Password</label>
+                                                                <input type="password" name="repassword" class="form-control repassword">
+                                                                <div class="invalid-feedback errorRepassword"></div>
+                                                                <br>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
+                                                        <button type="submit" class="btn btn-primary btnSimpanpass">Simpan</button>
                                                     </div>
                                                 </form>
                                             </div>

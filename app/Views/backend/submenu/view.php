@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                                 <!-- button hapus modal-->
-                                <a href="<?= base_url('submenu/hapus/' . $item['id']); ?>" class="hapus">
+                                <a href="<?= base_url('submenu/hapus/' . $item['submenu_id']); ?>" class="hapus">
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             <td><?= $item['mainmenu'] ?></td>

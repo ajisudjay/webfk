@@ -8,6 +8,8 @@ use App\Models\SubmenuModel;
 use App\Models\MitraModel;
 use App\Models\SlideshowModel;
 use App\Models\PejabatModel;
+use App\Models\BeritaModel;
+use App\Models\UsersModel;
 
 class Pages extends BaseController
 {
@@ -17,6 +19,8 @@ class Pages extends BaseController
     protected $SlideshowModel;
     protected $PejabatModel;
     protected $KonfigurasiModel;
+    protected $BeritaModel;
+    protected $UsersModel;
     public function __construct()
     {
         $this->MainmenuModel = new MainmenuModel();
@@ -25,6 +29,8 @@ class Pages extends BaseController
         $this->SlideshowModel = new SlideshowModel();
         $this->PejabatModel = new PejabatModel();
         $this->KonfigurasiModel = new KonfigurasiModel();
+        $this->BeritaModel = new BeritaModel();
+        $this->UsersModel = new UsersModel();
     }
     // BEGIN FRONTEND
 
@@ -195,6 +201,7 @@ class Pages extends BaseController
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
+            'berita' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(6),
             'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/beranda', $data);
@@ -309,6 +316,8 @@ class Pages extends BaseController
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'berita' => $this->BeritaModel->where('slug', $slug)->first(),
+            'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
@@ -422,6 +431,7 @@ class Pages extends BaseController
         }
         $admin = session()->get('nama');
         $lvl = session()->get('level');
+        $usernamex = session()->get('username');
         $file = session()->get('file');
         if ($file <  1) {
             $gambar = 'app-assets/images/profile/user-profile.png';
@@ -431,8 +441,10 @@ class Pages extends BaseController
         $data = [
             'title' => 'Beranda',
             'lvl' => $lvl,
+            'akun' => $this->UsersModel->where('username', $usernamex)->first(),
             'admin' => $admin,
             'foto' => $gambar,
+
         ];
         return view('backend/pages/beranda', $data);
     }

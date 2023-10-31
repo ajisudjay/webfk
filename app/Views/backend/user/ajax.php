@@ -83,7 +83,6 @@
             var nama = $('#nama').val();
             var username = $('#username').val();
             var level = $('#level').val();
-            var password = $('#password').val();
             var files = $('#file')[0].files;
             var fd = new FormData();
 
@@ -91,7 +90,6 @@
             fd.append('nama', nama);
             fd.append('username', username);
             fd.append('level', level);
-            fd.append('password', password);
             $.ajax({
                 type: "post",
                 data: fd,
@@ -129,6 +127,47 @@
                             $('.file').removeClass('is-invalid');
                             $('.errorFile').html('');
                         }
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'berhasil',
+                            text: response.sukses,
+                        });
+                        $('body').removeClass('modal-open');
+                        //modal-open class is added on body so it has to be removed
+                        $('.modal-backdrop').remove();
+                        //need to remove div with modal-backdrop class
+                        $("#result").html(response.data);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            })
+        });
+
+        //  function editpass
+        $('.editpass').submit(function() {
+            var password = $('#password').val();
+            var fd = new FormData();
+
+            fd.append('password', password);
+            $.ajax({
+                type: "post",
+                data: fd,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('.btnSimpanpass').attr('disable', 'disabled');
+                    $('.btnSimpanpass').html('<i class="fa fa-spin fa-spinner"></i>');
+                },
+                complete: function() {
+                    $('.btnSimpanpass').removeAttr('disable', 'disabled');
+                    $('.btnSimpanpass').html('Simpan');
+                },
+                success: function(response) {
+                    if (response.error) {
                         if (response.error.password) {
                             $('.password').addClass('is-invalid');
                             $('.errorPassword').html(response.error.password);

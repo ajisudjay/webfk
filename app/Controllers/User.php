@@ -108,55 +108,70 @@ class User extends BaseController
         $request = \Config\Services::request();
         $username = $request->getVar('username');
         $nama = $request->getVar('nama');
-        $password = $request->getVar('password');
-        $repassword = $request->getVar('repassword');
         $level = $request->getVar('level');
         $file = $request->getFile('file');
+        if (!file_exists($_FILES['file']['tmp_name'])) {
+            $data = [
+                'username' => $username,
+                'nama' => $nama,
+                'level' => $level,
+            ];
+            $this->UsersModel->update($username, $data);
+
+            session()->setFlashdata('pesanInput', 'Berhasil Mengubah Data User');
+            return redirect()->to(base_url('/user'));
+        } else {
+            $input = $this->validate([
+                'file' => 'uploaded[file]|max_size[file,2048],'
+            ]);
+            if (!$input) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 2MB');
+                return redirect()->to(base_url('/user'));
+            } else {
+                $file = $request->getFile('file');
+                $cekfile = $this->UsersModel->where('username', $username)->first();
+                $namafile = $cekfile['file'];
+                $filesource = '../writable/uploads/content/user/' . $namafile . '';
+                chmod($filesource, 0777);
+                unlink($filesource);
+                $newName = $file->getRandomName();
+                $file->store('content/user/', $newName);
+                $nama_foto = $newName;
+                $data = [
+                    'username' => $username,
+                    'nama' => $nama,
+                    'level' => $level,
+                    'file' => $nama_foto,
+                ];
+                $this->UsersModel->update($username, $data);
+
+                session()->setFlashdata('pesanInput', 'Berhasil Mengubah Data Akun');
+                return redirect()->to(base_url('/user'));
+            }
+        }
+    }
+
+    public function editpass()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $request = \Config\Services::request();
+        $username = $request->getVar('username');
+        $password = $request->getVar('password');
+        $repassword = $request->getVar('repassword');
         $input2 = $this->validate([
             'repassword' => 'matches[password],'
         ]);
         if ($input2) { // Not valid
-            if (!file_exists($_FILES['file']['tmp_name'])) {
-                $data = [
-                    'username' => $username,
-                    'nama' => $nama,
-                    'password' => password_hash($password, PASSWORD_DEFAULT),
-                    'level' => $level,
-                ];
-                $this->UsersModel->update($username, $data);
+            $data = [
+                'username' => $username,
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+            ];
+            $this->UsersModel->update($username, $data);
 
-                session()->setFlashdata('pesanInput', 'Berhasil Mengubah Data User');
-                return redirect()->to(base_url('/user'));
-            } else {
-                $input = $this->validate([
-                    'file' => 'uploaded[file]|max_size[file,2048],'
-                ]);
-                if (!$input) { // Not valid
-                    session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 2MB');
-                    return redirect()->to(base_url('/user'));
-                } else {
-                    $file = $request->getFile('file');
-                    $cekfile = $this->UsersModel->where('username', $username)->first();
-                    $namafile = $cekfile['file'];
-                    $filesource = '../writable/uploads/content/user/' . $namafile . '';
-                    chmod($filesource, 0777);
-                    unlink($filesource);
-                    $newName = $file->getRandomName();
-                    $file->store('content/user/', $newName);
-                    $nama_foto = $newName;
-                    $data = [
-                        'username' => $username,
-                        'nama' => $nama,
-                        'password' => password_hash($password, PASSWORD_DEFAULT),
-                        'level' => $level,
-                        'file' => $nama_foto,
-                    ];
-                    $this->UsersModel->update($username, $data);
-
-                    session()->setFlashdata('pesanInput', 'Berhasil Mengubah Data Akun');
-                    return redirect()->to(base_url('/user'));
-                }
-            }
+            session()->setFlashdata('pesanInput', 'Berhasil Ubah Password');
+            return redirect()->to(base_url('/user'));
         } else {
             session()->setFlashdata('pesanGagal2', 'Konfirmasi password tidak sesuai');
             return redirect()->to(base_url('/user'));
