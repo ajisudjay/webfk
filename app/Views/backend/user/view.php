@@ -127,7 +127,7 @@
                                                                 <label class="text-primary">Level</label>
                                                                 <select name="level" class="form-control level">
                                                                     <option value="<?= $item['level'] ?>"><?= $item['level'] ?></option>
-                                                                    <!-- <option value="Admin">Admin</option> -->
+                                                                    <option value="Admin">Admin</option>
                                                                     <option value="Superadmin">Superadmin</option>
                                                                 </select>
                                                                 <div class="invalid-feedback errorLevel"></div>
@@ -166,7 +166,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="<?= base_url('user/editpass'); ?>" enctype="multipart/form-data" method="post" class="editpass">
+                                                <form action="<?= base_url('user/editpass'); ?>" method="post" class="editpass">
                                                     <?php csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">

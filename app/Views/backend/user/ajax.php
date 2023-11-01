@@ -147,17 +147,13 @@
         });
 
         //  function editpass
-        $('.editpass').submit(function() {
-            var password = $('#password').val();
-            var fd = new FormData();
-
-            fd.append('password', password);
+        $('.editpass').submit(function(e) {
+            e.preventDefault();
             $.ajax({
                 type: "post",
-                data: fd,
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
                 dataType: "json",
-                contentType: false,
-                processData: false,
                 beforeSend: function() {
                     $('.btnSimpanpass').attr('disable', 'disabled');
                     $('.btnSimpanpass').html('<i class="fa fa-spin fa-spinner"></i>');
@@ -170,15 +166,22 @@
                     if (response.error) {
                         if (response.error.password) {
                             $('.password').addClass('is-invalid');
-                            $('.errorPassword').html(response.error.password);
+                            $('.errorpassword').html(response.error.password);
                         } else {
                             $('.password').removeClass('is-invalid');
-                            $('.errorPassword').html('');
+                            $('.errorpassword').html('');
+                        }
+                        if (response.error.repassword) {
+                            $('.repassword').addClass('is-invalid');
+                            $('.errorrepassword').html(response.error.repassword);
+                        } else {
+                            $('.repassword').removeClass('is-invalid');
+                            $('.errorrepassword').html('');
                         }
                     } else {
                         Swal.fire({
                             icon: 'success',
-                            title: 'berhasil',
+                            title: 'Berhasil',
                             text: response.sukses,
                         });
                         $('body').removeClass('modal-open');

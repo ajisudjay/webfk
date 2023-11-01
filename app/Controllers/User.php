@@ -157,24 +157,53 @@ class User extends BaseController
             return redirect()->to(base_url('/login'));
         }
         $request = \Config\Services::request();
-        $username = $request->getVar('username');
-        $password = $request->getVar('password');
-        $repassword = $request->getVar('repassword');
-        $input2 = $this->validate([
-            'repassword' => 'matches[password],'
-        ]);
-        if ($input2) { // Not valid
-            $data = [
-                'username' => $username,
-                'password' => password_hash($password, PASSWORD_DEFAULT),
-            ];
-            $this->UsersModel->update($username, $data);
+        if ($request->isAJAX()) {
+            $username = $request->getVar('username');
+            $password = $request->getVar('password');
+            $repassword = $request->getVar('repassword');
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'password' => [
+                    'label' => 'Password',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'repassword' => [
+                    'label' => 'Ulangi Password',
+                    'rules' => 'required|matches[password]',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'password' => $validation->getError('password'),
+                        'repassword' => $validation->getError('repassword'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $data = [
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
+                ];
+                $this->UsersModel->update($username, $data);
 
-            session()->setFlashdata('pesanInput', 'Berhasil Ubah Password');
-            return redirect()->to(base_url('/user'));
+                $data2 = [
+                    'user' => $this->UsersModel->orderBy('username', 'ASC')->get()->getResultArray(),
+                ];
+                $msg = [
+                    'sukses' => 'Password Berhasil Diubah !',
+                    'status' => 'berhasil',
+                    'data' => view('backend/user/view', $data2)
+                ];
+                echo json_encode($msg);
+            }
         } else {
-            session()->setFlashdata('pesanGagal2', 'Konfirmasi password tidak sesuai');
-            return redirect()->to(base_url('/user'));
+            exit('Data Tidak Dapat diproses');
         }
     }
 
