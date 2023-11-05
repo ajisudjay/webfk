@@ -2,15 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Models\MitraModel;
+use App\Models\AplikasiModel;
 use App\Controllers\BaseController;
 
-class Mitra extends BaseController
+class Aplikasi extends BaseController
 {
-    protected $MitraModel;
+    protected $AplikasiModel;
     public function __construct()
     {
-        $this->MitraModel = new MitraModel();
+        $this->AplikasiModel = new AplikasiModel();
     }
     public function index()
     {
@@ -24,12 +24,12 @@ class Mitra extends BaseController
                 $gambar = 'content/user/' . $file;
             }
             $data = [
-                'title' => 'Mitra',
+                'title' => 'Aplikasi',
                 'admin' => $admin,
                 'lvl' => $lvl,
                 'foto' => $gambar,
             ];
-            return view('backend/mitra/index', $data);
+            return view('backend/aplikasi/index', $data);
         } else {
             return redirect()->to(base_url('/login'));
         }
@@ -41,11 +41,12 @@ class Mitra extends BaseController
             $username = session()->get('username');
             if ($request->isAJAX()) {
                 $data = [
-                    'mitra' => $this->MitraModel->orderBy('id', 'ASC')->get()->getResultArray(),
+                    'title' => 'Aplikasi',
+                    'aplikasi' => $this->AplikasiModel->orderBy('id', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
                 ];
                 $msg = [
-                    'data' => view('backend/mitra/view', $data)
+                    'data' => view('backend/aplikasi/view', $data)
                 ];
                 echo json_encode($msg);
             } else {
@@ -62,13 +63,29 @@ class Mitra extends BaseController
         }
         $request = \Config\Services::request();
         $validation = \Config\Services::validation();
+        $urutan = $request->getVar('urutan');
         $nama = $request->getVar('nama');
+        $link = $request->getVar('link');
         $gambar = $request->getfile('gambar');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
                 'nama' => [
                     'label' => 'Nama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'link' => [
+                    'label' => 'Link',
                     'rules' => 'required',
                     'errors' => [
                         'required' => '* {field} Tidak Boleh Kosong',
@@ -85,19 +102,23 @@ class Mitra extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
+                        'urutan' => $validation->getError('urutan'),
                         'nama' => $validation->getError('nama'),
+                        'link' => $validation->getError('link'),
                         'gambar' => $validation->getError('gambar'),
                     ],
                 ];
                 return $this->response->setJSON($msg);
             } else {
                 $namagambar = $gambar->getRandomName();
-                $gambar->store('content/mitra/', $namagambar);
+                $gambar->store('content/aplikasi/', $namagambar);
                 $data1 = [
+                    'urutan' => $urutan,
                     'nama' => $nama,
+                    'link' => $link,
                     'gambar' => $namagambar,
                 ];
-                $this->MitraModel->insert($data1);
+                $this->AplikasiModel->insert($data1);
 
                 $msg = [
                     'title' => 'Berhasil'
@@ -116,14 +137,14 @@ class Mitra extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
-        $cekfile = $this->MitraModel->where('id', $id)->first();
+        $cekfile = $this->AplikasiModel->where('id', $id)->first();
         $namafile = $cekfile['gambar'];
-        $filesource = '../writable/uploads/content/mitra/' . $namafile . '';
+        $filesource = '../writable/uploads/content/aplikasi/' . $namafile . '';
         chmod($filesource, 0777);
         unlink($filesource);
-        $this->MitraModel->delete($id);
+        $this->AplikasiModel->delete($id);
 
         session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
-        return redirect()->to(base_url('/mitra'));
+        return redirect()->to(base_url('/aplikasi'));
     }
 }

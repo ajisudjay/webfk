@@ -18,17 +18,17 @@
                              <?php foreach ($konf as $item) : ?>
                                  <ul>
                                      <li>
-                                         <a href="<?= $item['fb'] ?>">
+                                         <a href="http://facebook.com/<?= $item['fb'] ?>">
                                              <i class="ti-facebook"></i>
                                          </a>
                                      </li>
                                      <li>
-                                         <a href="<?= $item['yt'] ?>">
+                                         <a href="http://youtube.com/<?= $item['yt'] ?>">
                                              <i class="fa fa-youtube-play"></i>
                                          </a>
                                      </li>
                                      <li>
-                                         <a href="<?= $item['ig'] ?>">
+                                         <a href="http://instagram.com/<?= $item['ig'] ?>">
                                              <i class="fa fa-instagram"></i>
                                          </a>
                                      </li>

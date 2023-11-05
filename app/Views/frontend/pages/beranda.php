@@ -88,23 +88,10 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="welcome_docmed_info">
-                        <div class="slide-in-text">
+                        <div class="box-berita">
                             <h3>Visi</h3>
                             <br>
                             <p style="margin-top: -25px;"><?= $konfigurasi['visi'] ?></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Visi MisiArea -->
-
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="welcome_docmed_info">
-                        <div class="box-berita">
                             <h3>Misi</h3>
                             <br>
                             <p style="margin-top: -25px;"><?= $konfigurasi['misi'] ?></p>
@@ -154,7 +141,7 @@
                                         }
 
                                         ?>
-                                        <h3><a href="<?= base_url('informasi-detail/' . $item['slug']); ?>"><?= $judul ?></a></h3>
+                                        <h3><a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank"><?= $judul ?></a></h3>
                                         <div class="row">
                                             <div class="col-lg-5">
                                                 <p style="font-size: 12px;">
@@ -257,94 +244,21 @@
                 <div class="col-xl-12">
                     <div class="cards">
                         <div class="expert_active owl-carousel">
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/1.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Dekan</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Wakil Dekan I</span>
+
+                            <?php foreach ($pejabat as $itempejabat) : ?>
+                                <div class="single_expert">
+                                    <div class="box-berita">
+                                        <div class="expert_thumb">
+                                            <img src="<?= base_url('writable/uploads/content/pejabat/' . $itempejabat['gambar']); ?>">
+                                        </div>
+                                        <div class="experts_name text-center">
+                                            <h3><?= $itempejabat['nama'] ?></h3>
+                                            <span><?= $itempejabat['jabatan'] ?></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/3.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Wakil Dekan II</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/4.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi S-1 Kedokteran</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/1.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi Profesi Kedokteran</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi Profesi Gigi</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi S-1 Kedokteran Gigi</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_expert">
-                                <div class="box-berita">
-                                    <div class="expert_thumb">
-                                        <img src="img/experts/2.png" alt="">
-                                    </div>
-                                    <div class="experts_name text-center">
-                                        <h3>Mirazul Alom</h3>
-                                        <span>Kaprodi D-3 Keperawatan</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach ?>
+
                         </div>
                     </div>
                 </div>

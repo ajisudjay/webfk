@@ -5,13 +5,13 @@
                  <div class="row">
                      <div class="col-xl-6 col-md-6 ">
                          <div class="social_media_links">
-                             <a href="#">
+                             <a href="http://instagram.com/<?= $konfigurasi['ig'] ?>" target="_blank">
                                  <i class="fa fa-instagram"></i>
                              </a>
-                             <a href="#">
+                             <a href="http://facebook.com/<?= $konfigurasi['fb'] ?>" target="_blank">
                                  <i class="fa fa-facebook"></i>
                              </a>
-                             <a href="#">
+                             <a href="http://youtube.com/<?= $konfigurasi['yt'] ?>" target="_blank">
                                  <i class="fa fa-youtube-play"></i>
                              </a>
                          </div>
@@ -19,8 +19,8 @@
                      <div class="col-xl-6 col-md-6">
                          <div class="short_contact_list">
                              <ul>
-                                 <li><a href="#"> <i class="fa fa-envelope"></i> office@fk.unmul.ac.id | ppd@unmul.ac.id</a></li>
-                                 <li><a href="#"> <i class="fa fa-phone"></i>(0541) 748581</a></li>
+                                 <li><a href="#"> <i class="fa fa-envelope"></i><?= $konfigurasi['email'] ?></a></li>
+                                 <li><a href="#"> <i class="fa fa-phone"></i><?= $konfigurasi['telepon'] ?></a></li>
                              </ul>
                          </div>
                      </div>
@@ -33,7 +33,7 @@
                      <div class="col-xl-1 col-lg-1">
                          <div class="logo">
                              <a href="/">
-                                 <img src="<?= base_url('/img/unmul.png'); ?>" alt="" width="70">
+                                 <img src="<?= base_url('/img/unmul.png'); ?>" width="70">
                              </a>
                          </div>
                      </div>
