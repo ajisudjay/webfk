@@ -21,6 +21,7 @@
         <div class="service_area">
             <div class="container p-0">
                 <div class="row no-gutters" style="text-align:center">
+
                     <?php foreach ($aplikasi as $item) : ?>
                         <div class="col-xl-<?= $jarak ?>">
                             <div class="single_service">
