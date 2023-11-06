@@ -32,7 +32,7 @@
                  <div class="row align-items-center">
                      <div class="col-xl-1 col-lg-1">
                          <div class="logo">
-                             <a href="/">
+                             <a href="https://unmul.ac.id/">
                                  <img src="<?= base_url('/img/unmul.png'); ?>" width="70">
                              </a>
                          </div>

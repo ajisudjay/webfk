@@ -2,10 +2,10 @@
      <div class="footer_top">
          <div class="container">
              <div class="row">
-                 <div class="col-xl-4 col-md-6 col-lg-4">
+                 <div class="col-lg-3">
                      <div class="footer_widget">
                          <div class="footer_logo">
-                             <a href="#">
+                             <a href="https://unmul.ac.id/" target="_blank">
                                  <img src="<?= base_url(''); ?>/img/unmul.png" alt="" width="100">
                              </a>
                          </div>
@@ -38,20 +38,31 @@
 
                      </div>
                  </div>
-                 <div class="col-xl-3 offset-xl-1 col-md-6 col-lg-3">
+                 <div class="col-lg-3">
                      <div class="footer_widget">
                          <h3 class="footer_title">
-                             Program Studi
+                             Link Partner
                          </h3>
                          <ul>
-                             <?php foreach ($prodi as $pd) : ?>
-                                 <li><a href="<?= base_url('pages/' . $pd['slug']); ?>"><?= $pd['submenu'] ?></a></li>
+                             <?php foreach ($link_partner as $link_p) : ?>
+                                 <li><a href="<?= $link_p['link'] ?>" target="_blank"><?= $link_p['judul'] ?></a></li>
                              <?php endforeach ?>
                          </ul>
-
                      </div>
                  </div>
-                 <div class="col-xl-3 col-md-6 col-lg-3">
+                 <div class="col-lg-3">
+                     <div class="footer_widget">
+                         <h3 class="footer_title">
+                             e-Journal & e-Library
+                         </h3>
+                         <ul>
+                             <?php foreach ($link_lib as $link_l) : ?>
+                                 <li><a href="<?= $link_l['link'] ?>" target="_blank"><?= $link_l['judul'] ?></a></li>
+                             <?php endforeach ?>
+                         </ul>
+                     </div>
+                 </div>
+                 <div class="col-lg-3">
                      <div class="footer_widget">
                          <h3 class="footer_title">
                              Alamat
@@ -78,10 +89,7 @@
              <div class="row">
                  <div class="col-xl-12">
                      <p class="copy_right text-center">
-                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                         Copyright &copy; - 2023 Fakultas Kedokteran | Universitas Mulawarman
-                         <!-- <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
-                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                         Copyright &copy; - 2023 Fakultas Kedokteran | <a href="https://unmul.ac.id/" target="_blank">Universitas Mulawarman</a>
                      </p>
                  </div>
              </div>

@@ -5,13 +5,12 @@
     <!-- Isi Konten Website -->
 
     <!-- bradcam_area_start  -->
-    <div class="bradcam_area bradcam_overlay" style="height: 200px;">
+    <div class="bradcam_area bradcam_overlay">
         <div class="container">
-            <div class="row" style="margin-top: -50px;">
+            <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
                         <h3><?= $slug ?></h3>
-                        <p><a href="<?= base_url('/'); ?>">Beranda /</a> <?= $title ?></p>
                     </div>
                 </div>
             </div>
@@ -24,7 +23,7 @@
             <div class="row">
                 <!-- Berita -->
                 <!-- View data max 5 per page -->
-                <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="col-lg-9 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
                         <article class="blog_item">
                             <div class="row">
@@ -46,18 +45,13 @@
                                             Penerimaan Mahasiswa Baru Jalur Mandiri Tahun Akademik 2022/2023
                                         </p>
                                         <div class="row">
-                                            <div class="col-lg-9">
+                                            <div class="col-lg-12">
                                                 <ul class="blog-info-link">
                                                     <li><a href="#"><i class="fa fa-user"></i>By prodikedokteran</a></li>
                                                     <li><a href="#"><i class="fa fa-calendar"></i> 17-09-2022</a></li>
                                                     <li><a href="#"><i class="fa fa-tag"></i> prodikedokteran</a></li>
                                                     <li><a href="#"><i class="fa fa-list"></i> akademik</a></li>
                                                 </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="<?= base_url('/informasi-detail/Penerimaan-Mahasiswa-Baru-Jalur-Mandiri-Tahun-Akademik-2022/2023'); ?>" class="btn btn-danger">
-                                                    <span class="text-white">Detail</span>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +63,7 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="blog_item_img">
-                                        <img class="card-img rounded-0" src="<?= base_url(''); ?>/img/blog/berita.jpg" alt="" style="height: 322px;">
+                                        <img class="card-img rounded-0" src="<?= base_url(''); ?>/img/blog/berita2.jpeg" alt="" style="height: 322px;">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
@@ -85,7 +79,7 @@
                                             Penerimaan Mahasiswa Baru Jalur Mandiri Tahun Akademik 2022/2023
                                         </p>
                                         <div class="row">
-                                            <div class="col-lg-9">
+                                            <div class="col-lg-12">
                                                 <ul class="blog-info-link">
                                                     <li><a href="#"><i class="fa fa-user"></i>By prodikedokteran</a></li>
                                                     <li><a href="#"><i class="fa fa-calendar"></i> 17-09-2022</a></li>
@@ -93,57 +87,11 @@
                                                     <li><a href="#"><i class="fa fa-list"></i> akademik</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="col-lg-3">
-                                                <a href="<?= base_url('/informasi-detail/Penerimaan-Mahasiswa-Baru-Jalur-Mandiri-Tahun-Akademik-2022/2023'); ?>" class="btn btn-danger">
-                                                    <span class="text-white">Detail</span>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </article>
-
-                        <article class="blog_item">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="blog_item_img">
-                                        <img class="card-img rounded-0" src="<?= base_url(''); ?>/img/blog/berita.jpg" alt="" style="height: 322px;">
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="blog_details">
-                                        <a class="d-inline-block" href="single-blog.html">
-                                            <!-- Maksimal tampil 10 kata -->
-                                            <h2>
-                                                Penerimaan Mahasiswa Baru Jalur Mandiri Tahun Akademik 2022/2023
-                                            </h2>
-                                        </a>
-                                        <p>
-                                            <!-- Maksimal tampil 10 kata -->
-                                            Penerimaan Mahasiswa Baru Jalur Mandiri Tahun Akademik 2022/2023
-                                        </p>
-                                        <div class="row">
-                                            <div class="col-lg-9">
-                                                <ul class="blog-info-link">
-                                                    <li><a href="#"><i class="fa fa-user"></i>By prodikedokteran</a></li>
-                                                    <li><a href="#"><i class="fa fa-calendar"></i> 17-09-2022</a></li>
-                                                    <li><a href="#"><i class="fa fa-tag"></i> prodikedokteran</a></li>
-                                                    <li><a href="#"><i class="fa fa-list"></i> akademik</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="<?= base_url('/informasi-detail/Penerimaan-Mahasiswa-Baru-Jalur-Mandiri-Tahun-Akademik-2022/2023'); ?>" class="btn btn-danger">
-                                                    <span class="text-white">Detail</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">

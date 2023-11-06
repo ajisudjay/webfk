@@ -4,78 +4,32 @@
     <?= $this->include('frontend/layouts/navbar') ?>
 
     <!-- Slider Beranda -->
-    <video width="100%" height="70%" autoplay muted>
+    <video width="100%" height="70%" autoplay muted loop>
         <source src="img/video/profil.mp4" type="video/mp4">
     </video>
     <!-- akhir slider beranda -->
-
+    <?php
+    if ($jum_app > 6) {
+        $jarak = 2;
+    } else {
+        $jarak = 12 / $jum_app;
+    }
+    ?>
     <!-- Aplikasi -->
     <div class="box">
         <div class="service_area">
             <div class="container p-0">
                 <div class="row no-gutters" style="text-align:center">
-                    <div class="col-xl-2">
-                        <div class="single_service">
-                            <div class="icon">
-                                <i class="flaticon-electrocardiogram"></i>
+                    <?php foreach ($aplikasi as $item) : ?>
+                        <div class="col-xl-2">
+                            <div class="single_service">
+                                <div class="icon">
+                                    <a target="_blank" href="<?= $item['link'] ?>" class="boxed-btn3-white"><img src="<?= base_url('writable/uploads/content/aplikasi/' . $item['gambar']); ?>" width="100px" height="100px"></a>
+
+                                </div>
                             </div>
-                            <h3>E-lib</h3>
-
-                            <a target="_blank" href="https://elib.fk.unmul.ac.id/" class="boxed-btn3-white">Klik Disini</a>
                         </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single_service">
-                            <div class="icon">
-                                <i class="flaticon-electrocardiogram"></i>
-                            </div>
-                            <h3>eResource</h3>
-
-                            <a target="_blank" href="https://e-resources.perpusnas.go.id/" class="boxed-btn3-white">Klik Disini</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-2" style="background-color: #53ADFE">
-                        <div class="single_service">
-                            <div class="icon">
-                                <i class="flaticon-electrocardiogram"></i>
-                            </div>
-                            <h3>E-Lib Univ</h3>
-
-                            <a href="https://perpustakaan.unmul.ac.id/" class="boxed-btn3-white">Klik Disini</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-2" style="background-color: #53ADFE">
-                        <div class="single_service">
-                            <div class="icon">
-                                <i class="flaticon-electrocardiogram"></i>
-                            </div>
-                            <h3>Lab FK</h3>
-
-                            <a href="https://lab.fk.unmul.ac.id/" class="boxed-btn3-white">Klik Disini</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single_service">
-                            <div class="icon">
-                                <i class="flaticon-electrocardiogram"></i>
-                            </div>
-                            <h3>Portofolio</h3>
-
-                            <a href="https://portofolio.fk.unmul.ac.id" class="boxed-btn3-white">Klik Disini</a>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-2">
-                        <div class="single_service">
-                            <div class="icon">
-                                <i class="flaticon-electrocardiogram"></i>
-                            </div>
-                            <h3>Medfis</h3>
-
-                            <a href="https://medfis.fk.unmul.ac.id/" class="boxed-btn3-white">Klik Disini</a>
-                        </div>
-                    </div>
-
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -124,12 +78,6 @@
                                 <div class="single_department">
                                     <div class="department_thumb">
                                         <img src="<?= base_url('writable/uploads/content/berita/' . $item['banner']); ?>" width="300px" height="300px">
-                                        <div class="col-lg-12" align="center">
-                                            <p style="font-size: 12px;">
-                                                <i class="fa fa-eye mr-1"></i>
-                                                <?= $item['dilihat'] ?>
-                                            </p>
-                                        </div>
                                     </div>
                                     <div class="department_content">
                                         <!-- limit Judul max 6 kata -->
@@ -263,10 +211,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Lihat Semua Pegawai -->
-            <center class="mt-5">
-                <a href="<?= base_url('profil-sdm/dosen'); ?>" class="boxed-btn3">Lihat Semua</a>
-            </center>
         </div>
     </div>
     <!--Akhir Pimpinan Fakultas -->

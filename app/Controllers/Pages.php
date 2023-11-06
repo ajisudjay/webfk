@@ -10,6 +10,8 @@ use App\Models\SlideshowModel;
 use App\Models\PejabatModel;
 use App\Models\BeritaModel;
 use App\Models\UsersModel;
+use App\Models\LinkModel;
+use App\Models\AplikasiModel;
 
 class Pages extends BaseController
 {
@@ -21,6 +23,8 @@ class Pages extends BaseController
     protected $KonfigurasiModel;
     protected $BeritaModel;
     protected $UsersModel;
+    protected $LinkModel;
+    protected $AplikasiModel;
     public function __construct()
     {
         $this->MainmenuModel = new MainmenuModel();
@@ -31,6 +35,8 @@ class Pages extends BaseController
         $this->KonfigurasiModel = new KonfigurasiModel();
         $this->BeritaModel = new BeritaModel();
         $this->UsersModel = new UsersModel();
+        $this->LinkModel = new LinkModel();
+        $this->AplikasiModel = new AplikasiModel();
     }
     // BEGIN FRONTEND
 
@@ -189,6 +195,8 @@ class Pages extends BaseController
 
     public function index()
     {
+        $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
+        $jum_aplikasi = $countaplikasi['id'];
         $data = [
             'title' => 'Beranda',
             'title_pages' => '',
@@ -201,8 +209,11 @@ class Pages extends BaseController
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
+            'link_partner' => $this->LinkModel->where('kategori', 'partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'e-Library')->orWhere('kategori', 'e-Journal')->findAll(8),
             'berita' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(6),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
+            'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
+            'jum_app' => $jum_aplikasi,
         ];
         return view('frontend/pages/beranda', $data);
     }
@@ -290,25 +301,35 @@ class Pages extends BaseController
 
     public function informasi()
     {
+        $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
+        $jum_aplikasi = $countaplikasi['id'];
         $data = [
             'title' => 'Informasi',
+            'title_pages' => '',
             'slug'  => 'Berita, Artikel dan Agenda',
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'berita' => $this->BeritaModel->first(),
+            'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
-            'berita' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(6),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
+            'konfigurasi' => $this->KonfigurasiModel->first(),
+            'link_partner' => $this->LinkModel->where('kategori', 'partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'e-Library')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
+            'jum_app' => $jum_aplikasi,
         ];
         return view('frontend/pages/informasi', $data);
     }
 
     public function informasi_detail($slug)
     {
+        $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
+        $jum_aplikasi = $countaplikasi['id'];
         $data = [
             'title' => 'Informasi',
             'title_pages' => '',
@@ -323,7 +344,11 @@ class Pages extends BaseController
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
+            'konfigurasi' => $this->KonfigurasiModel->first(),
+            'link_partner' => $this->LinkModel->where('kategori', 'partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'e-Library')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
+            'jum_app' => $jum_aplikasi,
         ];
         return view('frontend/pages/informasi-detail', $data);
     }

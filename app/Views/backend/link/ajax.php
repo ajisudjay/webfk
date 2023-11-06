@@ -22,19 +22,12 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.urutan) {
-                            $('.urutan').addClass('is-invalid');
-                            $('.errorurutan').html(response.error.urutan);
+                        if (response.error.judul) {
+                            $('.judul').addClass('is-invalid');
+                            $('.errorjudul').html(response.error.judul);
                         } else {
-                            $('.nama').removeClass('is-invalid');
-                            $('.errorurutan').html('');
-                        }
-                        if (response.error.nama) {
-                            $('.nama').addClass('is-invalid');
-                            $('.errornama').html(response.error.nama);
-                        } else {
-                            $('.nama').removeClass('is-invalid');
-                            $('.errornama').html('');
+                            $('.judul').removeClass('is-invalid');
+                            $('.errorjudul').html('');
                         }
                         if (response.error.link) {
                             $('.link').addClass('is-invalid');
@@ -42,13 +35,6 @@
                         } else {
                             $('.link').removeClass('is-invalid');
                             $('.errorlink').html('');
-                        }
-                        if (response.error.gambar) {
-                            $('.gambar').addClass('is-invalid');
-                            $('.errorGambar').html(response.error.gambar);
-                        } else {
-                            $('.gambar').removeClass('is-invalid');
-                            $('.errorGambar').html('');
                         }
                     } else {
                         Swal.fire({

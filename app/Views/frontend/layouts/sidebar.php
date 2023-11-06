@@ -9,8 +9,6 @@
                     <li>
                         <div align="center">
                             <img src="<?= base_url('/writable/uploads/content/berita/' . $item['banner'] . ''); ?>" width="150px"> &nbsp;&nbsp;&nbsp;
-                            <p> <i class="fa fa-eye"></i> : <?= $item['dilihat'] ?>
-                            </p>
                         </div>
                         <a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" class="d-flex">
                             <p style="font-size: small;"><?= $item['judul'] ?></p>
