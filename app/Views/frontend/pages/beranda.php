@@ -9,6 +9,7 @@
     </video>
     <!-- akhir slider beranda -->
     <?php
+    $jarak = 1;
     if ($jum_app > 6) {
         $jarak = 2;
     } else {
@@ -21,7 +22,7 @@
             <div class="container p-0">
                 <div class="row no-gutters" style="text-align:center">
                     <?php foreach ($aplikasi as $item) : ?>
-                        <div class="col-xl-2">
+                        <div class="col-xl-<?= $jarak ?>">
                             <div class="single_service">
                                 <div class="icon">
                                     <a target="_blank" href="<?= $item['link'] ?>" class="boxed-btn3-white"><img src="<?= base_url('writable/uploads/content/aplikasi/' . $item['gambar']); ?>" width="100px" height="100px"></a>
