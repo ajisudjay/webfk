@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <label class="text-primary">Urutan</label>
-                                    <input type="text" name="urutan" class="form-control urutan" placeholder="Urutan">
+                                    <input type="number" min="1" name="urutan" class="form-control urutan" placeholder="Urutan">
                                     <div class="invalid-feedback errorUrutan"></div>
                                     <br>
                                 </div>
@@ -82,7 +82,7 @@
                                                             <div class="col-lg-3">
                                                                 <label class="text-primary">Urutan</label>
                                                                 <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
-                                                                <input type="text" name="urutan" value="<?= $item['urutan'] ?>" class="form-control urutan" placeholder="Urutan">
+                                                                <input type="number" min="1" name="urutan" value="<?= $item['urutan'] ?>" class="form-control urutan" placeholder="Urutan">
                                                                 <div class="invalid-feedback errorUrutan"></div>
                                                                 <br>
                                                             </div>

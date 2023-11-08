@@ -12,6 +12,7 @@ class Mainmenu extends BaseController
     {
         $this->MainmenuModel = new MainmenuModel();
     }
+
     public function index()
     {
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
@@ -34,6 +35,7 @@ class Mainmenu extends BaseController
             return redirect()->to(base_url('/login'));
         }
     }
+
     public function view()
     {
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
@@ -55,6 +57,7 @@ class Mainmenu extends BaseController
             return redirect()->to(base_url('/login'));
         }
     }
+
     public function tambah()
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -101,7 +104,6 @@ class Mainmenu extends BaseController
                 ];
 
                 $msg = [
-                    'sukses' => 'Main Menu Berhasil Ditambahkan !',
                     'status' => 'berhasil',
                     'data' => view('backend/mainmenu/view', $data2)
                 ];
@@ -160,7 +162,6 @@ class Mainmenu extends BaseController
                     'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                 ];
                 $msg = [
-                    'sukses' => 'Main Menu Berhasil Diubah !',
                     'status' => 'Berhasil',
                     'data' => view('backend/mainmenu/view', $data2)
                 ];
@@ -171,8 +172,6 @@ class Mainmenu extends BaseController
         }
     }
 
-
-
     public function hapus($id)
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -180,7 +179,7 @@ class Mainmenu extends BaseController
         }
         $this->MainmenuModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
+        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
         return redirect()->to(base_url('/mainmenu'));
     }
 }

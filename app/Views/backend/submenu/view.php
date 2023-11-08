@@ -29,24 +29,23 @@
                                             <option value="<?= $item_mainmenu['id'] ?>"><?= $item_mainmenu['mainmenu'] ?></option>
                                         <?php endforeach ?>
                                     </select>
-                                    <div class="invalid-feedback errorMainmenu"></div>
+                                    <div class="invalid-feedback errormainmenu"></div>
                                     <br>
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="text-primary">Urutan</label>
-                                    <input type="text" name="urutan" class="form-control urutan" placeholder="Urutan">
-                                    <div class="invalid-feedback errorUrutan"></div>
+                                    <input type="number" min="1" name="urutan" class="form-control urutan" placeholder="Urutan">
+                                    <div class="invalid-feedback errorurutan"></div>
                                     <br>
                                 </div>
                                 <div class="col-lg-9">
                                     <label class="text-primary">Sub Menu</label>
                                     <input type="text" name="submenu" class="form-control submenu" placeholder="Sub Menu">
-                                    <div class="invalid-feedback errorSubmenu"></div>
+                                    <div class="invalid-feedback errorsubmenu"></div>
                                 </div>
                                 <div class="col-lg-12">
                                     <label class="text-primary">Content</label>
                                     <textarea name="isi" id="isi" rows="10" cols="80"></textarea>
-                                    <div class="invalid-feedback errorIsi"></div>
                                 </div>
                                 <hr>
                             </div>
@@ -96,7 +95,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="<?= base_url('submenu/edit'); ?>" enctype="multipart/form-data" method="post" class="edit">
+                                                <form action="<?= base_url('submenu/edit'); ?>" method="post" class="edit">
                                                     <?php csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">
@@ -114,7 +113,7 @@
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <label class="text-primary">Urutan</label>
-                                                                <input type="text" name="urutan" class="form-control urutan" value="<?= $item['urutan_submenu'] ?>">
+                                                                <input type="number" min="1" name="urutan" class="form-control urutan" value="<?= $item['urutan_submenu'] ?>">
                                                                 <div class="invalid-feedback errorUrutan"></div>
                                                                 <br>
                                                             </div>

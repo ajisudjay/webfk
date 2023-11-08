@@ -12,45 +12,40 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="navigation-header"><span>Superadmin</span>
+                <li class="navigation-header"><span><?= $lvl ?></span>
                 <li class="<?= $title == 'Beranda' ? 'active' : '' ?>"><a href="<?= base_url('beranda'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Beranda</span></a>
                 </li>
                 <li class="navigation-header"><span>WEBSITE</span>
                 </li>
-                <li class=""><a href="#"><i class="feather icon-layers"></i><span class="menu-title" data-i18n="Dashboard">Content</span><span class="badge badge badge-warning badge-pill float-right mr-2">4</span></a>
+                <li class=""><a href="#"><i class="feather icon-menu"></i><span class="menu-title" data-i18n="Dashboard">Menu</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
                     <ul class="menu-content">
-                        <li class=""><a href="#"><i class="feather icon-menu"></i><span class="menu-title" data-i18n="Dashboard">Menu</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
-                            <ul class="menu-content">
-                                <li class="<?= $title == 'Main Menu' ? 'active' : '' ?>"><a href="<?= base_url('mainmenu'); ?>"><i class="feather icon-menu"></i><span class="menu-item" data-i18n="Analytics">Main Menu</span></a>
-                                </li>
-                                <li class="<?= $title == 'Submenu' ? 'active' : '' ?>"><a href="<?= base_url('submenu'); ?>"><i class="feather icon-list"></i><span class="menu-item" data-i18n="eCommerce">Sub Menu</span></a>
-                                </li>
-                            </ul>
+                        <li class="<?= $title == 'Main Menu' ? 'active' : '' ?>"><a href="<?= base_url('mainmenu'); ?>"><i class="feather icon-menu"></i><span class="menu-item" data-i18n="Analytics">Main Menu</span></a>
                         </li>
-                        <li class=""><a href="#"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Dashboard">Konfigurasi</span><span class="badge badge badge-warning badge-pill float-right mr-2">6</span></a>
-                            <ul class="menu-content">
-                                <li class="<?= $title == 'Konfigurasi' ? 'active' : '' ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Atur Beranda</span></a>
-                                </li>
-                                <!-- <li class="<?= $title == 'Slideshow' ? 'active' : '' ?>"><a href="<?= base_url('slideshow'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Slideshow</span></a>
-                                </li> -->
-                                <li class="<?= $title == 'Aplikasi' ? 'active' : '' ?>"><a href="<?= base_url('aplikasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Aplikasi</span></a>
-                                </li>
-                                <li class="<?= $title == 'Mitra' ? 'active' : '' ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
-                                </li>
-                                <li class="<?= $title == 'Pejabat' ? 'active' : '' ?>"><a href="<?= base_url('pejabat'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Pejabat</span></a>
-                                </li>
-                                <li class="<?= $title == 'Link Partner' ? 'active' : '' ?>"><a href="<?= base_url('link'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Link Partner</span></a>
-                                </li>
-                                <li class="<?= $title == 'Laboratorium' ? 'active' : '' ?>"><a href="<?= base_url('laboratorium'); ?>"><i class="feather icon-octagon"></i><span class="menu-item" data-i18n="Analytics">Laboratorium</span></a>
-                                </li>
-                            </ul>
+                        <li class="<?= $title == 'Submenu' ? 'active' : '' ?>"><a href="<?= base_url('submenu'); ?>"><i class="feather icon-list"></i><span class="menu-item" data-i18n="eCommerce">Sub Menu</span></a>
                         </li>
-                        <li class="<?= $title == 'Berita' ? 'active' : '' ?>"><a href="<?= base_url('berita'); ?>"><i class="feather icon-file-text"></i><span class="menu-item" data-i18n="Analytics">Berita</span></a>
-                        </li>
-                        <li class="<?= $title == 'Galeri' ? 'active' : '' ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-image"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
-                        </li>
-
                     </ul>
+                </li>
+                <li class=""><a href="#"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Dashboard">Konfigurasi</span><span class="badge badge badge-warning badge-pill float-right mr-2">6</span></a>
+                    <ul class="menu-content">
+                        <li class="<?= $title == 'Konfigurasi' ? 'active' : '' ?>"><a href="<?= base_url('konfigurasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Atur Beranda</span></a>
+                        </li>
+                        <!-- <li class="<?= $title == 'Slideshow' ? 'active' : '' ?>"><a href="<?= base_url('slideshow'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Slideshow</span></a>
+                                </li> -->
+                        <li class="<?= $title == 'Aplikasi' ? 'active' : '' ?>"><a href="<?= base_url('aplikasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Aplikasi</span></a>
+                        </li>
+                        <li class="<?= $title == 'Mitra' ? 'active' : '' ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
+                        </li>
+                        <li class="<?= $title == 'Pejabat' ? 'active' : '' ?>"><a href="<?= base_url('pejabat'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Pejabat</span></a>
+                        </li>
+                        <li class="<?= $title == 'Link Partner' ? 'active' : '' ?>"><a href="<?= base_url('link'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Link Partner</span></a>
+                        </li>
+                        <li class="<?= $title == 'Laboratorium' ? 'active' : '' ?>"><a href="<?= base_url('laboratorium'); ?>"><i class="feather icon-octagon"></i><span class="menu-item" data-i18n="Analytics">Laboratorium</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="<?= $title == 'Berita' ? 'active' : '' ?>"><a href="<?= base_url('berita'); ?>"><i class="feather icon-file-text"></i><span class="menu-item" data-i18n="Analytics">Berita</span></a>
+                </li>
+                <li class="<?= $title == 'Galeri' ? 'active' : '' ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-image"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
                 </li>
                 </li>
                 <!-- <li class="navigation-header"><span>BANK DATA</span>

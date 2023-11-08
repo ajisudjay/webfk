@@ -19,8 +19,12 @@
                 <section id="dashboard-analytics">
                     <div class="row">
                         <div class="col-12">
+                            <?php if (session()->get('pesanHapus')) { ?>
+                                <div class="alert alert-success alert-dismissible fade show flash" role="alert">
+                                    <strong><?= session()->getFlashdata('pesanHapus') ?></strong>
+                                </div>
+                            <?php } ?>
                             <div class="card">
-
                                 <div class="bg-transparent border-0" id="result"></div>
                             </div>
                         </div>

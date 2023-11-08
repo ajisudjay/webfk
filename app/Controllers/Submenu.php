@@ -65,26 +65,71 @@ class Submenu extends BaseController
         }
         $username = session()->get('username');
         $request = \Config\Services::request();
-        $urutan = $request->getVar('urutan');
-        $mainmenu = $request->getVar('mainmenu');
-        $submenu = $request->getVar('submenu');
-        $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)));
-        $content = $request->getVar('isi');
-        $timestamp = date("Y-m-d");
-        $penulis = $username;
-        $data = [
-            'urutan' => $urutan,
-            'submenu' => $submenu,
-            'slug' => $slug,
-            'id_mainmenu' => $mainmenu,
-            'content' => $content,
-            'timestamp' => $timestamp,
-            'penulis' => $penulis,
-        ];
-        $this->SubmenuModel->insert($data);
-
-        session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Submenu');
-        return redirect()->to(base_url('/submenu'));
+        if ($request->isAJAX()) {
+            $urutan = $request->getVar('urutan');
+            $mainmenu = $request->getVar('mainmenu');
+            $submenu = $request->getVar('submenu');
+            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)));
+            $isi = $request->getVar('isi');
+            $timestamp = date("Y-m-d");
+            $penulis = $username;
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'mainmenu' => [
+                    'label' => 'Main Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'submenu' => [
+                    'label' => 'Sub Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'urutan' => $validation->getError('urutan'),
+                        'mainmenu' => $validation->getError('mainmenu'),
+                        'submenu' => $validation->getError('submenu'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'submenu' => $submenu,
+                    'slug' => $slug,
+                    'id_mainmenu' => $mainmenu,
+                    'content' => $isi,
+                    'timestamp' => $timestamp,
+                    'penulis' => $penulis,
+                ];
+                $this->SubmenuModel->insert($data);
+                $data2 = [
+                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+                ];
+                $msg = [
+                    'status' => 'berhasil',
+                    'data' => view('backend/submenu/view', $data2)
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
     }
 
     public function edit()
@@ -94,27 +139,72 @@ class Submenu extends BaseController
         }
         $username = session()->get('username');
         $request = \Config\Services::request();
-        $id = $request->getVar('id');
-        $urutan = $request->getVar('urutan');
-        $mainmenu = $request->getVar('mainmenu');
-        $submenu = $request->getVar('submenu');
-        $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)));
-        $content = $request->getVar('isi');
-        $timestamp = date("Y-m-d");
-        $penulis = $username;
-        $data = [
-            'urutan' => $urutan,
-            'submenu' => $submenu,
-            'slug' => $slug,
-            'id_mainmenu' => $mainmenu,
-            'content' => $content,
-            'timestamp' => $timestamp,
-            'penulis' => $penulis,
-        ];
-        $this->SubmenuModel->update($id, $data);
-
-        session()->setFlashdata('pesanInput', 'Berhasil Mengubah Submenu');
-        return redirect()->to(base_url('/submenu'));
+        if ($request->isAJAX()) {
+            $id = $request->getVar('id');
+            $urutan = $request->getVar('urutan');
+            $mainmenu = $request->getVar('mainmenu');
+            $submenu = $request->getVar('submenu');
+            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)));
+            $isi = $request->getVar('isi');
+            $timestamp = date("Y-m-d");
+            $penulis = $username;
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'mainmenu' => [
+                    'label' => 'Main Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'submenu' => [
+                    'label' => 'Sub Menu',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'urutan' => $validation->getError('urutan'),
+                        'mainmenu' => $validation->getError('mainmenu'),
+                        'submenu' => $validation->getError('submenu'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'submenu' => $submenu,
+                    'slug' => $slug,
+                    'id_mainmenu' => $mainmenu,
+                    'content' => 'ini isi statis',
+                    'timestamp' => $timestamp,
+                    'penulis' => $penulis,
+                ];
+                $this->SubmenuModel->update($id, $data);
+                $data2 = [
+                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+                ];
+                $msg = [
+                    'status' => 'berhasil',
+                    'data' => view('backend/submenu/view', $data2)
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
     }
 
     public function hapus($id)
@@ -124,7 +214,7 @@ class Submenu extends BaseController
         }
         $this->SubmenuModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Submenu Berhasil Di Hapus !');
+        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
         return redirect()->to(base_url('/submenu'));
     }
 }
