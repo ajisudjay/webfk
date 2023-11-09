@@ -13,24 +13,24 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
         <!-- BEGIN: Vendor CSS-->
-        <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/tether-theme-arrows.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/tether.min.css">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/vendors.min.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/extensions/tether-theme-arrows.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/vendors/css/extensions/tether.min.css'); ?>">
         <!-- END: Vendor CSS-->
 
         <!-- BEGIN: Theme CSS-->
-        <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/colors.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/components.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/themes/semi-dark-layout.css">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/bootstrap.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/bootstrap-extended.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/colors.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/components.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/themes/semi-dark-layout.css'); ?>">
 
         <!-- BEGIN: Page CSS-->
-        <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/pages/authentication.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/pages/dashboard-analytics.css">
-        <link rel="stylesheet" type="text/css" href="app-assets/css/pages/card-analytics.css">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/core/menu/menu-types/vertical-menu.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/core/colors/palette-gradient.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/pages/authentication.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/pages/dashboard-analytics.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('app-assets/css/pages/card-analytics.css'); ?>">
         <!-- END: Page CSS-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

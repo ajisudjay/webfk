@@ -41,7 +41,7 @@ class Mitra extends BaseController
             $username = session()->get('username');
             if ($request->isAJAX()) {
                 $data = [
-                    'mitra' => $this->MitraModel->orderBy('id', 'ASC')->get()->getResultArray(),
+                    'mitra' => $this->MitraModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
                 ];
                 $msg = [
@@ -55,6 +55,7 @@ class Mitra extends BaseController
             return redirect()->to(base_url('/login'));
         }
     }
+
     public function tambah()
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -63,10 +64,18 @@ class Mitra extends BaseController
         $request = \Config\Services::request();
         $validation = \Config\Services::validation();
         $nama = $request->getVar('nama');
+        $urutan = $request->getVar('urutan');
         $gambar = $request->getfile('gambar');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
                 'nama' => [
                     'label' => 'Nama',
                     'rules' => 'required',
@@ -85,6 +94,7 @@ class Mitra extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
+                        'urutan' => $validation->getError('urutan'),
                         'nama' => $validation->getError('nama'),
                         'gambar' => $validation->getError('gambar'),
                     ],
@@ -93,17 +103,70 @@ class Mitra extends BaseController
             } else {
                 $namagambar = $gambar->getRandomName();
                 $gambar->store('content/mitra/', $namagambar);
-                $data1 = [
+                $data = [
+                    'urutan' => $urutan,
                     'nama' => $nama,
                     'gambar' => $namagambar,
                 ];
-                $this->MitraModel->insert($data1);
+                $this->MitraModel->insert($data);
 
                 $msg = [
                     'title' => 'Berhasil'
                 ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
+    }
 
-                session()->setFlashdata('pesanBerhasil', 'Data Berhasil Ditambahkan !');
+    public function edit()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $request = \Config\Services::request();
+        $validation = \Config\Services::validation();
+        $id = $request->getVar('id');
+        $nama = $request->getVar('nama');
+        $urutan = $request->getVar('urutan');
+        $gambar = $request->getfile('gambar');
+        $request = \Config\Services::request();
+        if ($request->isAJAX()) {
+            $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'nama' => [
+                    'label' => 'Nama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'urutan' => $validation->getError('urutan'),
+                        'nama' => $validation->getError('nama'),
+                    ],
+                ];
+                return $this->response->setJSON($msg);
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'nama' => $nama,
+                ];
+                $this->MitraModel->update($id, $data);
+
+                $msg = [
+                    'title' => 'Berhasil'
+                ];
                 echo json_encode($msg);
             }
         } else {
@@ -123,7 +186,7 @@ class Mitra extends BaseController
         unlink($filesource);
         $this->MitraModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
+        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
         return redirect()->to(base_url('/mitra'));
     }
 }

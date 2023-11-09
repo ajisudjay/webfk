@@ -34,6 +34,7 @@ class Aplikasi extends BaseController
             return redirect()->to(base_url('/login'));
         }
     }
+
     public function view()
     {
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
@@ -42,7 +43,7 @@ class Aplikasi extends BaseController
             if ($request->isAJAX()) {
                 $data = [
                     'title' => 'Aplikasi',
-                    'aplikasi' => $this->AplikasiModel->orderBy('id', 'ASC')->get()->getResultArray(),
+                    'aplikasi' => $this->AplikasiModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
                 ];
                 $msg = [
@@ -56,6 +57,7 @@ class Aplikasi extends BaseController
             return redirect()->to(base_url('/login'));
         }
     }
+
     public function tambah()
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -132,6 +134,70 @@ class Aplikasi extends BaseController
         }
     }
 
+    public function edit()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $request = \Config\Services::request();
+        $validation = \Config\Services::validation();
+        $id = $request->getVar('id');
+        $urutan = $request->getVar('urutan');
+        $nama = $request->getVar('nama');
+        $link = $request->getVar('link');
+        $gambar = $request->getfile('gambar');
+        $request = \Config\Services::request();
+        if ($request->isAJAX()) {
+            $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'nama' => [
+                    'label' => 'Nama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'link' => [
+                    'label' => 'Link',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'urutan' => $validation->getError('urutan'),
+                        'nama' => $validation->getError('nama'),
+                        'link' => $validation->getError('link'),
+                    ],
+                ];
+                return $this->response->setJSON($msg);
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'nama' => $nama,
+                    'link' => $link,
+                ];
+                $this->AplikasiModel->update($id, $data);
+
+                $msg = [
+                    'title' => 'Berhasil'
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
+    }
+
     public function hapus($id)
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -144,7 +210,7 @@ class Aplikasi extends BaseController
         unlink($filesource);
         $this->AplikasiModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
+        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
         return redirect()->to(base_url('/aplikasi'));
     }
 }

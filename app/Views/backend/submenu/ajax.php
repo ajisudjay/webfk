@@ -1,17 +1,5 @@
 <!-- SCRIPT AJAX -->
 <script>
-    CKEDITOR.replace('isi');
-</script>
-<?php foreach ($submenu as $item_submenu) :
-    $idx = 'isi' . $item_submenu['submenu_id'];
-?>
-    <script>
-        CKEDITOR.replace('<?= $idx ?>');
-    </script>
-<?php endforeach
-?>
-<!-- SCRIPT AJAX -->
-<script>
     $(document).ready(function() {
         //  function tambah
         $('.tambah').submit(function(e) {
@@ -77,7 +65,6 @@
             })
         });
 
-        //  function edit
         $('.edit').submit(function(e) {
             e.preventDefault();
             $.ajax({

@@ -44,8 +44,8 @@
             </div>
         </div>
     </div>
-    <div class="card-block">
 
+    <div class="card-block">
         <div class="dt-responsive table-responsive">
             <table id="simpletable" class="table table-striped table-hover-animation nowrap">
                 <thead>
@@ -61,6 +61,7 @@
                             <!-- ISI VIEW -->
                             <td><?= $item['urutan'] ?></td>
                             <td>
+                                <!-- edit button-->
                                 <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['id'] ?>">
                                     <span class="feather icon-edit-1 text-default"></span>
                                 </button>

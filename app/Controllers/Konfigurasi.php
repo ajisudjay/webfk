@@ -162,7 +162,6 @@ class Konfigurasi extends BaseController
                     'konfigurasi' => $this->KonfigurasiModel->get()->getResultArray(),
                 ];
                 $msg = [
-                    'sukses' => 'Konfigurasi Berhasil Diperbarui !',
                     'status' => 'Berhasil',
                     'data' => view('backend/konfigurasi/view', $data2)
                 ];
