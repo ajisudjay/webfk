@@ -34,6 +34,7 @@ class Galeri extends BaseController
         ];
         return view('backend/galeri/index', $data);
     }
+
     public function view()
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -60,27 +61,52 @@ class Galeri extends BaseController
             return redirect()->to(base_url('/login'));
         }
         $request = \Config\Services::request();
-
+        $validation = \Config\Services::validation();
         $nama = $request->getVar('nama');
         $file = $request->getFile('file');
-        $input = $this->validate([
-            'file' => 'uploaded[file]|max_size[file,2048],'
-        ]);
-        if (!$input) { // Not valid
-            session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 2MB');
-            return redirect()->to(base_url('/galeri'));
-        } else {
-            $newName = $file->getRandomName();
-            $file->store('content/galeri/', $newName);
-            $nama_foto = $newName;
-            $data = [
-                'nama' => $nama,
-                'gambar' => $nama_foto,
-            ];
-            $this->GaleriModel->insert($data);
+        if ($request->isAJAX()) {
+            $valid = $this->validate([
+                'nama' => [
+                    'label' => 'Nama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'file' => [
+                    'label' => 'Gambar',
+                    'rules' => 'uploaded[file]|max_size[file,2048]',
+                    'errors' => [
+                        'uploaded' => '* {field} Tidak Boleh Kosong !',
+                        'max_size' => '* {field} Ukuran Max 2 mb !',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'nama' => $validation->getError('nama'),
+                        'file' => $validation->getError('file'),
+                    ],
+                ];
+                return $this->response->setJSON($msg);
+            } else {
+                $newName = $file->getRandomName();
+                $file->store('content/galeri/', $newName);
+                $nama_foto = $newName;
+                $data = [
+                    'nama' => $nama,
+                    'gambar' => $nama_foto,
+                ];
+                $this->GaleriModel->insert($data);
 
-            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Gambar');
-            return redirect()->to(base_url('/galeri'));
+                $msg = [
+                    'title' => 'Berhasil'
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
         }
     }
 
@@ -96,7 +122,7 @@ class Galeri extends BaseController
         unlink($filesource);
         $this->GaleriModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Galeri Berhasil Di Hapus !');
+        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
         return redirect()->to(base_url('/galeri'));
     }
 }

@@ -24,9 +24,8 @@
                                 <div class="col-lg-12">
                                     <label class="text-primary">Kategori</label>
                                     <select name="kategori" class="form-control kategori">
-                                        <option value="Partner">Partner</option>
-                                        <option value="e-Lib">e-Lib</option>
-                                        <option value="e-Journal">e-Journal</option>
+                                        <option value="Link Partner">Link Partner</option>
+                                        <option value="eLib / eJournal">eLib & eJournal</option>
                                     </select>
                                     <div class="invalid-feedback errorkategori"></div>
                                     <br>
@@ -65,7 +64,8 @@
                         <th width="5%">No</th>
                         <th width="5%" style="text-align: center;">AKSI</th>
                         <th width="10%">Kategori</th>
-                        <th width="80%">Judul</th>
+                        <th width="30%">Judul</th>
+                        <th width="50%">Link</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,7 +80,8 @@
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             <td><?= $item['kategori'] ?></td>
-                            <td><a href="<?= $item['link'] ?>" target="_blank"><?= $item['judul'] ?></a></td>
+                            <td style="min-width: 200px;max-width: 400px; white-space: normal;"><?= $item['judul'] ?></a></td>
+                            <td style="min-width: 250px;max-width: 400px; white-space: normal;"><a href="<?= $item['link'] ?>" target="_blank"><?= $item['link'] ?></a></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="login-footer">
                                             <div class="divider">
-                                                <div class="divider-text">FK UNMUL</div>
+                                                <div class="divider-text"><a href="/">FK UNMUL</a></div>
                                             </div>
                                         </div>
                                     </div>

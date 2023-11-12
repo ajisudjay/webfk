@@ -24,13 +24,13 @@
                                 <div class="col-lg-12">
                                     <label class="text-primary">Nama</label>
                                     <input type="text" name="nama" class="form-control nama" placeholder="Nama">
-                                    <div class="invalid-feedback errorNama"></div>
+                                    <div class="invalid-feedback errornama"></div>
                                     <br>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="text-primary">Username</label>
                                     <input type="text" name="username" class="form-control username" placeholder="Username">
-                                    <div class="invalid-feedback errorUsername"></div>
+                                    <div class="invalid-feedback errorusername"></div>
                                     <br>
                                 </div>
                                 <div class="col-lg-6">
@@ -40,26 +40,26 @@
                                         <!-- <option value="Admin">Admin</option> -->
                                         <option value="Superadmin">Superadmin</option>
                                     </select>
-                                    <div class="invalid-feedback errorLevel"></div>
+                                    <div class="invalid-feedback errorluevel"></div>
                                     <br>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="text-primary">Password</label>
                                     <input type="password" name="password" class="form-control password" placeholder="Password">
-                                    <div class="invalid-feedback errorPassword"></div>
+                                    <div class="invalid-feedback errorpassword"></div>
                                     <br>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="text-primary">Ulangi Password</label>
                                     <input type="password" name="repassword" class="form-control repassword" placeholder="Ulangi Password">
-                                    <div class="invalid-feedback errorRepassword"></div>
+                                    <div class="invalid-feedback errorrepassword"></div>
                                     <br>
                                 </div>
                                 <hr>
                                 <div class="col-lg-12">
                                     <label class="text-primary">Foto</label>
-                                    <input type="file" name="file" class="form-control gambar" accept="image/*" required>
-                                    <div class="invalid-feedback errorGambar"></div>
+                                    <input type="file" name="file" class="form-control file" accept="image/*">
+                                    <div class="invalid-feedback errorfile"></div>
                                 </div>
                             </div>
                         </div>
@@ -174,13 +174,13 @@
                                                                 <label class="text-primary">Password</label>
                                                                 <input type="username" name="username" value="<?= $item['username'] ?>" hidden>
                                                                 <input type="password" name="password" class="form-control password">
-                                                                <div class="invalid-feedback errorPassword"></div>
+                                                                <div class="invalid-feedback errorpassword"></div>
                                                                 <br>
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <label class="text-primary">Ulangi Password</label>
                                                                 <input type="password" name="repassword" class="form-control repassword">
-                                                                <div class="invalid-feedback errorRepassword"></div>
+                                                                <div class="invalid-feedback errorrepassword"></div>
                                                                 <br>
                                                             </div>
                                                             <hr>

@@ -51,3 +51,4 @@ $routes->get('/menu', 'Pages::menu');
 // BACKEND
 $routes->get('/login', 'Pages::login');
 $routes->get('/beranda', 'Pages::beranda');
+$routes->get('/berita-edit/(:any)', 'Berita::editform/$1');

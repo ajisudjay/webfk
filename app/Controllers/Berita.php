@@ -13,6 +13,7 @@ class Berita extends BaseController
     {
         $this->BeritaModel = new BeritaModel();
     }
+
     public function index()
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -35,6 +36,7 @@ class Berita extends BaseController
         ];
         return view('backend/berita/index', $data);
     }
+
     public function view()
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
@@ -64,10 +66,12 @@ class Berita extends BaseController
         $request = \Config\Services::request();
         $judul = $request->getVar('judul');
         $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)));
+        $kategori = $request->getVar('kategori');
         $tanggal = $request->getVar('tanggal');
         $isi = $request->getVar('isi');
         $tag = $request->getVar('tag');
-        $timestamp = date("Y-m-d");
+        date_default_timezone_set("Asia/Kuala_Lumpur");
+        $timestamp = date("Y-m-d h:i:sa");
         $penulis = $username;
         $file = $request->getFile('file');
         $input = $this->validate([
@@ -83,11 +87,12 @@ class Berita extends BaseController
             $data = [
                 'judul' => $judul,
                 'slug' => $slug,
+                'kategori' => $kategori,
                 'tanggal' => $tanggal,
                 'tag' => $tag,
                 'isi' => $isi,
                 'banner' => $nama_foto,
-                'dilihat' => 0,
+                'dilihat' => 1,
                 'timestamp' => $timestamp,
                 'penulis' => $penulis,
             ];
@@ -96,6 +101,31 @@ class Berita extends BaseController
             session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Berita');
             return redirect()->to(base_url('/berita'));
         }
+    }
+
+    public function editform($slug)
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $admin = session()->get('nama');
+        $lvl = session()->get('level');
+        $file = session()->get('file');
+        if ($file === NULL) {
+            $gambar = 'user-profile.png';
+        } else {
+            $gambar = $file;
+        }
+        $data = [
+            'title' => 'Berita',
+            'title_pages' => '',
+            'admin' => $admin,
+            'lvl' => $lvl,
+            'foto' => $gambar,
+            'berita' => $this->BeritaModel->where('slug', $slug)->first(),
+            'validation' => \Config\Services::validation(),
+        ];
+        return view('backend/berita/editform', $data);
     }
 
     public function edit()
@@ -111,7 +141,8 @@ class Berita extends BaseController
         $tanggal = $request->getVar('tanggal');
         $isi = $request->getVar('isi');
         $tag = $request->getVar('tag');
-        $timestamp = date("Y-m-d");
+        date_default_timezone_set("Asia/Kuala_Lumpur");
+        $timestamp = date("Y-m-d h:i:sa");
         $penulis = $username;
         $file = $request->getFile('file');
         if (!file_exists($_FILES['file']['tmp_name'])) {
@@ -126,7 +157,7 @@ class Berita extends BaseController
             ];
             $this->BeritaModel->update($id, $data);
 
-            session()->setFlashdata('pesanInput', 'Berhasil Mengubah Berita');
+            session()->setFlashdata('pesanInput', 'Berhasil diubah!');
             return redirect()->to(base_url('/berita'));
         } else {
             $input = $this->validate([
@@ -157,7 +188,7 @@ class Berita extends BaseController
                 ];
                 $this->BeritaModel->update($id, $data);
 
-                session()->setFlashdata('pesanInput', 'Berhasil Mengubah Berita');
+                session()->setFlashdata('pesanInput', 'Berhasil diubah');
                 return redirect()->to(base_url('/berita'));
             }
         }
@@ -175,7 +206,7 @@ class Berita extends BaseController
         unlink($filesource);
         $this->BeritaModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Berita Berhasil Di Hapus !');
+        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
         return redirect()->to(base_url('/berita'));
     }
 }

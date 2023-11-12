@@ -12,9 +12,9 @@ class Pejabat extends BaseController
     {
         $this->PejabatModel = new PejabatModel();
     }
+
     public function index()
     {
-
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
@@ -60,31 +60,71 @@ class Pejabat extends BaseController
             return redirect()->to(base_url('/login'));
         }
         $request = \Config\Services::request();
-
+        $validation = \Config\Services::validation();
         $nama = $request->getVar('nama');
-        $jabatan = $request->getVar('jabatan');
         $urutan = $request->getVar('urutan');
-        $file = $request->getFile('file');
-        $input = $this->validate([
-            'file' => 'uploaded[file]|max_size[file,2048],'
-        ]);
-        if (!$input) { // Not valid
-            session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 2MB');
-            return redirect()->to(base_url('/pejabat'));
-        } else {
-            $newName = $file->getRandomName();
-            $file->store('content/pejabat/', $newName);
-            $nama_foto = $newName;
-            $data = [
-                'nama' => $nama,
-                'jabatan' => $jabatan,
-                'urutan' => $urutan,
-                'gambar' => $nama_foto,
-            ];
-            $this->PejabatModel->insert($data);
+        $jabatan = $request->getVar('jabatan');
+        $file = $request->getfile('file');
+        if ($request->isAJAX()) {
+            $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'nama' => [
+                    'label' => 'Nama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'jabatan' => [
+                    'label' => 'Jabatan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'file' => [
+                    'label' => 'Gambar',
+                    'rules' => 'uploaded[file]|max_size[file,2048]',
+                    'errors' => [
+                        'uploaded' => '* {field} Tidak Boleh Kosong !',
+                        'max_size' => '* {field} Ukuran Max 2 mb !',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'urutan' => $validation->getError('urutan'),
+                        'nama' => $validation->getError('nama'),
+                        'jabatan' => $validation->getError('jabatan'),
+                        'file' => $validation->getError('file'),
+                    ],
+                ];
+                return $this->response->setJSON($msg);
+            } else {
+                $namagambar = $file->getRandomName();
+                $file->store('content/pejabat/', $namagambar);
+                $data = [
+                    'urutan' => $urutan,
+                    'nama' => $nama,
+                    'jabatan' => $jabatan,
+                    'gambar' => $namagambar,
+                ];
+                $this->PejabatModel->insert($data);
 
-            session()->setFlashdata('pesanInput', 'Berhasil Menambahkan Pejabat');
-            return redirect()->to(base_url('/pejabat'));
+                $msg = [
+                    'title' => 'Berhasil'
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
         }
     }
 
@@ -134,7 +174,7 @@ class Pejabat extends BaseController
                 ];
                 $this->PejabatModel->update($id, $data);
 
-                session()->setFlashdata('pesanInput', 'Berhasil Mengubah Data Pejabat');
+                session()->setFlashdata('pesanInput', 'Berhasil diubah');
                 return redirect()->to(base_url('/pejabat'));
             }
         }
@@ -152,7 +192,7 @@ class Pejabat extends BaseController
         unlink($filesource);
         $this->PejabatModel->delete($id);
 
-        session()->setFlashdata('pesanHapus', 'Pejabat Berhasil Di Hapus !');
+        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
         return redirect()->to(base_url('/pejabat'));
     }
 }

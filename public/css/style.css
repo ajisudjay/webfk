@@ -2230,7 +2230,7 @@ h3 {
 /* line 6, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .footer_top {
   padding-top: 50px;
-  padding-bottom: 50px  ;
+  padding-bottom: 10px  ;
   background: #1F1F1F;
 }
 
@@ -2261,7 +2261,7 @@ h3 {
   font-size: 22px;
   font-weight: 400;
   color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 767px) {

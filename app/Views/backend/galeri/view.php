@@ -23,15 +23,15 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label class="text-primary">Nama</label>
-                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama" required>
-                                    <div class="invalid-feedback errorNama"></div>
+                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama">
+                                    <div class="invalid-feedback errornama"></div>
                                     <br>
                                 </div>
                                 <br>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <label class="text-primary">Gambar</label>
-                                    <input type="file" name="file" class="form-control gambar" accept="image/*" required>
-                                    <div class="invalid-feedback errorGambar"></div>
+                                    <input type="file" name="file" class="form-control file" accept="image/*">
+                                    <div class="invalid-feedback errorfile"></div>
                                     <br>
                                 </div>
                             </div>
@@ -69,13 +69,13 @@
                                 <a href="<?= base_url('galeri/hapus/' . $item['id']); ?>" class="hapus">
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
-                            <td><?= $item['nama'] ?></td>
+                            <td style="min-width: 100px;max-width: 300px; white-space: normal;"><?= $item['nama'] ?></td>
 
                             <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/galeri/' . $item['gambar'] . ''); ?>" width="100%"></td>
                             <td>
                                 <div class="row">
-                                    <div class="col-lg-9">
-                                        <input type="text" class="form-control" id="text-copy" value="https://fk.unmul.ac.id/content/galeri/<?= $item['gambar'] ?>">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="text-copy" value="<?= base_url() ?>/writable/uploads/content/galeri/<?= $item['gambar'] ?>">
                                         <br>
                                     </div>
                                     <div class="col-lg-1">
