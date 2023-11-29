@@ -9,7 +9,7 @@
             <!-- ISI FORM -->
             <div class="row">
                 <form action="<?= base_url('konfigurasi/editvisi'); ?>" method="post" class="editvisi">
-                    <?php csrf_field() ?>
+                    <?= csrf_field() ?>
                     <div class="col-lg-12">
                         <label> Visi :</label>
                         <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
@@ -22,7 +22,7 @@
                     </div>
                 </form>
                 <form action="<?= base_url('konfigurasi/editmisi'); ?>" method="post" class="editmisi">
-                    <?php csrf_field() ?>
+                    <?= csrf_field() ?>
                     <div class="col-lg-12">
                         <label> Misi :</label>
                         <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
@@ -36,7 +36,7 @@
                 </form>
             </div>
             <form action="<?= base_url('konfigurasi/edit'); ?>" method="post" class="edit">
-                <?php csrf_field() ?>
+                <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-lg-6">
                         <label> Email :</label><br>

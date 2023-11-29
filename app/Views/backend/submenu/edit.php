@@ -35,7 +35,7 @@
                                         <br>
                                         <h4 class="mb-0">Sub Menu</h4>
                                         <form action="<?= base_url('submenu/edit'); ?>" method="post">
-                                            <?php csrf_field() ?>
+                                            <?= csrf_field() ?>
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-lg-3">

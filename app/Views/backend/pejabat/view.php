@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?= base_url('pejabat/tambah'); ?>" method="post" enctype="multipart/form-data" class="tambah">
-                        <?php csrf_field() ?>
+                        <?= csrf_field() ?>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-3">
@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form action="<?= base_url('pejabat/edit'); ?>" enctype="multipart/form-data" method="post" class="edit">
-                                                    <?php csrf_field() ?>
+                                                    <?= csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-lg-3">

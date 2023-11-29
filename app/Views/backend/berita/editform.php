@@ -35,7 +35,7 @@
                                         <br>
                                         <h4 class="mb-0">Berita</h4>
                                         <form action="<?= base_url('berita/edit'); ?>" enctype="multipart/form-data" method="post" class="edit">
-                                            <?php csrf_field() ?>
+                                            <?= csrf_field() ?>
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-lg-12">

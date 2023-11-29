@@ -86,7 +86,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form action="<?= base_url('mitra/edit'); ?>" method="post" class="edit">
-                                                    <?php csrf_field() ?>
+                                                    <?= csrf_field() ?>
                                                     <div class="modal-body" style="text-align:left ;">
                                                         <div class="row">
                                                             <div class="col-lg-3">

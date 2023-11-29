@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?= base_url('user/tambah'); ?>" method="post" enctype="multipart/form-data" class="tambah">
-                        <?php csrf_field() ?>
+                        <?= csrf_field() ?>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form action="<?= base_url('user/edit'); ?>" enctype="multipart/form-data" method="post" class="edit">
-                                                    <?php csrf_field() ?>
+                                                    <?= csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-lg-12">
@@ -167,7 +167,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form action="<?= base_url('user/editpass'); ?>" method="post" class="editpass">
-                                                    <?php csrf_field() ?>
+                                                    <?= csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-lg-6">
