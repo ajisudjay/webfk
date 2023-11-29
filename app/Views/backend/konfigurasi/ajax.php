@@ -5,6 +5,104 @@
 </script>
 <script>
     $(document).ready(function() {
+        $('.editvisi').submit(function(e) {
+            e.preventDefault();
+            var form = $(this)[0];
+            var data = new FormData(form);
+            var formData = new FormData(this);
+            formData.append('visi', CKEDITOR.instances.visi.getData());
+            $.ajax({
+                type: "post",
+                url: $(this).attr('action'),
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('.btnEditvisi').attr('disable', 'disabled');
+                    $('.btnEditvisi').html('<i class="fa fa-spin fa-spinner"></i>');
+                },
+                complete: function() {
+                    $('.btnEditvisi').removeAttr('disable', 'disabled');
+                    $('.btnEditvisi').html('Simpan');
+                },
+                success: function(response) {
+                    if (response.error) {
+                        if (response.error.visi) {
+                            $('.visi').addClass('is-invalid');
+                            $('.errorVisi').html(response.error.visi);
+                        } else {
+                            $('.visi').removeClass('is-invalid');
+                            $('.errorVisi').html('');
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.sukses,
+                        });
+                        $('body').removeClass('modal-open');
+                        //modal-open class is added on body so it has to be removed
+                        $('.modal-backdrop').remove();
+                        //need to remove div with modal-backdrop class
+                        $("#result").html(response.data);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            })
+        });
+
+        $('.editmisi').submit(function(e) {
+            e.preventDefault();
+            var form = $(this)[0];
+            var data = new FormData(form);
+            var formData = new FormData(this);
+            formData.append('misi', CKEDITOR.instances.misi.getData());
+            $.ajax({
+                type: "post",
+                url: $(this).attr('action'),
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('.btnEditmisi').attr('disable', 'disabled');
+                    $('.btnEditmisi').html('<i class="fa fa-spin fa-spinner"></i>');
+                },
+                complete: function() {
+                    $('.btnEditmisi').removeAttr('disable', 'disabled');
+                    $('.btnEditmisi').html('Simpan');
+                },
+                success: function(response) {
+                    if (response.error) {
+                        if (response.error.misi) {
+                            $('.misi').addClass('is-invalid');
+                            $('.errorMisi').html(response.error.misi);
+                        } else {
+                            $('.misi').removeClass('is-invalid');
+                            $('.errorMisi').html('');
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.sukses,
+                        });
+                        $('body').removeClass('modal-open');
+                        //modal-open class is added on body so it has to be removed
+                        $('.modal-backdrop').remove();
+                        //need to remove div with modal-backdrop class
+                        $("#result").html(response.data);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            })
+        });
+
         $('.edit').submit(function(e) {
             e.preventDefault();
             $.ajax({
@@ -22,20 +120,6 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.visi) {
-                            $('.visi').addClass('is-invalid');
-                            $('.errorVisi').html(response.error.visi);
-                        } else {
-                            $('.visi').removeClass('is-invalid');
-                            $('.errorVisi').html('');
-                        }
-                        if (response.error.misi) {
-                            $('.misi').addClass('is-invalid');
-                            $('.errorMisi').html(response.error.misi);
-                        } else {
-                            $('.misi').removeClass('is-invalid');
-                            $('.errorMisi').html('');
-                        }
                         if (response.error.email) {
                             $('.email').addClass('is-invalid');
                             $('.errorEmail').html(response.error.email);

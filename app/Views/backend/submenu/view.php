@@ -108,8 +108,5 @@
         </div>
     </div>
 </div>
-<script>
-    CKEDITOR.replace('isi');
-</script>
 <?= $this->include('backend/submenu/ajax') ?>
 <?= $this->include('backend/layouts/js_view') ?>

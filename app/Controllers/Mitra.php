@@ -85,9 +85,10 @@ class Mitra extends BaseController
                 ],
                 'gambar' => [
                     'label' => 'Gambar',
-                    'rules' => 'uploaded[gambar]',
+                    'rules' => 'uploaded[gambar]|max_size[gambar,2048]',
                     'errors' => [
                         'uploaded' => '* {field} Tidak Boleh Kosong !',
+                        'max_size' => '{field} ukuran lebih dari 2 mb !',
                     ]
                 ],
             ]);

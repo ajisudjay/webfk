@@ -62,8 +62,6 @@ class Konfigurasi extends BaseController
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $id = $request->getVar('id');
-            $visi = $request->getVar('visi');
-            $misi = $request->getVar('misi');
             $email = $request->getVar('email');
             $telepon = $request->getVar('telepon');
             $alamat = $request->getVar('alamat');
@@ -72,20 +70,6 @@ class Konfigurasi extends BaseController
             $fb = $request->getVar('fb');
             $validation = \Config\Services::validation();
             $valid = $this->validate([
-                'visi' => [
-                    'label' => 'Visi',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Tidak Boleh Kosong',
-                    ]
-                ],
-                'misi' => [
-                    'label' => 'Misi',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Tidak Boleh Kosong',
-                    ]
-                ],
                 'email' => [
                     'label' => 'Email',
                     'rules' => 'required',
@@ -133,8 +117,6 @@ class Konfigurasi extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
-                        'visi' => $validation->getError('visi'),
-                        'misi' => $validation->getError('misi'),
                         'email' => $validation->getError('email'),
                         'telepon' => $validation->getError('telepon'),
                         'alamat' => $validation->getError('alamat'),
@@ -146,14 +128,108 @@ class Konfigurasi extends BaseController
                 echo json_encode($msg);
             } else {
                 $data = [
-                    'visi' => $visi,
-                    'misi' => $misi,
                     'email' => $email,
                     'telepon' => $telepon,
                     'alamat' => $alamat,
                     'ig' => $ig,
                     'fb' => $fb,
                     'yt' => $yt,
+                ];
+
+                $this->KonfigurasiModel->update($id, $data);
+
+                $data2 = [
+                    'konfigurasi' => $this->KonfigurasiModel->get()->getResultArray(),
+                ];
+                $msg = [
+                    'status' => 'Berhasil',
+                    'data' => view('backend/konfigurasi/view', $data2)
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
+    }
+
+    public function editvisi()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $request = \Config\Services::request();
+        if ($request->isAJAX()) {
+            $id = $request->getVar('id');
+            $visi = $request->getVar('visi');
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'visi' => [
+                    'label' => 'Visi',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'visi' => $validation->getError('visi'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $data = [
+                    'visi' => $visi,
+                ];
+
+                $this->KonfigurasiModel->update($id, $data);
+
+                $data2 = [
+                    'konfigurasi' => $this->KonfigurasiModel->get()->getResultArray(),
+                ];
+                $msg = [
+                    'status' => 'Berhasil',
+                    'data' => view('backend/konfigurasi/view', $data2)
+                ];
+                echo json_encode($msg);
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
+    }
+
+    public function editmisi()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+            return redirect()->to(base_url('/login'));
+        }
+        $request = \Config\Services::request();
+        if ($request->isAJAX()) {
+            $id = $request->getVar('id');
+            $misi = $request->getVar('misi');
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'misi' => [
+                    'label' => 'Visi',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong',
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'misi' => $validation->getError('misi'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $data = [
+                    'misi' => $misi,
                 ];
 
                 $this->KonfigurasiModel->update($id, $data);

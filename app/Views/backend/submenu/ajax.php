@@ -1,14 +1,21 @@
 <!-- SCRIPT AJAX -->
 <script>
+    CKEDITOR.replace('isi');
     $(document).ready(function() {
         //  function tambah
         $('.tambah').submit(function(e) {
             e.preventDefault();
+            var form = $(this)[0];
+            var data = new FormData(form);
+            var formData = new FormData(this);
+            formData.append('isi', CKEDITOR.instances.isi.getData());
             $.ajax({
                 type: "post",
                 url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: formData,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 beforeSend: function() {
                     $('.btnSimpan').attr('disable', 'disabled');
                     $('.btnSimpan').html('<i class="fa fa-spin fa-spinner"></i>');

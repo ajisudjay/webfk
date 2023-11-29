@@ -48,7 +48,7 @@
                                                     <br>
 
                                                     <div class="col-lg-3">
-                                                        <label class="text-primary">Banner</label>
+                                                        <label class="text-primary">Banner <span style="color: red;">*max size 2mb</span></label>
                                                         <input type="file" name="file" class="form-control gambar" accept="image/*">
                                                         <div class="invalid-feedback errorGambar"></div>
                                                     </div>

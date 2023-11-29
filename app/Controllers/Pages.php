@@ -202,13 +202,12 @@ class Pages extends BaseController
             'title_pages' => '',
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'konfigurasi' => $this->KonfigurasiModel->first(),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'konf' => $this->KonfigurasiModel->findAll(),
             'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
             'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
             'berita' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(6),
@@ -230,35 +229,18 @@ class Pages extends BaseController
             'slug'  => $slug,
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'content' => $this->SubmenuModel->where('slug', $slugx)->findAll(),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'konf' => $this->KonfigurasiModel->findAll(),
+            'konfigurasi' => $this->KonfigurasiModel->first(),
+            'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
             'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/pages', $data);
-    }
-
-    public function prodi($slug)
-    {
-        $data = [
-            'title' => 'Program Studi',
-            'title_pages' => '',
-            'slug'  => $slug,
-            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
-            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
-            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
-            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'konf' => $this->KonfigurasiModel->findAll(),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
-        ];
-        return view('frontend/pages/prodi-detail', $data);
     }
 
     public function sdm($slug)
@@ -269,8 +251,8 @@ class Pages extends BaseController
             'slug'  => $slug,
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
@@ -280,25 +262,6 @@ class Pages extends BaseController
         return view('frontend/pages/sdm', $data);
     }
 
-    public function tentangkami($slug)
-    {
-        $data = [
-            'title' => 'Tentang Kami',
-            'title_pages' => '',
-            'slug'  => $slug,
-            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
-            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
-            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
-            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'konf' => $this->KonfigurasiModel->findAll(),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
-        ];
-        return view('frontend/pages/tentangkami', $data);
-    }
-
     public function informasi()
     {
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
@@ -306,24 +269,81 @@ class Pages extends BaseController
         $data = [
             'title' => 'Informasi',
             'title_pages' => '',
-            'slug'  => 'Berita, Artikel dan Agenda',
+            'slug'  => 'Berita, Artikel dan Kegiatan',
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'berita' => $this->BeritaModel->first(),
+            'berita20' => $this->BeritaModel->orderBy('tanggal', 'DESC')->findAll(20),
             'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
-            'link_partner' => $this->LinkModel->where('kategori', 'partner')->findAll(8),
-            'link_lib' => $this->LinkModel->where('kategori', 'e-Library')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
             'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
             'jum_app' => $jum_aplikasi,
         ];
         return view('frontend/pages/informasi', $data);
+    }
+
+    public function informasi_lengkap()
+    {
+        $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
+        $jum_aplikasi = $countaplikasi['id'];
+        $data = [
+            'title' => 'Informasi',
+            'title_pages' => '',
+            'slug'  => 'Berita, Artikel dan Kegiatan',
+            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
+            'berita' => $this->BeritaModel->first(),
+            'beritalengkap' => $this->BeritaModel->orderBy('tanggal', 'DESC')->findAll(),
+            'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'konfigurasi' => $this->KonfigurasiModel->first(),
+            'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
+            'jum_app' => $jum_aplikasi,
+        ];
+        return view('frontend/pages/informasi-lengkap', $data);
+    }
+
+    public function informasi_kategori($kategori)
+    {
+        $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
+        $jum_aplikasi = $countaplikasi['id'];
+        $data = [
+            'title' => 'Informasi',
+            'title_pages' => '',
+            'slug'  => $kategori,
+            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
+            'berita' => $this->BeritaModel->first(),
+            'beritalengkap' => $this->BeritaModel->where('kategori', $kategori)->orderBy('tanggal', 'DESC')->findAll(),
+            'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
+            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'konfigurasi' => $this->KonfigurasiModel->first(),
+            'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
+            'jum_app' => $jum_aplikasi,
+        ];
+        return view('frontend/pages/informasi-kategori', $data);
     }
 
     public function informasi_detail($slug)
@@ -336,8 +356,8 @@ class Pages extends BaseController
             'slug'  => $slug,
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'berita' => $this->BeritaModel->where('slug', $slug)->first(),
             'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
@@ -345,8 +365,8 @@ class Pages extends BaseController
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
-            'link_partner' => $this->LinkModel->where('kategori', 'partner')->findAll(8),
-            'link_lib' => $this->LinkModel->where('kategori', 'e-Library')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
             'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
             'jum_app' => $jum_aplikasi,
         ];
@@ -361,8 +381,8 @@ class Pages extends BaseController
             'slug'  => $slug,
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
@@ -381,8 +401,8 @@ class Pages extends BaseController
             'slug'  => $slug,
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
@@ -399,8 +419,8 @@ class Pages extends BaseController
             'title_pages' => '',
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
             'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
@@ -410,43 +430,6 @@ class Pages extends BaseController
         return view('frontend/pages/menu', $data);
     }
 
-    public function mitra()
-    {
-        $data = [
-            'title' => 'Mitra Kerjasama',
-            'title_pages' => '',
-            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
-            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
-            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
-            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'konf' => $this->KonfigurasiModel->findAll(),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
-        ];
-        return view('frontend/pages/mitra', $data);
-    }
-
-
-    public function mitra_detail($slug)
-    {
-        $data = [
-            'title' => 'Mitra Kerjasama',
-            'title_pages' => '',
-            'slug'  => $slug,
-            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
-            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
-            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5, 4),
-            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
-            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'konf' => $this->KonfigurasiModel->findAll(),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
-        ];
-        return view('frontend/pages/mitra-detail', $data);
-    }
     // END FRONTEND
 
     // START BACKEND

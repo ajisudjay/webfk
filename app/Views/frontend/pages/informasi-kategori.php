@@ -27,7 +27,7 @@
                     <div class="blog_left_sidebar">
                         <article class="blog_item">
                             <div class="row">
-                                <?php foreach ($berita20 as $item) : ?>
+                                <?php foreach ($beritalengkap as $item) : ?>
                                     <div class="col-lg-4">
                                         <div class="blog_item_img">
                                             <a class="d-inline-block" href="<?= base_url('informasi-detail/' . $item['slug']); ?>">

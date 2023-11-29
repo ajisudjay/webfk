@@ -5,40 +5,43 @@
                  <div class="col-lg-3">
                      <div class="footer_widget">
                          <div class="footer_logo">
-                             <a href="https://unmul.ac.id/" target="_blank">
-                                 <img src="<?= base_url(''); ?>/img/unmul.png" alt="" width="100">
-                             </a>
-                         </div>
-                         <p>
-                             Fakultas Kedokteran
-                             <br>
-                             Universitas Mulawarman
-                         </p>
-                         <div class="socail_links">
-                             <?php foreach ($konf as $item) : ?>
-                                 <ul>
-                                     <li>
-                                         <a href="http://facebook.com/<?= $item['fb'] ?>">
-                                             <i class="ti-facebook"></i>
-                                         </a>
-                                     </li>
-                                     <li>
-                                         <a href="http://youtube.com/<?= $item['yt'] ?>">
-                                             <i class="fa fa-youtube-play"></i>
-                                         </a>
-                                     </li>
-                                     <li>
-                                         <a href="http://instagram.com/<?= $item['ig'] ?>">
-                                             <i class="fa fa-instagram"></i>
-                                         </a>
-                                     </li>
-                                 </ul>
-                             <?php endforeach ?>
+                             <div align="center">
+                                 <a href="https://unmul.ac.id/" target="_blank">
+                                     <img src="<?= base_url(''); ?>/img/unmul.png" alt="" width="100">
+                                 </a>
+                                 <p>
+                                     Fakultas Kedokteran
+                                     <br>
+                                     Universitas Mulawarman
+                                 </p>
+                                 <i class="fa fa-map-marker text-white" style="font-size: 50px;"></i>
+                                 <br>
+                                 <a target="_blank" href="https://goo.gl/maps/aRWabkRXjMW7wDMC9" class="boxed-btn3-white">Buka Maps</a>
+                                 <div class="socail_links">
+                                     <ul>
+                                         <li>
+                                             <a href="http://facebook.com/<?= $konfigurasi['fb'] ?>">
+                                                 <i class="ti-facebook"></i>
+                                             </a>
+                                         </li>
+                                         <li>
+                                             <a href="http://youtube.com/<?= $konfigurasi['yt'] ?>">
+                                                 <i class="fa fa-youtube-play"></i>
+                                             </a>
+                                         </li>
+                                         <li>
+                                             <a href="http://instagram.com/<?= $konfigurasi['ig'] ?>">
+                                                 <i class="fa fa-instagram"></i>
+                                             </a>
+                                         </li>
+                                     </ul>
+                                 </div>
+                             </div>
                          </div>
 
                      </div>
                  </div>
-                 <div class="col-lg-3">
+                 <div class="col-lg-2">
                      <div class="footer_widget">
                          <h3 class="footer_title">
                              Link Partner
@@ -62,21 +65,19 @@
                          </ul>
                      </div>
                  </div>
-                 <div class="col-lg-3">
+                 <div class="col-lg-4">
                      <div class="footer_widget">
                          <h3 class="footer_title">
                              Alamat
                          </h3>
                          <p>
-                             <?php foreach ($konf as $item) : ?>
-                                 <?= $item['alamat'] ?>
-                                 <br><br>
-                                 Phone: <?= $item['telepon'] ?>
-                                 <br><br>
-                                 Email:
-                                 <br>
-                                 <?= $item['email'] ?>
-                             <?php endforeach ?>
+                             <?= $konfigurasi['alamat'] ?>
+                             <br><br>
+                             Phone: <?= $konfigurasi['telepon'] ?>
+                             <br><br>
+                             Email:
+                             <br>
+                             <?= $konfigurasi['email'] ?>
                          </p>
                      </div>
                  </div>

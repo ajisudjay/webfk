@@ -68,7 +68,6 @@
                                              </ul>
                                          </li>
                                      <?php endforeach ?>
-                                     <li><a class="<?= $title == 'Menu' ? 'text-primary' : '' ?>" href="<?= base_url('/menu'); ?>">Semua Menu</a></li>
                                  </ul>
                              </nav>
                          </div>

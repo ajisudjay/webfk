@@ -6,10 +6,10 @@
     </div>
     <div class="card-block">
         <?php foreach ($konfigurasi as $item) : ?>
-            <form action="<?= base_url('konfigurasi/edit'); ?>" method="post" class="edit">
-                <?php csrf_field() ?>
-                <!-- ISI FORM -->
-                <div class="row">
+            <!-- ISI FORM -->
+            <div class="row">
+                <form action="<?= base_url('konfigurasi/editvisi'); ?>" method="post" class="editvisi">
+                    <?php csrf_field() ?>
                     <div class="col-lg-12">
                         <label> Visi :</label>
                         <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
@@ -17,14 +17,30 @@
                         <div class="invalid-feedback errorVisi"></div>
                         <br>
                     </div>
+                    <div align="right">
+                        <button type="submit" class="btn btn-primary btnEditvisi">Perbarui</button>
+                    </div>
+                </form>
+                <form action="<?= base_url('konfigurasi/editmisi'); ?>" method="post" class="editmisi">
+                    <?php csrf_field() ?>
                     <div class="col-lg-12">
                         <label> Misi :</label>
+                        <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
                         <textarea name="misi" id="misi" class="form-control misi" rows="5"><?= $item['misi'] ?></textarea>
                         <div class="invalid-feedback errorMisi"></div>
                         <br>
                     </div>
+                    <div align="right">
+                        <button type="submit" class="btn btn-primary btnEditmisi">Perbarui</button>
+                    </div>
+                </form>
+            </div>
+            <form action="<?= base_url('konfigurasi/edit'); ?>" method="post" class="edit">
+                <?php csrf_field() ?>
+                <div class="row">
                     <div class="col-lg-6">
                         <label> Email :</label><br>
+                        <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
                         <textarea name="email" class="form-control email" rows="2"><?= $item['email'] ?></textarea>
                         <div class="invalid-feedback errorEmail"></div>
                     </div>
@@ -57,10 +73,9 @@
                     </div>
                 </div>
                 <br>
-                <div align="center">
+                <div align="right">
                     <button type="submit" class="btn btn-primary btnEdit">Perbarui</button>
                 </div>
-                <br>
             </form>
         <?php endforeach ?>
     </div>
