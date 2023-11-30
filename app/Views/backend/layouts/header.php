@@ -36,7 +36,7 @@
 
         <!-- Required Fremwork -->
         <!-- Data Table Css -->
-        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\libraries\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>\libraries\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('libraries/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') ?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('libraries/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') ?>">
     </head>
     <!-- END: Head-->
