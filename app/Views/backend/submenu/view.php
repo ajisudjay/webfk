@@ -67,10 +67,10 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="5%">Urutan</th>
-                        <th width="30%" style="text-align: center;">AKSI</th>
-                        <th width="15%">MAIN MENU</th>
-                        <th width="15%">SUB MENU</th>
-                        <th width="55%">LOG</th>
+                        <th style="text-align: center;">AKSI</th>
+                        <th width="10%">MAIN MENU</th>
+                        <th width="30%">SUB MENU</th>
+                        <th width="30%">LOG</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,7 +80,7 @@
                             <!-- ISI VIEW -->
                             <td><?= $no++ ?></td>
                             <td align="center"><?= $item['urutan_submenu'] ?></td>
-                            <td style="text-align: center;">
+                            <td style="text-align: center;min-width: 100px;max-width: 300px; white-space: normal;">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <form action="<?= base_url('submenu/editform'); ?>" method="post" class="editform">
@@ -96,10 +96,9 @@
                                         </a>
                                     </div>
                                 </div>
-
-
+                            </td>
                             <td><?= $item['mainmenu'] ?></td>
-                            <td><?= $item['submenu'] ?></td>
+                            <td style="min-width: 150px;max-width: 500px; white-space: normal;"><?= $item['submenu'] ?></td>
                             <td><?= $item['timestamp'] . ' | ' . $item['penulis'] ?></td>
                         </tr>
                     <?php endforeach ?>

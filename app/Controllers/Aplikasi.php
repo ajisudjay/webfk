@@ -95,10 +95,12 @@ class Aplikasi extends BaseController
                 ],
                 'gambar' => [
                     'label' => 'Gambar',
-                    'rules' => 'uploaded[gambar]|max_size[gambar,2048]',
+                    'rules' => 'uploaded[gambar]|max_size[gambar,2048]|mime_in[gambar,image/png,image/jpeg]|is_image[gambar]',
                     'errors' => [
                         'uploaded' => '* {field} Tidak Boleh Kosong !',
                         'max_size' => '{field} ukuran lebih dari 2 mb !',
+                        'mime_in' => 'Ekstensi tidak sesuai !',
+                        'is_image' => 'Ekstensi tidak sesuai !',
                     ]
                 ],
             ]);

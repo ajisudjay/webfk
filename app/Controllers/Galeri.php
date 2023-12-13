@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\GaleriModel;
 use App\Controllers\BaseController;
+use CodeIgniter\Images\Handlers\GDHandler;
+use CodeIgniter\Images\Handlers\ImageMagickHandler;
 
 class Galeri extends BaseController
 {
@@ -15,81 +17,60 @@ class Galeri extends BaseController
     public function index()
     {
 
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+            $admin = session()->get('nama');
+            $lvl = session()->get('level');
+            $file = session()->get('file');
+            if ($file <  1) {
+                $gambar = 'app-assets/images/profile/user-profile.png';
+            } else {
+                $gambar = 'content/user/' . $file;
+            }
+            $data = [
+                'title' => 'Galeri',
+                'admin' => $admin,
+                'lvl' => $lvl,
+                'foto' => $gambar,
+            ];
+            return view('backend/galeri/index', $data);
+        } else {
             return redirect()->to(base_url('/login'));
         }
-        $admin = session()->get('nama');
-        $lvl = session()->get('level');
-        $file = session()->get('file');
-        if ($file <  1) {
-            $gambar = 'app-assets/images/profile/user-profile.png';
-        } else {
-            $gambar = 'content/user/' . $file;
-        }
-        $data = [
-            'title' => 'Galeri',
-            'admin' => $admin,
-            'lvl' => $lvl,
-            'foto' => $gambar,
-        ];
-        return view('backend/galeri/index', $data);
     }
 
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
-            return redirect()->to(base_url('/login'));
-        }
-        $request = \Config\Services::request();
-        if ($request->isAJAX()) {
-            $data = [
-                'galeri' => $this->GaleriModel->orderBy('id', 'DESC')->get()->getResultArray(),
-                'validation' => \Config\Services::validation(),
-            ];
-            $msg = [
-                'data' => view('backend/galeri/view', $data)
-            ];
-            echo json_encode($msg);
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+            $request = \Config\Services::request();
+            if ($request->isAJAX()) {
+                $data = [
+                    'galeri' => $this->GaleriModel->orderBy('id', 'DESC')->get()->getResultArray(),
+                    'validation' => \Config\Services::validation(),
+                ];
+                $msg = [
+                    'data' => view('backend/galeri/view', $data)
+                ];
+                echo json_encode($msg);
+            } else {
+                exit('Data Tidak Dapat diproses');
+            }
         } else {
-            exit('Data Tidak Dapat diproses');
+            return redirect()->to(base_url('/login'));
         }
     }
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
-            return redirect()->to(base_url('/login'));
-        }
-        $request = \Config\Services::request();
-        $validation = \Config\Services::validation();
-        $nama = $request->getVar('nama');
-        $file = $request->getFile('file');
-        if ($request->isAJAX()) {
-            $valid = $this->validate([
-                'nama' => [
-                    'label' => 'Nama',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '* {field} Tidak Boleh Kosong',
-                    ]
-                ],
-                'file' => [
-                    'label' => 'Gambar',
-                    'rules' => 'uploaded[file]|max_size[file,2048]',
-                    'errors' => [
-                        'uploaded' => '* {field} Tidak Boleh Kosong !',
-                        'max_size' => '* {field} Ukuran Max 2 mb !',
-                    ]
-                ],
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+            $request = \Config\Services::request();
+            $nama = $request->getVar('nama');
+            $file = $request->getFile('file');
+            $input = $this->validate([
+                'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
             ]);
-            if (!$valid) {
-                $msg = [
-                    'error' => [
-                        'nama' => $validation->getError('nama'),
-                        'file' => $validation->getError('file'),
-                    ],
-                ];
-                return $this->response->setJSON($msg);
+            if (!$input) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');
+                return redirect()->to(base_url('/galeri'));
             } else {
                 $newName = $file->getRandomName();
                 $file->store('content/galeri/', $newName);
@@ -99,30 +80,66 @@ class Galeri extends BaseController
                     'gambar' => $nama_foto,
                 ];
                 $this->GaleriModel->insert($data);
-
-                $msg = [
-                    'title' => 'Berhasil'
-                ];
-                echo json_encode($msg);
+                return redirect()->to(base_url("/galeri/thumb/$nama_foto"));
             }
         } else {
-            exit('Data Tidak Dapat diproses');
+            return redirect()->to(base_url('/login'));
         }
+    }
+
+    public function thumb($namafoto)
+    {
+        $cekfile = $this->GaleriModel->where('gambar', $namafoto)->first();
+        $namafile = $cekfile['gambar'];
+        $filesource = '../writable/uploads/content/galeri/' . $namafile;
+        list($width, $heigth) = getimagesize($filesource);
+        $ratio = $width / $heigth;
+        $max = 500;
+        if ($width > $max || $heigth > $max) {
+            if ($width > $heigth) {
+                $newwidht = round($max);
+                $newheigth = round($max / $ratio);
+            } else {
+                $newheigth = round($max);
+                $newwidht = round($max * $ratio);
+            }
+        } else {
+            $newwidht = round($width);
+            $newheigth = round($heigth);
+        }
+        $thumb = imagecreatetruecolor($newwidht, $newheigth);
+        $exp = explode(".", $namafile);
+        $extension = end($exp);
+        if ($extension == 'png' | $extension == 'PNG') {
+            $source = imagecreatefrompng($filesource);
+        } else {
+            $source = imagecreatefromjpeg($filesource);
+        }
+
+        imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidht, $newheigth, $width, $heigth);
+        $target = "../writable/uploads/content/galeri/thumb/$namafoto";
+        imagewebp($thumb, $target, 80);
+        session()->setFlashdata('pesanHapus', 'Berhasil ditambah !');
+        return redirect()->to(base_url('/galeri'));
     }
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+            $cekfile = $this->GaleriModel->where('id', $id)->first();
+            $namafile = $cekfile['gambar'];
+            $filesource = '../writable/uploads/content/galeri/' . $namafile . '';
+            $filesourcethumb = '../writable/uploads/content/galeri/thumb/' . $namafile . '';
+            chmod($filesource, 0777);
+            chmod($filesourcethumb, 0777);
+            unlink($filesource);
+            unlink($filesourcethumb);
+            $this->GaleriModel->delete($id);
+
+            session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
+            return redirect()->to(base_url('/galeri'));
+        } else {
             return redirect()->to(base_url('/login'));
         }
-        $cekfile = $this->GaleriModel->where('id', $id)->first();
-        $namafile = $cekfile['gambar'];
-        $filesource = '../writable/uploads/content/galeri/' . $namafile . '';
-        chmod($filesource, 0777);
-        unlink($filesource);
-        $this->GaleriModel->delete($id);
-
-        session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');
-        return redirect()->to(base_url('/galeri'));
     }
 }

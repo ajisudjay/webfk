@@ -1,8 +1,15 @@
 <div class="container-fluid">
     <div class="card-header">
+        <?php
+        if ($lvl === 'Superadmin') {
+            $hakakses = '';
+        } else {
+            $hakakses = 'hidden';
+        }
+        ?>
         <h4 class="mb-0">Akun</h4>
         <!-- button tambah modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal" <?= $hakakses ?>>
             <span class="feather icon-plus text-light"></span>
         </button>
     </div>
@@ -37,7 +44,7 @@
                                     <label class="text-primary">Level</label>
                                     <select name="level" class="form-control level">
                                         <option value="">Pilih Level</option>
-                                        <!-- <option value="Admin">Admin</option> -->
+                                        <option value="Admin Prodi">Admin Prodi</option>
                                         <option value="Superadmin">Superadmin</option>
                                     </select>
                                     <div class="invalid-feedback errorluevel"></div>

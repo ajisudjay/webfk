@@ -21,7 +21,7 @@
                         <?= csrf_field() ?>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <label class="text-primary">Kategori</label>
                                     <select name="kategori" class="form-control">
                                         <option value="Berita">Berita</option>
@@ -35,17 +35,18 @@
                                     <input type="file" name="file" class="form-control file" accept="image/*">
                                     <div class="invalid-feedback errorfile"></div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <label class="text-primary">Tanggal</label>
                                     <input type="date" name="tanggal" class="form-control tanggal" placeholder="Tanggal">
                                     <div class="invalid-feedback errortanggal"></div>
+                                    <br>
                                 </div>
-                                <div class="col-lg-5">
+                                <!-- <div class="col-lg-5">
                                     <label class="text-primary">Tag</label>
                                     <input type="text" name="tag" class="form-control tag" placeholder="Tag">
                                     <div class="invalid-feedback errortag"></div>
                                     <br>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-12">
                                     <label class="text-primary">Judul</label>
                                     <input type="text" name="judul" class="form-control judul" placeholder="Judul">
@@ -76,11 +77,11 @@
                 <thead>
                     <tr>
                         <th width="5%">No</th>
-                        <th width="10%" style="text-align: center;">AKSI</th>
+                        <th style="text-align: center;">AKSI</th>
                         <th width="10%">TANGGAL</th>
-                        <th width="40%">JUDUL</th>
-                        <!-- <th width="25%" style="text-align: center;">BANNER</th> -->
-                        <th width="10%">LOG</th>
+                        <th width="45%">JUDUL</th>
+                        <th width="25%" style="text-align: center;">BANNER</th>
+                        <th width="30%">LOG</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,16 +90,16 @@
                         <tr>
                             <!-- ISI VIEW -->
                             <td><?= $no++ ?></td>
-                            <td style="text-align: center;min-width: 100px;">
+                            <td style="text-align: center;min-width: 100px;max-width: 300px; white-space: normal;">
                                 <div class="row">
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-6">
                                         <a href="/berita-edit/<?= $item['slug'] ?>">
                                             <button type="button" class="btn-sm btn-primary border-0">
                                                 <span class="feather icon-edit-1 text-default"></span>
                                             </button>
                                         </a>
                                     </div>
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-6">
                                         <!-- button hapus modal-->
                                         <a href="<?= base_url('berita/hapus/' . $item['id']); ?>" class="hapus">
                                             <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
@@ -106,7 +107,8 @@
                                     </div>
                                 </div>
                             <td><?= $item['tanggal'] ?></td>
-                            <td style="min-width: 400px;max-width: 600px; white-space: normal;"><?= $item['judul'] ?></td>
+                            <td style="min-width: 200px;max-width: 400px; white-space: normal;"><?= $item['judul'] ?></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/berita/thumb/' . $item['banner'] . ''); ?>" width="100%"></td>
                             <td style="min-width: 150px;max-width: 200px; white-space: normal;"><?= $item['timestamp'] . '   ' . $item['penulis'] ?></td>
                         </tr>
                     <?php endforeach ?>

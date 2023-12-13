@@ -24,7 +24,7 @@
                 },
                 complete: function() {
                     $('.btnEditvisi').removeAttr('disable', 'disabled');
-                    $('.btnEditvisi').html('Simpan');
+                    $('.btnEditvisi').html('Perbarui');
                 },
                 success: function(response) {
                     if (response.error) {
@@ -73,7 +73,7 @@
                 },
                 complete: function() {
                     $('.btnEditmisi').removeAttr('disable', 'disabled');
-                    $('.btnEditmisi').html('Simpan');
+                    $('.btnEditmisi').html('Perbarui');
                 },
                 success: function(response) {
                     if (response.error) {
@@ -116,7 +116,7 @@
                 },
                 complete: function() {
                     $('.btnEdit').removeAttr('disable', 'disabled');
-                    $('.btnEdit').html('Simpan');
+                    $('.btnEdit').html('Perbarui');
                 },
                 success: function(response) {
                     if (response.error) {

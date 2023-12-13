@@ -38,15 +38,11 @@
                                             <?= csrf_field() ?>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <label class="text-primary">Judul</label>
-                                                        <input type="text" name="id" value="<?= $berita['id'] ?>" hidden>
-                                                        <input type="text" name="judul" class="form-control judul" value="<?= $berita['judul'] ?>" required>
-                                                        <div class="invalid-feedback errorJudul"></div>
+                                                    <div class="col-lg-12" align="center">
+                                                        <img src="<?= base_url('writable/uploads/content/berita/' . $berita['banner']); ?>" height="200px">
+                                                        <br>
                                                         <br>
                                                     </div>
-                                                    <br>
-
                                                     <div class="col-lg-3">
                                                         <label class="text-primary">Banner <span style="color: red;">*max size 2mb</span></label>
                                                         <input type="file" name="file" class="form-control gambar" accept="image/*">
@@ -56,16 +52,22 @@
                                                         <label class="text-primary">Tanggal</label>
                                                         <input type="date" name="tanggal" class="form-control tanggal" value="<?= $berita['tanggal'] ?>" required>
                                                         <div class="invalid-feedback errorTanggal"></div>
+                                                        <br>
                                                     </div>
-                                                    <div class="col-lg-3">
+                                                    <div class="col-lg-12">
+                                                        <label class="text-primary">Judul</label>
+                                                        <input type="text" name="id" value="<?= $berita['id'] ?>" hidden>
+                                                        <input type="text" name="judul" class="form-control judul" value="<?= $berita['judul'] ?>" required>
+                                                        <div class="invalid-feedback errorJudul"></div>
+                                                        <br>
+                                                    </div>
+                                                    <br>
+                                                    <!-- <div class="col-lg-3">
                                                         <label class="text-primary">Tag</label>
                                                         <input type="text" name="tag" class="form-control tag" value="<?= $berita['tag'] ?>" required>
                                                         <div class="invalid-feedback errorTag"></div>
                                                         <br>
-                                                    </div>
-                                                    <div class="col-lg-12" align="center">
-                                                        <img src="<?= base_url('writable/uploads/content/berita/' . $berita['banner']); ?>" height="100%">
-                                                    </div>
+                                                    </div> -->
                                                     <div class="col-lg-12">
                                                         <label class="text-primary">Content</label>
                                                         <textarea name="isi" id="isi-edit"><?= $berita['isi'] ?></textarea>
@@ -96,7 +98,7 @@
     <!-- END: Content-->
     <?= $this->include('backend/berita/ajax') ?>
     <?= $this->include('backend/layouts/js') ?>
-
+    <?= $this->include('backend/layouts/js_view') ?>
 </body>
 <!-- END: Body-->
 <script>

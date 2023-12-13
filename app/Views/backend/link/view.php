@@ -80,8 +80,8 @@
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             <td><?= $item['kategori'] ?></td>
-                            <td style="min-width: 200px;max-width: 400px; white-space: normal;"><?= $item['judul'] ?></a></td>
-                            <td style="min-width: 250px;max-width: 400px; white-space: normal;"><a href="<?= $item['link'] ?>" target="_blank"><?= $item['link'] ?></a></td>
+                            <td style="min-width: 200px;max-width: 250px; white-space: normal;"><?= $item['judul'] ?></a></td>
+                            <td style="min-width: 150px;max-width: 250px; white-space: normal;"><a href="<?= $item['link'] ?>" target="_blank"><?= $item['link'] ?></a></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

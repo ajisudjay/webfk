@@ -1,10 +1,6 @@
 <!-- SCRIPT AJAX -->
 <script>
     $(document).ready(function() {
-        $('.copy-btn').on("click", function() {
-            $("#text-copy").select();
-            document.execCommand("copy");
-        })
         //  function tambah
         $('.tambah').submit(function(e) {
             e.preventDefault();

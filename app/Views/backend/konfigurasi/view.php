@@ -76,6 +76,7 @@
                 <div align="right">
                     <button type="submit" class="btn btn-primary btnEdit">Perbarui</button>
                 </div>
+                <br>
             </form>
         <?php endforeach ?>
     </div>

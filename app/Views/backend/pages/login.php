@@ -37,7 +37,6 @@
                                                     <div class="form-control-position">
                                                         <i class="feather icon-user"></i>
                                                     </div>
-                                                    <label for="user-name">Username</label>
                                                 </fieldset>
 
                                                 <fieldset class="form-label-group position-relative has-icon-left">
@@ -46,24 +45,19 @@
                                                     <div class="form-control-position">
                                                         <i class="feather icon-lock"></i>
                                                     </div>
-                                                    <label for="user-password">Password</label>
                                                 </fieldset>
-
-                                                <fieldset class="form-label-group position-relative has-icon-left">
-                                                    <div class="capcode">
-                                                        <?= $captcha ?>
-                                                        <input type="text" name="captcha" value=" <?= $captcha ?>" hidden>
-                                                    </div>
-                                                </fieldset>
+                                                <div class="capcode" style="margin-left: 100px;margin-right: 100px;margin-top: 10px;margin-bottom: 10px;">
+                                                    <?= $captcha ?>
+                                                    <input type="text" name="captcha" value=" <?= $captcha ?>" hidden>
+                                                </div>
                                                 <fieldset class="form-label-group position-relative has-icon-left">
                                                     <input type="text" name="captcha2" class="form-control captcha2" id="user-password" placeholder="Kode Keamanan" required>
                                                     <div class="form-control-position">
                                                         <i class="feather icon-lock"></i>
                                                     </div>
-                                                    <label for="user-password">Kode Keamanan</label>
                                                     <div class="font-weight-bold text-danger errorgagal_login"></div>
-
                                                 </fieldset>
+                                                <br>
                                                 <p align="center">
                                                     <button type="submit" class="btn btn-primary btn-inline btnSubmit">Login</button>
                                                 </p>

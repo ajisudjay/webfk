@@ -435,27 +435,28 @@ class Pages extends BaseController
     // START BACKEND
     public function beranda()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+            $admin = session()->get('nama');
+            $lvl = session()->get('level');
+            $usernamex = session()->get('username');
+            $file = session()->get('file');
+            if ($file <  1) {
+                $gambar = 'app-assets/images/profile/user-profile.png';
+            } else {
+                $gambar = 'content/user/' . $file;
+            }
+            $data = [
+                'title' => 'Beranda',
+                'lvl' => $lvl,
+                'akun' => $this->UsersModel->where('username', $usernamex)->first(),
+                'admin' => $admin,
+                'foto' => $gambar,
+
+            ];
+            return view('backend/pages/beranda', $data);
+        } else {
             return redirect()->to(base_url('/login'));
         }
-        $admin = session()->get('nama');
-        $lvl = session()->get('level');
-        $usernamex = session()->get('username');
-        $file = session()->get('file');
-        if ($file <  1) {
-            $gambar = 'app-assets/images/profile/user-profile.png';
-        } else {
-            $gambar = 'content/user/' . $file;
-        }
-        $data = [
-            'title' => 'Beranda',
-            'lvl' => $lvl,
-            'akun' => $this->UsersModel->where('username', $usernamex)->first(),
-            'admin' => $admin,
-            'foto' => $gambar,
-
-        ];
-        return view('backend/pages/beranda', $data);
     }
 
     public function login()

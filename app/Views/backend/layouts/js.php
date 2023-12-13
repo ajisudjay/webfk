@@ -8,7 +8,6 @@
 <script src="<?= base_url('app-assets/js/core/app.js'); ?>"></script>
 <script src="<?= base_url('app-assets/js/scripts/components.js'); ?>"></script>
 
-<script type="text/javascript" src="<?= base_url('libraries/bower_components/jquery/js/jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?= base_url('libraries/bower_components/jquery-ui/js/jquery-ui.min.js'); ?>"></script>
 <script type="text/javascript" src="<?= base_url('libraries/bower_components/popper.js/js/popper.min.js'); ?>"></script>
 <script type="text/javascript" src="<?= base_url('libraries/bower_components/bootstrap/js/bootstrap.min.js'); ?>"></script>
