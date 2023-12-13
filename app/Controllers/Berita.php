@@ -137,7 +137,7 @@ class Berita extends BaseController
         imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidht, $newheigth, $width, $heigth);
         $target = "../writable/uploads/content/berita/thumb/$namafoto";
         imagewebp($thumb, $target, 80);
-        session()->setFlashdata('pesanHapus', 'Berhasil ditambah !');
+        session()->setFlashdata('pesanHapus', 'Berhasil !');
         return redirect()->to(base_url('/berita'));
     }
 
