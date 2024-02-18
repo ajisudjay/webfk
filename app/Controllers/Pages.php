@@ -222,9 +222,10 @@ class Pages extends BaseController
         $uri = current_url(true);
         $slugx = $uri->getSegment(3); // Method - instrument
         $cek_menu = $this->SubmenuModel->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->where('slug', $slugx)->first();
-        $judul = $cek_menu['mainmenu'];
+        $judul = $cek_menu['submenu'];
+        $mainmenu = $cek_menu['mainmenu'];
         $data = [
-            'title' => '',
+            'title' => $mainmenu,
             'title_pages' => $judul,
             'slug'  => $slug,
             'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
