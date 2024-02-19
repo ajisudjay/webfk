@@ -67,7 +67,7 @@ class Dokumen extends BaseController
                 'file' => 'uploaded[file]|max_size[file,2048]'
             ]);
             if (!$input) { // Not valid
-                session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');
+                session()->setFlashdata('pesanGagal', 'Format file tidak sesuai');
                 return redirect()->to(base_url('/dokumen'));
             } else {
                 $newName = $file->getRandomName();
