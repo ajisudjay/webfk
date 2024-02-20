@@ -1,9 +1,5 @@
 CATATAN WEBSITE FK :
 
-WAITING RESPON :
-*. DATA PRODI BARU PRODI KEPERAWATAN -> MINTA DIGRUP DATA TENTANG PRODI
-*. SDM -> BU KHOTIM -> MENUNGGU DATA DARI BU KHOTIM
-
 -----------------------------------------------------------------------------------------------
 MINOR :
 
@@ -15,19 +11,21 @@ ON PROGRESS :
 *. ROADMAP PISAH PER PRODI -> MASING2 KAPRODI PJ BU SULIS (ADA DIKIRIM TAPI BLM LENGKAP HUB LEWAT GRUP WA )
 -> kedokteran gigi, spesiali bedah, spesialis paru belum
 *. PMB : LINK KE PMB.UNMUL -> GRUP BERDASARKAN PENDAFTARAN PRODI MASING-MASING
--> butuh flyer pmb d3 keperawatan,profesi dokter,profesi dokter gigi (jika ada)
+-> butuh flyer pmb d3 keperawatan,profesi dokter,profesi dokter gigi (jika ada), --> gabungkan pmb jadi 2 saja, sarjana dan profesi
 
 DONE :
 *. BERITA MUNDUR TANGGAL DISESUAIKAN
 *. MAIN MENU DIBUAT TRIDHARMA ATAU SESUAI AWAL (BATAL, IKUT MAIN MENU AWAL)
 *. AKREDITASI DITAMPILKAN TULISAN SELAIN GAMBAR DAN DOKUMEN -> DIKIRIM IBU SULIS
+
 -----------------------------------------------------------------------------------------------
 MAJOR :
+*. SDM -> BU KHOTIM -> MENUNGGU DATA DARI BU KHOTIM
 *. PENELITIAN -> CEK DI GOOGLE SCHOLAR DAN SINTA
 *. SPMI -> BUATKAN HALAMAN BARU TETAPI MASUKKAN PASSWORD UNTUK PRIVATE -> FILE, ATRIBUT, KETERANGAN
 *. PRODI APA SAJA DITAMPILKAN DI BERANDA -> MENGGUNAKAN CARD
 *. AKSES ADMIN PRODI DIBATASI DENGAN HANYA DAPAT EDIT MAIN DAN SUB MENU DENGAN KATEGORI PRODI
-
+*. KASIH BACKGROUND WARNA DAN MOTIF BATIK KALTIM DI NAVBAR
 DONE :
 *. BUAT GALERI DOKUMEN
 -----------------------------------------------------------------------------------------------

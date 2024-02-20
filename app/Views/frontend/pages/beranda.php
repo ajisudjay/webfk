@@ -4,9 +4,11 @@
     <?= $this->include('frontend/layouts/navbar') ?>
 
     <!-- Slider Beranda -->
-    <video width="100%" height="70%" autoplay muted loop>
-        <source src="img/video/profil.mp4" type="video/mp4">
-    </video>
+    <div align="center">
+        <video width="95%" autoplay muted loop>
+            <source src="img/video/profilkecil.mp4" type="video/mp4">
+        </video>
+    </div>
     <!-- akhir slider beranda -->
     <?php
     $jarak = 1;
@@ -29,7 +31,6 @@
         </div>
     </div>
     <!-- Akhir Aplikasi -->
-
     <!-- Visi MisiArea -->
     <div class="welcome_docmed_area" style="height: 500px;">
         <div class="container">
@@ -192,8 +193,8 @@
                             <?php foreach ($pejabat as $itempejabat) : ?>
                                 <div class="single_expert">
                                     <div class="box-berita">
-                                        <div class="expert_thumb">
-                                            <img src="<?= base_url('writable/uploads/content/pejabat/' . $itempejabat['gambar']); ?>">
+                                        <div class="expert_thumb" align="center">
+                                            <img src="<?= base_url('writable/uploads/content/pejabat/' . $itempejabat['gambar']); ?>" style="height:250px;width:250px;">
                                         </div>
                                         <div class="experts_name text-center">
                                             <h3><?= $itempejabat['nama'] ?></h3>
