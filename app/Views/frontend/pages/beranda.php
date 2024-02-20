@@ -197,7 +197,7 @@
                                             <img src="<?= base_url('writable/uploads/content/pejabat/' . $itempejabat['gambar']); ?>" style="height:250px;width:250px;">
                                         </div>
                                         <div class="experts_name text-center">
-                                            <h3><?= $itempejabat['nama'] ?></h3>
+                                            <h4><?= $itempejabat['nama'] ?></h4>
                                             <span><?= $itempejabat['jabatan'] ?></span>
                                         </div>
                                     </div>

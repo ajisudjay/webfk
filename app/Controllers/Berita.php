@@ -65,9 +65,9 @@ class Berita extends BaseController
             $username = session()->get('username');
             $request = \Config\Services::request();
             $judul = $request->getVar('judul');
-            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)));
-            $kategori = $request->getVar('kategori');
             $tanggal = $request->getVar('tanggal');
+            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)) . $tanggal);
+            $kategori = $request->getVar('kategori');
             $isi = $request->getVar('isi');
             $tag = $request->getVar('tag');
             date_default_timezone_set("Asia/Kuala_Lumpur");
@@ -174,8 +174,8 @@ class Berita extends BaseController
             $request = \Config\Services::request();
             $id = $request->getVar('id');
             $judul = $request->getVar('judul');
-            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)));
             $tanggal = $request->getVar('tanggal');
+            $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)) . $tanggal);
             $isi = $request->getVar('isi');
             $tag = $request->getVar('tag');
             date_default_timezone_set("Asia/Kuala_Lumpur");
