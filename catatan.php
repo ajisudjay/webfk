@@ -14,7 +14,7 @@ ON PROGRESS :
 
 DONE :
 *. PMB : LINK KE PMB.UNMUL -> GRUP BERDASARKAN PENDAFTARAN PRODI MASING-MASING
--> butuh flyer pmb d3 keperawatan,profesi dokter,profesi dokter gigi (jika ada), --> gabungkan pmb jadi 2 saja, sarjana dan profesi
+-> butuh flyer pmb profesi dokter,profesi dokter gigi (jika ada), --> gabungkan pmb jadi 2 saja, sarjana dan profesi
 *. BERITA MUNDUR TANGGAL DISESUAIKAN
 *. MAIN MENU DIBUAT TRIDHARMA ATAU SESUAI AWAL (BATAL, IKUT MAIN MENU AWAL)
 *. AKREDITASI DITAMPILKAN TULISAN SELAIN GAMBAR DAN DOKUMEN -> DIKIRIM IBU SULIS
@@ -22,12 +22,13 @@ DONE :
 -----------------------------------------------------------------------------------------------
 MAJOR :
 *. SDM -> BU KHOTIM -> MENUNGGU DATA DARI BU KHOTIM
-*. PENELITIAN -> CEK DI GOOGLE SCHOLAR DAN SINTA -> Masukkan di SDM saja
 *. SPMI -> BUATKAN HALAMAN BARU TETAPI MASUKKAN PASSWORD UNTUK PRIVATE -> FILE, ATRIBUT, KETERANGAN
 *. PRODI APA SAJA DITAMPILKAN DI BERANDA -> MENGGUNAKAN CARD
 *. AKSES ADMIN PRODI DIBATASI DENGAN HANYA DAPAT EDIT MAIN DAN SUB MENU DENGAN KATEGORI PRODI
 *. KASIH BACKGROUND WARNA DAN MOTIF BATIK KALTIM DI NAVBAR
+
 DONE :
+*. PENELITIAN -> CEK DI GOOGLE SCHOLAR DAN SINTA -> Masukkan di SDM saja
 *. input berita diperbaiki slug nya dan peringatan jika ada yang judul yang sama
 *. BUAT GALERI DOKUMEN
 ----------------------------------------------------------------------------------------------
