@@ -30,15 +30,4 @@ MAJOR :
 DONE :
 *. input berita diperbaiki slug nya dan peringatan jika ada yang judul yang sama
 *. BUAT GALERI DOKUMEN
------------------------------------------------------------------------------------------------
-
-CATATAN :
-KEBUTUHAN DATA WEBSITE FK
-
-DATA YANG MASIH BELUM LENGKAP:
-1. ROADMAP
--> Prodi lain belum mengirim: -Yang sudah mengumpul baru prodi kedokteran dan profesi kedokteran
-2. AKREDITASI
--> file sertifikat prodi spesialis pulmonologi & kedokteran respirasi belum ada
-3. PMB
--> Flyer PMB Prodi : keperawatan,profesi dokter,profesi dokter gigi, spesialis pulmonologi & kedokteran respirasi
+----------------------------------------------------------------------------------------------
