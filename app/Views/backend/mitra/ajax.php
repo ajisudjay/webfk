@@ -36,13 +36,35 @@
                             $('.nama').removeClass('is-invalid');
                             $('.errorNama').html('');
                         }
-                        if (response.error.gambar) {
-                            $('.gambar').addClass('is-invalid');
-                            $('.errorGambar').html(response.error.gambar);
+                        if (response.error.mulai_kerjasama) {
+                            $('.mulai_kerjasama').addClass('is-invalid');
+                            $('.errormulai_kerjasama').html(response.error.mulai_kerjasama);
                         } else {
-                            $('.gambar').removeClass('is-invalid');
-                            $('.errorGambar').html('');
+                            $('.mulai_kerjasama').removeClass('is-invalid');
+                            $('.errormulai_kerjasama').html('');
                         }
+                        if (response.error.berakhir_kerjasama) {
+                            $('.berakhir_kerjasama').addClass('is-invalid');
+                            $('.errorberakhir_kerjasama').html(response.error.berakhir_kerjasama);
+                        } else {
+                            $('.berakhir_kerjasama').removeClass('is-invalid');
+                            $('.errorberakhir_kerjasama').html('');
+                        }
+                        if (response.error.hasil) {
+                            $('.hasil').addClass('is-invalid');
+                            $('.errorhasil').html(response.error.hasil);
+                        } else {
+                            $('.hasil').removeClass('is-invalid');
+                            $('.errorhasil').html('');
+                        }
+                        if (response.error.laporan) {
+                            $('.laporan').addClass('is-invalid');
+                            $('.errorlaporan').html(response.error.laporan);
+                        } else {
+                            $('.laporan').removeClass('is-invalid');
+                            $('.errorlaporan').html('');
+                        }
+
                     } else {
                         Swal.fire({
                             icon: 'success',
@@ -60,7 +82,7 @@
             })
         });
 
-        //  function tambah
+        //  function edit
         $('.edit').submit(function(e) {
             e.preventDefault();
             var formData = new FormData(this);
@@ -94,6 +116,34 @@
                         } else {
                             $('.nama').removeClass('is-invalid');
                             $('.errorNama').html('');
+                        }
+                        if (response.error.mulai_kerjasama) {
+                            $('.mulai_kerjasama').addClass('is-invalid');
+                            $('.errormulai_kerjasama').html(response.error.mulai_kerjasama);
+                        } else {
+                            $('.mulai_kerjasama').removeClass('is-invalid');
+                            $('.errormulai_kerjasama').html('');
+                        }
+                        if (response.error.berakhir_kerjasama) {
+                            $('.berakhir_kerjasama').addClass('is-invalid');
+                            $('.errorberakhir_kerjasama').html(response.error.berakhir_kerjasama);
+                        } else {
+                            $('.berakhir_kerjasama').removeClass('is-invalid');
+                            $('.errorberakhir_kerjasama').html('');
+                        }
+                        if (response.error.hasil) {
+                            $('.hasil').addClass('is-invalid');
+                            $('.errorhasil').html(response.error.hasil);
+                        } else {
+                            $('.hasil').removeClass('is-invalid');
+                            $('.errorhasil').html('');
+                        }
+                        if (response.error.laporan) {
+                            $('.laporan').addClass('is-invalid');
+                            $('.errorlaporan').html(response.error.laporan);
+                        } else {
+                            $('.laporan').removeClass('is-invalid');
+                            $('.errorlaporan').html('');
                         }
                     } else {
                         Swal.fire({

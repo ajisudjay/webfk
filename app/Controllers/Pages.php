@@ -11,6 +11,7 @@ use App\Models\PejabatModel;
 use App\Models\BeritaModel;
 use App\Models\UsersModel;
 use App\Models\LinkModel;
+use App\Models\ProdiModel;
 use App\Models\AplikasiModel;
 
 class Pages extends BaseController
@@ -24,6 +25,7 @@ class Pages extends BaseController
     protected $BeritaModel;
     protected $UsersModel;
     protected $LinkModel;
+    protected $ProdiModel;
     protected $AplikasiModel;
     public function __construct()
     {
@@ -37,6 +39,7 @@ class Pages extends BaseController
         $this->UsersModel = new UsersModel();
         $this->LinkModel = new LinkModel();
         $this->AplikasiModel = new AplikasiModel();
+        $this->ProdiModel = new ProdiModel();
     }
     // BEGIN FRONTEND
 
@@ -205,9 +208,10 @@ class Pages extends BaseController
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
             'konfigurasi' => $this->KonfigurasiModel->first(),
-            'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+            'mitra' => $this->MitraModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'data_prodi' => $this->ProdiModel->orderBy('prodi', 'DESC')->get()->getResultArray(),
             'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
             'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
             'berita' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(6),
@@ -239,7 +243,6 @@ class Pages extends BaseController
             'konfigurasi' => $this->KonfigurasiModel->first(),
             'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
             'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
-            'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
         ];
         return view('frontend/pages/pages', $data);
     }
@@ -372,6 +375,31 @@ class Pages extends BaseController
             'jum_app' => $jum_aplikasi,
         ];
         return view('frontend/pages/informasi-detail', $data);
+    }
+
+    public function mitra_lengkap()
+    {
+        $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
+        $jum_aplikasi = $countaplikasi['id'];
+        $data = [
+            'title' => 'Informasi',
+            'title_pages' => '',
+            'slug'  => 'Berita, Artikel dan Kegiatan',
+            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(5),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(7, 5),
+            'mitra' => $this->MitraModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+            'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'konfigurasi' => $this->KonfigurasiModel->first(),
+            'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
+            'jum_app' => $jum_aplikasi,
+        ];
+        return view('frontend/pages/mitra-lengkap', $data);
     }
 
     public function laboratorium($slug)

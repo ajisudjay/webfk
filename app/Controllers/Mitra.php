@@ -65,7 +65,14 @@ class Mitra extends BaseController
         $validation = \Config\Services::validation();
         $nama = $request->getVar('nama');
         $urutan = $request->getVar('urutan');
-        $gambar = $request->getfile('gambar');
+        $jenis = $request->getVar('jenis');
+        $pendidikan = $request->getVar('pendidikan');
+        $penelitian = $request->getVar('penelitian');
+        $pkm = $request->getVar('pkm');
+        $mulai_kerjasama = $request->getVar('mulai_kerjasama');
+        $berakhir_kerjasama = $request->getVar('berakhir_kerjasama');
+        $hasil = $request->getVar('hasil');
+        $laporan = $request->getVar('laporan');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $valid = $this->validate([
@@ -83,14 +90,32 @@ class Mitra extends BaseController
                         'required' => '* {field} Tidak Boleh Kosong',
                     ]
                 ],
-                'gambar' => [
-                    'label' => 'Gambar',
-                    'rules' => 'uploaded[gambar]|max_size[gambar,2048]|mime_in[gambar,image/png,image/jpeg]|is_image[gambar]',
+                'mulai_kerjasama' => [
+                    'label' => 'Mulai Kerjasama',
+                    'rules' => 'required',
                     'errors' => [
-                        'uploaded' => '* {field} Tidak Boleh Kosong !',
-                        'max_size' => '{field} ukuran lebih dari 2 mb !',
-                        'mime_in' => 'Ekstensi tidak sesuai !',
-                        'is_image' => 'Ekstensi tidak sesuai !',
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'berakhir_kerjasama' => [
+                    'label' => 'Berakhir Kerjasama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'hasil' => [
+                    'label' => 'Hasil dan Manfaat',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'laporan' => [
+                    'label' => 'Laporan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
                     ]
                 ],
             ]);
@@ -99,17 +124,25 @@ class Mitra extends BaseController
                     'error' => [
                         'urutan' => $validation->getError('urutan'),
                         'nama' => $validation->getError('nama'),
-                        'gambar' => $validation->getError('gambar'),
+                        'mulai_kerjasama' => $validation->getError('mulai_kerjasama'),
+                        'berakhir_kerjasama' => $validation->getError('berakhir_kerjasama'),
+                        'hasil' => $validation->getError('hasil'),
+                        'laporan' => $validation->getError('laporan'),
                     ],
                 ];
                 return $this->response->setJSON($msg);
             } else {
-                $namagambar = $gambar->getRandomName();
-                $gambar->store('content/mitra/', $namagambar);
                 $data = [
                     'urutan' => $urutan,
                     'nama' => $nama,
-                    'gambar' => $namagambar,
+                    'jenis' => $jenis,
+                    'pendidikan' => $pendidikan,
+                    'penelitian' => $penelitian,
+                    'pkm' => $pkm,
+                    'mulai_kerjasama' => $mulai_kerjasama,
+                    'berakhir_kerjasama' => $berakhir_kerjasama,
+                    'hasil' => $hasil,
+                    'laporan' => $laporan,
                 ];
                 $this->MitraModel->insert($data);
 
@@ -133,7 +166,14 @@ class Mitra extends BaseController
         $id = $request->getVar('id');
         $nama = $request->getVar('nama');
         $urutan = $request->getVar('urutan');
-        $gambar = $request->getfile('gambar');
+        $jenis = $request->getVar('jenis');
+        $pendidikan = $request->getVar('pendidikan');
+        $penelitian = $request->getVar('penelitian');
+        $pkm = $request->getVar('pkm');
+        $mulai_kerjasama = $request->getVar('mulai_kerjasama');
+        $berakhir_kerjasama = $request->getVar('berakhir_kerjasama');
+        $hasil = $request->getVar('hasil');
+        $laporan = $request->getVar('laporan');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $valid = $this->validate([
@@ -151,12 +191,44 @@ class Mitra extends BaseController
                         'required' => '* {field} Tidak Boleh Kosong',
                     ]
                 ],
+                'mulai_kerjasama' => [
+                    'label' => 'Mulai Kerjasama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'berakhir_kerjasama' => [
+                    'label' => 'Berakhir Kerjasama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'hasil' => [
+                    'label' => 'Hasil dan Manfaat',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'laporan' => [
+                    'label' => 'Laporan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
             ]);
             if (!$valid) {
                 $msg = [
                     'error' => [
                         'urutan' => $validation->getError('urutan'),
                         'nama' => $validation->getError('nama'),
+                        'mulai_kerjasama' => $validation->getError('mulai_kerjasama'),
+                        'berakhir_kerjasama' => $validation->getError('berakhir_kerjasama'),
+                        'hasil' => $validation->getError('hasil'),
+                        'laporan' => $validation->getError('laporan'),
                     ],
                 ];
                 return $this->response->setJSON($msg);
@@ -164,6 +236,14 @@ class Mitra extends BaseController
                 $data = [
                     'urutan' => $urutan,
                     'nama' => $nama,
+                    'jenis' => $jenis,
+                    'pendidikan' => $pendidikan,
+                    'penelitian' => $penelitian,
+                    'pkm' => $pkm,
+                    'mulai_kerjasama' => $mulai_kerjasama,
+                    'berakhir_kerjasama' => $berakhir_kerjasama,
+                    'hasil' => $hasil,
+                    'laporan' => $laporan,
                 ];
                 $this->MitraModel->update($id, $data);
 

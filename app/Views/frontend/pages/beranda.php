@@ -2,7 +2,31 @@
 
 <body onload="removeLoader();">
     <?= $this->include('frontend/layouts/navbar') ?>
-
+    <!-- Aplikasi -->
+    <div class="service_area">
+        <div class="container p-0">
+            <div class="row no-gutters" style="text-align:center;border-color: red;">
+                <?php foreach ($data_prodi as $item_prodi) : ?>
+                    <div class="col-xl-3" style="margin-top: 5px;margin-bottom: 5px;">
+                        <h5 style="color: white;">
+                            <?php
+                            if ($item_prodi['akreditasi'] == "A") {
+                                $logo = 'a.png';
+                            } elseif ($item_prodi['akreditasi'] == "Baik Sekali") {
+                                $logo = 'baiksekali.png';
+                            } else {
+                                $logo = 'baik.png';
+                            }
+                            ?>
+                            <img src="<?= base_url('/img/logo_akre/' . $logo); ?>" width="75px" height="75px"> <br>
+                            <?= $item_prodi['prodi'] ?>
+                        </h5>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Aplikasi -->
     <!-- Slider Beranda -->
     <div align="center">
         <video width="95%" autoplay muted loop>
@@ -117,62 +141,69 @@
     <!-- Akhir Berita dan Artikel -->
 
     <!-- Kerjasama Fakultas -->
-    <!-- <div class="section_title text-center mb-55 mt-5">
+    <div class="section_title text-center mb-55 mt-5">
         <h3>Mitra Kerjasama</h3>
     </div>
     <div class="testmonial_area">
         <div class="testmonial_active owl-carousel">
-            <div class="single-testmonial testmonial_bg_1 overlay2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-10 offset-xl-1">
-                            <div class="testmonial_info text-center">
-                                <p>Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit
-                                </p>
-                                <div class="testmonial_author">
-                                    <h4>Rumah Sakit IA Moeis</h4>
+            <?php foreach ($mitra as $item_mitra) : ?>
+                <div class="single-testmonial overlay2" style="background-size: auto; background-image: url(<?= base_url('writable/uploads/content/konfigurasi/' . $konfigurasi['foto']); ?>);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-10 offset-xl-1">
+                                <div class="testmonial_info text-center">
+                                    <h3><?= $item_mitra['nama'] ?></h3><br>
+                                    <h5>Hasil atau Manfaat yang diperoleh</h5>
+                                    <h5>"<?= $item_mitra['hasil'] ?>"</h5><br>
+                                    <table align="center" class="table">
+                                        <tr>
+                                            <th align="center">
+                                                Pendidikan
+                                            </th>
+                                            <th>
+                                                Penelitian
+                                            </th>
+                                            <th>
+                                                Pengabdian kepada Masyarakat
+                                            </th>
+                                            <th>
+                                                Jenis
+                                            </th>
+                                            <th>
+                                                Masa Kerjasama
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <?= $item_mitra['pendidikan'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $item_mitra['penelitian'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $item_mitra['pkm'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $item_mitra['jenis'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $item_mitra['mulai_kerjasama'] . ' - ' . $item_mitra['berakhir_kerjasama'] ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single-testmonial testmonial_bg_2 overlay2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-10 offset-xl-1">
-                            <div class="testmonial_info text-center">
-                                <p>Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit
-                                </p>
-                                <div class="testmonial_author">
-                                    <h4>Rumah Sakit IA Moeis</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-testmonial testmonial_bg_1 overlay2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-10 offset-xl-1">
-                            <div class="testmonial_info text-center">
-                                <p>Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit Judul Kerjasama Fakultas kedokteran dengan Rumah Sakit
-                                </p>
-                                <div class="testmonial_author">
-                                    <h4>Rumah Sakit IA Moeis</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <!-- Lihat Semua Kerjasama -->
-    <!-- <center class="mt-5">
-            <a href="<?= base_url('/mitra'); ?>" class="boxed-btn3">Lihat Semua</a>
+            <?php endforeach ?>
+        </div>
+        <!-- Lihat Semua Kerjasama -->
+        <center class="mt-5">
+            <a href="<?= base_url('/mitra-lengkap'); ?>" class="boxed-btn3">Lihat Semua</a>
         </center>
-    </div> -->
+    </div>
     <!-- Akhir Kerjasama Fakultas-->
 
     <!-- Pimpinan Fakultas -->
