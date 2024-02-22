@@ -134,8 +134,8 @@
                                                                 <label class="text-primary">Level</label>
                                                                 <select name="level" class="form-control level">
                                                                     <option value="<?= $item['level'] ?>"><?= $item['level'] ?></option>
-                                                                    <option value="Admin">Admin</option>
-                                                                    <option value="Superadmin">Superadmin</option>
+                                                                    <option value="Admin Prodi">Admin Prodi</option>
+                                                                    <option value="Superadmin" <?= $hakakses ?>>Superadmin</option>
                                                                 </select>
                                                                 <div class="invalid-feedback errorLevel"></div>
                                                                 <br>

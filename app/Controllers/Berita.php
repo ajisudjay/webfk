@@ -42,11 +42,20 @@ class Berita extends BaseController
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
             $request = \Config\Services::request();
+            $username = session()->get('username');
+            $level = session()->get('level');
             if ($request->isAJAX()) {
-                $data = [
-                    'berita' => $this->BeritaModel->orderBy('id', 'DESC')->get()->getResultArray(),
-                    'validation' => \Config\Services::validation(),
-                ];
+                if ($level !== 'Admin Prodi') {
+                    $data = [
+                        'berita' => $this->BeritaModel->orderBy('id', 'DESC')->get()->getResultArray(),
+                        'validation' => \Config\Services::validation(),
+                    ];
+                } else {
+                    $data = [
+                        'berita' => $this->BeritaModel->where('penulis', $username)->orderBy('id', 'DESC')->get()->getResultArray(),
+                        'validation' => \Config\Services::validation(),
+                    ];
+                }
                 $msg = [
                     'data' => view('backend/berita/view', $data)
                 ];

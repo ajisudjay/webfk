@@ -42,7 +42,7 @@ class Prodi extends BaseController
             if ($request->isAJAX()) {
                 $data = [
                     'title' => 'Program Studi',
-                    'prodi' => $this->ProdiModel->orderBy('id', 'ASC')->get()->getResultArray(),
+                    'prodi' => $this->ProdiModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
                 ];
                 $msg = [
@@ -64,11 +64,19 @@ class Prodi extends BaseController
         }
         $request = \Config\Services::request();
         $validation = \Config\Services::validation();
+        $urutan = $request->getVar('urutan');
         $prodi = $request->getVar('prodi');
         $akreditasi = $request->getVar('akreditasi');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
                 'prodi' => [
                     'label' => 'Program Studi',
                     'rules' => 'required',
@@ -80,12 +88,14 @@ class Prodi extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
+                        'urutan' => $validation->getError('urutan'),
                         'prodi' => $validation->getError('prodi'),
                     ],
                 ];
                 return $this->response->setJSON($msg);
             } else {
                 $data = [
+                    'urutan' => $urutan,
                     'prodi' => $prodi,
                     'akreditasi' => $akreditasi,
                 ];
@@ -111,11 +121,19 @@ class Prodi extends BaseController
         $request = \Config\Services::request();
         $validation = \Config\Services::validation();
         $id = $request->getVar('id');
+        $urutan = $request->getVar('urutan');
         $prodi = $request->getVar('prodi');
         $akreditasi = $request->getVar('akreditasi');
         $request = \Config\Services::request();
         if ($request->isAJAX()) {
             $valid = $this->validate([
+                'urutan' => [
+                    'label' => 'Urutan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
                 'prodi' => [
                     'label' => 'Program Studi',
                     'rules' => 'required',
@@ -127,12 +145,14 @@ class Prodi extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
+                        'urutan' => $validation->getError('urutan'),
                         'prodi' => $validation->getError('prodi'),
                     ],
                 ];
                 return $this->response->setJSON($msg);
             } else {
                 $data = [
+                    'urutan' => $urutan,
                     'prodi' => $prodi,
                     'akreditasi' => $akreditasi,
                 ];

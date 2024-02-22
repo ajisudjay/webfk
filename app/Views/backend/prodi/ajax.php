@@ -22,6 +22,13 @@
                 },
                 success: function(response) {
                     if (response.error) {
+                        if (response.error.urutan) {
+                            $('.urutan').addClass('is-invalid');
+                            $('.errorurutan').html(response.error.urutan);
+                        } else {
+                            $('.urutan').removeClass('is-invalid');
+                            $('.errorurutan').html('');
+                        }
                         if (response.error.prodi) {
                             $('.prodi').addClass('is-invalid');
                             $('.errorprodi').html(response.error.prodi);

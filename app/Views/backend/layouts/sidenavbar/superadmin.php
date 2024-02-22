@@ -89,6 +89,7 @@
                     </li>
                     <li class="<?= $title == 'Galeri' ? 'active' : '' ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-image"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
                     </li>
+                    <li class="<?= $title == 'Dokumen' ? 'active' : '' ?>"><a href="<?= base_url('dokumen'); ?>"><i class="feather icon-file"></i><span class="menu-item" data-i18n="Analytics">Dokumen</span></a>
                     </li>
                     <li class=" navigation-header"><span>AKUN</span>
                     </li>

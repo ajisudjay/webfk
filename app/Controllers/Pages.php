@@ -211,7 +211,7 @@ class Pages extends BaseController
             'mitra' => $this->MitraModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'data_prodi' => $this->ProdiModel->orderBy('prodi', 'DESC')->get()->getResultArray(),
+            'data_prodi' => $this->ProdiModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
             'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
             'berita' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(6),

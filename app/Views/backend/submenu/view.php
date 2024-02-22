@@ -2,7 +2,7 @@
     <div class="card-header">
         <h4 class="mb-0">Sub Menu</h4>
         <!-- button tambah modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal" <?= $aksesbutton ?>>
             <span class="feather icon-plus text-light"></span>
         </button>
     </div>
@@ -38,7 +38,7 @@
                                     <div class="invalid-feedback errorurutan"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-9">
+                                <div class="col-lg-5">
                                     <label class="text-primary">Sub Menu</label>
                                     <input type="text" name="submenu" class="form-control submenu" placeholder="Sub Menu">
                                     <div class="invalid-feedback errorsubmenu"></div>
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <!-- button hapus modal-->
-                                        <a href="<?= base_url('submenu/hapus/' . $item['submenu_id']); ?>" class="hapus">
+                                        <a href="<?= base_url('submenu/hapus/' . $item['submenu_id']); ?>" class="hapus" <?= $aksesbutton ?>>
                                             <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                         </a>
                                     </div>

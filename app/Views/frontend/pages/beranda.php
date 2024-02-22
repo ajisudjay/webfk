@@ -2,23 +2,30 @@
 
 <body onload="removeLoader();">
     <?= $this->include('frontend/layouts/navbar') ?>
-    <!-- Aplikasi -->
+    <!-- Prodi -->
     <div class="service_area">
-        <div class="container p-0">
-            <div class="row no-gutters" style="text-align:center;border-color: red;">
+        <div class=" container p-0">
+            <h4 align="center" style="color:white;">Program Studi</h4>
+            <div class="row no-gutters" align="center" style="text-align:center;border-color: red;justify-content: center;">
                 <?php foreach ($data_prodi as $item_prodi) : ?>
-                    <div class="col-xl-3" style="margin-top: 5px;margin-bottom: 5px;">
-                        <h5 style="color: white;">
-                            <?php
-                            if ($item_prodi['akreditasi'] == "A") {
-                                $logo = 'a.png';
-                            } elseif ($item_prodi['akreditasi'] == "Baik Sekali") {
-                                $logo = 'baiksekali.png';
-                            } else {
-                                $logo = 'baik.png';
-                            }
-                            ?>
-                            <img src="<?= base_url('/img/logo_akre/' . $logo); ?>" width="75px" height="75px"> <br>
+                    <div class="col-xl-1" style="margin-top: 5px;margin-bottom: 5px;">
+                        <?php
+                        if ($item_prodi['akreditasi'] == "A") {
+                            $akre = 'Unggul';
+                            $logo = 'a.png';
+                        } elseif ($item_prodi['akreditasi'] == "Baik Sekali") {
+                            $akre = 'Baik Sekali';
+                            $logo = 'baiksekali.png';
+                        } else {
+                            $akre = 'Baik';
+                            $logo = 'baik.png';
+                        }
+                        ?>
+                        <img src="<?= base_url('/img/logo_akre/' . $logo); ?>" width="50px" height="50px"> <br>
+                        <p style="color: white;line-height: 10px;margin-bottom: 0px;font-size: 6px;">
+                            <?= $akre ?>
+                        </p>
+                        <h5 style="color: white;font-size: 6px;">
                             <?= $item_prodi['prodi'] ?>
                         </h5>
                     </div>
@@ -26,7 +33,7 @@
             </div>
         </div>
     </div>
-    <!-- Akhir Aplikasi -->
+    <!-- Akhir Prodi -->
     <!-- Slider Beranda -->
     <div align="center">
         <video width="95%" autoplay muted loop>
@@ -152,8 +159,9 @@
                         <div class="row">
                             <div class="col-xl-10 offset-xl-1">
                                 <div class="testmonial_info text-center">
-                                    <h3><?= $item_mitra['nama'] ?></h3><br>
-                                    <h5>Hasil atau Manfaat yang diperoleh</h5>
+                                    <br>
+                                    <h1><?= $item_mitra['nama'] ?></h1><br>
+                                    <!-- <h5>Hasil atau Manfaat yang diperoleh</h5>
                                     <h5>"<?= $item_mitra['hasil'] ?>"</h5><br>
                                     <table align="center" class="table">
                                         <tr>
@@ -190,7 +198,7 @@
                                                 <?= $item_mitra['mulai_kerjasama'] . ' - ' . $item_mitra['berakhir_kerjasama'] ?>
                                             </td>
                                         </tr>
-                                    </table>
+                                    </table> -->
 
                                 </div>
                             </div>

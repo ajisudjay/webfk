@@ -43,7 +43,14 @@ class Submenu extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
+                $level = session()->get('level');
+                if ($level === 'Superadmin') {
+                    $aksesbutton = '';
+                } else {
+                    $aksesbutton = 'hidden';
+                }
                 $data = [
+                    'aksesbutton' => $aksesbutton,
                     'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
                     'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
@@ -71,6 +78,7 @@ class Submenu extends BaseController
                 $submenu = $request->getVar('submenu');
                 $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)) . $mainmenu);
                 $isi = $request->getVar('isi');
+                $akses = $request->getVar('akses');
                 $timestamp = date("Y-m-d");
                 $penulis = $username;
                 $validation = \Config\Services::validation();
@@ -114,6 +122,7 @@ class Submenu extends BaseController
                         'id_mainmenu' => $mainmenu,
                         'content' => $isi,
                         'timestamp' => $timestamp,
+                        'akses' => $akses,
                         'penulis' => $penulis,
                     ];
                     $this->SubmenuModel->insert($data);
@@ -173,6 +182,7 @@ class Submenu extends BaseController
             $urutan = $request->getVar('urutan');
             $mainmenu = $request->getVar('mainmenu');
             $submenu = $request->getVar('submenu');
+            $akses = $request->getVar('akses');
             $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)) . $mainmenu);
             $isi = $request->getVar('isi');
             $timestamp = date("Y-m-d");
@@ -185,6 +195,7 @@ class Submenu extends BaseController
                 'content' => $isi,
                 'timestamp' => $timestamp,
                 'penulis' => $penulis,
+                'akses' => $akses,
             ];
             $this->SubmenuModel->update($id, $data);
             session()->setFlashdata('pesanHapus', 'Berhasil diubah !');

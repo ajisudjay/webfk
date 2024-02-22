@@ -22,6 +22,12 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
+                                    <label class="text-primary">Urutan</label>
+                                    <input type="number" min="1" name="urutan" class="form-control urutan" placeholder="Urutan">
+                                    <div class="invalid-feedback errorurutan"></div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-12">
                                     <label class="text-primary">Program Studi</label>
                                     <input type="text" name="prodi" class="form-control prodi" placeholder="Program Studi">
                                     <div class="invalid-feedback errorprodi"></div>
@@ -61,11 +67,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no = 1 ?>
                     <?php foreach ($prodi as $item) : ?>
                         <tr>
                             <!-- ISI VIEW -->
-                            <td><?= $no++ ?></td>
+                            <td><?= $item['urutan'] ?></td>
                             <td style="text-align: center;">
                                 <!-- edit button-->
                                 <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['id'] ?>">
@@ -91,6 +96,12 @@
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <label class="text-primary">Urutan</label>
+                                                                    <input type="number" min="1" name="urutan" class="form-control urutan" value="<?= $item['urutan'] ?>">
+                                                                    <div class="invalid-feedback errorurutan"></div>
+                                                                    <br>
+                                                                </div>
                                                                 <div class="col-lg-12">
                                                                     <label class="text-primary">Program Studi</label>
                                                                     <input type="text" name="id" value="<?= $item['id'] ?>" hidden>

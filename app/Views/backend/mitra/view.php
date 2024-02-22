@@ -78,7 +78,7 @@
                                     <div class="invalid-feedback errorberakhir_kerjasama"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-6">
                                     <label class="text-primary">Link Laporan</label>
                                     <input type="text" name="laporan" class="form-control laporan" placeholder="Laporan">
                                     <div class="invalid-feedback errorlaporan"></div>
@@ -208,7 +208,7 @@
                                                                 <div class="invalid-feedback errorberakhir_kerjasama"></div>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-lg-6">
                                                                 <label class="text-primary">Link Laporan</label>
                                                                 <input type="text" name="laporan" class="form-control laporan" value="<?= $item['laporan'] ?>">
                                                                 <div class="invalid-feedback errorlaporan"></div>
