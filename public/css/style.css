@@ -836,7 +836,7 @@ h3 {
 
 /* line 15, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .main-header-area {
-  padding: 18px 0;
+  padding: 10px 0;
   background: #fff;
 }
 
@@ -2760,7 +2760,7 @@ h3 {
 
 /* line 2, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_tesmonial.scss */
 .testmonial_area .single-testmonial {
-  padding: 70px 0;
+  padding: 80px 0;
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;

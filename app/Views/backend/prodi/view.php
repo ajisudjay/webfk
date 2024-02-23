@@ -37,6 +37,9 @@
                                     <label class="text-primary">Akreditasi</label>
                                     <select name="akreditasi" class="form-control akreditasi">
                                         <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="Sangat Baik">Sangat Baik</option>
                                         <option value="Baik Sekali">Baik Sekali</option>
                                         <option value="Baik">Baik</option>
                                     </select>
@@ -114,6 +117,9 @@
                                                                     <select name="akreditasi" class="form-control akreditasi">
                                                                         <option value="<?= $item['akreditasi'] ?>"><?= $item['akreditasi'] ?></option>
                                                                         <option value="A">A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="C">C</option>
+                                                                        <option value="Sangat Baik">Sangat Baik</option>
                                                                         <option value="Baik Sekali">Baik Sekali</option>
                                                                         <option value="Baik">Baik</option>
                                                                     </select>

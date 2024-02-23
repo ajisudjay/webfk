@@ -5,14 +5,23 @@
     <!-- Prodi -->
     <div class="service_area">
         <div class=" container p-0">
-            <h4 align="center" style="color:white;">Program Studi</h4>
+            <h5 align="center" style="color:white;margin-bottom:-5px">Program Studi</h5>
             <div class="row no-gutters" align="center" style="text-align:center;border-color: red;justify-content: center;">
                 <?php foreach ($data_prodi as $item_prodi) : ?>
                     <div class="col-xl-1" style="margin-top: 5px;margin-bottom: 5px;">
                         <?php
                         if ($item_prodi['akreditasi'] == "A") {
-                            $akre = 'Unggul';
-                            $logo = 'a.png';
+                            $akre = 'A';
+                            $logo = 'A.png';
+                        } elseif ($item_prodi['akreditasi'] == "B") {
+                            $akre = 'B';
+                            $logo = 'B.png';
+                        } elseif ($item_prodi['akreditasi'] == "C") {
+                            $akre = 'C';
+                            $logo = 'C.png';
+                        } elseif ($item_prodi['akreditasi'] == "Sangat Baik") {
+                            $akre = 'Sangat Baik';
+                            $logo = 'sangatbaik.png';
                         } elseif ($item_prodi['akreditasi'] == "Baik Sekali") {
                             $akre = 'Baik Sekali';
                             $logo = 'baiksekali.png';
@@ -22,12 +31,9 @@
                         }
                         ?>
                         <img src="<?= base_url('/img/logo_akre/' . $logo); ?>" width="50px" height="50px"> <br>
-                        <p style="color: white;line-height: 10px;margin-bottom: 0px;font-size: 6px;">
-                            <?= $akre ?>
-                        </p>
-                        <h5 style="color: white;font-size: 6px;">
+                        <h3 style="color: white;font-size: 8px;">
                             <?= $item_prodi['prodi'] ?>
-                        </h5>
+                        </h3>
                     </div>
                 <?php endforeach ?>
             </div>
@@ -89,7 +95,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="section_title text-center mb-55">
+                    <div class="section_title text-center mb-40">
                         <h3>Berita Terbaru</h3>
                         <p>Berita dan Artikel Terbaru</p>
                     </div>
@@ -141,24 +147,25 @@
             </div>
         </div>
         <!-- Lihat Semua Berita -->
-        <center class="mt-5">
+        <center class="mt-55">
             <a href="<?= base_url('informasi'); ?>" class="boxed-btn3">Lihat Semua</a>
         </center>
     </div>
     <!-- Akhir Berita dan Artikel -->
 
     <!-- Kerjasama Fakultas -->
-    <div class="section_title text-center mb-55 mt-5">
-        <h3>Mitra Kerjasama</h3>
-    </div>
     <div class="testmonial_area">
+        <div class="section_title text-center mb-15 mt-5">
+            <h3>Mitra Kerjasama</h3>
+        </div>
         <div class="testmonial_active owl-carousel">
             <?php foreach ($mitra as $item_mitra) : ?>
-                <div class="single-testmonial overlay2" style="background-size: auto; background-image: url(<?= base_url('writable/uploads/content/konfigurasi/' . $konfigurasi['foto']); ?>);">
+                <div class="single-testmonial overlay2" style="background-size: cover; background-image: url(<?= base_url('writable/uploads/content/konfigurasi/' . $konfigurasi['foto']); ?>);">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-10 offset-xl-1">
                                 <div class="testmonial_info text-center">
+                                    <br>
                                     <br>
                                     <h1><?= $item_mitra['nama'] ?></h1><br>
                                     <!-- <h5>Hasil atau Manfaat yang diperoleh</h5>
@@ -208,7 +215,7 @@
             <?php endforeach ?>
         </div>
         <!-- Lihat Semua Kerjasama -->
-        <center class="mt-5">
+        <center class="mt-55">
             <a href="<?= base_url('/mitra-lengkap'); ?>" class="boxed-btn3">Lihat Semua</a>
         </center>
     </div>
