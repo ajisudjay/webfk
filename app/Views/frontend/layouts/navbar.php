@@ -28,7 +28,7 @@
              </div>
          </div>
          <div id="sticky-header" class="main-header-area">
-             <div style="background-image: url(<?= base_url('/img/bacground_nav6.png'); ?>);background-size: contain;background-position:center;margin-bottom:-12px;margin-top:-5px;">
+             <div style="background-image: url(<?= base_url('/img/navbar/bacground_nav.png'); ?>);background-size: contain;background-position:center;">
                  <div class="container">
                      <div class="row align-items-center">
                          <div class="col-xl-1 col-lg-1">
@@ -45,7 +45,7 @@
                                          <li><a class="<?= $title == 'Beranda' ? 'text-primary' : '' ?>" href="<?= base_url('/'); ?>">Beranda</a></li>
                                          <?php foreach ($menu as $item_mainmenu) : ?>
                                              <?php $menu = $item_mainmenu['mainmenu'] ?>
-                                             <li><a href="#" class="<?= $title_pages == $menu ? 'text-primary' : '' ?>"> <?= $menu ?> <i class="ti-angle-down"></i></a>
+                                             <li><a href="#" class="<?= $title_pages == $menu ? 'text-primary' : '' ?>"><?= $menu ?></a>
                                                  <ul class="submenu">
                                                      <?php foreach ($submenu as $item_submenu) : ?>
                                                          <?php if ($item_submenu['mainmenu'] == $menu) { ?>
@@ -55,11 +55,17 @@
                                                  </ul>
                                              </li>
                                          <?php endforeach ?>
+                                         <li><a class="<?= $title == 'SDM' ? 'text-primary' : '' ?>" href="<?= base_url('/'); ?>">SDM</a>
+                                             <ul class="submenu">
+                                                 <li><a href="<?= base_url('pages-dosen/'); ?>">Dosen</a></li>
+                                                 <li><a href="<?= base_url('pages-tendik/'); ?>">Tendik & Laboran</a></li>
+                                             </ul>
+                                         </li>
                                          <br>
                                          <hr style="width: 60%;">
                                          <?php foreach ($menu2 as $item_mainmenu2) : ?>
                                              <?php $menu2 = $item_mainmenu2['mainmenu'] ?>
-                                             <li><a href="#" class="<?= $title_pages == $menu2 ? 'text-primary' : '' ?>"> <?= $menu2 ?> <i class="ti-angle-down"></i></a>
+                                             <li><a href="#" class="<?= $title_pages == $menu2 ? 'text-primary' : '' ?>"><?= $menu2 ?></a>
                                                  <ul class="submenu">
                                                      <?php foreach ($submenu as $item_submenu) : ?>
                                                          <?php if ($item_submenu['mainmenu'] == $menu2) { ?>

@@ -71,7 +71,7 @@
                                 </a>
                             <td style="min-width: 100px;max-width: 300px; white-space: normal;"><?= $item['nama'] ?></td>
 
-                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/galeri/thumb/' . $item['gambar'] . ''); ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/galeri/thumb/' . $item['gambar']); ?>" width="100%"></td>
                             <td>
                                 <input type="text" class="form-control copy-btn" value="<?= base_url() ?>/writable/uploads/content/galeri/<?= $item['gambar'] ?>">
                                 <br>

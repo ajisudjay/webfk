@@ -56,18 +56,13 @@
                     </li>
                     <li class="<?= $title == 'Mitra' ? 'active' : '' ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
                     </li>
-                    <!-- <li class="navigation-header"><span>BANK DATA</span>
-                <li class=""><a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="Dashboard">SDM</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
-                    <ul class="menu-content">
-                        <li class="<?= $title == 'Dosen' ? 'active' : '' ?>"><a href="<?= base_url('dosen'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Dosen</span></a>
-                        </li>
-                        <li class="<?= $title == 'Tendik' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Tendik</span></a>
-                        </li>
-                        <li class="<?= $title == 'Student Body' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Student Body</span></a>
-                        </li>
-                    </ul>
-                </li>
-                </li> -->
+                    <li class="<?= $title == 'Dosen' ? 'active' : '' ?>"><a href="<?= base_url('dosen'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Dosen</span></a>
+                    </li>
+                    <li class="<?= $title == 'Tendik' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Tendik</span></a>
+                    </li>
+                    <!-- <li class="<?= $title == 'Student Body' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Student Body</span></a>
+                    </li> -->
+                    </li>
                     <li class=" navigation-header"><span>AKUN</span>
                     </li>
                     <li class="<?= $title == 'Akun' ? 'active' : '' ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>

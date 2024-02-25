@@ -2,6 +2,14 @@
 
 <body onload="removeLoader();">
     <?= $this->include('frontend/layouts/navbar') ?>
+
+    <!-- Slider Beranda -->
+    <div align="center">
+        <video width="75%" autoplay muted loop>
+            <source src="img/video/profilkecil.mp4" type="video/mp4">
+        </video>
+    </div>
+    <!-- akhir slider beranda -->
     <!-- Prodi -->
     <div class="service_area">
         <div class=" container p-0">
@@ -40,34 +48,6 @@
         </div>
     </div>
     <!-- Akhir Prodi -->
-    <!-- Slider Beranda -->
-    <div align="center">
-        <video width="95%" autoplay muted loop>
-            <source src="img/video/profilkecil.mp4" type="video/mp4">
-        </video>
-    </div>
-    <!-- akhir slider beranda -->
-    <?php
-    $jarak = 1;
-    if ($jum_app > 6) {
-        $jarak = 2;
-    } else {
-        $jarak = 12 / $jum_app;
-    }
-    ?>
-    <!-- Aplikasi -->
-    <div class="service_area">
-        <div class="container p-0">
-            <div class="row no-gutters" style="text-align:center;border-color: red;">
-                <?php foreach ($aplikasi as $item) : ?>
-                    <div class="col-xl-<?= $jarak ?>" style="margin-top: 5px;margin-bottom: 5px;">
-                        <a target="_blank" href="<?= $item['link'] ?>" class="boxed-btn3-white"><img src="<?= base_url('writable/uploads/content/aplikasi/' . $item['gambar']); ?>" width="100px" height="100px"></a>
-                    </div>
-                <?php endforeach ?>
-            </div>
-        </div>
-    </div>
-    <!-- Akhir Aplikasi -->
     <!-- Visi MisiArea -->
     <div class="welcome_docmed_area" style="height: 500px;">
         <div class="container">
@@ -96,8 +76,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title text-center mb-40">
-                        <h3>Berita Terbaru</h3>
-                        <p>Berita dan Artikel Terbaru</p>
+                        <h3>Berita, Pengumuman, & Kegiatan</h3>
                     </div>
                 </div>
             </div>
@@ -227,7 +206,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="doctors_title mb-55">
-                        <h3>Tentang Kami</h3>
+                        <h3>Pimpinan & Jajarannya</h3>
                     </div>
                 </div>
             </div>
@@ -257,6 +236,28 @@
         </div>
     </div>
     <!--Akhir Pimpinan Fakultas -->
+    <!-- Aplikasi -->
+    <?php
+    $jarak = 1;
+    if ($jum_app > 6) {
+        $jarak = 2;
+    } else {
+        $jarak = 12 / $jum_app;
+    }
+    ?>
+    <div class="service_area">
+        <div class="container p-0">
+            <div class="row no-gutters" style="text-align:center;border-color: red;">
+                <?php foreach ($aplikasi as $item) : ?>
+                    <div class="col-xl-<?= $jarak ?>" style="margin-top: 5px;margin-bottom: 5px;">
+                        <a target="_blank" href="<?= $item['link'] ?>" class="boxed-btn3-white"><img src="<?= base_url('writable/uploads/content/aplikasi/' . $item['gambar']); ?>" width="50px" height="50px"></a>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+    <p style="margin-bottom:-25px;">&nbsp;</p>
+    <!-- Akhir Aplikasi -->
 </body>
 
 <?= $this->include('frontend/layouts/footer') ?>
