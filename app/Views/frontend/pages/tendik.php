@@ -25,11 +25,15 @@
                 <div class="row">
                     <?php foreach ($tendik as $item) : ?>
                         <div class="col-lg-3" align="center">
-                            <img src="<?= base_url('/writable/uploads/content/tendik/thumb/' . $item['gambar']); ?>" width="250px" height="250px">
-                            <b style="color: #60B3FD;"><?= $item['nama'] ?></b>
-                            <p style="margin-bottom:0px;line-height:16px;"><i span class="fa fa-id-badge text-primary"></i> <?= $item['bagian_unit'] ?></p>
-                            <p><i span class="fa fa-building-o text-primary"></i> <?= $item['ruangan'] ?></p>
-                            <br>
+                            <div class="single_expert">
+                                <div class="expert_thumb" align="center">
+                                    <img src="<?= base_url('/writable/uploads/content/tendik/thumb/' . $item['gambar']); ?>" width="250" height="250">
+                                </div>
+                                <div class="experts_name text-center">
+                                    <b style="color: #60B3FD;"><?= $item['nama'] ?></b><br>
+                                    <span>NIP. <?= $item['nip'] ?></span><br><br>
+                                </div>
+                            </div>
                         </div>
                     <?php endforeach ?>
                 </div>

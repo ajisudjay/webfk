@@ -28,8 +28,7 @@
                             <img src="<?= base_url('/writable/uploads/content/dosen/thumb/' . $item['gambar']); ?>" width="350px" height="350px">
                             <br>
                             <b style="color: #60B3FD;"><?= $item['nama'] ?></b>
-                            <p>NIP. <?= $item['nip'] ?></p>
-                            <p style="margin-bottom:5px;line-height:16px;" style="margin-bottom:0px;line-height:16px;"><i span class="fa fa-id-badge text-primary"></i> <?= $item['bidang'] ?></p>
+                            <p>NIP. <?= $item['nip'] ?><br><i span class="fa fa-id-badge text-primary"></i> <?= $item['bidang'] ?></p>
                             <br>
                         </div>
                     <?php endforeach ?>

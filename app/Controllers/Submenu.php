@@ -72,6 +72,12 @@ class Submenu extends BaseController
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
             $username = session()->get('username');
             $request = \Config\Services::request();
+            $level = session()->get('level');
+            if ($level === 'Superadmin') {
+                $aksesbutton = '';
+            } else {
+                $aksesbutton = 'hidden';
+            }
             if ($request->isAJAX()) {
                 $urutan = $request->getVar('urutan');
                 $mainmenu = $request->getVar('mainmenu');
@@ -127,6 +133,7 @@ class Submenu extends BaseController
                     ];
                     $this->SubmenuModel->insert($data);
                     $data2 = [
+                        'aksesbutton' => $aksesbutton,
                         'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
                         'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                     ];
