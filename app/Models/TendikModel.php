@@ -14,7 +14,7 @@ class TendikModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'urutan', 'nama', 'nip', 'bagian_unit', 'ruangan', 'gambar', 'jk', 'pendidikan', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telp', 'email'];
+    protected $allowedFields    = ['id', 'urutan', 'nama', 'nip', 'bagian_unit', 'ruangan', 'gambar', 'jk', 'pendidikan', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telp', 'email', 'status'];
 
     // Dates
     protected $useTimestamps = false;

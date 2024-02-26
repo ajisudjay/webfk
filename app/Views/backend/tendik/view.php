@@ -105,6 +105,16 @@
                                     <br>
                                 </div>
                                 <div class="col-lg-4">
+                                    <label class="text-primary">Status</label>
+                                    <select name="status" class="form-control status">
+                                        <option value="Non-ASN">Non-ASN</option>
+                                        <option value="PNS">PNS</option>
+                                        <option value="PPPK">PPPK</option>
+                                    </select>
+                                    <div class="invalid-feedback errorstatus"></div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-12">
                                     <label class="text-primary">Foto</label>
                                     <input type="file" name="file" class="form-control file" accept="image/*">
                                     <div class="invalid-feedback errorfile"></div>
@@ -243,6 +253,17 @@
                                                                 <label class="text-primary">Email</label>
                                                                 <input type="email" name="email" class="form-control email" required value="<?= $item['email'] ?>">
                                                                 <div class="invalid-feedback erroremail"></div>
+                                                                <br>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <label class="text-primary">Status</label>
+                                                                <select name="status" class="form-control status">
+                                                                    <option value="<?= $item['status'] ?>"><?= $item['status'] ?></option>
+                                                                    <option value="Non-ASN">Non-ASN</option>
+                                                                    <option value="PNS">PNS</option>
+                                                                    <option value="PPPK">PPPK</option>
+                                                                </select>
+                                                                <div class="invalid-feedback errorstatus"></div>
                                                                 <br>
                                                             </div>
                                                             <div class="col-lg-12">

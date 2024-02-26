@@ -73,6 +73,7 @@ class Tendik extends BaseController
         $alamat = $request->getVar('alamat');
         $telp = $request->getVar('telp');
         $email = $request->getVar('email');
+        $status = $request->getVar('status');
         $file = $request->getFile('file');
         if ($request->isAJAX()) {
             $valid = $this->validate([
@@ -190,6 +191,7 @@ class Tendik extends BaseController
                     'alamat' => $alamat,
                     'telp' => $telp,
                     'email' => $email,
+                    'status' => $status,
                     'gambar' => $namagambar,
                 ];
                 $this->TendikModel->insert($data);
@@ -220,6 +222,7 @@ class Tendik extends BaseController
         $alamat = $request->getVar('alamat');
         $telp = $request->getVar('telp');
         $email = $request->getVar('email');
+        $status = $request->getVar('status');
         $file = $request->getFile('file');
         if (!file_exists($_FILES['file']['tmp_name'])) {
             $data = [
@@ -235,6 +238,7 @@ class Tendik extends BaseController
                 'alamat' => $alamat,
                 'telp' => $telp,
                 'email' => $email,
+                'status' => $status,
             ];
             $this->TendikModel->update($id, $data);
 
@@ -275,6 +279,7 @@ class Tendik extends BaseController
                     'alamat' => $alamat,
                     'telp' => $telp,
                     'email' => $email,
+                    'status' => $status,
                     'gambar' => $nama_foto,
                 ];
                 $this->TendikModel->update($id, $data);
