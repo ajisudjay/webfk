@@ -89,7 +89,7 @@
                                 <div class="single_department">
                                     <div class="department_thumb">
                                         <a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank">
-                                            <img src="<?= base_url('writable/uploads/content/berita/' . $item['banner']); ?>" width="300px" height="300px">
+                                            <img src="<?= base_url('writable/uploads/content/berita/thumb/' . $item['banner']); ?>" width="300px" height="300px">
                                         </a>
                                     </div>
                                     <div class="department_content">
