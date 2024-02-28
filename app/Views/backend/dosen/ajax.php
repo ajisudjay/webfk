@@ -120,6 +120,20 @@
                             $('.email').removeClass('is-invalid');
                             $('.erroremail').html('');
                         }
+                        if (response.error.sinta) {
+                            $('.sinta').addClass('is-invalid');
+                            $('.errorsinta').html(response.error.sinta);
+                        } else {
+                            $('.sinta').removeClass('is-invalid');
+                            $('.errorsinta').html('');
+                        }
+                        if (response.error.gs) {
+                            $('.gs').addClass('is-invalid');
+                            $('.errorgs').html(response.error.gs);
+                        } else {
+                            $('.gs').removeClass('is-invalid');
+                            $('.errorgs').html('');
+                        }
                         if (response.error.file) {
                             $('.file').addClass('is-invalid');
                             $('.errorfile').html(response.error.file);

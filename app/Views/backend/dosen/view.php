@@ -120,7 +120,7 @@
                                     <div class="invalid-feedback errors3"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-2">
                                     <label class="text-primary">Jenis Kelamin</label>
                                     <select name="jk" class="form-control jk">
                                         <option value="Laki-laki">Laki-laki</option>
@@ -140,13 +140,25 @@
                                     <div class="invalid-feedback errortanggal_lahir"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-2">
                                     <label class="text-primary">Telepon</label>
                                     <input type="text" name="telp" class="form-control telp" placeholder="Telepon">
                                     <div class="invalid-feedback errortelp"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-2">
+                                    <label class="text-primary">Sinta</label>
+                                    <input type="text" name="sinta" class="form-control sinta" placeholder="Sinta">
+                                    <div class="invalid-feedback errorsinta"></div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label class="text-primary">Google Scholar</label>
+                                    <input type="text" name="gs" class="form-control gs" placeholder="Google Scholar">
+                                    <div class="invalid-feedback errorgs"></div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-2">
                                     <label class="text-primary">Email</label>
                                     <input type="email" name="email" class="form-control email" placeholder="Email">
                                     <div class="invalid-feedback erroremail"></div>
@@ -317,7 +329,7 @@
                                                                 <div class="invalid-feedback errors3"></div>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-lg-2">
                                                                 <label class="text-primary">Jenis Kelamin</label>
                                                                 <select name="jk" class="form-control jk">
                                                                     <option value="Laki-laki">Laki-laki</option>
@@ -337,10 +349,22 @@
                                                                 <div class="invalid-feedback errortanggal_lahir"></div>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-lg-2">
                                                                 <label class="text-primary">Telepon</label>
                                                                 <input type="text" required name="telp" class="form-control telp" value="<?= $item['telp'] ?>">
                                                                 <div class="invalid-feedback errortelp"></div>
+                                                                <br>
+                                                            </div>
+                                                            <div class="col-lg-2">
+                                                                <label class="text-primary">Sinta</label>
+                                                                <input type="text" name="sinta" class="form-control sinta" value="<?= $item['sinta'] ?>">
+                                                                <div class="invalid-feedback errorsinta"></div>
+                                                                <br>
+                                                            </div>
+                                                            <div class="col-lg-2">
+                                                                <label class="text-primary">Google Scholar</label>
+                                                                <input type="text" name="gs" class="form-control gs" value="<?= $item['gs'] ?>">
+                                                                <div class="invalid-feedback errorgs"></div>
                                                                 <br>
                                                             </div>
                                                             <div class="col-lg-3">

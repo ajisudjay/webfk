@@ -80,6 +80,8 @@ class Dosen extends BaseController
         $alamat = $request->getVar('alamat');
         $telp = $request->getVar('telp');
         $email = $request->getVar('email');
+        $sinta = $request->getVar('sinta');
+        $gs = $request->getVar('gs');
         $file = $request->getFile('file');
         if ($request->isAJAX()) {
             $valid = $this->validate([
@@ -181,6 +183,20 @@ class Dosen extends BaseController
                         'required' => '* {field} Tidak Boleh Kosong',
                     ]
                 ],
+                'sinta' => [
+                    'label' => 'Sinta',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'gs' => [
+                    'label' => 'Google Scholar',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
                 'file' => [
                     'label' => 'Gambar',
                     'rules' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file]',
@@ -209,6 +225,8 @@ class Dosen extends BaseController
                         'alamat' => $validation->getError('alamat'),
                         'telp' => $validation->getError('telp'),
                         'email' => $validation->getError('email'),
+                        'sinta' => $validation->getError('sinta'),
+                        'gs' => $validation->getError('gs'),
                         'file' => $validation->getError('file'),
                     ],
                 ];
@@ -236,6 +254,8 @@ class Dosen extends BaseController
                     'alamat' => $alamat,
                     'telp' => $telp,
                     'email' => $email,
+                    'sinta' => $sinta,
+                    'gs' => $gs,
                     'gambar' => $namagambar,
                 ];
                 $this->DosenModel->insert($data);
@@ -273,6 +293,8 @@ class Dosen extends BaseController
         $alamat = $request->getVar('alamat');
         $telp = $request->getVar('telp');
         $email = $request->getVar('email');
+        $sinta = $request->getVar('sinta');
+        $gs = $request->getVar('gs');
         $file = $request->getFile('file');
         if (!file_exists($_FILES['file']['tmp_name'])) {
             $data = [
@@ -294,6 +316,8 @@ class Dosen extends BaseController
                 'tanggal_lahir' => $tanggal_lahir,
                 'alamat' => $alamat,
                 'telp' => $telp,
+                'sinta' => $sinta,
+                'gs' => $gs,
                 'email' => $email,
             ];
             $this->DosenModel->update($id, $data);
@@ -342,6 +366,8 @@ class Dosen extends BaseController
                     'alamat' => $alamat,
                     'telp' => $telp,
                     'email' => $email,
+                    'sinta' => $sinta,
+                    'gs' => $gs,
                     'gambar' => $nama_foto,
                 ];
                 $this->DosenModel->update($id, $data);
