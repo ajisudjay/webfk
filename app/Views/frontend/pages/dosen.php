@@ -25,7 +25,9 @@
                 <div class="row">
                     <?php foreach ($dosen as $item) : ?>
                         <div class="col-lg-4" align="center">
-                            <img src="<?= base_url('/writable/uploads/content/dosen/thumb/' . $item['gambar']); ?>" width="350px" height="350px">
+                            <a href="<?= 'dosen-detail/' . $item['nip'] ?> ">
+                                <img src="<?= base_url('/writable/uploads/content/dosen/thumb/' . $item['gambar']); ?>" width="350px" height="350px">
+                            </a>
                             <br>
                             <b style="color: #60B3FD;"><?= $item['nama'] ?></b>
                             <p>NIP. <?= $item['nip'] ?><br><i span class="fa fa-id-badge text-primary"></i> <?= $item['bidang'] ?>

@@ -269,6 +269,24 @@ class Pages extends BaseController
         return view('frontend/pages/dosen', $data);
     }
 
+    public function dosen_detail($nip)
+    {
+        $data = [
+            'title' => 'Dosen',
+            'title_pages' => 'Dosen',
+            'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+            'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+            'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
+            'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
+            'dosen' => $this->DosenModel->where('nip', $nip)->first(),
+            'konf' => $this->KonfigurasiModel->findAll(),
+            'konfigurasi' => $this->KonfigurasiModel->first(),
+            'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+            'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
+        ];
+        return view('frontend/pages/dosen-detail', $data);
+    }
+
     public function tendik()
     {
         $data = [
