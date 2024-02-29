@@ -25,7 +25,7 @@
             <div class="container box_1170">
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="<?= base_url('/writable/uploads/content/dosen/thumb/' . $dosen['gambar']); ?>" width="300" height="300">
+                        <img src="<?= base_url('/writable/uploads/content/dosen/thumb/' . $dosen['gambar']); ?>" width="300" height="300" style="border-radius: 2%;">
                     </div>
                     <div class="col-lg-2">
                         <p style="font-weight: bold;">Nama Lengkap</p>
@@ -60,15 +60,19 @@
                 </div>
                 <br>
                 <div class="row" align="center">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <h4>S1</h4>
                         <p class="small"><?= $dosen['s1'] ?></p>
                     </div>
-                    <div class="col-lg-4">
-                        <h4>S2 /Sp</h4>
+                    <div class="col-lg-3">
+                        <h4>Sp</h4>
+                        <p class="small"><?= $dosen['sp'] ?></p>
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>S2</h4>
                         <p class="small"><?= $dosen['s2'] ?></p>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <h4>S3</h4>
                         <p class="small"><?= $dosen['s3'] ?></p>
                     </div>

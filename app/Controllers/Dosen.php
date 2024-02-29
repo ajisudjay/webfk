@@ -72,6 +72,7 @@ class Dosen extends BaseController
         $pangkat = $request->getVar('pangkat');
         $pendidikan = $request->getVar('pendidikan');
         $s1 = $request->getVar('s1');
+        $sp = $request->getVar('sp');
         $s2 = $request->getVar('s2');
         $s3 = $request->getVar('s3');
         $jk = $request->getVar('jk');
@@ -129,6 +130,13 @@ class Dosen extends BaseController
                 ],
                 's1' => [
                     'label' => 'Asal S1',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '* {field} Tidak Boleh Kosong',
+                    ]
+                ],
+                'sp' => [
+                    'label' => 'Asal Spesialis',
                     'rules' => 'required',
                     'errors' => [
                         'required' => '* {field} Tidak Boleh Kosong',
@@ -218,6 +226,7 @@ class Dosen extends BaseController
                         'bidang' => $validation->getError('bidang'),
                         'homebase' => $validation->getError('homebase'),
                         's1' => $validation->getError('s1'),
+                        'sp' => $validation->getError('sp'),
                         's2' => $validation->getError('s2'),
                         's3' => $validation->getError('s3'),
                         'tempat_lahir' => $validation->getError('tempat_lahir'),
@@ -246,6 +255,7 @@ class Dosen extends BaseController
                     'pangkat' => $pangkat,
                     'pendidikan' => $pendidikan,
                     's1' => $s1,
+                    'sp' => $sp,
                     's2' => $s2,
                     's3' => $s3,
                     'jk' => $jk,
@@ -285,6 +295,7 @@ class Dosen extends BaseController
         $pangkat = $request->getVar('pangkat');
         $pendidikan = $request->getVar('pendidikan');
         $s1 = $request->getVar('s1');
+        $sp = $request->getVar('sp');
         $s2 = $request->getVar('s2');
         $s3 = $request->getVar('s3');
         $jk = $request->getVar('jk');
@@ -309,6 +320,7 @@ class Dosen extends BaseController
                 'pangkat' => $pangkat,
                 'pendidikan' => $pendidikan,
                 's1' => $s1,
+                'sp' => $sp,
                 's2' => $s2,
                 's3' => $s3,
                 'jk' => $jk,
@@ -358,6 +370,7 @@ class Dosen extends BaseController
                     'pangkat' => $pangkat,
                     'pendidikan' => $pendidikan,
                     's1' => $s1,
+                    'sp' => $sp,
                     's2' => $s2,
                     's3' => $s3,
                     'jk' => $jk,

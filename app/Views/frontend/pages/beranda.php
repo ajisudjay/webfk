@@ -146,6 +146,8 @@
                                 <div class="testmonial_info text-center">
                                     <br>
                                     <br>
+                                    <br>
+                                    <br>
                                     <h1><?= $item_mitra['nama'] ?></h1><br>
                                     <!-- <h5>Hasil atau Manfaat yang diperoleh</h5>
                                     <h5>"<?= $item_mitra['hasil'] ?>"</h5><br>

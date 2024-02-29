@@ -71,6 +71,13 @@
                             $('.s1').removeClass('is-invalid');
                             $('.errors1').html('');
                         }
+                        if (response.error.sp) {
+                            $('.sp').addClass('is-invalid');
+                            $('.errorsp').html(response.error.sp);
+                        } else {
+                            $('.sp').removeClass('is-invalid');
+                            $('.errorsp').html('');
+                        }
                         if (response.error.s2) {
                             $('.s2').addClass('is-invalid');
                             $('.errors2').html(response.error.s2);

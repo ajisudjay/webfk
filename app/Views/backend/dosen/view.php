@@ -93,7 +93,7 @@
                                     </select>
                                     <br>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-1">
                                     <label class="text-primary">Pendidikan</label>
                                     <select name="pendidikan" class="form-control pendidikan">
                                         <option value="Sp">Sp</option>
@@ -109,12 +109,18 @@
                                     <br>
                                 </div>
                                 <div class="col-lg-3">
+                                    <label class="text-primary">Asal Spesialis</label>
+                                    <input type="text" name="sp" class="form-control sp" placeholder="Asal S2/Spesialis">
+                                    <div class="invalid-feedback errorsp"></div>
+                                    <br>
+                                </div>
+                                <div class="col-lg-3">
                                     <label class="text-primary">Asal S2 / Spesialis</label>
                                     <input type="text" name="s2" class="form-control s2" placeholder="Asal S2/Spesialis">
                                     <div class="invalid-feedback errors2"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-2">
                                     <label class="text-primary">Asal S3</label>
                                     <input type="text" name="s3" class="form-control s3" placeholder="Asal S3">
                                     <div class="invalid-feedback errors3"></div>
@@ -197,7 +203,7 @@
                         <th width="20%">NIP</th>
                         <th width="40%">NAMA</th>
                         <th width="10%">BAGIAN UNIT</th>
-                        <th width="10%">PEND. TERAKHIR</th>
+                        <th width="10%">PEND.</th>
                         <th width="20%" style="text-align: center;">FOTO</th>
                     </tr>
                 </thead>
@@ -301,7 +307,7 @@
                                                                 </select>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-lg-1">
                                                                 <label class="text-primary">Pendidikan</label>
                                                                 <select name="pendidikan" class="form-control pendidikan">
                                                                     <option value="<?= $item['pendidikan'] ?>"><?= $item['pendidikan'] ?></option>
@@ -318,12 +324,18 @@
                                                                 <br>
                                                             </div>
                                                             <div class="col-lg-3">
-                                                                <label class="text-primary">Asal S2 / Spesialis</label>
+                                                                <label class="text-primary">Asal Spesialis</label>
+                                                                <input type="text" required name="sp" class="form-control sp" value="<?= $item['sp'] ?>">
+                                                                <div class="invalid-feedback errorsp"></div>
+                                                                <br>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label class="text-primary">Asal S2</label>
                                                                 <input type="text" required name="s2" class="form-control s2" value="<?= $item['s2'] ?>">
                                                                 <div class="invalid-feedback errors2"></div>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-lg-2">
                                                                 <label class="text-primary">Asal S3</label>
                                                                 <input type="text" required name="s3" class="form-control s3" value="<?= $item['s3'] ?>">
                                                                 <div class="invalid-feedback errors3"></div>
@@ -332,6 +344,7 @@
                                                             <div class="col-lg-2">
                                                                 <label class="text-primary">Jenis Kelamin</label>
                                                                 <select name="jk" class="form-control jk">
+                                                                    <option value="<?= $item['jk'] ?>"><?= $item['jk'] ?></option>
                                                                     <option value="Laki-laki">Laki-laki</option>
                                                                     <option value="Perempuan">Perempuan</option>
                                                                 </select>
@@ -401,9 +414,9 @@
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             <td><?= $item['nip'] ?></td>
-                            <td><?= $item['nama'] ?></td>
-                            <td><?= $item['bidang'] ?></td>
-                            <td><?= $item['pendidikan'] ?></td>
+                            <td style="min-width: 200px;max-width: 400px; white-space: normal;"><?= $item['nama'] ?></td>
+                            <td style="min-width: 150px;max-width: 400px; white-space: normal;"><?= $item['bidang'] ?></td>
+                            <td style="min-width: 50px;max-width: 100px; white-space: normal;"><?= $item['pendidikan'] ?></td>
                             <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/dosen/thumb/' . $item['gambar'] . ''); ?>" width="100%"></td>
 
                         </tr>

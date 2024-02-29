@@ -14,7 +14,7 @@ class DosenModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'urutan', 'nama', 'bidang', 'homebase', 'jabatan', 'pendidikan', 'nip', 'gambar', 's1', 's2', 's3', 'nidn', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telp', 'email', 'golongan', 'pangkat', 'jk', 'sinta', 'gs'];
+    protected $allowedFields    = ['id', 'urutan', 'nama', 'bidang', 'homebase', 'jabatan', 'pendidikan', 'nip', 'gambar', 's1', 'sp', 's2', 's3', 'nidn', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telp', 'email', 'golongan', 'pangkat', 'jk', 'sinta', 'gs'];
 
     // Dates
     protected $useTimestamps = false;

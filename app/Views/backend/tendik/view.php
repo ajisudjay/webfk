@@ -141,7 +141,7 @@
                         <th width="20%">NIP</th>
                         <th width="40%">NAMA</th>
                         <th width="10%">BAGIAN UNIT</th>
-                        <th width="10%">PEND. TERAKHIR</th>
+                        <th width="10%">PEND.</th>
                         <th width="20%" style="text-align: center;">FOTO</th>
                     </tr>
                 </thead>
@@ -288,9 +288,9 @@
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             <td><?= $item['nip'] ?></td>
-                            <td><?= $item['nama'] ?></td>
-                            <td><?= $item['bagian_unit'] ?></td>
-                            <td><?= $item['pendidikan'] ?></td>
+                            <td style="min-width: 200px;max-width: 400px; white-space: normal;"><?= $item['nama'] ?></td>
+                            <td style="min-width: 100px;max-width: 400px; white-space: normal;"><?= $item['bagian_unit'] ?></td>
+                            <td style="min-width: 50;max-width: 100px; white-space: normal;"><?= $item['pendidikan'] ?></td>
                             <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/tendik/thumb/' . $item['gambar'] . ''); ?>" width="100%"></td>
 
                         </tr>
