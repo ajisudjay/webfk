@@ -27,7 +27,7 @@
                         <div class="col-lg-3" align="center">
                             <div class="single_expert">
                                 <div class="expert_thumb" align="center">
-                                    <img src="<?= base_url('/writable/uploads/content/tendik/thumb/' . $item['gambar']); ?>" width="250" height="250">
+                                    <img src="<?= base_url('/writable/uploads/content/tendik/thumb/' . $item['gambar']); ?>" width="250" height="250" style="border-radius: 2%;">
                                 </div>
                                 <div class="experts_name text-center">
                                     <b style="color: #60B3FD;"><?= $item['nama'] ?></b><br>
