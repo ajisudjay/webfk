@@ -40,8 +40,10 @@
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-lg-12">
-                            Background Mitra Kerjasama :
+                            <p>Background Mitra Kerjasama :</p>
+                            <span style="color: red;">*Max-Size : 512 kb | extension : jpg/jpeg/png/PNG</span>
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-lg-12">

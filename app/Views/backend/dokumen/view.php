@@ -29,7 +29,7 @@
                                 </div>
                                 <br>
                                 <div class="col-lg-12">
-                                    <label class="text-primary">Dokumen <span style="color: red;">*max size 2mb</span></label>
+                                    <label class="text-primary">Dokumen <span style="color: red;">*max size 50mb</span></label>
                                     <input type="file" name="file" class="form-control file">
                                     <div class="invalid-feedback errorfile"></div>
                                     <br>

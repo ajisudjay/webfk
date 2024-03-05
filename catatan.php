@@ -13,7 +13,7 @@ DONE :
 *. ROADMAP PISAH PER PRODI -> MASING2 KAPRODI PJ BU SULIS (ADA DIKIRIM TAPI BLM LENGKAP HUB LEWAT GRUP WA )
 -> kedokteran gigi, spesiali bedah, spesialis paru belum
 *. PMB : LINK KE PMB.UNMUL -> GRUP BERDASARKAN PENDAFTARAN PRODI MASING-MASING
--> butuh flyer pmb profesi dokter,profesi dokter gigi (jika ada), --> gabungkan pmb jadi 2 saja, sarjana dan profesi
+-> butuh flyer pmb profesi dokter,profesi dokter gigi (jika ada), -> gabungkan pmb jadi 2 saja, sarjana dan profesi
 *. BERITA MUNDUR TANGGAL DISESUAIKAN
 *. MAIN MENU DIBUAT TRIDHARMA ATAU SESUAI AWAL (BATAL, IKUT MAIN MENU AWAL)
 *. AKREDITASI DITAMPILKAN TULISAN SELAIN GAMBAR DAN DOKUMEN -> DIKIRIM IBU SULIS
@@ -37,3 +37,4 @@ A DAN MOTIF BATIK KALTIM DI NAVBAR
 *. input berita diperbaiki slug nya dan peringatan jika ada yang judul yang sama
 *. BUAT GALERI DOKUMEN
 ----------------------------------------------------------------------------------------------
+backend sudah fix, lanjut fixasi frontend

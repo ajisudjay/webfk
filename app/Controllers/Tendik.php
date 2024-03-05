@@ -149,10 +149,10 @@ class Tendik extends BaseController
                 ],
                 'file' => [
                     'label' => 'Gambar',
-                    'rules' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file]',
+                    'rules' => 'uploaded[file]|max_size[file,1024]|mime_in[file,image/png,image/jpeg]|is_image[file]',
                     'errors' => [
                         'uploaded' => '* {field} Tidak Boleh Kosong !',
-                        'max_size' => '{field} ukuran lebih dari 2 mb !',
+                        'max_size' => '{field} ukuran lebih dari 1 mb !',
                         'mime_in' => 'Ekstensi tidak sesuai !',
                         'is_image' => 'Ekstensi tidak sesuai !',
                     ]
@@ -248,7 +248,7 @@ class Tendik extends BaseController
             echo json_encode($msg);
         } else {
             $input = $this->validate([
-                'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
+                'file' => 'uploaded[file]|max_size[file,1024]|mime_in[file,image/png,image/jpeg]|is_image[file],'
             ]);
             if (!$input) { // Not valid
                 session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');

@@ -115,7 +115,7 @@
                                     <br>
                                 </div>
                                 <div class="col-lg-12">
-                                    <label class="text-primary">Foto</label>
+                                    <label class="text-primary">Foto <span style="color: red;">*Max-Size : 1 mb | extension : jpg/jpeg/png/PNG</span></label>
                                     <input type="file" name="file" class="form-control file" accept="image/*">
                                     <div class="invalid-feedback errorfile"></div>
                                 </div>
@@ -267,8 +267,8 @@
                                                                 <br>
                                                             </div>
                                                             <div class="col-lg-12">
-                                                                <label class="text-primary">Foto</label><br>
-                                                                <img src="<?= base_url('writable/uploads/content/tendik/thumb/' . $item['gambar'] . ''); ?>" width="150px">
+                                                                <img src="<?= base_url('writable/uploads/content/tendik/thumb/' . $item['gambar'] . ''); ?>" width="150px"><br>
+                                                                <label class="text-primary">Foto <span style="color: red;">*Max-Size : 1 mb | extension : jpg/jpeg/png/PNG</span></label>
                                                                 <input type="file" name="file" class="form-control file" accept="image/*">
                                                                 <div class="invalid-feedback errorfile"></div>
                                                             </div>

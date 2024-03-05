@@ -34,19 +34,13 @@
                                     <div class="card-block">
                                         <br>
                                         <h4 class="mb-0">Berita</h4>
-                                        <form action="<?= base_url('berita/edit'); ?>" enctype="multipart/form-data" method="post" class="edit">
+                                        <form action="<?= base_url('berita/tambah'); ?>" enctype="multipart/form-data" method="post" class="tambah">
                                             <?= csrf_field() ?>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="col-lg-12" align="center">
-                                                        <img src="<?= base_url('writable/uploads/content/berita/' . $berita['banner']); ?>" height="200px">
-                                                        <br>
-                                                        <br>
-                                                    </div>
                                                     <div class="col-lg-2">
                                                         <label class="text-primary">Kategori</label>
                                                         <select name="kategori" class="form-control">
-                                                            <option value="<?= $berita['kategori'] ?>"><?= $berita['kategori'] ?></option>
                                                             <option value="Berita">Berita</option>
                                                             <option value="Pengumuman">Pengumuman</option>
                                                             <option value="Kegiatan">Kegiatan</option>
@@ -55,7 +49,7 @@
                                                     </div>
                                                     <div class="col-lg-3">
                                                         <label class="text-primary">Tanggal</label>
-                                                        <input type="date" name="tanggal" class="form-control tanggal" value="<?= $berita['tanggal'] ?>" required>
+                                                        <input type="date" name="tanggal" class="form-control tanggal" required>
                                                         <div class="invalid-feedback errorTanggal"></div>
                                                         <br>
                                                     </div>
@@ -66,21 +60,14 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <label class="text-primary">Judul</label>
-                                                        <input type="text" name="id" value="<?= $berita['id'] ?>" hidden>
-                                                        <input type="text" name="judul" class="form-control judul" value="<?= $berita['judul'] ?>" required>
+                                                        <input type="text" name="judul" class="form-control judul" placeholder="Judul" required>
                                                         <div class="invalid-feedback errorJudul"></div>
                                                         <br>
                                                     </div>
                                                     <br>
-                                                    <!-- <div class="col-lg-3">
-                                                        <label class="text-primary">Tag</label>
-                                                        <input type="text" name="tag" class="form-control tag" value="<?= $berita['tag'] ?>" required>
-                                                        <div class="invalid-feedback errorTag"></div>
-                                                        <br>
-                                                    </div> -->
                                                     <div class="col-lg-12">
                                                         <label class="text-primary">Content</label>
-                                                        <textarea name="isi" id="isi-edit"><?= $berita['isi'] ?></textarea>
+                                                        <textarea name="isi" id="isi"></textarea>
                                                         <div class="invalid-feedback errorIsi"></div>
                                                     </div>
                                                     <hr>
@@ -112,7 +99,7 @@
 </body>
 <!-- END: Body-->
 <script>
-    CKEDITOR.replace('isi-edit');
+    CKEDITOR.replace('isi');
 </script>
 
 

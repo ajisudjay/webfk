@@ -41,7 +41,7 @@
                                 </div>
                                 <br>
                                 <div class="col-lg-12">
-                                    <label class="text-primary">Gambar <span style="color: red;">*max size 2mb</span></label>
+                                    <label class="text-primary">Gambar <br><span style="color: red;">*Max-Size : 512 kb | extension : jpg/jpeg/png/PNG</span></label>
                                     <input type="file" name="gambar" class="form-control gambar" accept="image/*">
                                     <div class="invalid-feedback errorGambar"></div>
                                     <br>

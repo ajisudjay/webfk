@@ -64,7 +64,7 @@ class Dokumen extends BaseController
             $nama = $request->getVar('nama');
             $file = $request->getFile('file');
             $input = $this->validate([
-                'file' => 'uploaded[file]|max_size[file,2048]'
+                'file' => 'uploaded[file]|max_size[file,50480]'
             ]);
             if (!$input) { // Not valid
                 session()->setFlashdata('pesanGagal', 'Format file tidak sesuai');

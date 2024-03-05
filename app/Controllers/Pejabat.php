@@ -90,10 +90,10 @@ class Pejabat extends BaseController
                 ],
                 'file' => [
                     'label' => 'Gambar',
-                    'rules' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file]',
+                    'rules' => 'uploaded[file]|max_size[file,512]|mime_in[file,image/png,image/jpeg]|is_image[file]',
                     'errors' => [
                         'uploaded' => '* {field} Tidak Boleh Kosong !',
-                        'max_size' => '{field} ukuran lebih dari 2 mb !',
+                        'max_size' => '{field} ukuran lebih dari 512 kb !',
                         'mime_in' => 'Ekstensi tidak sesuai !',
                         'is_image' => 'Ekstensi tidak sesuai !',
                     ]
@@ -153,7 +153,7 @@ class Pejabat extends BaseController
             return redirect()->to(base_url('/pejabat'));
         } else {
             $input = $this->validate([
-                'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
+                'file' => 'uploaded[file]|max_size[file,512]|mime_in[file,image/png,image/jpeg]|is_image[file],'
             ]);
             if (!$input) { // Not valid
                 session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');

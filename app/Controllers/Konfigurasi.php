@@ -262,9 +262,12 @@ class Konfigurasi extends BaseController
             $valid = $this->validate([
                 'foto' => [
                     'label' => 'File Foto',
-                    'rules' => 'max_size[foto,2048]',
+                    'rules' => 'uploaded[foto]|max_size[foto,512]|mime_in[foto,image/png,image/jpeg]|is_image[foto]',
                     'errors' => [
-                        'max_size' => '{field} ukuran lebih dari 2 mb !',
+                        'uploaded' => '* {field} Tidak Boleh Kosong !',
+                        'max_size' => '{field} ukuran lebih dari 512 kb !',
+                        'mime_in' => 'Ekstensi tidak sesuai !',
+                        'is_image' => 'Ekstensi tidak sesuai !',
                     ]
                 ],
             ]);

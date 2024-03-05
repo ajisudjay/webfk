@@ -27,20 +27,20 @@
                                     <div class="invalid-feedback errorurutan"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-9">
+                                <div class="col-lg-6">
                                     <label class="text-primary">Nama</label>
                                     <input type="text" name="nama" class="form-control nama" placeholder="Nama">
                                     <div class="invalid-feedback errornama"></div>
                                     <br>
                                 </div>
                                 <br>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                     <label class="text-primary">Jabatan</label>
                                     <input type="text" name="jabatan" class="form-control jabatan" placeholder="Jabatan">
                                     <div class="invalid-feedback errorjabatan"></div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <label class="text-primary">Foto <span style="color: red;">*max size 2mb</span></label>
+                                <div class="col-lg-12">
+                                    <label class="text-primary">Foto <br><span style="color: red;">*Max-Size : 512 kb | extension : jpg/jpeg/png/PNG</span></label>
                                     <input type="file" name="file" class="form-control file" accept="image/*">
                                     <div class="invalid-feedback errorfile"></div>
                                 </div>
@@ -99,20 +99,20 @@
                                                                 <div class="invalid-feedback errorUrutan"></div>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-9">
+                                                            <div class="col-lg-6">
                                                                 <label class="text-primary">Nama</label>
                                                                 <input type="text" name="nama" class="form-control nama" value="<?= $id = $item['nama'] ?>" required>
                                                                 <div class="invalid-feedback errorNama"></div>
                                                                 <br>
                                                             </div>
                                                             <br>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-3">
                                                                 <label class="text-primary">Jabatan</label>
                                                                 <input type="text" name="jabatan" class="form-control jabatan" value="<?= $id = $item['jabatan'] ?>" required>
                                                                 <div class="invalid-feedback errorJabatan"></div>
                                                             </div>
-                                                            <div class="col-lg-6">
-                                                                <label class="text-primary">Foto <span style="color: red;">*max size 2mb</span></label>
+                                                            <div class="col-lg-12">
+                                                                <label class="text-primary">Foto <br><span style="color: red;">*Max-Size : 512 kb | extension : jpg/jpeg/png/PNG</span></label>
                                                                 <input type="file" name="file" class="form-control gambar" accept="image/*">
                                                                 <div class="invalid-feedback errorGambar"></div>
                                                             </div>

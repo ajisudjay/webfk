@@ -19,7 +19,7 @@
                 if ($lvl === 'Superadmin') { ?>
                     <li class="navigation-header"><span>WEBSITE</span>
                     </li>
-                    <li class=""><a href="#"><i class="feather icon-menu"></i><span class="menu-title" data-i18n="Dashboard">Menu</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
+                    <li class=""><a href="#"><i class="feather icon-layers"></i><span class="menu-title" data-i18n="Dashboard">Menu</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
                         <ul class="menu-content">
                             <li class="<?= $title == 'Main Menu' ? 'active' : '' ?>"><a href="<?= base_url('mainmenu'); ?>"><i class="feather icon-menu"></i><span class="menu-item" data-i18n="Analytics">Main Menu</span></a>
                             </li>
@@ -33,9 +33,9 @@
                             </li>
                             <!-- <li class="<?= $title == 'Slideshow' ? 'active' : '' ?>"><a href="<?= base_url('slideshow'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Slideshow</span></a>
                                 </li> -->
-                            <li class="<?= $title == 'Prodi' ? 'active' : '' ?>"><a href="<?= base_url('prodi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Prodi</span></a>
+                            <li class="<?= $title == 'Program Studi' ? 'active' : '' ?>"><a href="<?= base_url('prodi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Prodi</span></a>
                             </li>
-                            <li class="<?= $title == 'Aplikasi' ? 'active' : '' ?>"><a href="<?= base_url('aplikasi'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Aplikasi</span></a>
+                            <li class="<?= $title == 'Aplikasi' ? 'active' : '' ?>"><a href="<?= base_url('aplikasi'); ?>"><i class="feather icon-star"></i><span class="menu-item" data-i18n="Analytics">Aplikasi</span></a>
                             </li>
                             <li class="<?= $title == 'Pejabat' ? 'active' : '' ?>"><a href="<?= base_url('pejabat'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Pejabat</span></a>
                             </li>
@@ -50,15 +50,15 @@
                     <li class="<?= $title == 'Galeri' ? 'active' : '' ?>"><a href="<?= base_url('galeri'); ?>"><i class="feather icon-image"></i><span class="menu-item" data-i18n="Analytics">Galeri</span></a>
                     </li>
                     </li>
-                    <li class="<?= $title == 'Dokumen' ? 'active' : '' ?>"><a href="<?= base_url('dokumen'); ?>"><i class="feather icon-file"></i><span class="menu-item" data-i18n="Analytics">Dokumen</span></a>
+                    <li class="<?= $title == 'Dokumen' ? 'active' : '' ?>"><a href="<?= base_url('dokumen'); ?>"><i class="feather icon-file-plus"></i><span class="menu-item" data-i18n="Analytics">Dokumen</span></a>
                     </li>
                     <li class=" navigation-header"><span>BANK DATA</span>
                     </li>
-                    <li class="<?= $title == 'Mitra' ? 'active' : '' ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
+                    <li class="<?= $title == 'Mitra' ? 'active' : '' ?>"><a href="<?= base_url('mitra'); ?>"><i class="feather icon-share-2"></i><span class="menu-item" data-i18n="Analytics">Mitra</span></a>
                     </li>
-                    <li class="<?= $title == 'Dosen' ? 'active' : '' ?>"><a href="<?= base_url('dosen'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Dosen</span></a>
+                    <li class="<?= $title == 'Dosen' ? 'active' : '' ?>"><a href="<?= base_url('dosen'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Dosen</span></a>
                     </li>
-                    <li class="<?= $title == 'Tendik' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Tendik</span></a>
+                    <li class="<?= $title == 'Tendik' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Tendik</span></a>
                     </li>
                     <!-- <li class="<?= $title == 'Student Body' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Student Body</span></a>
                     </li> -->

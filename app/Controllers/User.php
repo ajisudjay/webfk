@@ -118,10 +118,10 @@ class User extends BaseController
                     ],
                     'file' => [
                         'label' => 'Gambar',
-                        'rules' => 'uploaded[file]|max_size[file,2048]',
+                        'rules' => 'uploaded[file]|max_size[file,1024]',
                         'errors' => [
                             'uploaded' => '* {field} Tidak Boleh Kosong !',
-                            'max_size' => '* {field} Ukuran Max 2 mb !',
+                            'max_size' => '* {field} Ukuran Max 1 mb !',
                         ]
                     ],
                 ]);
@@ -183,10 +183,10 @@ class User extends BaseController
                 return redirect()->to(base_url('/user'));
             } else {
                 $input = $this->validate([
-                    'file' => 'uploaded[file]|max_size[file,2048],'
+                    'file' => 'uploaded[file]|max_size[file,1024],'
                 ]);
                 if (!$input) { // Not valid
-                    session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 2MB');
+                    session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 1MB');
                     return redirect()->to(base_url('/user'));
                 } else {
                     $file = $request->getFile('file');

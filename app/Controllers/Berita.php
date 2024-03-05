@@ -68,6 +68,31 @@ class Berita extends BaseController
         }
     }
 
+    public function tambahform()
+    {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+            $admin = session()->get('nama');
+            $lvl = session()->get('level');
+            $file = session()->get('file');
+            if ($file <  1) {
+                $gambar = '/app-assets/images/profile/user-profile.png';
+            } else {
+                $gambar = 'content/user/' . $file;
+            }
+            $data = [
+                'title' => 'Berita',
+                'title_pages' => '',
+                'admin' => $admin,
+                'lvl' => $lvl,
+                'foto' => $gambar,
+                'validation' => \Config\Services::validation(),
+            ];
+            return view('backend/berita/tambahform', $data);
+        } else {
+            return redirect()->to(base_url('/login'));
+        }
+    }
+
     public function tambah()
     {
         if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
@@ -182,6 +207,7 @@ class Berita extends BaseController
             $username = session()->get('username');
             $request = \Config\Services::request();
             $id = $request->getVar('id');
+            $kategori = $request->getVar('kategori');
             $judul = $request->getVar('judul');
             $tanggal = $request->getVar('tanggal');
             $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($judul)) . $tanggal);
@@ -193,6 +219,7 @@ class Berita extends BaseController
             $file = $request->getFile('file');
             if (!file_exists($_FILES['file']['tmp_name'])) {
                 $data = [
+                    'kategori' => $kategori,
                     'judul' => $judul,
                     'slug' => $slug,
                     'tanggal' => $tanggal,
@@ -227,6 +254,7 @@ class Berita extends BaseController
                     $nama_foto = $newName;
                     $data = [
                         'judul' => $judul,
+                        'kategori' => $kategori,
                         'slug' => $slug,
                         'tanggal' => $tanggal,
                         'tag' => $tag,
