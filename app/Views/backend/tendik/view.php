@@ -134,13 +134,13 @@
     <div class="card-block">
         <div class="card">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <h6>Berdasarkan Pendidikan Terakhir</h6>
                     <div class="dt-responsive table-responsive">
                         <table class="table table-striped table-hover">
                             <thead align="center">
                                 <tr>
-                                    <th width="15%">Jenis Kelamin</th>
+                                    <th width="10%">Jenis Kelamin</th>
                                     <th width="5%">SD</th>
                                     <th width="5%">SMP</th>
                                     <th width="5%">SMA</th>
@@ -153,7 +153,7 @@
                             </thead>
                             <tbody style="font-size: 13px;" align="center">
                                 <tr>
-                                    <td>Laki-laki</td>
+                                    <td>L</td>
                                     <td><?= $jumlahLsd['id'] ?></td>
                                     <td><?= $jumlahLsmp['id'] ?></td>
                                     <td><?= $jumlahLsma['id'] ?></td>
@@ -168,7 +168,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td>Perempuan</td>
+                                    <td>P</td>
                                     <td><?= $jumlahPsd['id'] ?></td>
                                     <td><?= $jumlahPsmp['id'] ?></td>
                                     <td><?= $jumlahPsma['id'] ?></td>
@@ -189,13 +189,13 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <h6>Berdasarkan Status</h6>
                     <div class="dt-responsive table-responsive">
                         <table class="table table-striped table-hover">
                             <thead align="center">
                                 <tr>
-                                    <th width="15%">Jenis Kelamin</th>
+                                    <th width="10%">Jenis Kelamin</th>
                                     <th width="5%">Non-ASN</th>
                                     <th width="5%">PNS</th>
                                     <th width="5%">PPPK</th>
@@ -204,7 +204,7 @@
                             </thead>
                             <tbody style="font-size: 13px;" align="center">
                                 <tr>
-                                    <td>Laki-laki</td>
+                                    <td>L</td>
                                     <td><?= $jumlahLnon['id'] ?></td>
                                     <td><?= $jumlahLpns['id'] ?></td>
                                     <td><?= $jumlahLpppk['id'] ?></td>
@@ -215,7 +215,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td>Perempuan</td>
+                                    <td>P</td>
                                     <td><?= $jumlahPnon['id'] ?></td>
                                     <td><?= $jumlahPpns['id'] ?></td>
                                     <td><?= $jumlahPpppk['id'] ?></td>

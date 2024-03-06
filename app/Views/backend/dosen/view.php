@@ -201,7 +201,7 @@
                         <table class="table table-striped table-hover">
                             <thead align="center">
                                 <tr>
-                                    <th width="15%">Jenis Kelamin</th>
+                                    <th width="10%">Jenis Kelamin</th>
                                     <th width="5%">Non Fungsional</th>
                                     <th width="5%">Tenaga Pengajar</th>
                                     <th width="5%">Asisten Ahli</th>
@@ -213,7 +213,7 @@
                             </thead>
                             <tbody style="font-size: 13px;" align="center">
                                 <tr>
-                                    <td>Laki-laki</td>
+                                    <td>L</td>
                                     <td><?= $jumlahLnon['id'] ?></td>
                                     <td><?= $jumlahLpengajar['id'] ?></td>
                                     <td><?= $jumlahLasistenahli['id'] ?></td>
@@ -227,7 +227,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td>Perempuan</td>
+                                    <td>P</td>
                                     <td><?= $jumlahPnon['id'] ?></td>
                                     <td><?= $jumlahPpengajar['id'] ?></td>
                                     <td><?= $jumlahPasistenahli['id'] ?></td>
@@ -253,7 +253,7 @@
                         <table class="table table-striped table-hover">
                             <thead align="center">
                                 <tr>
-                                    <th width="15%">Jenis Kelamin</th>
+                                    <th width="5%">Jenis Kelamin</th>
                                     <th width="5%">S2</th>
                                     <th width="5%">Sp</th>
                                     <th width="5%">S3</th>
@@ -262,7 +262,7 @@
                             </thead>
                             <tbody style="font-size: 13px;" align="center">
                                 <tr>
-                                    <td>Laki-laki</td>
+                                    <td>L</td>
                                     <td><?= $jumlahLs2['id'] ?></td>
                                     <td><?= $jumlahLsp['id'] ?></td>
                                     <td><?= $jumlahLs3['id'] ?></td>
@@ -273,7 +273,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td>Perempuan</td>
+                                    <td>P</td>
                                     <td><?= $jumlahPs2['id'] ?></td>
                                     <td><?= $jumlahPsp['id'] ?></td>
                                     <td><?= $jumlahPs3['id'] ?></td>
