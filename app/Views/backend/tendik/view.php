@@ -132,6 +132,111 @@
     </div>
 
     <div class="card-block">
+        <div class="card">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h6>Berdasarkan Pendidikan Terakhir</h6>
+                    <div class="dt-responsive table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead align="center">
+                                <tr>
+                                    <th width="15%">Jenis Kelamin</th>
+                                    <th width="5%">SD</th>
+                                    <th width="5%">SMP</th>
+                                    <th width="5%">SMA</th>
+                                    <th width="5%">D3</th>
+                                    <th width="5%">D4</th>
+                                    <th width="5%">S1</th>
+                                    <th width="5%">S2</th>
+                                    <th width="5%">Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: 13px;" align="center">
+                                <tr>
+                                    <td>Laki-laki</td>
+                                    <td><?= $jumlahLsd['id'] ?></td>
+                                    <td><?= $jumlahLsmp['id'] ?></td>
+                                    <td><?= $jumlahLsma['id'] ?></td>
+                                    <td><?= $jumlahLd3['id'] ?></td>
+                                    <td><?= $jumlahLd4['id'] ?></td>
+                                    <td><?= $jumlahLs1['id'] ?></td>
+                                    <td><?= $jumlahLs2['id'] ?></td>
+                                    <?php
+                                    $jumlahlakipendidikan = $jumlahLsd['id'] + $jumlahLsmp['id'] + $jumlahLsma['id'] + $jumlahLd3['id'] + $jumlahLd4['id'] + $jumlahLs1['id'] + $jumlahLs2['id'];
+                                    ?>
+                                    <td><b><?= $jumlahlakipendidikan; ?></b></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Perempuan</td>
+                                    <td><?= $jumlahPsd['id'] ?></td>
+                                    <td><?= $jumlahPsmp['id'] ?></td>
+                                    <td><?= $jumlahPsma['id'] ?></td>
+                                    <td><?= $jumlahPd3['id'] ?></td>
+                                    <td><?= $jumlahPd4['id'] ?></td>
+                                    <td><?= $jumlahPs1['id'] ?></td>
+                                    <td><?= $jumlahPs2['id'] ?></td>
+                                    <?php
+                                    $jumlahperempuanpendidikan = $jumlahPsd['id'] + $jumlahPsmp['id'] + $jumlahPsma['id'] + $jumlahPd3['id'] + $jumlahPd4['id'] + $jumlahPs1['id'] + $jumlahPs2['id'];
+                                    ?>
+                                    <td><b><?= $jumlahperempuanpendidikan; ?></b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8" align="right"><b>Jumlah</b></td>
+                                    <td><b><?= $jumlahlakipendidikan + $jumlahperempuanpendidikan; ?></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h6>Berdasarkan Status</h6>
+                    <div class="dt-responsive table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead align="center">
+                                <tr>
+                                    <th width="15%">Jenis Kelamin</th>
+                                    <th width="5%">Non-ASN</th>
+                                    <th width="5%">PNS</th>
+                                    <th width="5%">PPPK</th>
+                                    <th width="5%">Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: 13px;" align="center">
+                                <tr>
+                                    <td>Laki-laki</td>
+                                    <td><?= $jumlahLnon['id'] ?></td>
+                                    <td><?= $jumlahLpns['id'] ?></td>
+                                    <td><?= $jumlahLpppk['id'] ?></td>
+                                    <?php
+                                    $jumlahlakistatus = $jumlahLnon['id'] + $jumlahLpns['id'] + $jumlahLpppk['id'];
+                                    ?>
+                                    <td><b><?= $jumlahlakistatus; ?></b></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Perempuan</td>
+                                    <td><?= $jumlahPnon['id'] ?></td>
+                                    <td><?= $jumlahPpns['id'] ?></td>
+                                    <td><?= $jumlahPpppk['id'] ?></td>
+                                    <?php
+                                    $jumlahperempuanstatus = $jumlahPnon['id'] + $jumlahPpns['id'] + $jumlahPpppk['id'];
+                                    ?>
+                                    <td><b><?= $jumlahperempuanstatus; ?></b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="right"><b>Jumlah</b></td>
+                                    <td><b><?= $jumlahlakistatus + $jumlahperempuanstatus; ?></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-block">
         <div class="dt-responsive table-responsive">
             <table id="simpletable" class="table table-striped table-hover-animation nowrap">
                 <thead>
