@@ -254,6 +254,7 @@
                             <thead align="center">
                                 <tr>
                                     <th width="5%">Jenis Kelamin</th>
+                                    <th width="5%">S1</th>
                                     <th width="5%">S2</th>
                                     <th width="5%">Sp</th>
                                     <th width="5%">S3</th>
@@ -263,6 +264,7 @@
                             <tbody style="font-size: 13px;" align="center">
                                 <tr>
                                     <td>L</td>
+                                    <td><?= $jumlahLs1['id'] ?></td>
                                     <td><?= $jumlahLs2['id'] ?></td>
                                     <td><?= $jumlahLsp['id'] ?></td>
                                     <td><?= $jumlahLs3['id'] ?></td>
@@ -274,6 +276,7 @@
                                 </tr>
                                 <tr>
                                     <td>P</td>
+                                    <td><?= $jumlahPs1['id'] ?></td>
                                     <td><?= $jumlahPs2['id'] ?></td>
                                     <td><?= $jumlahPsp['id'] ?></td>
                                     <td><?= $jumlahPs3['id'] ?></td>
