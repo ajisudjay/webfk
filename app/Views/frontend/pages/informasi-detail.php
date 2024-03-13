@@ -27,7 +27,7 @@
                         </div>
                         <div class="blog_details">
                             <h2>
-                                <?= $berita['judul'] ?>
+                                <?= htmlspecialchars($berita['judul']) ?>
                             </h2>
                             <ul class="blog-info-link mt-3 mb-4">
                                 <li><a href="#"><i class="fa fa-user"></i><?= $berita['penulis'] ?></a></li>

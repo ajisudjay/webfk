@@ -70,7 +70,7 @@
                                     <span class="btn-sm btn-danger feather icon-trash-2 text-default"></span>
                                 </a>
                             </td>
-                            <td style="min-width: 100px;max-width: 300px; white-space: normal;"><?= $item['nama'] ?></td>
+                            <td style="min-width: 100px;max-width: 300px; white-space: normal;"><?= htmlspecialchars($item['nama']) ?></td>
                             <td>
                                 <input type="text" class="form-control copy-btn" value="<?= base_url() ?>/writable/uploads/content/dokumen/<?= $item['file'] ?>">
                                 <br>

@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                             <td><?= $item['tanggal'] ?></td>
-                            <td style="min-width: 200px;max-width: 400px; white-space: normal;"><?= $item['judul'] ?></td>
+                            <td style="min-width: 200px;max-width: 400px; white-space: normal;"><?= htmlspecialchars($item['judul']) ?></td>
                             <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/berita/thumb/' . $item['banner'] . ''); ?>" width="100%"></td>
                             <td style="min-width: 150px;max-width: 200px; white-space: normal;"><?= $item['timestamp'] . '   ' . $item['penulis'] ?></td>
                         </tr>
