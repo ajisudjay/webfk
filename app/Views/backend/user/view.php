@@ -9,7 +9,7 @@
         ?>
         <h4 class="mb-0">Akun</h4>
         <!-- button tambah modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal" <?= $hakakses ?>>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal" hidden>
             <span class="feather icon-plus text-light"></span>
         </button>
     </div>
@@ -45,6 +45,7 @@
                                     <select name="level" class="form-control level">
                                         <option value="">Pilih Level</option>
                                         <option value="Admin Prodi">Admin Prodi</option>
+                                        <option value="Admin Fakultas">Admin Fakultas</option>
                                         <option value="Superadmin">Superadmin</option>
                                     </select>
                                     <div class="invalid-feedback errorluevel"></div>
@@ -135,6 +136,7 @@
                                                                 <select name="level" class="form-control level">
                                                                     <option value="<?= $item['level'] ?>"><?= $item['level'] ?></option>
                                                                     <option value="Admin Prodi">Admin Prodi</option>
+                                                                    <option value="Admin Fakultas" <?= $hakakses ?>>Admin Fakultas</option>
                                                                     <option value="Superadmin" <?= $hakakses ?>>Superadmin</option>
                                                                 </select>
                                                                 <div class="invalid-feedback errorLevel"></div>
@@ -159,7 +161,16 @@
                                 </div>
 
                                 <!-- editpassword -->
-                                <button type="button" class="btn-sm btn-warning border-0" data-toggle="modal" data-target="#editpassmodal<?= $id = $item['username'] ?>">
+                                <?php
+                                if ($item['username'] == session()->get('username')) {
+                                    $editpass = '';
+                                } elseif (session()->get('level') === "Superadmin") {
+                                    $editpass = '';
+                                } else {
+                                    $editpass = 'hidden';
+                                }
+                                ?>
+                                <button type="button" class="btn-sm btn-warning border-0" data-toggle="modal" data-target="#editpassmodal<?= $id = $item['username'] ?>" <?= $editpass ?>>
                                     <span class="fa fa-key text-default"></span>
                                 </button>
                                 <!-- editpassword modal-->

@@ -118,7 +118,7 @@ class User extends BaseController
                     ],
                     'file' => [
                         'label' => 'Gambar',
-                        'rules' => 'uploaded[file]|max_size[file,1024]',
+                        'rules' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file]',
                         'errors' => [
                             'uploaded' => '* {field} Tidak Boleh Kosong !',
                             'max_size' => '* {field} Ukuran Max 1 mb !',
@@ -179,14 +179,14 @@ class User extends BaseController
                 ];
                 $this->UsersModel->update($username, $data);
 
-                session()->setFlashdata('pesanInput', 'Berhasil Mengubah Data User');
+                session()->setFlashdata('pesanInput', 'Mengubah Data User');
                 return redirect()->to(base_url('/user'));
             } else {
                 $input = $this->validate([
-                    'file' => 'uploaded[file]|max_size[file,1024],'
+                    'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
                 ]);
                 if (!$input) { // Not valid
-                    session()->setFlashdata('pesanGagal', 'Gagal Ukuran Gambar Maksimal 1MB');
+                    session()->setFlashdata('pesanGagal', 'format gambar tidak sesuai');
                     return redirect()->to(base_url('/user'));
                 } else {
                     $file = $request->getFile('file');
@@ -224,6 +224,7 @@ class User extends BaseController
                 $password = $request->getVar('password');
                 $repassword = $request->getVar('repassword');
                 $namauser = session()->get('username');
+                $lvl = session()->get('level');
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'password' => [
@@ -259,11 +260,13 @@ class User extends BaseController
                     if (session()->get('level') === "Superadmin") {
                         $data2 = [
                             'user' => $this->UsersModel->orderBy('nama', 'DESC')->get()->getResultArray(),
+                            'lvl' => $lvl,
                             'validation' => \Config\Services::validation(),
                         ];
                     } else {
                         $data2 = [
                             'user' => $this->UsersModel->where('username', $namauser)->orderBy('nama', 'DESC')->get()->getResultArray(),
+                            'lvl' => $lvl,
                             'validation' => \Config\Services::validation(),
                         ];
                     }
@@ -280,6 +283,7 @@ class User extends BaseController
             return redirect()->to(base_url('/login'));
         }
     }
+
 
     public function hapus($username)
     {

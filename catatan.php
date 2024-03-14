@@ -38,3 +38,4 @@ A DAN MOTIF BATIK KALTIM DI NAVBAR
 *. BUAT GALERI DOKUMEN
 ----------------------------------------------------------------------------------------------
 backend sudah fix, lanjut fixasi frontend
+tambahkan auth sudah sampai menu pejabat

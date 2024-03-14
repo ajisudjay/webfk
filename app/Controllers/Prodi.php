@@ -14,7 +14,7 @@ class Prodi extends BaseController
     }
     public function index()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
+        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $file = session()->get('file');
@@ -36,7 +36,7 @@ class Prodi extends BaseController
     }
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin') {
+        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
             $request = \Config\Services::request();
             $username = session()->get('username');
             if ($request->isAJAX()) {
@@ -59,125 +59,129 @@ class Prodi extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
-            return redirect()->to(base_url('/login'));
-        }
-        $request = \Config\Services::request();
-        $validation = \Config\Services::validation();
-        $urutan = $request->getVar('urutan');
-        $prodi = $request->getVar('prodi');
-        $akreditasi = $request->getVar('akreditasi');
-        $request = \Config\Services::request();
-        if ($request->isAJAX()) {
-            $valid = $this->validate([
-                'urutan' => [
-                    'label' => 'Urutan',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '* {field} Tidak Boleh Kosong',
-                    ]
-                ],
-                'prodi' => [
-                    'label' => 'Program Studi',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '* {field} Tidak Boleh Kosong',
-                    ]
-                ],
-            ]);
-            if (!$valid) {
-                $msg = [
-                    'error' => [
-                        'urutan' => $validation->getError('urutan'),
-                        'prodi' => $validation->getError('prodi'),
+        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+            $request = \Config\Services::request();
+            $validation = \Config\Services::validation();
+            $urutan = $request->getVar('urutan');
+            $prodi = $request->getVar('prodi');
+            $akreditasi = $request->getVar('akreditasi');
+            $request = \Config\Services::request();
+            if ($request->isAJAX()) {
+                $valid = $this->validate([
+                    'urutan' => [
+                        'label' => 'Urutan',
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '* {field} Tidak Boleh Kosong',
+                        ]
                     ],
-                ];
-                return $this->response->setJSON($msg);
+                    'prodi' => [
+                        'label' => 'Program Studi',
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '* {field} Tidak Boleh Kosong',
+                        ]
+                    ],
+                ]);
+                if (!$valid) {
+                    $msg = [
+                        'error' => [
+                            'urutan' => $validation->getError('urutan'),
+                            'prodi' => $validation->getError('prodi'),
+                        ],
+                    ];
+                    return $this->response->setJSON($msg);
+                } else {
+                    $data = [
+                        'urutan' => $urutan,
+                        'prodi' => $prodi,
+                        'akreditasi' => $akreditasi,
+                    ];
+                    $this->ProdiModel->insert($data);
+
+                    $msg = [
+                        'title' => 'Berhasil'
+                    ];
+
+                    session()->setFlashdata('pesanBerhasil', 'Data Berhasil Ditambahkan !');
+                    echo json_encode($msg);
+                }
             } else {
-                $data = [
-                    'urutan' => $urutan,
-                    'prodi' => $prodi,
-                    'akreditasi' => $akreditasi,
-                ];
-                $this->ProdiModel->insert($data);
-
-                $msg = [
-                    'title' => 'Berhasil'
-                ];
-
-                session()->setFlashdata('pesanBerhasil', 'Data Berhasil Ditambahkan !');
-                echo json_encode($msg);
+                exit('Data Tidak Dapat diproses');
             }
         } else {
-            exit('Data Tidak Dapat diproses');
+            return redirect()->to(base_url('/login'));
         }
     }
 
     public function edit()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
-            return redirect()->to(base_url('/login'));
-        }
-        $request = \Config\Services::request();
-        $validation = \Config\Services::validation();
-        $id = $request->getVar('id');
-        $urutan = $request->getVar('urutan');
-        $prodi = $request->getVar('prodi');
-        $akreditasi = $request->getVar('akreditasi');
-        $request = \Config\Services::request();
-        if ($request->isAJAX()) {
-            $valid = $this->validate([
-                'urutan' => [
-                    'label' => 'Urutan',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '* {field} Tidak Boleh Kosong',
-                    ]
-                ],
-                'prodi' => [
-                    'label' => 'Program Studi',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '* {field} Tidak Boleh Kosong',
-                    ]
-                ],
-            ]);
-            if (!$valid) {
-                $msg = [
-                    'error' => [
-                        'urutan' => $validation->getError('urutan'),
-                        'prodi' => $validation->getError('prodi'),
+        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+            $request = \Config\Services::request();
+            $validation = \Config\Services::validation();
+            $id = $request->getVar('id');
+            $urutan = $request->getVar('urutan');
+            $prodi = $request->getVar('prodi');
+            $akreditasi = $request->getVar('akreditasi');
+            $request = \Config\Services::request();
+            if ($request->isAJAX()) {
+                $valid = $this->validate([
+                    'urutan' => [
+                        'label' => 'Urutan',
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '* {field} Tidak Boleh Kosong',
+                        ]
                     ],
-                ];
-                return $this->response->setJSON($msg);
+                    'prodi' => [
+                        'label' => 'Program Studi',
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '* {field} Tidak Boleh Kosong',
+                        ]
+                    ],
+                ]);
+                if (!$valid) {
+                    $msg = [
+                        'error' => [
+                            'urutan' => $validation->getError('urutan'),
+                            'prodi' => $validation->getError('prodi'),
+                        ],
+                    ];
+                    return $this->response->setJSON($msg);
+                } else {
+                    $data = [
+                        'urutan' => $urutan,
+                        'prodi' => $prodi,
+                        'akreditasi' => $akreditasi,
+                    ];
+                    $this->ProdiModel->update($id, $data);
+
+                    $msg = [
+                        'title' => 'Berhasil'
+                    ];
+
+                    session()->setFlashdata('pesanBerhasil', 'Data Berhasil Ditambahkan !');
+                    echo json_encode($msg);
+                }
             } else {
-                $data = [
-                    'urutan' => $urutan,
-                    'prodi' => $prodi,
-                    'akreditasi' => $akreditasi,
-                ];
-                $this->ProdiModel->update($id, $data);
-
-                $msg = [
-                    'title' => 'Berhasil'
-                ];
-
-                session()->setFlashdata('pesanBerhasil', 'Data Berhasil Ditambahkan !');
-                echo json_encode($msg);
+                exit('Data Tidak Dapat diproses');
             }
         } else {
-            exit('Data Tidak Dapat diproses');
+            return redirect()->to(base_url('/login'));
         }
     }
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+
+            $this->ProdiModel->delete($id);
+
+            session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
+            return redirect()->to(base_url('/prodi'));
+        } else {
             return redirect()->to(base_url('/login'));
         }
-        $this->ProdiModel->delete($id);
-
-        session()->setFlashdata('pesanHapus', 'Main Menu Berhasil Di Hapus !');
-        return redirect()->to(base_url('/prodi'));
     }
 }

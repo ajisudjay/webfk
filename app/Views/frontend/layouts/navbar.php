@@ -80,11 +80,11 @@
                              </div>
                          </div>
                          <div class="col-xl-1 col-lg-1 d-none d-lg-block">
-                             <div class="Appointment">
+                             <!-- <div class="Appointment">
                                  <div class="book_btn d-none d-lg-block">
                                      <a href="<?= base_url('/login'); ?>">Login</a>
                                  </div>
-                             </div>
+                             </div> -->
                          </div>
                          <div class="col-12">
                              <div class="mobile_menu d-block d-lg-none"></div>
