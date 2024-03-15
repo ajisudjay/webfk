@@ -14,7 +14,7 @@ class User extends BaseController
     }
     public function index()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') !== 'Admin Prodi') {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $file = session()->get('file');
@@ -37,7 +37,7 @@ class User extends BaseController
 
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') !== 'Admin Prodi') {
             $request = \Config\Services::request();
             $namauser = session()->get('username');
             $lvl = session()->get('level');
@@ -69,7 +69,7 @@ class User extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             $request = \Config\Services::request();
             $validation = \Config\Services::validation();
             $nama = $request->getVar('nama');
@@ -165,7 +165,7 @@ class User extends BaseController
 
     public function edit()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') !== 'Admin Prodi') {
             $request = \Config\Services::request();
             $username = $request->getVar('username');
             $nama = $request->getVar('nama');
@@ -217,7 +217,7 @@ class User extends BaseController
 
     public function editpass()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') !== 'Admin Prodi') {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $username = $request->getVar('username');
@@ -287,7 +287,7 @@ class User extends BaseController
 
     public function hapus($username)
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
             $cekfile = $this->UsersModel->where('username', $username)->first();
             $namafile = $cekfile['file'];
             $filesource = '../writable/uploads/content/user/' . $namafile . '';

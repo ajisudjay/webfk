@@ -207,7 +207,6 @@ class Aplikasi extends BaseController
     public function hapus($id)
     {
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
-
             $cekfile = $this->AplikasiModel->where('id', $id)->first();
             $namafile = $cekfile['gambar'];
             $filesource = '../writable/uploads/content/aplikasi/' . $namafile . '';

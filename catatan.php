@@ -37,5 +37,6 @@ A DAN MOTIF BATIK KALTIM DI NAVBAR
 *. input berita diperbaiki slug nya dan peringatan jika ada yang judul yang sama
 *. BUAT GALERI DOKUMEN
 ----------------------------------------------------------------------------------------------
-backend sudah fix, lanjut fixasi frontend
-tambahkan auth sudah sampai menu pejabat
+* tambahkan validasi specialchar untuk semua form
+* lengkapi log riwayat admin edited
+* backend sudah fix, lanjut fixasi frontend *pending
