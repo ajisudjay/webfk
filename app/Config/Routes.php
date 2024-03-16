@@ -37,6 +37,8 @@ $routes->get('/', 'Pages::index');
 $routes->get('/writable/(:any)', 'Pages::showFile');
 
 $routes->get('/pages/(:any)', 'Pages::pages/$1');
+$routes->get('/spmi-login', 'Pages::spmi_login');
+$routes->get('/pages-spmi', 'Pages::spmi');
 $routes->get('/pages-dosen', 'Pages::dosen');
 $routes->get('/dosen-detail/(:any)', 'Pages::dosen_detail/$1');
 $routes->get('/pages-tendik', 'Pages::tendik');

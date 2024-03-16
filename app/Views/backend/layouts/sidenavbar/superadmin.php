@@ -2,7 +2,7 @@
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="html/ltr/vertical-menu-template-semi-dark/index.html">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?= base_url('beranda'); ?>">
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0">FK UNMUL</h2>
                     </a></li>
@@ -85,8 +85,8 @@
                     </li>
                     <li class="<?= $title == 'Tendik' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Tendik</span></a>
                     </li>
-                    <!-- <li class="<?= $title == 'Student Body' ? 'active' : '' ?>"><a href="<?= base_url('tendik'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Student Body</span></a>
-                    </li> -->
+                    <li class="<?= $title == 'SPMI' ? 'active' : '' ?>"><a href="<?= base_url('spmi'); ?>"><i class="feather icon-archive"></i><span class="menu-item" data-i18n="Analytics">SPMI</span></a>
+                    </li>
                     </li>
                     <li class=" navigation-header"><span>AKUN</span>
                     </li>

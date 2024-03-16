@@ -15,6 +15,7 @@ use App\Models\ProdiModel;
 use App\Models\AplikasiModel;
 use App\Models\TendikModel;
 use App\Models\DosenModel;
+use App\Models\SpmiModel;
 
 class Pages extends BaseController
 {
@@ -31,6 +32,7 @@ class Pages extends BaseController
     protected $AplikasiModel;
     protected $TendikModel;
     protected $DosenModel;
+    protected $SpmiModel;
     public function __construct()
     {
         $this->MainmenuModel = new MainmenuModel();
@@ -46,6 +48,7 @@ class Pages extends BaseController
         $this->ProdiModel = new ProdiModel();
         $this->TendikModel = new TendikModel();
         $this->DosenModel = new DosenModel();
+        $this->SpmiModel = new SpmiModel();
     }
     // BEGIN FRONTEND
 
@@ -204,6 +207,8 @@ class Pages extends BaseController
 
     public function index()
     {
+        $session = session();
+        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -215,7 +220,6 @@ class Pages extends BaseController
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
             'konfigurasi' => $this->KonfigurasiModel->first(),
             'mitra' => $this->MitraModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'data_prodi' => $this->ProdiModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
@@ -229,6 +233,8 @@ class Pages extends BaseController
 
     public function pages($slug)
     {
+        $session = session();
+        $session->destroy();
         $uri = current_url(true);
         $slugx = $uri->getSegment(3); // Method - instrument
         $cek_menu = $this->SubmenuModel->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->where('slug', $slugx)->first();
@@ -244,7 +250,6 @@ class Pages extends BaseController
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
             'content' => $this->SubmenuModel->where('slug', $slugx)->findAll(),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
             'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
@@ -253,8 +258,43 @@ class Pages extends BaseController
         return view('frontend/pages/pages', $data);
     }
 
+    public function spmi()
+    {
+        $passget = session()->get('password');
+        $cekpass = $this->KonfigurasiModel->first();
+        if ($passget === $cekpass['pass_spmi']) {
+            $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
+            $jum_aplikasi = $countaplikasi['id'];
+            $data = [
+                'title' => 'SPMI',
+                'title_pages' => '',
+                'slug'  => 'Berita, Artikel dan Kegiatan',
+                'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+                'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
+                'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
+                'spmi1' => $this->SpmiModel->where('kategori', 'Dokumen SPMI')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi2' => $this->SpmiModel->where('kategori', 'Audit Mutu Internal')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi3' => $this->SpmiModel->where('kategori', 'Laporan Tinjauan Manajemen')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi4' => $this->SpmiModel->where('kategori', 'Laporan Survey Kepuasan')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
+                'konf' => $this->KonfigurasiModel->findAll(),
+                'konfigurasi' => $this->KonfigurasiModel->first(),
+                'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
+                'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
+                'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
+                'jum_app' => $jum_aplikasi,
+            ];
+            return view('frontend/pages/spmi', $data);
+        } else {
+            return redirect()->to(base_url('/spmi-login'));
+        }
+    }
+
     public function dosen()
     {
+        $session = session();
+        $session->destroy();
         $data = [
             'title' => 'SDM',
             'title_pages' => 'Tenaga Pendidik',
@@ -289,6 +329,8 @@ class Pages extends BaseController
 
     public function tendik()
     {
+        $session = session();
+        $session->destroy();
         $data = [
             'title' => 'SDM',
             'title_pages' => 'Tenaga Kependidikan',
@@ -305,6 +347,8 @@ class Pages extends BaseController
 
     public function informasi()
     {
+        $session = session();
+        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -319,7 +363,6 @@ class Pages extends BaseController
             'berita20' => $this->BeritaModel->orderBy('tanggal', 'DESC')->findAll(20),
             'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
@@ -333,6 +376,8 @@ class Pages extends BaseController
 
     public function informasi_lengkap()
     {
+        $session = session();
+        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -347,7 +392,6 @@ class Pages extends BaseController
             'beritalengkap' => $this->BeritaModel->orderBy('tanggal', 'DESC')->findAll(),
             'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
@@ -361,6 +405,8 @@ class Pages extends BaseController
 
     public function informasi_kategori($kategori)
     {
+        $session = session();
+        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -375,7 +421,6 @@ class Pages extends BaseController
             'beritalengkap' => $this->BeritaModel->where('kategori', $kategori)->orderBy('tanggal', 'DESC')->findAll(),
             'populer' => $this->BeritaModel->orderBy('dilihat', 'DESC')->findAll(3),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
@@ -389,6 +434,8 @@ class Pages extends BaseController
 
     public function informasi_detail($slug)
     {
+        $session = session();
+        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -404,7 +451,6 @@ class Pages extends BaseController
             'populer_2' => $this->BeritaModel->where('kategori', 'Pengumuman')->orderBy('tanggal', 'DESC')->findAll(1),
             'populer_3' => $this->BeritaModel->where('kategori', 'Kegiatan')->orderBy('tanggal', 'DESC')->findAll(1),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
@@ -418,6 +464,8 @@ class Pages extends BaseController
 
     public function mitra_lengkap()
     {
+        $session = session();
+        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -429,7 +477,6 @@ class Pages extends BaseController
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
             'mitra' => $this->MitraModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'konfigurasi' => $this->KonfigurasiModel->first(),
@@ -452,7 +499,6 @@ class Pages extends BaseController
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
@@ -472,7 +518,6 @@ class Pages extends BaseController
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
@@ -490,7 +535,6 @@ class Pages extends BaseController
             'menu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(4),
             'menu2' => $this->MainmenuModel->orderBy('urutan', 'ASC')->findAll(10, 4),
             'mitra' => $this->MitraModel->orderBy('nama', 'DESC')->get()->getResultArray(),
-            'slideshow' => $this->SlideshowModel->orderBy('nama', 'ASC')->get()->getResultArray(),
             'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'konf' => $this->KonfigurasiModel->findAll(),
             'prodi' => $this->SubmenuModel->orderBy('urutan', 'ASC')->where('id_mainmenu', '25')->findAll(),
@@ -525,6 +569,20 @@ class Pages extends BaseController
         } else {
             return redirect()->to(base_url('/login'));
         }
+    }
+
+    public function spmi_login()
+    {
+        $captcha1 = rand(0, 9);
+        $captcha2 = rand(0, 9);
+        $captcha3 = rand(0, 9);
+        $captcha4 = rand(0, 9);
+        $captcha = $captcha1 . $captcha2 . $captcha3 . $captcha4;
+        $data = [
+            'title' => 'Login',
+            'captcha' => $captcha,
+        ];
+        return view('backend/pages/loginspmi', $data);
     }
 
     public function login()

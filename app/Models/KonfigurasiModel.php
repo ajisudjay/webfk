@@ -14,7 +14,7 @@ class KonfigurasiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'foto', 'visi', 'misi', 'telepon', 'email', 'alamat', 'yt', 'fb', 'ig'];
+    protected $allowedFields    = ['id', 'foto', 'visi', 'misi', 'telepon', 'email', 'alamat', 'yt', 'fb', 'ig', 'pass_spmi'];
 
     // Dates
     protected $useTimestamps = false;

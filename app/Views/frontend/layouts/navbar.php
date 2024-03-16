@@ -63,6 +63,14 @@
                                          </li>
                                          <br>
                                          <hr style="width: 60%;">
+                                         <li><a class="<?= $title == 'SPMI' ? 'text-primary' : '' ?>" href="<?= base_url('/spmi-login'); ?>">SPMI</a>
+                                             <!-- <ul class="submenu">
+                                                 <li><a href="<?= base_url('spmi-login/'); ?>">Dokumen SPMI</a></li>
+                                                 <li><a href="<?= base_url('pages-tendik/'); ?>">Audit Mutu Internal</a></li>
+                                                 <li><a href="<?= base_url('pages-tendik/'); ?>">Laporan Tinjauan Manajemen</a></li>
+                                                 <li><a href="<?= base_url('pages-tendik/'); ?>">Laporan Survey Kepuasan</a></li>
+                                             </ul> -->
+                                         </li>
                                          <?php foreach ($menu2 as $item_mainmenu2) : ?>
                                              <?php $menu2 = $item_mainmenu2['mainmenu'] ?>
                                              <li><a href="#" class="<?= $title_pages == $menu2 ? 'text-primary' : '' ?>"><?= $menu2 ?></a>

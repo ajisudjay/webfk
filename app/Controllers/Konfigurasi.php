@@ -68,6 +68,8 @@ class Konfigurasi extends BaseController
                 $ig = $request->getVar('ig');
                 $yt = $request->getVar('yt');
                 $fb = $request->getVar('fb');
+                $pass_spmi = $request->getVar('pass_spmi');
+                $pass_spmi_base64 = base64_encode($pass_spmi);
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'email' => [
@@ -112,6 +114,13 @@ class Konfigurasi extends BaseController
                             'required' => '{field} Tidak Boleh Kosong',
                         ]
                     ],
+                    'pass_spmi' => [
+                        'label' => 'Password SPMI',
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '{field} Tidak Boleh Kosong',
+                        ]
+                    ],
                 ]);
 
                 if (!$valid) {
@@ -123,6 +132,7 @@ class Konfigurasi extends BaseController
                             'ig' => $validation->getError('ig'),
                             'fb' => $validation->getError('fb'),
                             'yt' => $validation->getError('yt'),
+                            'pass_spmi' => $validation->getError('pass_spmi'),
                         ],
                     ];
                     echo json_encode($msg);
@@ -134,6 +144,7 @@ class Konfigurasi extends BaseController
                         'ig' => $ig,
                         'fb' => $fb,
                         'yt' => $yt,
+                        'pass_spmi' => $pass_spmi_base64,
                     ];
 
                     $this->KonfigurasiModel->update($id, $data);

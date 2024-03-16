@@ -103,6 +103,12 @@
                         <label> Youtube :</label><br>
                         <input type="text" name="yt" class="form-control yt" value="<?= $item['yt'] ?>">
                         <div class="invalid-feedback errorYt"></div>
+                        <br>
+                    </div>
+                    <div class="col-lg-12">
+                        <label> Password SPMI :</label><br>
+                        <input type="text" name="pass_spmi" class="form-control pass_spmi" value="<?= base64_decode($item['pass_spmi']) ?>">
+                        <div class="invalid-feedback errorPass_spmi"></div>
                     </div>
                 </div>
                 <br>

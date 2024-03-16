@@ -1495,7 +1495,7 @@ h3 {
 
 /* line 111, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .business_expert_area {
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 @media (max-width: 767px) {
@@ -1553,7 +1553,7 @@ h3 {
 
 /* line 154, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .business_expert_area .business_tabs_area .nav .nav-item {
-  width: 33.3333333334%;
+  width: 25%;
 }
 
 @media (max-width: 767px) {

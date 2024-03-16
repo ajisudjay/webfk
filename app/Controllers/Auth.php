@@ -4,13 +4,16 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
+use App\Models\KonfigurasiModel;
 
 class Auth extends BaseController
 {
     protected $UsersModel;
+    protected $KonfigurasiModel;
     public function __construct()
     {
         $this->UsersModel = new UsersModel();
+        $this->KonfigurasiModel = new KonfigurasiModel();
     }
     public function index()
     {
@@ -85,6 +88,60 @@ class Auth extends BaseController
         }
     }
 
+    public function spmi_login()
+    {
+        $request = \Config\Services::request();
+        $validation = \Config\Services::validation();
+        if ($request->isAJAX()) {
+            $password = $request->getPost('password');
+            $captcha = $request->getPost('captcha');
+            $captcha2 = $request->getPost('captcha2');
+            $valid = $this->validate([
+                'password' => [
+                    'label' => 'Password',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong'
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'password' => $validation->getError('password'),
+                    ],
+                ];
+                echo json_encode($msg);
+            } else {
+                $pass = $this->KonfigurasiModel->first();
+                if ($captcha2 != $captcha) {
+                    $msg = [
+                        'title' => 'gagallogin',
+                        'pesan' => 'Kode Keamanan Salah',
+                    ];
+                    echo json_encode($msg);
+                } else {
+                    if (base64_encode($password) === $pass['pass_spmi']) {
+                        session()->set('password', base64_encode($password));
+                        $msg = [
+                            'title' => 'berhasiloperator',
+                            'urloperator' => '/auth/spmi',
+                        ];
+                        echo json_encode($msg);
+                    } else {
+                        $msg = [
+                            'title' => 'gagaluser2',
+                            'pesan' => 'Password Tidak Sesuai',
+                        ];
+                        echo json_encode($msg);
+                    }
+                }
+            }
+        } else {
+            exit('Data Tidak Dapat diproses');
+        }
+    }
+
     public function beranda()
     {
         $password = session()->get('password');
@@ -98,6 +155,14 @@ class Auth extends BaseController
         session()->set('level', $cek['level']);
         session()->setFlashdata('loginBerhasil', 'Login Berhasil');
         return redirect()->to(base_url('/beranda'));
+    }
+
+    public function spmi()
+    {
+        $password = session()->get('password');
+
+        session()->setFlashdata('loginBerhasil', 'Login Berhasil');
+        return redirect()->to(base_url('/pages-spmi'));
     }
 
 

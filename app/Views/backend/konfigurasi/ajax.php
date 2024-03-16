@@ -210,6 +210,13 @@
                             $('.yt').removeClass('is-invalid');
                             $('.errorYt').html('');
                         }
+                        if (response.error.pass_spmi) {
+                            $('.pass_spmi').addClass('is-invalid');
+                            $('.errorPass_spmi').html(response.error.pass_spmi);
+                        } else {
+                            $('.pass_spmi').removeClass('is-invalid');
+                            $('.errorPass_spmi').html('');
+                        }
                     } else {
                         Swal.fire({
                             icon: 'success',
