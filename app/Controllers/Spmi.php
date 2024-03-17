@@ -93,7 +93,7 @@ class Spmi extends BaseController
         if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
             $cekfile = $this->SpmiModel->where('id', $id)->first();
             $namafile = $cekfile['file'];
-            $filesource = '../writable/uploads/content/Spmi/' . $namafile . '';
+            $filesource = '../writable/uploads/content/spmi/' . $namafile . '';
             chmod($filesource, 0777);
             unlink($filesource);
             $this->SpmiModel->delete($id);

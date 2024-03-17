@@ -24,7 +24,10 @@
                                 <div class="col-lg-12">
                                     <label class="text-primary">Kategori</label>
                                     <select name="kategori" class="form-control kategori">
-                                        <option value="Dokumen SPMI">Dokumen SPMI</option>
+                                        <option value="Kebijakan SPMI">Kebijakan SPMI</option>
+                                        <option value="Manual SPMI">Manual SPMI</option>
+                                        <option value="Standar SPMI">Standar SPMI</option>
+                                        <option value="Formulir SPMI">Formulir SPMI</option>
                                         <option value="Audit Mutu Internal">Audit Mutu Internal</option>
                                         <option value="Laporan Tinjauan Manajemen">Laporan Tinjauan Manajemen</option>
                                         <option value="Laporan Survey Kepuasan">Laporan Survey Kepuasan</option>
