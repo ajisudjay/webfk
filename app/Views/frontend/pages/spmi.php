@@ -1,43 +1,4 @@
 <?= $this->include('frontend/layouts/header') ?>
-<style>
-    .dropbtn {
-        color: black;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #f1f1f1
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    .dropdown:hover .dropbtn {
-        background-color: #F5FBFF;
-    }
-</style>
 
 <body>
     <?= $this->include('frontend/layouts/navbar') ?>
@@ -62,14 +23,7 @@
                     <div class="col-lg-12">
                         <ul class="nav" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="nav-link" style="font-size: small;font-weight: bold;"><button class="dropbtn">Dokumen SPMI</button></a>
-                                    <div class="dropdown-content">
-                                        <a class="nav-link" id="kebijakan-tab" data-toggle="tab" href="#kebijakan" role="tab" aria-controls="kebijakan" aria-selected="false" style="font-size: small;font-weight: bold;">Kebijakan SPMI</a>
-                                        <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false" style="font-size: small;font-weight: bold;">Manual SPMI</a>
-                                        <a class="nav-link" id="standar-tab" data-toggle="tab" href="#standar" role="tab" aria-controls="standar" aria-selected="false" style="font-size: small;font-weight: bold;">Standar SPMI</a><a class="nav-link" id="formulir-tab" data-toggle="tab" href="#formulir" role="tab" aria-controls="formulir" aria-selected="false" style="font-size: small;font-weight: bold;">Formulir SPMI</a>
-                                    </div>
-                                </div>
+                                <a class="nav-link" id="dokumen-tab" data-toggle="tab" href="#dokumen" role="tab" aria-controls="dokumen" aria-selected="false" style="font-size: small;font-weight: bold;">Dokumen SPMI</a>
                             </li>
                             <li class=" nav-item">
                                 <a class="nav-link" id="audit-tab" data-toggle="tab" href="#audit" role="tab" aria-controls="audit" aria-selected="false" style="font-size: small;font-weight: bold;">Audit Mutu Internal</a>
@@ -83,13 +37,52 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="container">
             <div class="border_bottom">
                 <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade" id="dokumen" role="tabpanel" aria-labelledby="dokumen-tab">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <ul class="nav" id="myTab" role="tablist">
+                                        <li class=" nav-item">
+                                            <a class="nav-link" id="kebijakan-tab" data-toggle="tab" href="#kebijakan" role="tab" aria-controls="kebijakan" aria-selected="false" style="font-size: small;font-weight: bold;">Kebijakan SPMI</a>
+                                        </li>
+                                        <li class=" nav-item">
+                                            <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false" style="font-size: small;font-weight: bold;">Manual SPMI</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="standar-tab" data-toggle="tab" href="#standar" role="tab" aria-controls="standar" aria-selected="false" style="font-size: small;font-weight: bold;">Standar SPMI</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="formulir-tab" data-toggle="tab" href="#formulir" role="tab" aria-controls="formulir" aria-selected="false" style="font-size: small;font-weight: bold;">Formulir SPMI</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="tab-pane fade" id="kebijakan" role="tabpanel" aria-labelledby="kebijakan-tab">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="nav" id="myTab" role="tablist">
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="kebijakan-tab" data-toggle="tab" href="#kebijakan" role="tab" aria-controls="kebijakan" aria-selected="false" style="font-size: small;font-weight: bold;">Kebijakan SPMI</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false" style="font-size: small;font-weight: bold;">Manual SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="standar-tab" data-toggle="tab" href="#standar" role="tab" aria-controls="standar" aria-selected="false" style="font-size: small;font-weight: bold;">Standar SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="formulir-tab" data-toggle="tab" href="#formulir" role="tab" aria-controls="formulir" aria-selected="false" style="font-size: small;font-weight: bold;">Formulir SPMI</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="col-xl-12 col-md-12">
                             <h3>Kebijakan SPMI</h3>
                             <div class="dt-responsive table-responsive">
@@ -103,7 +96,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1; ?>
-                                        <?php foreach ($spmi2 as $item) : ?>
+                                        <?php foreach ($spmi1_1 as $item) : ?>
                                             <tr>
                                                 <!-- ISI VIEW -->
                                                 <td><?= $no++ ?></td>
@@ -119,6 +112,24 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="manual" role="tabpanel" aria-labelledby="manual-tab">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="nav" id="myTab" role="tablist">
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="kebijakan-tab" data-toggle="tab" href="#kebijakan" role="tab" aria-controls="kebijakan" aria-selected="false" style="font-size: small;font-weight: bold;">Kebijakan SPMI</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false" style="font-size: small;font-weight: bold;">Manual SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="standar-tab" data-toggle="tab" href="#standar" role="tab" aria-controls="standar" aria-selected="false" style="font-size: small;font-weight: bold;">Standar SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="formulir-tab" data-toggle="tab" href="#formulir" role="tab" aria-controls="formulir" aria-selected="false" style="font-size: small;font-weight: bold;">Formulir SPMI</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="col-xl-12 col-md-12">
                             <h3>Manual SPMI</h3>
                             <div class="dt-responsive table-responsive">
@@ -132,7 +143,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1; ?>
-                                        <?php foreach ($spmi2 as $item) : ?>
+                                        <?php foreach ($spmi1_2 as $item) : ?>
                                             <tr>
                                                 <!-- ISI VIEW -->
                                                 <td><?= $no++ ?></td>
@@ -148,6 +159,24 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="standar" role="tabpanel" aria-labelledby="standar-tab">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="nav" id="myTab" role="tablist">
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="kebijakan-tab" data-toggle="tab" href="#kebijakan" role="tab" aria-controls="kebijakan" aria-selected="false" style="font-size: small;font-weight: bold;">Kebijakan SPMI</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false" style="font-size: small;font-weight: bold;">Manual SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="standar-tab" data-toggle="tab" href="#standar" role="tab" aria-controls="standar" aria-selected="false" style="font-size: small;font-weight: bold;">Standar SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="formulir-tab" data-toggle="tab" href="#formulir" role="tab" aria-controls="formulir" aria-selected="false" style="font-size: small;font-weight: bold;">Formulir SPMI</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="col-xl-12 col-md-12">
                             <h3>Standar SPMI</h3>
                             <div class="dt-responsive table-responsive">
@@ -161,7 +190,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1; ?>
-                                        <?php foreach ($spmi2 as $item) : ?>
+                                        <?php foreach ($spmi1_3 as $item) : ?>
                                             <tr>
                                                 <!-- ISI VIEW -->
                                                 <td><?= $no++ ?></td>
@@ -177,6 +206,24 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="formulir" role="tabpanel" aria-labelledby="formulir-tab">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="nav" id="myTab" role="tablist">
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="kebijakan-tab" data-toggle="tab" href="#kebijakan" role="tab" aria-controls="kebijakan" aria-selected="false" style="font-size: small;font-weight: bold;">Kebijakan SPMI</a>
+                                    </li>
+                                    <li class=" nav-item">
+                                        <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false" style="font-size: small;font-weight: bold;">Manual SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="standar-tab" data-toggle="tab" href="#standar" role="tab" aria-controls="standar" aria-selected="false" style="font-size: small;font-weight: bold;">Standar SPMI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="formulir-tab" data-toggle="tab" href="#formulir" role="tab" aria-controls="formulir" aria-selected="false" style="font-size: small;font-weight: bold;">Formulir SPMI</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="col-xl-12 col-md-12">
                             <h3>Formulir SPMI</h3>
                             <div class="dt-responsive table-responsive">
@@ -190,7 +237,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1; ?>
-                                        <?php foreach ($spmi2 as $item) : ?>
+                                        <?php foreach ($spmi1_4 as $item) : ?>
                                             <tr>
                                                 <!-- ISI VIEW -->
                                                 <td><?= $no++ ?></td>

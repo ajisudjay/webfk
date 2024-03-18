@@ -2,7 +2,7 @@
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?= base_url('beranda'); ?>">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?= base_url('/beranda'); ?>">
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0">FK UNMUL</h2>
                     </a></li>
@@ -13,7 +13,7 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="navigation-header"><span><?= $lvl ?></span>
-                <li class="<?= $title == 'Beranda' ? 'active' : '' ?>"><a href="<?= base_url('beranda'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Beranda</span></a>
+                <li class="<?= $title == 'Beranda' ? 'active' : '' ?>"><a href="<?= base_url('/beranda'); ?>"><i class="feather icon-home"></i><span class="menu-item" data-i18n="Analytics">Beranda</span></a>
                 </li>
                 <!-- level admin prodi -->
                 <?php

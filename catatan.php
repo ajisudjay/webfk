@@ -40,5 +40,5 @@ A DAN MOTIF BATIK KALTIM DI NAVBAR
 progress :
 * buat menu SPMI DONE
 * tambahkan validasi specialchar untuk semua form
-* lengkapi log riwayat admin edited
 * backend sudah fix, lanjut fixasi frontend *pending
+* lengkapi log riwayat admin edited
