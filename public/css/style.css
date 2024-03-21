@@ -273,14 +273,14 @@ h3 {
 .bradcam_overlay::before {
   position: absolute;
   content: "";
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#5db2ff+0,7db9e8+100&1+24,0+96 */
-  background: -moz-linear-gradient(left, #5db2ff 0%, #65b4f9 24%, rgba(124, 185, 233, 0) 96%, rgba(125, 185, 232, 0) 100%);
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#435B2A+0,7db9e8+100&1+24,0+96 */
+  background: -moz-linear-gradient(left, #435B2A 0%, #99CA3E 24%, rgba(124, 185, 233, 0) 96%, rgba(125, 185, 232, 0) 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #5db2ff 0%, #65b4f9 24%, rgba(124, 185, 233, 0) 96%, rgba(125, 185, 232, 0) 100%);
+  background: -webkit-linear-gradient(left, #435B2A 0%, #99CA3E 24%, rgba(124, 185, 233, 0) 96%, rgba(125, 185, 232, 0) 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #5db2ff 0%, #65b4f9 24%, rgba(124, 185, 233, 0) 96%, rgba(125, 185, 232, 0) 100%);
+  background: linear-gradient(to right, #435B2A 0%, #99CA3E 24%, rgba(124, 185, 233, 0) 96%, rgba(125, 185, 232, 0) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5db2ff', endColorstr='#007db9e8',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#435B2A', endColorstr='#007db9e8',GradientType=1 );
   /* IE6-9 */
   top: 0;
   left: 0;
@@ -413,15 +413,15 @@ h3 {
 /* line 29, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
 .boxed-btn3 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0181f5+0,5db2ff+100 */
-  background: #0181f5;
+  background: #435B2A;
   /* Old browsers */
-  background: -moz-linear-gradient(left, #0181f5 0%, #5db2ff 100%);
+  background: -moz-linear-gradient(left, #435B2A 0%, #99CA3E 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #0181f5 0%, #5db2ff 100%);
+  background: -webkit-linear-gradient(left, #435B2A 0%, #99CA3E 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #0181f5 0%, #5db2ff 100%);
+  background: linear-gradient(to right, #435B2A 0%, #99CA3E 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0181f5', endColorstr='#5db2ff',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#435B2A', endColorstr='#99CA3E',GradientType=1 );
   /* IE6-9 */
   color: #fff;
   display: inline-block;
@@ -447,8 +447,8 @@ h3 {
 /* line 51, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
 .boxed-btn3:hover {
   background: #fff;
-  color: #009DFF !important;
-  border: 1px solid #009DFF;
+  color: #99CA3E !important;
+  border: 1px solid #99CA3E;
 }
 
 /* line 56, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
@@ -487,7 +487,7 @@ h3 {
 /* line 80, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
 .boxed-btn3-white:hover {
   background: #fff;
-  color: #009DFF !important;
+  color: #99CA3E !important;
   border: 1px solid transparent;
 }
 
@@ -590,7 +590,7 @@ h3 {
 
 /* line 157, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
 .line-button:hover {
-  color: #009DFF;
+  color: #99CA3E;
 }
 
 /* line 160, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
@@ -2230,7 +2230,7 @@ h3 {
 .footer .footer_top {
   padding-top: 50px;
   padding-bottom: 10px  ;
-  background: #141E46;
+  background: #435B2A;
 }
 
 @media (max-width: 767px) {
@@ -2308,8 +2308,8 @@ h3 {
 
 /* line 53, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget p.footer_text a.domain:hover {
-  color: #5DB2FF;
-  border-bottom: 1px solid #5DB2FF;
+  color: #99CA3E ;
+  border-bottom: 1px solid #99CA3E ;
 }
 
 /* line 59, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
@@ -2320,8 +2320,8 @@ h3 {
 
 /* line 63, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget p.footer_text.doanar a:hover {
-  color: #5DB2FF;
-  border-bottom: 1px solid #5DB2FF;
+  color: #99CA3E ;
+  border-bottom: 1px solid #99CA3E ;
 }
 
 /* line 67, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
@@ -2338,7 +2338,7 @@ h3 {
 
 /* line 80, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget ul li a:hover {
-  color: #5DB2FF;
+  color: #99CA3E ;
 }
 
 /* line 86, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
@@ -2838,7 +2838,7 @@ h3 {
 
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_service.scss */
 .service_area {
-  background: #141E46;
+  background: #435B2A;
 }
 
 /* line 3, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_service.scss */
@@ -5115,7 +5115,7 @@ h6 {
 
 /* line 544, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_blog.scss */
 .blog_details a:hover {
-  color: #009DFF;
+  color: #99CA3E;
 }
 
 /* line 549, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_blog.scss */
@@ -5659,7 +5659,7 @@ h6 {
 
 /* line 1208, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_blog.scss */
 .single-post-area .blog-author a:hover {
-  color: #009DFF;
+  color: #99CA3E;
 }
 
 /* line 1213, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_blog.scss */
