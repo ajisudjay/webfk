@@ -17,7 +17,20 @@
                 </li>
                 <!-- level admin prodi -->
                 <?php
-                if ($lvl === 'Admin Prodi') { ?>
+
+                if ($lvl === 'Pejabat') { ?>
+                    <li class="navigation-header"><span>WEBSITE</span>
+                    </li>
+                    <li class="<?= $title == 'SPMI' ? 'active' : '' ?>"><a href="<?= base_url('spmi'); ?>"><i class="feather icon-archive"></i><span class="menu-item" data-i18n="Analytics">SPMI</span></a>
+                    </li>
+                    <li class=" navigation-header"><span>AKUN</span>
+                    </li>
+                    <li class="<?= $title == 'Akun' ? 'active' : '' ?>"><a href="<?= base_url('user'); ?>"><i class="feather icon-users"></i><span class="menu-item" data-i18n="Analytics">Akun</span></a>
+                    </li>
+                    <li><a href="<?= base_url('auth/logout'); ?>"><i class="feather icon-log-out"></i><span class="menu-item" data-i18n="Analytics">Logout</span></a>
+                    </li>
+
+                <?php } elseif ($lvl === 'Admin Prodi') { ?>
                     <li class="navigation-header"><span>WEBSITE</span>
                     </li>
                     <li class=""><a href="#"><i class="feather icon-menu"></i><span class="menu-title" data-i18n="Dashboard">Menu</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
@@ -38,10 +51,8 @@
                     </li>
                     <li><a href="<?= base_url('auth/logout'); ?>"><i class="feather icon-log-out"></i><span class="menu-item" data-i18n="Analytics">Logout</span></a>
                     </li>
-
-
-                    <!-- level superadmin & admin fakultas -->
                 <?php } else { ?>
+                    <!-- level superadmin & admin fakultas -->
                     <li class="navigation-header"><span>WEBSITE</span>
                     </li>
                     <li class=""><a href="#"><i class="feather icon-layers"></i><span class="menu-title" data-i18n="Dashboard">Menu</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>

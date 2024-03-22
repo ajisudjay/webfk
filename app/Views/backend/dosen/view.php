@@ -269,7 +269,7 @@
                                     <td><?= $jumlahLsp['id'] ?></td>
                                     <td><?= $jumlahLs3['id'] ?></td>
                                     <?php
-                                    $jumlahlakipendidikan = $jumlahLs2['id'] + $jumlahLsp['id'] + $jumlahLs3['id'];
+                                    $jumlahlakipendidikan = $jumlahLs1['id'] + $jumlahLs2['id'] + $jumlahLsp['id'] + $jumlahLs3['id'];
                                     ?>
                                     <td><b><?= $jumlahlakipendidikan; ?></b></td>
 
