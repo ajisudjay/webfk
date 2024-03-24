@@ -24,13 +24,19 @@
                                 <div class="col-lg-12">
                                     <label class="text-primary">Kategori</label>
                                     <select name="kategori" class="form-control kategori">
-                                        <option value="Kebijakan SPMI">Kebijakan SPMI</option>
-                                        <option value="Manual SPMI">Manual SPMI</option>
-                                        <option value="Standar SPMI">Standar SPMI</option>
-                                        <option value="Formulir SPMI">Formulir SPMI</option>
                                         <option value="Audit Mutu Internal">Audit Mutu Internal</option>
-                                        <option value="Laporan Tinjauan Manajemen">Laporan Tinjauan Manajemen</option>
+                                        <option value="Audit Seleksi Maba">Audit Seleksi Maba</option>
+                                        <option value="Kebijakan SPMI">Dokumen SPMI - Kebijakan</option>
+                                        <option value="Manual SPMI">Dokumen SPMI - Manual</option>
+                                        <option value="Standar SPMI">Dokumen SPMI - Standar</option>
+                                        <option value="Formulir SPMI">Dokumen SPMI - Formulir</option>
+                                        <option value="POB SPMI">Dokumen SPMI - POB</option>
+                                        <option value="Dokumen Monev">Dokumen Monev</option>
+                                        <option value="Evaluasi TL">Evaluasi TL</option>
+                                        <option value="Instruksi Kerja">Instruksi Kerja</option>
+                                        <option value="Kalender Sistem Penjaminan Mutu">Kalender Sistem Penjaminan Mutu</option>
                                         <option value="Laporan Survey Kepuasan">Laporan Survey Kepuasan</option>
+                                        <option value="RTM">RTM</option>
                                     </select>
                                     <br>
                                 </div>

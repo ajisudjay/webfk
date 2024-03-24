@@ -207,8 +207,6 @@ class Pages extends BaseController
 
     public function index()
     {
-        $session = session();
-        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -233,8 +231,6 @@ class Pages extends BaseController
 
     public function pages($slug)
     {
-        $session = session();
-        $session->destroy();
         $uri = current_url(true);
         $slugx = $uri->getSegment(3); // Method - instrument
         $cek_menu = $this->SubmenuModel->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->where('slug', $slugx)->first();
@@ -277,9 +273,15 @@ class Pages extends BaseController
                 'spmi1_2' => $this->SpmiModel->where('kategori', 'Manual SPMI')->orderBy('nama', 'ASC')->get()->getResultArray(),
                 'spmi1_3' => $this->SpmiModel->where('kategori', 'Standar SPMI')->orderBy('nama', 'ASC')->get()->getResultArray(),
                 'spmi1_4' => $this->SpmiModel->where('kategori', 'Formulir SPMI')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi1_5' => $this->SpmiModel->where('kategori', 'POB SPMI')->orderBy('nama', 'ASC')->get()->getResultArray(),
                 'spmi2' => $this->SpmiModel->where('kategori', 'Audit Mutu Internal')->orderBy('nama', 'ASC')->get()->getResultArray(),
-                'spmi3' => $this->SpmiModel->where('kategori', 'Laporan Tinjauan Manajemen')->orderBy('nama', 'ASC')->get()->getResultArray(),
-                'spmi4' => $this->SpmiModel->where('kategori', 'Laporan Survey Kepuasan')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi3' => $this->SpmiModel->where('kategori', 'Audit Seleksi Maba')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi4' => $this->SpmiModel->where('kategori', 'RTM')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi5' => $this->SpmiModel->where('kategori', 'Laporan Survey Kepuasan')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi6' => $this->SpmiModel->where('kategori', 'Dokumen Monev')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi7' => $this->SpmiModel->where('kategori', 'Evaluasi TL')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi8' => $this->SpmiModel->where('kategori', 'Instruksi Kerja')->orderBy('nama', 'ASC')->get()->getResultArray(),
+                'spmi9' => $this->SpmiModel->where('kategori', 'Kalender Sistem Penjaminan Mutu')->orderBy('nama', 'ASC')->get()->getResultArray(),
                 'pejabat' => $this->PejabatModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                 'konf' => $this->KonfigurasiModel->findAll(),
                 'konfigurasi' => $this->KonfigurasiModel->first(),
@@ -296,8 +298,6 @@ class Pages extends BaseController
 
     public function dosen()
     {
-        $session = session();
-        $session->destroy();
         $data = [
             'title' => 'SDM',
             'title_pages' => 'Tenaga Pendidik',
@@ -332,8 +332,6 @@ class Pages extends BaseController
 
     public function tendik()
     {
-        $session = session();
-        $session->destroy();
         $data = [
             'title' => 'SDM',
             'title_pages' => 'Tenaga Kependidikan',
@@ -350,8 +348,6 @@ class Pages extends BaseController
 
     public function informasi()
     {
-        $session = session();
-        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -381,8 +377,6 @@ class Pages extends BaseController
 
     public function informasi_lengkap()
     {
-        $session = session();
-        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -412,8 +406,6 @@ class Pages extends BaseController
 
     public function informasi_kategori($kategori)
     {
-        $session = session();
-        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -443,8 +435,6 @@ class Pages extends BaseController
 
     public function informasi_detail($slug)
     {
-        $session = session();
-        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [
@@ -473,8 +463,6 @@ class Pages extends BaseController
 
     public function mitra_lengkap()
     {
-        $session = session();
-        $session->destroy();
         $countaplikasi = $this->AplikasiModel->selectcount('id')->first();
         $jum_aplikasi = $countaplikasi['id'];
         $data = [

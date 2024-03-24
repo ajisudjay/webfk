@@ -1553,13 +1553,28 @@ h3 {
 
 /* line 154, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .business_expert_area .business_tabs_area .nav .nav-item {
-  width: 25%;
+  width: 20%;
+}
+
+.badge {
+  background-color: #435B2A;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+}
+.badge-muda {
+  background-color: #99CA3F;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
 }
 
 @media (max-width: 767px) {
   /* line 154, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
   .business_expert_area .business_tabs_area .nav .nav-item {
-    width: 100%;
+    width: 20%;
   }
 }
 
@@ -1568,7 +1583,7 @@ h3 {
   font-size: 20px;
   font-weight: 400;
   color: #1F1F1F;
-  padding: 35px 0px 35px 40px;
+  padding: 10px 0px 0px 0px;
 }
 
 @media (max-width: 767px) {
@@ -1594,8 +1609,8 @@ h3 {
 /* line 177, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .business_expert_area .business_tabs_area #myTab {
   display: flex;
-  align-content: center;
-  justify-content: space-between;
+  align-content: left;
+  justify-content: left;
 }
 
 /* line 185, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
