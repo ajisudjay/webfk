@@ -74,42 +74,44 @@ class Konfigurasi extends BaseController
                 $valid = $this->validate([
                     'email' => [
                         'label' => 'Email',
-                        'rules' => 'required',
+                        'rules' => 'required|valid_email',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'valid_email' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'telepon' => [
                         'label' => 'Telepon',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'alamat' => [
                         'label' => 'Alamat',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
                         ]
                     ],
                     'ig' => [
                         'label' => 'Ig',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
                         ]
                     ],
                     'fb' => [
                         'label' => 'Fb',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
                         ]
                     ],
                     'yt' => [
                         'label' => 'Yt',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
                         ]

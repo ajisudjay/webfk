@@ -69,16 +69,18 @@ class Mainmenu extends BaseController
                 $valid = $this->validate([
                     'urutan' => [
                         'label' => 'Urutan',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'mainmenu' => [
                         'label' => 'Main Menu',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                 ]);
@@ -127,16 +129,18 @@ class Mainmenu extends BaseController
                 $valid = $this->validate([
                     'urutan' => [
                         'label' => 'Urutan',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'mainmenu' => [
                         'label' => 'Main Menu',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                 ]);

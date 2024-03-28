@@ -210,7 +210,7 @@
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <label class="text-primary">Link Laporan</label>
-                                                                <input type="text" name="laporan" class="form-control laporan" value="<?= $item['laporan'] ?>">
+                                                                <input type="text" name="laporan" class="form-control laporan" value="<?= htmlspecialchars($item['laporan']) ?>">
                                                                 <div class="invalid-feedback errorlaporan"></div>
                                                                 <br>
                                                             </div>
@@ -244,7 +244,7 @@
                             <td><?= $item['mulai_kerjasama'] ?></td>
                             <td><?= $item['berakhir_kerjasama'] ?></td>
                             <td style="min-width: 400px;max-width: 600px; white-space: normal;"><?= $item['hasil'] ?></td>
-                            <td><?= $item['laporan'] ?></td>
+                            <td><?= htmlspecialchars($item['laporan']) ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

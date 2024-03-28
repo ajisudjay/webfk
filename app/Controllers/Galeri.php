@@ -68,8 +68,14 @@ class Galeri extends BaseController
             $input = $this->validate([
                 'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
             ]);
+            $input2 = $this->validate([
+                'nama' => 'required[nama]|alpha_numeric_punct[nama],'
+            ]);
             if (!$input) { // Not valid
                 session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');
+                return redirect()->to(base_url('/galeri'));
+            } elseif (!$input2) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Format isian tidak sesuai');
                 return redirect()->to(base_url('/galeri'));
             } else {
                 $newName = $file->getRandomName();

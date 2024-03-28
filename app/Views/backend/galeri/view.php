@@ -23,14 +23,14 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label class="text-primary">Nama</label>
-                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama">
+                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama" required>
                                     <div class="invalid-feedback errornama"></div>
                                     <br>
                                 </div>
                                 <br>
                                 <div class="col-lg-12">
                                     <label class="text-primary">Gambar <br><span style="color: red;">*Max-Size : 2 mb | extension : jpg/jpeg/png/PNG</span></label>
-                                    <input type="file" name="file" class="form-control file" accept="image/*">
+                                    <input type="file" name="file" class="form-control file" accept="image/*" required>
                                     <div class="invalid-feedback errorfile"></div>
                                     <br>
                                 </div>
@@ -71,7 +71,7 @@
                                 </a>
                             <td style="min-width: 100px;max-width: 300px; white-space: normal;"><?= htmlspecialchars($item['nama']) ?></td>
 
-                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/galeri/thumb/' . htmlspecialchars($item['gambar'])); ?>" width="100%"></td>
+                            <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/galeri/thumb/' . ($item['gambar'])); ?>" width="100%"></td>
                             <td>
                                 <input type="text" class="form-control copy-btn" value="<?= base_url() ?>/writable/uploads/content/galeri/<?= $item['gambar'] ?>">
                                 <br>

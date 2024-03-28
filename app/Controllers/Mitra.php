@@ -76,44 +76,50 @@ class Mitra extends BaseController
                 $valid = $this->validate([
                     'urutan' => [
                         'label' => 'Urutan',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'nama' => [
                         'label' => 'Nama',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                     'mulai_kerjasama' => [
                         'label' => 'Mulai Kerjasama',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'berakhir_kerjasama' => [
                         'label' => 'Berakhir Kerjasama',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'hasil' => [
                         'label' => 'Hasil dan Manfaat',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                     'laporan' => [
                         'label' => 'Laporan',
-                        'rules' => 'required',
+                        'rules' => 'required|valid_url_strict',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'valid_url_strict' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                 ]);
@@ -178,44 +184,50 @@ class Mitra extends BaseController
                 $valid = $this->validate([
                     'urutan' => [
                         'label' => 'Urutan',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'nama' => [
                         'label' => 'Nama',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                     'mulai_kerjasama' => [
                         'label' => 'Mulai Kerjasama',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'berakhir_kerjasama' => [
                         'label' => 'Berakhir Kerjasama',
-                        'rules' => 'required',
+                        'rules' => 'required|numeric',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'numeric' => '* {field} Tidak Boleh Selain Angka',
                         ]
                     ],
                     'hasil' => [
                         'label' => 'Hasil dan Manfaat',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                     'laporan' => [
                         'label' => 'Laporan',
-                        'rules' => 'required',
+                        'rules' => 'required|valid_url_strict',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'valid_url_strict' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                 ]);

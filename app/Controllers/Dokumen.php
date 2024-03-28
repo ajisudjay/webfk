@@ -66,8 +66,14 @@ class Dokumen extends BaseController
             $input = $this->validate([
                 'file' => 'uploaded[file]|max_size[file,50480]'
             ]);
+            $input2 = $this->validate([
+                'nama' => 'required[nama]|alpha_numeric_punct[nama],'
+            ]);
             if (!$input) { // Not valid
                 session()->setFlashdata('pesanGagal', 'Format file tidak sesuai');
+                return redirect()->to(base_url('/dokumen'));
+            } elseif (!$input2) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Format isian tidak sesuai');
                 return redirect()->to(base_url('/dokumen'));
             } else {
                 $newName = $file->getRandomName();
