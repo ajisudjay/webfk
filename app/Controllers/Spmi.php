@@ -15,7 +15,7 @@ class Spmi extends BaseController
     public function index()
     {
 
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $file = session()->get('file');
@@ -38,7 +38,7 @@ class Spmi extends BaseController
 
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $data = [
@@ -59,7 +59,7 @@ class Spmi extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
             $request = \Config\Services::request();
             $nama = $request->getVar('nama');
             $kategori = $request->getVar('kategori');
@@ -96,7 +96,7 @@ class Spmi extends BaseController
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Pejabat' || session()->get('level') === 'Admin Fakultas') {
             $cekfile = $this->SpmiModel->where('id', $id)->first();
             $namafile = $cekfile['file'];
             $filesource = '../writable/uploads/content/spmi/' . $namafile . '';

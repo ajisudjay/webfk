@@ -14,7 +14,7 @@ class Konfigurasi extends BaseController
     }
     public function index()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
 
             $admin = session()->get('nama');
             $lvl = session()->get('level');
@@ -37,7 +37,7 @@ class Konfigurasi extends BaseController
     }
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $data = [
@@ -58,7 +58,7 @@ class Konfigurasi extends BaseController
 
     public function edit()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $id = $request->getVar('id');
@@ -173,7 +173,7 @@ class Konfigurasi extends BaseController
 
     public function editvisi()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $id = $request->getVar('id');
@@ -222,7 +222,7 @@ class Konfigurasi extends BaseController
 
     public function editmisi()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $id = $request->getVar('id');
@@ -270,7 +270,7 @@ class Konfigurasi extends BaseController
     }
     public function editfoto()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $id = $request->getVar('id');

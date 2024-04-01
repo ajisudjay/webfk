@@ -15,7 +15,7 @@ class Mainmenu extends BaseController
 
     public function index()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $file = session()->get('file');
@@ -38,7 +38,7 @@ class Mainmenu extends BaseController
 
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             $username = session()->get('username');
             if ($request->isAJAX()) {
@@ -60,7 +60,7 @@ class Mainmenu extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $urutan = $request->getVar('urutan');
@@ -119,7 +119,7 @@ class Mainmenu extends BaseController
 
     public function edit()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $id = $request->getVar('id');
@@ -180,7 +180,7 @@ class Mainmenu extends BaseController
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
 
             $this->MainmenuModel->delete($id);
 

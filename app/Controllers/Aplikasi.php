@@ -14,7 +14,7 @@ class Aplikasi extends BaseController
     }
     public function index()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $file = session()->get('file');
@@ -37,7 +37,7 @@ class Aplikasi extends BaseController
 
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             $username = session()->get('username');
             if ($request->isAJAX()) {
@@ -60,7 +60,7 @@ class Aplikasi extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
 
             $request = \Config\Services::request();
             $validation = \Config\Services::validation();
@@ -143,7 +143,7 @@ class Aplikasi extends BaseController
 
     public function edit()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             $validation = \Config\Services::validation();
             $id = $request->getVar('id');
@@ -210,7 +210,7 @@ class Aplikasi extends BaseController
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $cekfile = $this->AplikasiModel->where('id', $id)->first();
             $namafile = $cekfile['gambar'];
             $filesource = '../writable/uploads/content/aplikasi/' . $namafile . '';

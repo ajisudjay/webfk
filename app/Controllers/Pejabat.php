@@ -15,7 +15,7 @@ class Pejabat extends BaseController
 
     public function index()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $file = session()->get('file');
@@ -38,7 +38,7 @@ class Pejabat extends BaseController
 
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $data = [
@@ -59,7 +59,7 @@ class Pejabat extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             $validation = \Config\Services::validation();
             $nama = $request->getVar('nama');
@@ -137,7 +137,7 @@ class Pejabat extends BaseController
 
     public function edit()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $request = \Config\Services::request();
             $id = $request->getVar('id');
             $nama = $request->getVar('nama');
@@ -204,7 +204,7 @@ class Pejabat extends BaseController
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas') {
+        if (session()->get('username') !== NULL && (session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas')) {
             $cekfile = $this->PejabatModel->where('id', $id)->first();
             $namafile = $cekfile['gambar'];
             $filesource = '../writable/uploads/content/pejabat/' . $namafile . '';

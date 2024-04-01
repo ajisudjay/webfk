@@ -18,7 +18,7 @@ class Submenu extends BaseController
     }
     public function index()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $file = session()->get('file');
@@ -40,7 +40,7 @@ class Submenu extends BaseController
     }
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $level = session()->get('level');
@@ -69,7 +69,7 @@ class Submenu extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
             $username = session()->get('username');
             $request = \Config\Services::request();
             $urutan = $request->getVar('urutan');
@@ -107,7 +107,7 @@ class Submenu extends BaseController
     }
     // public function tambah()
     // {
-    //     if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas'|| session()->get('level') === 'Admin Prodi') {
+    //     if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas'|| session()->get('level') === 'Admin Prodi') {
     //         $username = session()->get('username');
     //         $request = \Config\Services::request();
     //         $level = session()->get('level');
@@ -191,7 +191,7 @@ class Submenu extends BaseController
 
     public function tambahform()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
             $request = \Config\Services::request();
             $admin = session()->get('nama');
             $lvl = session()->get('level');
@@ -217,7 +217,7 @@ class Submenu extends BaseController
 
     public function editform()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
             $request = \Config\Services::request();
             $slug = $request->getVar('slug');
             $admin = session()->get('nama');
@@ -246,7 +246,7 @@ class Submenu extends BaseController
 
     public function edit()
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
             $username = session()->get('username');
             $request = \Config\Services::request();
             $id = $request->getVar('id');
@@ -286,7 +286,7 @@ class Submenu extends BaseController
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi') {
             $this->SubmenuModel->delete($id);
 
             session()->setFlashdata('pesanHapus', 'Berhasil dihapus !');

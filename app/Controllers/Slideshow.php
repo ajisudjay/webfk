@@ -15,7 +15,7 @@ class Slideshow extends BaseController
     public function index()
     {
 
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') !== NULL && session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
         $admin = session()->get('nama');
@@ -36,7 +36,7 @@ class Slideshow extends BaseController
     }
     public function view()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') !== NULL && session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
         $request = \Config\Services::request();
@@ -56,7 +56,7 @@ class Slideshow extends BaseController
 
     public function tambah()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') !== NULL && session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
         $request = \Config\Services::request();
@@ -86,7 +86,7 @@ class Slideshow extends BaseController
 
     public function hapus($id)
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin') {
+        if (session()->get('username') !== NULL && session()->get('level') !== 'Superadmin') {
             return redirect()->to(base_url('/login'));
         }
         $cekfile = $this->SlideshowModel->where('id', $id)->first();

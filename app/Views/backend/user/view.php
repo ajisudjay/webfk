@@ -44,6 +44,7 @@
                                     <label class="text-primary">Level</label>
                                     <select name="level" class="form-control level">
                                         <option value="">Pilih Level</option>
+                                        <option value="Pejabat">Pejabat</option>
                                         <option value="Admin Prodi">Admin Prodi</option>
                                         <option value="Admin Fakultas">Admin Fakultas</option>
                                         <option value="Superadmin">Superadmin</option>
@@ -135,6 +136,7 @@
                                                                 <label class="text-primary">Level</label>
                                                                 <select name="level" class="form-control level">
                                                                     <option value="<?= $item['level'] ?>"><?= $item['level'] ?></option>
+                                                                    <option value="Pejabat" <?= $hakakses ?>>Pejabat</option>
                                                                     <option value="Admin Prodi" <?= $hakakses ?>>Admin Prodi</option>
                                                                     <option value="Admin Fakultas" <?= $hakakses ?>>Admin Fakultas</option>
                                                                     <option value="Superadmin" <?= $hakakses ?>>Superadmin</option>

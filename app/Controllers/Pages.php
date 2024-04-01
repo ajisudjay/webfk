@@ -544,7 +544,7 @@ class Pages extends BaseController
     // START BACKEND
     public function beranda()
     {
-        if (session()->get('username') == NULL || session()->get('level') !== 'Superadmin' || session()->get('level') !== 'Admin Prodi') {
+        if (session()->get('username') !== NULL && session()->get('level') === 'Superadmin' || session()->get('level') === 'Admin Fakultas' || session()->get('level') === 'Admin Prodi' || session()->get('level') === 'Pejabat') {
             $admin = session()->get('nama');
             $lvl = session()->get('level');
             $usernamex = session()->get('username');
