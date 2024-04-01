@@ -112,8 +112,14 @@ class Berita extends BaseController
             $input = $this->validate([
                 'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
             ]);
+            $input2 = $this->validate([
+                'judul' => 'required[judul]|alpha_numeric_punct[judul],',
+            ]);
             if (!$input) { // Not valid
                 session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');
+                return redirect()->to(base_url('/berita'));
+            } elseif (!$input2) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
                 return redirect()->to(base_url('/berita'));
             } else {
                 $newName = $file->getRandomName();
@@ -219,26 +225,40 @@ class Berita extends BaseController
             $penulis = $username;
             $file = $request->getFile('file');
             if (!file_exists($_FILES['file']['tmp_name'])) {
-                $data = [
-                    'kategori' => $kategori,
-                    'judul' => $judul,
-                    'slug' => $slug,
-                    'tanggal' => $tanggal,
-                    'tag' => $tag,
-                    'isi' => $isi,
-                    'timestamp' => $timestamp,
-                    'penulis' => $penulis,
-                ];
-                $this->BeritaModel->update($id, $data);
+                $input2 = $this->validate([
+                    'judul' => 'required[judul]|alpha_numeric_punct[judul],',
+                ]);
+                if (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
+                    return redirect()->to(base_url('/berita'));
+                } else {
+                    $data = [
+                        'kategori' => $kategori,
+                        'judul' => $judul,
+                        'slug' => $slug,
+                        'tanggal' => $tanggal,
+                        'tag' => $tag,
+                        'isi' => $isi,
+                        'timestamp' => $timestamp,
+                        'penulis' => $penulis,
+                    ];
+                    $this->BeritaModel->update($id, $data);
 
-                session()->setFlashdata('pesanInput', 'Berhasil diubah!');
-                return redirect()->to(base_url('/berita'));
+                    session()->setFlashdata('pesanInput', 'Berhasil diubah!');
+                    return redirect()->to(base_url('/berita'));
+                }
             } else {
                 $input = $this->validate([
                     'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
                 ]);
+                $input2 = $this->validate([
+                    'judul' => 'required[judul]|alpha_numeric_punct[judul],',
+                ]);
                 if (!$input) { // Not valid
                     session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');
+                    return redirect()->to(base_url('/berita'));
+                } elseif (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
                     return redirect()->to(base_url('/berita'));
                 } else {
                     $file = $request->getFile('file');

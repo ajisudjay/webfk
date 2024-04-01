@@ -69,16 +69,18 @@ class Link extends BaseController
                 $valid = $this->validate([
                     'judul' => [
                         'label' => 'Judul',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'link' => [
                         'label' => 'Link',
-                        'rules' => 'required',
+                        'rules' => 'required|valid_url_strict',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'valid_url_strict' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                 ]);

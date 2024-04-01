@@ -77,9 +77,10 @@ class Prodi extends BaseController
                     ],
                     'prodi' => [
                         'label' => 'Program Studi',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                 ]);
@@ -135,9 +136,10 @@ class Prodi extends BaseController
                     ],
                     'prodi' => [
                         'label' => 'Program Studi',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                 ]);

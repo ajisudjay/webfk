@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-lg-1">
                                     <label class="text-primary">Urutan</label>
-                                    <input type="text" name="urutan" class="form-control urutan" placeholder="Urutan">
+                                    <input type="number" min="0" name="urutan" class="form-control urutan" placeholder="Urutan">
                                     <div class="invalid-feedback errorurutan"></div>
                                     <br>
                                 </div>
@@ -110,13 +110,13 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <label class="text-primary">Asal Spesialis</label>
-                                    <input type="text" name="sp" class="form-control sp" placeholder="Asal S2/Spesialis">
+                                    <input type="text" name="sp" class="form-control sp" placeholder="Asal Spesialis">
                                     <div class="invalid-feedback errorsp"></div>
                                     <br>
                                 </div>
                                 <div class="col-lg-3">
-                                    <label class="text-primary">Asal S2 / Spesialis</label>
-                                    <input type="text" name="s2" class="form-control s2" placeholder="Asal S2/Spesialis">
+                                    <label class="text-primary">Asal S2</label>
+                                    <input type="text" name="s2" class="form-control s2" placeholder="Asal S2">
                                     <div class="invalid-feedback errors2"></div>
                                     <br>
                                 </div>
@@ -311,9 +311,10 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $no = 1; ?>
                 <?php foreach ($dosen as $item) : ?>
                     <tr>
-                        <td><?= $item['urutan'] ?></td>
+                        <td><?= $no++ ?></td>
                         <!-- ISI VIEW -->
                         <td style="text-align: center;">
                             <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['id'] ?>">
@@ -330,24 +331,18 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="<?= base_url('dosen/edit'); ?>" enctype="multipart/form-data" method="post" class="input">
+                                            <form action="<?= base_url('dosen/edit'); ?>" enctype="multipart/form-data" method="post">
                                                 <?= csrf_field() ?>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-lg-1">
-                                                            <label class="text-primary">Urutan</label>
-                                                            <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
-                                                            <input type="text" required name="urutan" class="form-control urutan" value="<?= $item['urutan'] ?>">
-                                                            <div class="invalid-feedback errorurutan"></div>
-                                                            <br>
-                                                        </div>
-                                                        <div class="col-lg-2">
+                                                        <div class="col-lg-3">
+                                                            <input name="id" value="<?= $item['id'] ?>" hidden>
                                                             <label class="text-primary">NIP</label>
                                                             <input type="text" required name="nip" class="form-control nip" value="<?= $item['nip'] ?>">
                                                             <div class="invalid-feedback errornip"></div>
                                                             <br>
                                                         </div>
-                                                        <div class="col-lg-2">
+                                                        <div class="col-lg-3">
                                                             <label class="text-primary">NIDN</label>
                                                             <input type="text" required name="nidn" class="form-control nidn" value="<?= $item['nidn'] ?>">
                                                             <div class="invalid-feedback errornidn"></div>

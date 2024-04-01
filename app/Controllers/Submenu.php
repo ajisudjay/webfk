@@ -80,19 +80,27 @@ class Submenu extends BaseController
             $isi = $request->getVar('isi');
             $timestamp = date("Y-m-d");
             $penulis = $username;
-            $data = [
-                'urutan' => $urutan,
-                'submenu' => $submenu,
-                'slug' => $slug,
-                'id_mainmenu' => $mainmenu,
-                'content' => $isi,
-                'timestamp' => $timestamp,
-                'penulis' => $penulis,
-                'akses' => $akses,
-            ];
-            $this->SubmenuModel->insert($data);
-            session()->setFlashdata('pesanHapus', 'Berhasil ditambah !');
-            return redirect()->to(base_url('/submenu'));
+            $validasi = $this->validate([
+                'submenu' => 'required[submenu]|alpha_numeric_punct[submenu],'
+            ]);
+            if (!$validasi) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Format isian tidak sesuai');
+                return redirect()->to(base_url('/submenu'));
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'submenu' => $submenu,
+                    'slug' => $slug,
+                    'id_mainmenu' => $mainmenu,
+                    'content' => $isi,
+                    'timestamp' => $timestamp,
+                    'penulis' => $penulis,
+                    'akses' => $akses,
+                ];
+                $this->SubmenuModel->insert($data);
+                session()->setFlashdata('pesanHapus', 'Berhasil ditambah !');
+                return redirect()->to(base_url('/submenu'));
+            }
         } else {
             return redirect()->to(base_url('/login'));
         }
@@ -250,19 +258,27 @@ class Submenu extends BaseController
             $isi = $request->getVar('isi');
             $timestamp = date("Y-m-d");
             $penulis = $username;
-            $data = [
-                'urutan' => $urutan,
-                'submenu' => $submenu,
-                'slug' => $slug,
-                'id_mainmenu' => $mainmenu,
-                'content' => $isi,
-                'timestamp' => $timestamp,
-                'penulis' => $penulis,
-                'akses' => $akses,
-            ];
-            $this->SubmenuModel->update($id, $data);
-            session()->setFlashdata('pesanHapus', 'Berhasil diubah !');
-            return redirect()->to(base_url('/submenu'));
+            $validasi = $this->validate([
+                'submenu' => 'required[submenu]|alpha_numeric_punct[submenu],'
+            ]);
+            if (!$validasi) { // Not valid
+                session()->setFlashdata('pesanGagal', 'Format isian tidak sesuai');
+                return redirect()->to(base_url('/submenu'));
+            } else {
+                $data = [
+                    'urutan' => $urutan,
+                    'submenu' => $submenu,
+                    'slug' => $slug,
+                    'id_mainmenu' => $mainmenu,
+                    'content' => $isi,
+                    'timestamp' => $timestamp,
+                    'penulis' => $penulis,
+                    'akses' => $akses,
+                ];
+                $this->SubmenuModel->update($id, $data);
+                session()->setFlashdata('pesanHapus', 'Berhasil diubah !');
+                return redirect()->to(base_url('/submenu'));
+            }
         } else {
             return redirect()->to(base_url('/login'));
         }

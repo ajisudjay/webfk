@@ -90,30 +90,33 @@ class Konfigurasi extends BaseController
                     ],
                     'alamat' => [
                         'label' => 'Alamat',
-                        'rules' => 'required|alpha_numeric_punct',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
                         ]
                     ],
                     'ig' => [
-                        'label' => 'Ig',
+                        'label' => 'Instagram',
                         'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'fb' => [
-                        'label' => 'Fb',
+                        'label' => 'Facebook',
                         'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'yt' => [
-                        'label' => 'Yt',
+                        'label' => 'Youtube',
                         'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '{field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'pass_spmi' => [

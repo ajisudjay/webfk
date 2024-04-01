@@ -39,6 +39,7 @@ A DAN MOTIF BATIK KALTIM DI NAVBAR
 ----------------------------------------------------------------------------------------------
 progress :
 * buat menu SPMI DONE
-* tambahkan validasi specialchar untuk semua form
-* backend sudah fix, lanjut fixasi frontend *pending
+* tambahkan validasi specialchar untuk semua form DONE
 * lengkapi log riwayat admin edited
+* main menu tdk dapat dihapus jika masih ada submenunya
+* backend sudah fix, lanjut fixasi frontend *pending

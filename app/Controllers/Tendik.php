@@ -41,7 +41,7 @@ class Tendik extends BaseController
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $data = [
-                    'tendik' => $this->TendikModel->orderBy('nip', 'DESC')->get()->getResultArray(),
+                    'tendik' => $this->TendikModel->orderBy('nama', 'ASC')->get()->getResultArray(),
                     // jumlah pendidikan tendik
                     'jumlahLsd' => $this->TendikModel->selectCount('id')->where('pendidikan', 'SD')->where('jk', 'Laki-laki')->first(),
                     'jumlahPsd' => $this->TendikModel->selectCount('id')->where('pendidikan', 'SD')->where('jk', 'Perempuan')->first(),
@@ -84,7 +84,6 @@ class Tendik extends BaseController
             $request = \Config\Services::request();
             $validation = \Config\Services::validation();
             $nip = $request->getVar('nip');
-            $urutan = $request->getVar('urutan');
             $nama = $request->getVar('nama');
             $bagian_unit = $request->getVar('bagian_unit');
             $ruangan = $request->getVar('ruangan');
@@ -99,18 +98,13 @@ class Tendik extends BaseController
             $file = $request->getFile('file');
             if ($request->isAJAX()) {
                 $valid = $this->validate([
-                    'urutan' => [
-                        'label' => 'Urutan',
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => '* {field} Tidak Boleh Kosong',
-                        ]
-                    ],
                     'nip' => [
                         'label' => 'NIP',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct
+                        ',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'nama' => [
@@ -122,23 +116,26 @@ class Tendik extends BaseController
                     ],
                     'bagian_unit' => [
                         'label' => 'Bagian Unit',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'ruangan' => [
                         'label' => 'Ruangan',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'tempat_lahir' => [
                         'label' => 'Tempat Lahir',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'tanggal_lahir' => [
@@ -157,9 +154,10 @@ class Tendik extends BaseController
                     ],
                     'telp' => [
                         'label' => 'Telepon',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'email' => [
@@ -183,7 +181,6 @@ class Tendik extends BaseController
                 if (!$valid) {
                     $msg = [
                         'error' => [
-                            'urutan' => $validation->getError('urutan'),
                             'nip' => $validation->getError('nip'),
                             'nama' => $validation->getError('nama'),
                             'bagian_unit' => $validation->getError('bagian_unit'),
@@ -202,7 +199,6 @@ class Tendik extends BaseController
                     $file->store('content/tendik/', $namagambar);
                     $data = [
                         'nip' => $nip,
-                        'urutan' => $urutan,
                         'nama' => $nama,
                         'bagian_unit' => $bagian_unit,
                         'ruangan' => $ruangan,
@@ -233,7 +229,6 @@ class Tendik extends BaseController
             $request = \Config\Services::request();
             $id = $request->getVar('id');
             $validation = \Config\Services::validation();
-            $urutan = $request->getVar('urutan');
             $nip = $request->getVar('nip');
             $nama = $request->getVar('nama');
             $bagian_unit = $request->getVar('bagian_unit');
@@ -248,9 +243,19 @@ class Tendik extends BaseController
             $status = $request->getVar('status');
             $file = $request->getFile('file');
             if (!file_exists($_FILES['file']['tmp_name'])) {
+                $input2 = $this->validate([
+                    'nip' => 'required[nip]|alpha_numeric_punct[nip],',
+                    'bagian_unit' => 'required[bagian_unit]|alpha_numeric_punct[bagian_unit],',
+                    'ruangan' => 'required[ruangan]|alpha_numeric_punct[ruangan],',
+                    'tempat_lahir' => 'required[tempat_lahir]|alpha_numeric_punct[tempat_lahir],',
+                    'telp' => 'required[telp]|alpha_numeric_punct[telp],',
+                ]);
+                if (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
+                    return redirect()->to(base_url('/tendik'));
+                }
                 $data = [
                     'nip' => $nip,
-                    'urutan' => $urutan,
                     'nama' => $nama,
                     'bagian_unit' => $bagian_unit,
                     'ruangan' => $ruangan,
@@ -265,16 +270,24 @@ class Tendik extends BaseController
                 ];
                 $this->TendikModel->update($id, $data);
 
-                $msg = [
-                    'title' => 'Berhasil'
-                ];
-                echo json_encode($msg);
+                session()->setFlashdata('pesanInput', 'Mengubah Data Tendik');
+                return redirect()->to(base_url('/tendik'));
             } else {
                 $input = $this->validate([
                     'file' => 'uploaded[file]|max_size[file,1024]|mime_in[file,image/png,image/jpeg]|is_image[file],'
                 ]);
+                $input2 = $this->validate([
+                    'nip' => 'required[nip]|alpha_numeric_punct[nip],',
+                    'bagian_unit' => 'required[bagian_unit]|alpha_numeric_punct[bagian_unit],',
+                    'ruangan' => 'required[ruangan]|alpha_numeric_punct[ruangan],',
+                    'tempat_lahir' => 'required[tempat_lahir]|alpha_numeric_punct[tempat_lahir],',
+                    'telp' => 'required[telp]|alpha_numeric_punct[telp],',
+                ]);
                 if (!$input) { // Not valid
                     session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');
+                    return redirect()->to(base_url('/tendik'));
+                } elseif (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
                     return redirect()->to(base_url('/tendik'));
                 } else {
                     $file = $request->getFile('file');
@@ -291,7 +304,6 @@ class Tendik extends BaseController
                     $nama_foto = $newName;
                     $data = [
                         'nip' => $nip,
-                        'urutan' => $urutan,
                         'nama' => $nama,
                         'bagian_unit' => $bagian_unit,
                         'ruangan' => $ruangan,
@@ -347,10 +359,8 @@ class Tendik extends BaseController
         imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidht, $newheigth, $width, $heigth);
         $target = "../writable/uploads/content/tendik/thumb/$namagambar";
         imagewebp($thumb, $target, 80);
-        $msg = [
-            'title' => 'Berhasil'
-        ];
-        echo json_encode($msg);
+        session()->setFlashdata('pesanInput', 'Mengubah Data Tendik');
+        return redirect()->to(base_url('/tendik'));
     }
 
     public function hapus($id)

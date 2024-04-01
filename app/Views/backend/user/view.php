@@ -9,7 +9,7 @@
         ?>
         <h4 class="mb-0">Akun</h4>
         <!-- button tambah modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal" hidden>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahmodal" <?= $hakakses ?>>
             <span class="feather icon-plus text-light"></span>
         </button>
     </div>

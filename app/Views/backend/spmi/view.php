@@ -42,14 +42,14 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <label class="text-primary">Nama</label>
-                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama">
+                                    <input type="text" name="nama" class="form-control nama" placeholder="Nama" required>
                                     <div class="invalid-feedback errornama"></div>
                                     <br>
                                 </div>
                                 <br>
                                 <div class="col-lg-12">
                                     <label class="text-primary">File <span style="color: red;">*max size 50mb</span></label>
-                                    <input type="file" name="file" class="form-control file">
+                                    <input type="file" name="file" class="form-control file" required>
                                     <div class="invalid-feedback errorfile"></div>
                                     <br>
                                 </div>

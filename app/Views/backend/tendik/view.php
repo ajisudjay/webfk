@@ -21,19 +21,13 @@
                         <?= csrf_field() ?>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-2">
-                                    <label class="text-primary">Urutan</label>
-                                    <input type="text" name="urutan" class="form-control urutan" placeholder="Urutan">
-                                    <div class="invalid-feedback errorurutan"></div>
-                                    <br>
-                                </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <label class="text-primary">NIP</label>
                                     <input type="text" name="nip" class="form-control nip" placeholder="NIP">
                                     <div class="invalid-feedback errornip"></div>
                                     <br>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <label class="text-primary">Nama</label>
                                     <input type="text" name="nama" class="form-control nama" placeholder="Nama">
                                     <div class="invalid-feedback errornama"></div>
@@ -251,9 +245,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $no = 1; ?>
                     <?php foreach ($tendik as $item) : ?>
                         <tr>
-                            <td><?= $item['urutan'] ?></td>
+                            <td><?= $no++ ?></td>
                             <!-- ISI VIEW -->
                             <td style="text-align: center;">
                                 <button type="button" class="btn-sm btn-primary border-0" data-toggle="modal" data-target="#editmodal<?= $id = $item['id'] ?>">
@@ -270,24 +265,18 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="<?= base_url('tendik/edit'); ?>" enctype="multipart/form-data" method="post" class="input">
+                                                <form action="<?= base_url('tendik/edit'); ?>" enctype="multipart/form-data" method="post">
                                                     <?= csrf_field() ?>
                                                     <div class="modal-body">
                                                         <div class="row">
-                                                            <div class="col-lg-2">
-                                                                <label class="text-primary">Urutan</label>
+                                                            <div class="col-lg-4">
                                                                 <input type="text" name="id" required value="<?= $item['id'] ?>" hidden>
-                                                                <input type="text" name="urutan" class="form-control urutan" required value="<?= $item['urutan'] ?>">
-                                                                <div class="invalid-feedback errorurutan"></div>
-                                                                <br>
-                                                            </div>
-                                                            <div class="col-lg-3">
                                                                 <label class="text-primary">NIP</label>
                                                                 <input type="text" name="nip" class="form-control nip" required value="<?= $item['nip'] ?>">
                                                                 <div class="invalid-feedback errornip"></div>
                                                                 <br>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-5">
                                                                 <label class="text-primary">Nama</label>
                                                                 <input type="text" name="nama" class="form-control nama" required value="<?= $item['nama'] ?>">
                                                                 <div class="invalid-feedback errornama"></div>

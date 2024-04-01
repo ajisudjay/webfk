@@ -84,9 +84,10 @@ class Pejabat extends BaseController
                     ],
                     'jabatan' => [
                         'label' => 'Jabatan',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'file' => [
@@ -144,6 +145,14 @@ class Pejabat extends BaseController
             $urutan = $request->getVar('urutan');
             $file = $request->getFile('file');
             if (!file_exists($_FILES['file']['tmp_name'])) {
+                $input2 = $this->validate([
+                    'nama' => 'required[nama]|alpha_numeric_punct[nama],',
+                    'jabatan' => 'required[jabatan]|alpha_numeric_punct[jabatan],'
+                ]);
+                if (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
+                    return redirect()->to(base_url('/pejabat'));
+                }
                 $data = [
                     'nama' => $nama,
                     'jabatan' => $jabatan,
@@ -157,8 +166,14 @@ class Pejabat extends BaseController
                 $input = $this->validate([
                     'file' => 'uploaded[file]|max_size[file,512]|mime_in[file,image/png,image/jpeg]|is_image[file],'
                 ]);
+                $input2 = $this->validate([
+                    'jabatan' => 'required[jabatan]|alpha_numeric_punct[jabatan],'
+                ]);
                 if (!$input) { // Not valid
                     session()->setFlashdata('pesanGagal', 'Format gambar tidak sesuai');
+                    return redirect()->to(base_url('/pejabat'));
+                } elseif (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
                     return redirect()->to(base_url('/pejabat'));
                 } else {
                     $file = $request->getFile('file');

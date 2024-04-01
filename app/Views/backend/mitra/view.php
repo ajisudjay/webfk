@@ -216,7 +216,7 @@
                                                             </div>
                                                             <div class="col-lg-12">
                                                                 <label class="text-primary">Hasil dan Manfaat</label>
-                                                                <textarea name="hasil" rows="7" class="form-control hasil"><?= $item['laporan'] ?></textarea>
+                                                                <textarea name="hasil" rows="7" class="form-control hasil"><?= $item['hasil'] ?></textarea>
                                                                 <div class="invalid-feedback errorhasil"></div>
                                                                 <br>
                                                             </div>

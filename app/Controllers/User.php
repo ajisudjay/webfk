@@ -82,9 +82,10 @@ class User extends BaseController
                 $valid = $this->validate([
                     'nama' => [
                         'label' => 'Nama',
-                        'rules' => 'required',
+                        'rules' => 'required|alpha_numeric_punct',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
+                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'username' => [
@@ -172,6 +173,13 @@ class User extends BaseController
             $level = $request->getVar('level');
             $file = $request->getFile('file');
             if (!file_exists($_FILES['file']['tmp_name'])) {
+                $input2 = $this->validate([
+                    'nama' => 'required[nama]|alpha_numeric_punct[nama],',
+                ]);
+                if (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
+                    return redirect()->to(base_url('/user'));
+                }
                 $data = [
                     'username' => $username,
                     'nama' => $nama,
@@ -185,8 +193,14 @@ class User extends BaseController
                 $input = $this->validate([
                     'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
                 ]);
+                $input2 = $this->validate([
+                    'nama' => 'required[nama]|alpha_numeric_punct[nama],',
+                ]);
                 if (!$input) { // Not valid
                     session()->setFlashdata('pesanGagal', 'format gambar tidak sesuai');
+                    return redirect()->to(base_url('/user'));
+                } elseif (!$input2) { // Not valid
+                    session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
                     return redirect()->to(base_url('/user'));
                 } else {
                     $file = $request->getFile('file');
@@ -206,7 +220,7 @@ class User extends BaseController
                     ];
                     $this->UsersModel->update($username, $data);
 
-                    session()->setFlashdata('pesanInput', 'Berhasil Mengubah Data Akun');
+                    session()->setFlashdata('pesanInput', 'Mengubah Data Akun');
                     return redirect()->to(base_url('/user'));
                 }
             }

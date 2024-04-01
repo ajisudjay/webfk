@@ -24,6 +24,11 @@
                                     <strong><?= session()->getFlashdata('pesanHapus') ?></strong>
                                 </div>
                             <?php } ?>
+                            <?php if (session()->get('pesanGagal')) { ?>
+                                <div class="alert alert-danger alert-dismissible fade show flash" role="alert">
+                                    <strong><?= session()->getFlashdata('pesanGagal') ?></strong>
+                                </div>
+                            <?php } ?>
                             <div class="card">
                                 <div class="bg-transparent border-0" id="result"></div>
                             </div>
