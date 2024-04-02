@@ -14,7 +14,7 @@ class AplikasiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'nama', 'gambar', 'link', 'urutan'];
+    protected $allowedFields    = ['id', 'nama', 'gambar', 'link', 'urutan', 'admin', 'timestamp'];
 
     // Dates
     protected $useTimestamps = false;

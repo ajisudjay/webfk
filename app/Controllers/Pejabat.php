@@ -66,6 +66,9 @@ class Pejabat extends BaseController
             $urutan = $request->getVar('urutan');
             $jabatan = $request->getVar('jabatan');
             $file = $request->getfile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if ($request->isAJAX()) {
                 $valid = $this->validate([
                     'urutan' => [
@@ -119,6 +122,8 @@ class Pejabat extends BaseController
                         'nama' => $nama,
                         'jabatan' => $jabatan,
                         'gambar' => $namagambar,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->PejabatModel->insert($data);
 
@@ -144,6 +149,9 @@ class Pejabat extends BaseController
             $jabatan = $request->getVar('jabatan');
             $urutan = $request->getVar('urutan');
             $file = $request->getFile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if (!file_exists($_FILES['file']['tmp_name'])) {
                 $input2 = $this->validate([
                     'nama' => 'required[nama]|alpha_numeric_punct[nama],',
@@ -190,6 +198,8 @@ class Pejabat extends BaseController
                         'jabatan' => $jabatan,
                         'urutan' => $urutan,
                         'gambar' => $nama_foto,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->PejabatModel->update($id, $data);
 

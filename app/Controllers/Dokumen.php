@@ -63,6 +63,9 @@ class Dokumen extends BaseController
             $request = \Config\Services::request();
             $nama = $request->getVar('nama');
             $file = $request->getFile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $input = $this->validate([
                 'file' => 'uploaded[file]|max_size[file,50480]'
             ]);
@@ -82,6 +85,8 @@ class Dokumen extends BaseController
                 $data = [
                     'nama' => $nama,
                     'file' => $nama_foto,
+                    'timestamp' => $timestamp,
+                    'admin' => $username,
                 ];
                 $this->DokumenModel->insert($data);
                 session()->setFlashdata('pesanHapus', 'Berhasil ditambah !');

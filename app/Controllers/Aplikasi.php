@@ -68,6 +68,9 @@ class Aplikasi extends BaseController
             $nama = $request->getVar('nama');
             $link = $request->getVar('link');
             $gambar = $request->getfile('gambar');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $valid = $this->validate([
@@ -123,6 +126,8 @@ class Aplikasi extends BaseController
                         'nama' => $nama,
                         'link' => $link,
                         'gambar' => $namagambar,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->AplikasiModel->insert($data1);
 
@@ -151,6 +156,9 @@ class Aplikasi extends BaseController
             $nama = $request->getVar('nama');
             $link = $request->getVar('link');
             $gambar = $request->getfile('gambar');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $valid = $this->validate([
@@ -192,6 +200,8 @@ class Aplikasi extends BaseController
                         'urutan' => $urutan,
                         'nama' => $nama,
                         'link' => $link,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->AplikasiModel->update($id, $data);
 

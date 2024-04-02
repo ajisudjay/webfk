@@ -64,6 +64,9 @@ class Spmi extends BaseController
             $nama = $request->getVar('nama');
             $kategori = $request->getVar('kategori');
             $file = $request->getFile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $input = $this->validate([
                 'file' => 'uploaded[file]|max_size[file,50480]'
             ]);
@@ -84,6 +87,8 @@ class Spmi extends BaseController
                     'nama' => $nama,
                     'kategori' => $kategori,
                     'file' => $nama_foto,
+                    'timestamp' => $timestamp,
+                    'admin' => $username,
                 ];
                 $this->SpmiModel->insert($data);
                 session()->setFlashdata('pesanHapus', 'Berhasil ditambah !');

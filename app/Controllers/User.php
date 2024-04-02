@@ -78,6 +78,9 @@ class User extends BaseController
             $password = $request->getVar('password');
             $repassword = $request->getVar('repassword');
             $file = $request->getFile('file');
+            $userx = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if ($request->isAJAX()) {
                 $valid = $this->validate([
                     'nama' => [
@@ -147,6 +150,8 @@ class User extends BaseController
                         'level' => $level,
                         'password' => password_hash($password, PASSWORD_DEFAULT),
                         'file' => $namagambar,
+                        'timestamp' => $timestamp,
+                        'admin' => $userx,
                     ];
                     $this->UsersModel->insert($data);
 
@@ -172,6 +177,9 @@ class User extends BaseController
             $nama = $request->getVar('nama');
             $level = $request->getVar('level');
             $file = $request->getFile('file');
+            $userx = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if (!file_exists($_FILES['file']['tmp_name'])) {
                 $input2 = $this->validate([
                     'nama' => 'required[nama]|alpha_numeric_punct[nama],',
@@ -217,6 +225,8 @@ class User extends BaseController
                         'nama' => $nama,
                         'level' => $level,
                         'file' => $nama_foto,
+                        'timestamp' => $timestamp,
+                        'admin' => $userx,
                     ];
                     $this->UsersModel->update($username, $data);
 

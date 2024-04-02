@@ -64,6 +64,9 @@ class Link extends BaseController
             $kategori = $request->getVar('kategori');
             $judul = $request->getVar('judul');
             $link = $request->getVar('link');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $valid = $this->validate([
@@ -97,6 +100,8 @@ class Link extends BaseController
                         'kategori' => $kategori,
                         'judul' => $judul,
                         'link' => $link,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->LinkModel->insert($data);
 

@@ -65,6 +65,9 @@ class Prodi extends BaseController
             $urutan = $request->getVar('urutan');
             $prodi = $request->getVar('prodi');
             $akreditasi = $request->getVar('akreditasi');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $valid = $this->validate([
@@ -97,6 +100,8 @@ class Prodi extends BaseController
                         'urutan' => $urutan,
                         'prodi' => $prodi,
                         'akreditasi' => $akreditasi,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->ProdiModel->insert($data);
 
@@ -124,6 +129,9 @@ class Prodi extends BaseController
             $urutan = $request->getVar('urutan');
             $prodi = $request->getVar('prodi');
             $akreditasi = $request->getVar('akreditasi');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $valid = $this->validate([
@@ -156,6 +164,8 @@ class Prodi extends BaseController
                         'urutan' => $urutan,
                         'prodi' => $prodi,
                         'akreditasi' => $akreditasi,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->ProdiModel->update($id, $data);
 

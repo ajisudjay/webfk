@@ -96,6 +96,9 @@ class Tendik extends BaseController
             $email = $request->getVar('email');
             $status = $request->getVar('status');
             $file = $request->getFile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if ($request->isAJAX()) {
                 $valid = $this->validate([
                     'nip' => [
@@ -211,6 +214,8 @@ class Tendik extends BaseController
                         'email' => $email,
                         'status' => $status,
                         'gambar' => $namagambar,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->TendikModel->insert($data);
                     return redirect()->to(base_url("/tendik/thumb/$namagambar"));
@@ -242,6 +247,9 @@ class Tendik extends BaseController
             $email = $request->getVar('email');
             $status = $request->getVar('status');
             $file = $request->getFile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if (!file_exists($_FILES['file']['tmp_name'])) {
                 $input2 = $this->validate([
                     'nip' => 'required[nip]|alpha_numeric_punct[nip],',
@@ -267,6 +275,8 @@ class Tendik extends BaseController
                     'telp' => $telp,
                     'email' => $email,
                     'status' => $status,
+                    'timestamp' => $timestamp,
+                    'admin' => $username,
                 ];
                 $this->TendikModel->update($id, $data);
 

@@ -70,6 +70,9 @@ class Konfigurasi extends BaseController
                 $fb = $request->getVar('fb');
                 $pass_spmi = $request->getVar('pass_spmi');
                 $pass_spmi_base64 = base64_encode($pass_spmi);
+                $username = session()->get('username');
+                date_default_timezone_set("Asia/Kuala_Lumpur");
+                $timestamp = date("Y-m-d h:i:sa");
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'email' => [
@@ -150,6 +153,8 @@ class Konfigurasi extends BaseController
                         'fb' => $fb,
                         'yt' => $yt,
                         'pass_spmi' => $pass_spmi_base64,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
 
                     $this->KonfigurasiModel->update($id, $data);
@@ -178,6 +183,9 @@ class Konfigurasi extends BaseController
             if ($request->isAJAX()) {
                 $id = $request->getVar('id');
                 $visi = $request->getVar('visi');
+                $username = session()->get('username');
+                date_default_timezone_set("Asia/Kuala_Lumpur");
+                $timestamp = date("Y-m-d h:i:sa");
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'visi' => [
@@ -199,6 +207,8 @@ class Konfigurasi extends BaseController
                 } else {
                     $data = [
                         'visi' => $visi,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
 
                     $this->KonfigurasiModel->update($id, $data);
@@ -227,6 +237,9 @@ class Konfigurasi extends BaseController
             if ($request->isAJAX()) {
                 $id = $request->getVar('id');
                 $misi = $request->getVar('misi');
+                $username = session()->get('username');
+                date_default_timezone_set("Asia/Kuala_Lumpur");
+                $timestamp = date("Y-m-d h:i:sa");
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'misi' => [
@@ -248,6 +261,8 @@ class Konfigurasi extends BaseController
                 } else {
                     $data = [
                         'misi' => $misi,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
 
                     $this->KonfigurasiModel->update($id, $data);
@@ -277,6 +292,9 @@ class Konfigurasi extends BaseController
                 $foto = $request->getFile('foto');
                 $cekfoto = $this->KonfigurasiModel->where('id', $id)->first();
                 $fotolama = $cekfoto['foto'];
+                $username = session()->get('username');
+                date_default_timezone_set("Asia/Kuala_Lumpur");
+                $timestamp = date("Y-m-d h:i:sa");
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'foto' => [
@@ -305,6 +323,8 @@ class Konfigurasi extends BaseController
                     $foto->store('content/konfigurasi/', $nama_file);
                     $data = [
                         'foto' => $nama_file,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
 
                     $this->KonfigurasiModel->update($id, $data);

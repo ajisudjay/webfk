@@ -71,6 +71,9 @@ class Mitra extends BaseController
             $berakhir_kerjasama = $request->getVar('berakhir_kerjasama');
             $hasil = $request->getVar('hasil');
             $laporan = $request->getVar('laporan');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $valid = $this->validate([
@@ -147,6 +150,8 @@ class Mitra extends BaseController
                         'berakhir_kerjasama' => $berakhir_kerjasama,
                         'hasil' => $hasil,
                         'laporan' => $laporan,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->MitraModel->insert($data);
 
@@ -179,6 +184,9 @@ class Mitra extends BaseController
             $berakhir_kerjasama = $request->getVar('berakhir_kerjasama');
             $hasil = $request->getVar('hasil');
             $laporan = $request->getVar('laporan');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $valid = $this->validate([
@@ -255,6 +263,8 @@ class Mitra extends BaseController
                         'berakhir_kerjasama' => $berakhir_kerjasama,
                         'hasil' => $hasil,
                         'laporan' => $laporan,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->MitraModel->update($id, $data);
 

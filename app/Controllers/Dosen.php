@@ -106,6 +106,9 @@ class Dosen extends BaseController
             $sinta = $request->getVar('sinta');
             $gs = $request->getVar('gs');
             $file = $request->getFile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if ($request->isAJAX()) {
                 $valid = $this->validate([
                     'nip' => [
@@ -333,6 +336,9 @@ class Dosen extends BaseController
             $sinta = $request->getVar('sinta');
             $gs = $request->getVar('gs');
             $file = $request->getFile('file');
+            $username = session()->get('username');
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             if (!file_exists($_FILES['file']['tmp_name'])) {
                 $input2 = $this->validate([
                     'nip' => 'required[nip]|alpha_numeric_punct[nip],',
@@ -372,6 +378,8 @@ class Dosen extends BaseController
                     'sinta' => $sinta,
                     'gs' => $gs,
                     'email' => $email,
+                    'timestamp' => $timestamp,
+                    'admin' => $username,
                 ];
                 $this->DosenModel->update($id, $data);
 
@@ -435,6 +443,8 @@ class Dosen extends BaseController
                         'sinta' => $sinta,
                         'gs' => $gs,
                         'gambar' => $nama_foto,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->DosenModel->update($id, $data);
 

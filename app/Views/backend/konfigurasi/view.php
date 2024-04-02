@@ -8,63 +8,57 @@
         <?php foreach ($konfigurasi as $item) : ?>
             <!-- ISI FORM -->
             <div class="row">
-                <form action="<?= base_url('konfigurasi/editvisi'); ?>" method="post" class="editvisi">
-                    <?= csrf_field() ?>
-                    <div class="col-lg-12">
+                <div class="col-lg-12">
+                    <form action="<?= base_url('konfigurasi/editvisi'); ?>" method="post" class="editvisi">
+                        <?= csrf_field() ?>
                         <label> Visi :</label>
                         <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
                         <textarea name="visi" id="visi" class="form-control visi" rows="5"><?= $item['visi'] ?></textarea>
                         <div class="invalid-feedback errorVisi"></div>
                         <br>
-                    </div>
-                    <div align="right">
-                        <button type="submit" class="btn btn-primary btnEditvisi">Perbarui</button>
-                    </div>
-                </form>
-                <form action="<?= base_url('konfigurasi/editmisi'); ?>" method="post" class="editmisi">
-                    <?= csrf_field() ?>
-                    <div class="col-lg-12">
+                        <div align="right">
+                            <button type="submit" class="btn btn-primary btnEditvisi">Perbarui</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-12">
+                    <form action="<?= base_url('konfigurasi/editmisi'); ?>" method="post" class="editmisi">
+                        <?= csrf_field() ?>
                         <label> Misi :</label>
                         <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
                         <textarea name="misi" id="misi" class="form-control misi" rows="5"><?= $item['misi'] ?></textarea>
                         <div class="invalid-feedback errorMisi"></div>
                         <br>
-                    </div>
-                    <div align="right">
-                        <button type="submit" class="btn btn-primary btnEditmisi">Perbarui</button>
-                    </div>
-                </form>
+                        <div align="right">
+                            <button type="submit" class="btn btn-primary btnEditmisi">Perbarui</button>
+                        </div>
+                    </form>
+                </div>
                 <br>
                 <br>
-                <form action="<?= base_url('konfigurasi/editfoto'); ?>" method="post" enctype="multipart/form-data" class="editfoto">
-                    <?= csrf_field() ?>
-                    <div class="row">
-                        <div class="col-lg-12">
+                <div class="col-lg-12">
+                    <form action="<?= base_url('konfigurasi/editfoto'); ?>" method="post" enctype="multipart/form-data" class="editfoto">
+                        <?= csrf_field() ?>
+                        <div class="col-lg-4">
                             <p>Background Mitra Kerjasama :</p>
                             <span style="color: red;">*Max-Size : 512 kb | extension : jpg/jpeg/png/PNG</span>
                         </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <img src="<?= base_url('writable/uploads/content/konfigurasi/' . $item['foto']); ?>" width="50%">
+                        <img src="<?= base_url('writable/uploads/content/konfigurasi/' . $item['foto']); ?>" width="50%">
+                        <br>
+                        <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <input type="file" name="foto" accept="image/*" class="form-control foto">
+                                <div class="invalid-feedback errorfoto"></div>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="submit" class="btn btn-primary btnEditfoto">Perbarui</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <br>
-                            <input type="text" name="id" value="<?= $item['id'] ?>" hidden>
-                            <input type="file" name="foto" accept="image/*" class="form-control foto">
-                            <div class="invalid-feedback errorfoto"></div>
-                        </div>
-                        <div class="col-lg-4">
-                            <br>
-                            <button type="submit" class="btn btn-primary btnEditfoto">Perbarui</button>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                </form>
+                        <br>
+                        <br>
+                    </form>
+                </div>
             </div>
             <br>
             <br>

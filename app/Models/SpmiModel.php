@@ -14,7 +14,7 @@ class SpmiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'nama', 'kategori', 'file'];
+    protected $allowedFields    = ['id', 'nama', 'kategori', 'file', 'admin', 'timestamp'];
 
     // Dates
     protected $useTimestamps = false;

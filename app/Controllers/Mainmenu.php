@@ -65,6 +65,9 @@ class Mainmenu extends BaseController
             if ($request->isAJAX()) {
                 $urutan = $request->getVar('urutan');
                 $mainmenu = $request->getVar('mainmenu');
+                $username = session()->get('username');
+                date_default_timezone_set("Asia/Kuala_Lumpur");
+                $timestamp = date("Y-m-d h:i:sa");
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'urutan' => [
@@ -96,6 +99,8 @@ class Mainmenu extends BaseController
                     $data = [
                         'urutan' => $urutan,
                         'mainmenu' => $mainmenu,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->MainmenuModel->insert($data);
 
@@ -125,6 +130,9 @@ class Mainmenu extends BaseController
                 $id = $request->getVar('id');
                 $urutan = $request->getVar('urutan');
                 $mainmenu = $request->getVar('mainmenu');
+                $username = session()->get('username');
+                date_default_timezone_set("Asia/Kuala_Lumpur");
+                $timestamp = date("Y-m-d h:i:sa");
                 $validation = \Config\Services::validation();
                 $valid = $this->validate([
                     'urutan' => [
@@ -157,6 +165,8 @@ class Mainmenu extends BaseController
                     $data = [
                         'urutan' => $urutan,
                         'mainmenu' => $mainmenu,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
 
                     $this->MainmenuModel->update($id, $data);
