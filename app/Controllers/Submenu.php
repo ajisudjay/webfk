@@ -51,7 +51,7 @@ class Submenu extends BaseController
                 }
                 $data = [
                     'aksesbutton' => $aksesbutton,
-                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
+                    'submenu' => $this->SubmenuModel->select('*')->select('submenu.id as submenu_id')->select('mainmenu.id as mainmenu_id')->select('mainmenu.urutan as urutan_mainmenu')->select('submenu.urutan as urutan_submenu')->select('submenu.timestamp as timestamp_submenu')->join('mainmenu', 'submenu.id_mainmenu=mainmenu.id')->orderBy('urutan_mainmenu', 'ASC')->orderBy('urutan_submenu', 'ASC')->get()->getResultArray(),
                     'mainmenu' => $this->MainmenuModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
                     'validation' => \Config\Services::validation(),
                 ];
@@ -78,7 +78,8 @@ class Submenu extends BaseController
             $akses = $request->getVar('akses');
             $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)) . $mainmenu);
             $isi = $request->getVar('isi');
-            $timestamp = date("Y-m-d");
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $penulis = $username;
             $validasi = $this->validate([
                 'submenu' => 'required[submenu]|alpha_numeric_punct[submenu],'
@@ -123,7 +124,8 @@ class Submenu extends BaseController
     //             $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)) . $mainmenu);
     //             $isi = $request->getVar('isi');
     //             $akses = $request->getVar('akses');
-    //             $timestamp = date("Y-m-d");
+    // date_default_timezone_set("Asia/Kuala_Lumpur");             
+    // $timestamp = date("Y-m-d h:i:sa");
     //             $penulis = $username;
     //             $validation = \Config\Services::validation();
     //             $valid = $this->validate([
@@ -256,7 +258,8 @@ class Submenu extends BaseController
             $akses = $request->getVar('akses');
             $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($submenu)) . $mainmenu);
             $isi = $request->getVar('isi');
-            $timestamp = date("Y-m-d");
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $timestamp = date("Y-m-d h:i:sa");
             $penulis = $username;
             $validasi = $this->validate([
                 'submenu' => 'required[submenu]|alpha_numeric_punct[submenu],'

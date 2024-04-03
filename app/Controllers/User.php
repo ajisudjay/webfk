@@ -192,6 +192,8 @@ class User extends BaseController
                     'username' => $username,
                     'nama' => $nama,
                     'level' => $level,
+                    'timestamp' => $timestamp,
+                    'admin' => $userx,
                 ];
                 $this->UsersModel->update($username, $data);
 

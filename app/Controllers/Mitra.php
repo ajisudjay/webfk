@@ -111,10 +111,9 @@ class Mitra extends BaseController
                     ],
                     'hasil' => [
                         'label' => 'Hasil dan Manfaat',
-                        'rules' => 'required|alpha_numeric_punct',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
-                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                     'laporan' => [
@@ -224,10 +223,9 @@ class Mitra extends BaseController
                     ],
                     'hasil' => [
                         'label' => 'Hasil dan Manfaat',
-                        'rules' => 'required|alpha_numeric_punct',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
-                            'alpha_numeric_punct' => '* {field} Format Tidak Sesuai',
                         ]
                     ],
                     'laporan' => [

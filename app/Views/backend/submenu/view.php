@@ -101,7 +101,7 @@
                             </td>
                             <td><?= $item['mainmenu'] ?></td>
                             <td style="min-width: 150px;max-width: 500px; white-space: normal;"><?= $item['submenu'] ?></td>
-                            <td><?= $item['timestamp'] . ' | ' . $item['penulis'] ?></td>
+                            <td><?= $item['timestamp_submenu'] . ' | ' . $item['penulis'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

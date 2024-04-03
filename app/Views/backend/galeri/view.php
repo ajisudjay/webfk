@@ -53,9 +53,10 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="5%" style="text-align: center;">AKSI</th>
-                        <th width="35%">Nama</th>
-                        <th width="25%" style="text-align: center;">Gambar</th>
-                        <th width="30%">URL</th>
+                        <th width="30%">Nama</th>
+                        <th width="30%" style="text-align: center;">Gambar</th>
+                        <th width="20%">URL</th>
+                        <th width="10%">LOG</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +77,7 @@
                                 <input type="text" class="form-control copy-btn" value="<?= base_url() ?>/writable/uploads/content/galeri/<?= $item['gambar'] ?>">
                                 <br>
                             </td>
+                            <td><?= $item['timestamp'] . ' | ' . $item['admin'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

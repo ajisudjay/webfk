@@ -1,10 +1,12 @@
 <div class="container-fluid">
     <div class="card-header">
-        <h4 class="mb-0">Konfigurasi</h4>
+        <?php foreach ($konfigurasi as $item) : ?>
+            <h4 class="mb-0">Konfigurasi <span style="font-size: x-small">(terakhir diupdate oleh : <?= $item['admin'] . ' | ' . $item['timestamp']  ?>)</span></h4>
+        <?php endforeach ?>
         <br>
         <br>
     </div>
-    <div class="card-block">
+    <div class=" card-block">
         <?php foreach ($konfigurasi as $item) : ?>
             <!-- ISI FORM -->
             <div class="row">

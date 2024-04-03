@@ -89,10 +89,11 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="10%" style="text-align: center;">AKSI</th>
-                        <th width="30%">Username</th>
-                        <th width="35%">Nama</th>
+                        <th width="25%">Username</th>
+                        <th width="30%">Nama</th>
                         <th width="15%">Level</th>
                         <th width="5%">Foto</th>
+                        <th width="10%">Log</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -235,6 +236,7 @@
                             <td><?= $item['nama'] ?></td>
                             <td><?= $item['level'] ?></td>
                             <td><span><img class="round" src="<?= base_url('writable/uploads/content/user/' . $item['file']); ?>" height="80" width="80"></span></td>
+                            <td><?= $item['timestamp'] . ' | ' . $item['admin'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

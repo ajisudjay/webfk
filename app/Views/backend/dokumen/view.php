@@ -54,8 +54,9 @@
                         <th width="5%">No</th>
                         <th width="5%" style="text-align: center;">AKSI</th>
                         <th width="35%">Nama</th>
-                        <th width="45%" style="text-align: center;">URL</th>
+                        <th width="35%" style="text-align: center;">URL</th>
                         <th width="10%">Download</th>
+                        <th width="10%">Log</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +82,7 @@
                                     <span class="fa fa-download"></span>
                                 </a>
                             </td>
+                            <td><?= $item['timestamp'] . ' | ' . $item['admin'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

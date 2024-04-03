@@ -65,8 +65,9 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="5%" style="text-align: center;">AKSI</th>
-                        <th width="50%">Prodi</th>
-                        <th width="40%">Akreditasi</th>
+                        <th width="45%">Prodi</th>
+                        <th width="35%">Akreditasi</th>
+                        <th width="10%">Log</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -140,6 +141,7 @@
                             </td>
                             <td><?= $item['prodi'] ?></td>
                             <td><?= $item['akreditasi'] ?></td>
+                            <td><?= $item['timestamp'] . ' | ' . $item['admin'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

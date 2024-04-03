@@ -65,9 +65,10 @@
                     <tr>
                         <th width="5%">Urutan</th>
                         <th width="5%" style="text-align: center;">AKSI</th>
-                        <th width="30%">Nama</th>
+                        <th width="25%">Nama</th>
                         <th width="25%">Link</th>
-                        <th width="30%" style="text-align: center;">Gambar</th>
+                        <th width="20%" style="text-align: center;">Gambar</th>
+                        <th width="10%">Log</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,8 +134,8 @@
                                 </a>
                             <td><?= $item['nama'] ?></td>
                             <td><?= $item['link'] ?></td>
-
                             <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/aplikasi/' . $item['gambar']); ?>" width="100%"></td>
+                            <td><?= $item['timestamp'] . ' | ' . $item['admin'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

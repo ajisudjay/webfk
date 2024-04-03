@@ -238,10 +238,11 @@
                         <th width="5%">No</th>
                         <th width="5%" style="text-align: center;">AKSI</th>
                         <th width="20%">NIP</th>
-                        <th width="40%">NAMA</th>
+                        <th width="30%">NAMA</th>
                         <th width="10%">BAGIAN UNIT</th>
                         <th width="10%">PEND.</th>
                         <th width="20%" style="text-align: center;">FOTO</th>
+                        <th width="10%">LOG</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -386,7 +387,7 @@
                             <td style="min-width: 100px;max-width: 400px; white-space: normal;"><?= $item['bagian_unit'] ?></td>
                             <td style="min-width: 50;max-width: 100px; white-space: normal;"><?= $item['pendidikan'] ?></td>
                             <td style="text-align: center;"><img src="<?= base_url('writable/uploads/content/tendik/thumb/' . $item['gambar'] . ''); ?>" width="100%"></td>
-
+                            <td><?= $item['timestamp'] . ' | ' . $item['admin'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

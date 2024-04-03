@@ -119,6 +119,8 @@
                         <th width="5%" style="text-align: center;">Berakhir</th>
                         <th width="15%" style="text-align: center;">Hasil</th>
                         <th width="5%" style="text-align: center;">Laporan</th>
+                        <th width="10%">Log</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -245,6 +247,7 @@
                             <td><?= $item['berakhir_kerjasama'] ?></td>
                             <td style="min-width: 400px;max-width: 600px; white-space: normal;"><?= $item['hasil'] ?></td>
                             <td><?= htmlspecialchars($item['laporan']) ?></td>
+                            <td><?= $item['timestamp'] . ' | ' . $item['admin'] ?></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

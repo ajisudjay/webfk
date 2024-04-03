@@ -154,7 +154,7 @@ class Pejabat extends BaseController
             $timestamp = date("Y-m-d h:i:sa");
             if (!file_exists($_FILES['file']['tmp_name'])) {
                 $input2 = $this->validate([
-                    'nama' => 'required[nama]|alpha_numeric_punct[nama],',
+                    'nama' => 'required[nama],',
                     'jabatan' => 'required[jabatan]|alpha_numeric_punct[jabatan],'
                 ]);
                 if (!$input2) { // Not valid
@@ -165,6 +165,8 @@ class Pejabat extends BaseController
                     'nama' => $nama,
                     'jabatan' => $jabatan,
                     'urutan' => $urutan,
+                    'timestamp' => $timestamp,
+                    'admin' => $username,
                 ];
                 $this->PejabatModel->update($id, $data);
 
