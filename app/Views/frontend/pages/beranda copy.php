@@ -11,79 +11,41 @@
     </div>
     <!-- akhir slider beranda -->
     <!-- Prodi -->
-    <div class="desktop">
-        <div class="service_area">
-            <div class=" container p-0">
-                <h5 align="center" style="color:white;margin-bottom:-5px">Program Studi</h5>
-                <div class="row no-gutters" align="center" style="text-align:center;border-color: red;justify-content: center;">
-                    <?php foreach ($data_prodi as $item_prodi) : ?>
-                        <div class="col-xl-1" style="margin-top: 5px;margin-bottom: 5px;">
-                            <?php
-                            if ($item_prodi['akreditasi'] == "A") {
-                                $akre = 'A';
-                                $logo = 'A.png';
-                            } elseif ($item_prodi['akreditasi'] == "B") {
-                                $akre = 'B';
-                                $logo = 'B.png';
-                            } elseif ($item_prodi['akreditasi'] == "C") {
-                                $akre = 'C';
-                                $logo = 'C.png';
-                            } elseif ($item_prodi['akreditasi'] == "Sangat Baik") {
-                                $akre = 'Sangat Baik';
-                                $logo = 'sangatbaik.png';
-                            } elseif ($item_prodi['akreditasi'] == "Baik Sekali") {
-                                $akre = 'Baik Sekali';
-                                $logo = 'baiksekali.png';
-                            } else {
-                                $akre = 'Baik';
-                                $logo = 'baik.png';
-                            }
-                            ?>
-                            <img src="<?= base_url('/img/logo_akre/' . $logo); ?>" width="50px" height="50px"> <br>
-                            <h3 style="color: white;font-size: 8px;">
-                                <?= $item_prodi['prodi'] ?>
-                            </h3>
-                        </div>
-                    <?php endforeach ?>
-                </div>
+    <div class="service_area">
+        <div class=" container p-0">
+            <h5 align="center" style="color:white;margin-bottom:-5px">Program Studi</h5>
+            <div class="row no-gutters" align="center" style="text-align:center;border-color: red;justify-content: center;">
+                <?php foreach ($data_prodi as $item_prodi) : ?>
+                    <div class="col-xl-1" style="margin-top: 5px;margin-bottom: 5px;">
+                        <?php
+                        if ($item_prodi['akreditasi'] == "A") {
+                            $akre = 'A';
+                            $logo = 'A.png';
+                        } elseif ($item_prodi['akreditasi'] == "B") {
+                            $akre = 'B';
+                            $logo = 'B.png';
+                        } elseif ($item_prodi['akreditasi'] == "C") {
+                            $akre = 'C';
+                            $logo = 'C.png';
+                        } elseif ($item_prodi['akreditasi'] == "Sangat Baik") {
+                            $akre = 'Sangat Baik';
+                            $logo = 'sangatbaik.png';
+                        } elseif ($item_prodi['akreditasi'] == "Baik Sekali") {
+                            $akre = 'Baik Sekali';
+                            $logo = 'baiksekali.png';
+                        } else {
+                            $akre = 'Baik';
+                            $logo = 'baik.png';
+                        }
+                        ?>
+                        <img src="<?= base_url('/img/logo_akre/' . $logo); ?>" width="50px" height="50px"> <br>
+                        <h3 style="color: white;font-size: 8px;">
+                            <?= $item_prodi['prodi'] ?>
+                        </h3>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
-    </div>
-    <div style="overflow-x:auto;background: #435B2A;" class="mobile">
-        <table>
-            <tr>
-                <?php foreach ($data_prodi as $item_prodi) : ?>
-                    <?php
-                    if ($item_prodi['akreditasi'] == "A") {
-                        $akre = 'A';
-                        $logo = 'A.png';
-                    } elseif ($item_prodi['akreditasi'] == "B") {
-                        $akre = 'B';
-                        $logo = 'B.png';
-                    } elseif ($item_prodi['akreditasi'] == "C") {
-                        $akre = 'C';
-                        $logo = 'C.png';
-                    } elseif ($item_prodi['akreditasi'] == "Sangat Baik") {
-                        $akre = 'Sangat Baik';
-                        $logo = 'sangatbaik.png';
-                    } elseif ($item_prodi['akreditasi'] == "Baik Sekali") {
-                        $akre = 'Baik Sekali';
-                        $logo = 'baiksekali.png';
-                    } else {
-                        $akre = 'Baik';
-                        $logo = 'baik.png';
-                    }
-                    ?>
-                    <td style="min-width:100px">
-                        <p style="color: white;font-size: 8px;line-height: 10px;" align="center">
-                            <img src="<?= base_url('/img/logo_akre/' . $logo); ?>" width="35" height="35">
-                            <br>
-                            <?= $item_prodi['prodi'] ?>
-                        </p>
-                    </td>
-                <?php endforeach ?>
-            </tr>
-        </table>
     </div>
     <!-- Akhir Prodi -->
     <!-- Visi MisiArea -->

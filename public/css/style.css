@@ -6266,4 +6266,23 @@ h6 {
   font-size: 12px;
 }
 
+/* tampilan mobile */
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+  .mobile {
+    display: contents;
+  }
+  .desktop {
+    display: none;
+  }
+}
+
+/* tampilan desktop */
+@media (min-width: 992px) {
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: contents;
+  }
+}
 /*# sourceMappingURL=style.css.map */
