@@ -6267,7 +6267,7 @@ h6 {
 }
 
 /* tampilan mobile */
-@media only screen and (min-width: 576px) and (max-width: 991px) {
+@media only screen and (min-width: 276px) and (max-width: 1204px) {
   .mobile {
     display: contents;
   }
@@ -6277,7 +6277,7 @@ h6 {
 }
 
 /* tampilan desktop */
-@media (min-width: 992px) {
+@media (min-width: 1205px) {
   .mobile {
     display: none;
   }

@@ -42,4 +42,4 @@ progress :
 * tambahkan validasi specialchar untuk semua form DONE
 * lengkapi log riwayat admin edited done DONE
 * main menu tdk dapat dihapus jika masih ada submenunya BATAL
-* backend sudah fix, lanjut fixasi frontend *pending
+* backend sudah fix, lanjut fixasi frontend *DONE
