@@ -222,6 +222,7 @@ class Pages extends BaseController
             'data_prodi' => $this->ProdiModel->orderBy('urutan', 'ASC')->get()->getResultArray(),
             'link_partner' => $this->LinkModel->where('kategori', 'Link Partner')->findAll(8),
             'link_lib' => $this->LinkModel->where('kategori', 'eLib / eJournal')->orWhere('kategori', 'e-Journal')->findAll(8),
+            'beritamobile' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(3),
             'berita' => $this->BeritaModel->orderby('tanggal', 'DESC')->orderby('timestamp', 'DESC')->findAll(6),
             'aplikasi' => $this->AplikasiModel->orderby('urutan', 'ASC')->findAll(),
             'jum_app' => $jum_aplikasi,

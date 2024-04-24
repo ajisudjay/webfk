@@ -85,46 +85,91 @@
             </div>
             <!-- Limit Tampilkan max 6 berita -->
             <div class="row">
-                <div class="cards">
-                    <?php foreach ($berita as $item) : ?>
-                        <div class="col-xl-4 col-md-6 col-lg-4">
-                            <div class="box-berita">
-                                <div class="single_department">
-                                    <div class="department_thumb">
-                                        <a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank">
-                                            <img src="<?= base_url('writable/uploads/content/berita/thumb/' . $item['banner']); ?>" width="300px" height="300px">
-                                        </a>
-                                    </div>
-                                    <div class="department_content">
-                                        <!-- limit Judul max 6 kata -->
-                                        <?php
-                                        if (strlen($item['judul']) < 60) {
-                                            $judul = $item['judul'];
-                                        } else {
-                                            $judul = substr($item['judul'], 0, 60) . ' ...';
-                                        }
+                <div class="mobile">
+                    <div class="cards">
+                        <?php foreach ($beritamobile as $item) : ?>
+                            <div class="col-xl-4 col-md-6 col-lg-4">
+                                <div class="box-berita">
+                                    <div class="single_department">
+                                        <div class="department_thumb">
+                                            <a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank">
+                                                <img src="<?= base_url('writable/uploads/content/berita/thumb/' . $item['banner']); ?>" width="300px" height="300px">
+                                            </a>
+                                        </div>
+                                        <div class="department_content">
+                                            <!-- limit Judul max 6 kata -->
+                                            <?php
+                                            if (strlen($item['judul']) < 60) {
+                                                $judul = $item['judul'];
+                                            } else {
+                                                $judul = substr($item['judul'], 0, 60) . ' ...';
+                                            }
 
-                                        ?>
-                                        <h3><a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank"><?= $judul ?></a></h3>
-                                        <div class="row">
-                                            <div class="col-lg-5">
-                                                <p style="font-size: 12px;">
-                                                    <i class="fa fa-calendar mr-1"></i>
-                                                    <?= $item['tanggal'] ?>
-                                                </p>
-                                            </div>
-                                            <div class="col-lg-7">
-                                                <p style="font-size: 12px;">
-                                                    <i class="fa fa-user mr-1"></i>
-                                                    <?= $item['penulis'] ?>
-                                                </p>
+                                            ?>
+                                            <h3><a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank"><?= $judul ?></a></h3>
+                                            <div class="row">
+                                                <div class="col-lg-5">
+                                                    <p style="font-size: 12px;">
+                                                        <i class="fa fa-calendar mr-1"></i>
+                                                        <?= $item['tanggal'] ?>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p style="font-size: 12px;">
+                                                        <i class="fa fa-user mr-1"></i>
+                                                        <?= $item['penulis'] ?>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach ?>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+                <div class="desktop">
+                    <div class="cards">
+                        <?php foreach ($berita as $item) : ?>
+                            <div class="col-xl-4 col-md-6 col-lg-4">
+                                <div class="box-berita">
+                                    <div class="single_department">
+                                        <div class="department_thumb">
+                                            <a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank">
+                                                <img src="<?= base_url('writable/uploads/content/berita/thumb/' . $item['banner']); ?>" width="300px" height="300px">
+                                            </a>
+                                        </div>
+                                        <div class="department_content">
+                                            <!-- limit Judul max 6 kata -->
+                                            <?php
+                                            if (strlen($item['judul']) < 60) {
+                                                $judul = $item['judul'];
+                                            } else {
+                                                $judul = substr($item['judul'], 0, 60) . ' ...';
+                                            }
+
+                                            ?>
+                                            <h3><a href="<?= base_url('informasi-detail/' . $item['slug']); ?>" target="_blank"><?= $judul ?></a></h3>
+                                            <div class="row">
+                                                <div class="col-lg-5">
+                                                    <p style="font-size: 12px;">
+                                                        <i class="fa fa-calendar mr-1"></i>
+                                                        <?= $item['tanggal'] ?>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p style="font-size: 12px;">
+                                                        <i class="fa fa-user mr-1"></i>
+                                                        <?= $item['penulis'] ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
                 </div>
             </div>
         </div>
