@@ -28,6 +28,9 @@
                             } elseif ($item_prodi['akreditasi'] == "C") {
                                 $akre = 'C';
                                 $logo = 'C.png';
+                            } elseif ($item_prodi['akreditasi'] == "Unggul") {
+                                $akre = 'Unggul';
+                                $logo = 'unggul.png';
                             } elseif ($item_prodi['akreditasi'] == "Sangat Baik") {
                                 $akre = 'Sangat Baik';
                                 $logo = 'sangatbaik.png';

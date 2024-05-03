@@ -85,10 +85,9 @@ class User extends BaseController
                 $valid = $this->validate([
                     'nama' => [
                         'label' => 'Nama',
-                        'rules' => 'required|alpha_numeric_punct',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => '* {field} Tidak Boleh Kosong',
-                            'alpha_numeric_punct' => '{field} Format Tidak Sesuai',
                         ]
                     ],
                     'username' => [
@@ -204,7 +203,7 @@ class User extends BaseController
                     'file' => 'uploaded[file]|max_size[file,2048]|mime_in[file,image/png,image/jpeg]|is_image[file],'
                 ]);
                 $input2 = $this->validate([
-                    'nama' => 'required[nama]|alpha_numeric_punct[nama],',
+                    'nama' => 'required[nama],',
                 ]);
                 if (!$input) { // Not valid
                     session()->setFlashdata('pesanGagal', 'format gambar tidak sesuai');

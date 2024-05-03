@@ -43,3 +43,7 @@ progress :
 * lengkapi log riwayat admin edited done DONE
 * main menu tdk dapat dihapus jika masih ada submenunya BATAL
 * backend sudah fix, lanjut fixasi frontend *DONE
+
+tambahkan akun tidak bisa pakai gelar, perbaiki
+edit akun masih ada yg error
+dokumen dan galeri admin prodi hanya bisa hapus punyanya sendiri

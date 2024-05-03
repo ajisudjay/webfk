@@ -262,7 +262,7 @@ class Submenu extends BaseController
             $timestamp = date("Y-m-d h:i:sa");
             $penulis = $username;
             $validasi = $this->validate([
-                'submenu' => 'required[submenu]|alpha_numeric_punct[submenu],'
+                'submenu' => 'required[submenu],'
             ]);
             if (!$validasi) { // Not valid
                 session()->setFlashdata('pesanGagal', 'Format isian tidak sesuai');
