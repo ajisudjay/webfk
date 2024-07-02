@@ -218,7 +218,40 @@ class Tendik extends BaseController
                         'admin' => $username,
                     ];
                     $this->TendikModel->insert($data);
-                    return redirect()->to(base_url("/tendik/thumb/$namagambar"));
+                    $cekfile = $this->TendikModel->where('gambar', $namagambar)->first();
+                    $namafile = $cekfile['gambar'];
+                    $filesource = '../writable/uploads/content/tendik/' . $namafile;
+                    list($width, $heigth) = getimagesize($filesource);
+                    $ratio = $width / $heigth;
+                    $max = 500;
+                    if ($width > $max || $heigth > $max) {
+                        if ($width > $heigth) {
+                            $newwidht = round($max);
+                            $newheigth = round($max / $ratio);
+                        } else {
+                            $newheigth = round($max);
+                            $newwidht = round($max * $ratio);
+                        }
+                    } else {
+                        $newwidht = round($width);
+                        $newheigth = round($heigth);
+                    }
+                    $thumb = imagecreatetruecolor($newwidht, $newheigth);
+                    $exp = explode(".", $namafile);
+                    $extension = end($exp);
+                    if ($extension == 'png' | $extension == 'PNG') {
+                        $source = imagecreatefrompng($filesource);
+                    } else {
+                        $source = imagecreatefromjpeg($filesource);
+                    }
+
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidht, $newheigth, $width, $heigth);
+                    $target = "../writable/uploads/content/tendik/thumb/$namagambar";
+                    imagewebp($thumb, $target, 80);
+                    $msg = [
+                        'title' => 'Berhasil'
+                    ];
+                    echo json_encode($msg);
                 }
             } else {
                 exit('Data Tidak Dapat diproses');

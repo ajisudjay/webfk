@@ -54,8 +54,8 @@
                         <th width="5%">No</th>
                         <th width="5%" style="text-align: center;">AKSI</th>
                         <th width="30%">Nama</th>
-                        <th width="30%" style="text-align: center;">Gambar</th>
-                        <th width="20%">URL</th>
+                        <th width="20%" style="text-align: center;">Gambar</th>
+                        <th width="30%">URL</th>
                         <th width="10%">LOG</th>
                     </tr>
                 </thead>
