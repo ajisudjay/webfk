@@ -336,8 +336,14 @@
                                                 <?= csrf_field() ?>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-2">
                                                             <input name="id" value="<?= $item['id'] ?>" hidden>
+                                                            <label class="text-primary">Urutan</label>
+                                                            <input type="text" required name="urutan" class="form-control urutan" value="<?= $item['urutan'] ?>">
+                                                            <div class="invalid-feedback errorurutan"></div>
+                                                            <br>
+                                                        </div>
+                                                        <div class="col-lg-3">
                                                             <label class="text-primary">NIP</label>
                                                             <input type="text" required name="nip" class="form-control nip" value="<?= $item['nip'] ?>">
                                                             <div class="invalid-feedback errornip"></div>

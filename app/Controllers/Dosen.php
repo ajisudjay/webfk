@@ -41,7 +41,7 @@ class Dosen extends BaseController
             $request = \Config\Services::request();
             if ($request->isAJAX()) {
                 $data = [
-                    'dosen' => $this->DosenModel->orderBy('nama', 'ASC')->get()->getResultArray(),
+                    'dosen' => $this->DosenModel->orderBy('nip', 'ASC')->get()->getResultArray(),
                     // jumlah pendidikan tendik
                     'jumlahLs1' => $this->DosenModel->selectCount('id')->where('pendidikan', 'S1')->where('jk', 'Laki-laki')->first(),
                     'jumlahPs1' => $this->DosenModel->selectCount('id')->where('pendidikan', 'S1')->where('jk', 'Perempuan')->first(),
@@ -85,6 +85,7 @@ class Dosen extends BaseController
             $request = \Config\Services::request();
             $validation = \Config\Services::validation();
             $nip = $request->getVar('nip');
+            $urutan = $request->getVar('urutan');
             $nidn = $request->getVar('nidn');
             $nama = $request->getVar('nama');
             $bidang = $request->getVar('bidang');
@@ -275,6 +276,7 @@ class Dosen extends BaseController
                     $file->store('content/dosen/', $namagambar);
                     $data = [
                         'nip' => $nip,
+                        'urutan' => $urutan,
                         'nidn' => $nidn,
                         'nama' => $nama,
                         'bidang' => $bidang,
@@ -296,6 +298,8 @@ class Dosen extends BaseController
                         'sinta' => $sinta,
                         'gs' => $gs,
                         'gambar' => $namagambar,
+                        'timestamp' => $timestamp,
+                        'admin' => $username,
                     ];
                     $this->DosenModel->insert($data);
                     $cekfile = $this->DosenModel->where('gambar', $namagambar)->first();
@@ -348,6 +352,7 @@ class Dosen extends BaseController
             $id = $request->getVar('id');
             $validation = \Config\Services::validation();
             $nip = $request->getVar('nip');
+            $urutan = $request->getVar('urutan');
             $nidn = $request->getVar('nidn');
             $nama = $request->getVar('nama');
             $bidang = $request->getVar('bidang');
@@ -374,22 +379,14 @@ class Dosen extends BaseController
             $timestamp = date("Y-m-d h:i:sa");
             if (!file_exists($_FILES['file']['tmp_name'])) {
                 $input2 = $this->validate([
-                    'nip' => 'required[nip]|alpha_numeric_punct[nip],',
-                    'nidn' => 'required[nidn]|alpha_numeric_punct[nidn],',
-                    'bidang' => 'required[bidang]|alpha_numeric_punct[bidang],',
-                    'homebase' => 'required[homebase]|alpha_numeric_punct[homebase],',
-                    's1' => 'required[s1]|alpha_numeric_punct[s1],',
-                    'sp' => 'required[sp]|alpha_numeric_punct[sp],',
-                    's2' => 'required[s2]|alpha_numeric_punct[s2],',
-                    's3' => 'required[s3]|alpha_numeric_punct[s3],',
-                    'tempat_lahir' => 'required[tempat_lahir]|alpha_numeric_punct[tempat_lahir],',
-                    'telp' => 'required[telp]|alpha_numeric_punct[telp],',
+                    'nip' => 'required[nip],',
                 ]);
                 if (!$input2) { // Not valid
                     session()->setFlashdata('pesanGagal', 'Format tidak sesuai');
                     return redirect()->to(base_url('/dosen'));
                 }
                 $data = [
+                    'urutan' => $urutan,
                     'nip' => $nip,
                     'nidn' => $nidn,
                     'nama' => $nama,
@@ -454,6 +451,7 @@ class Dosen extends BaseController
                     $file->store('content/dosen/', $newName);
                     $nama_foto = $newName;
                     $data = [
+                        'urutan' => $urutan,
                         'nip' => $nip,
                         'nidn' => $nidn,
                         'nama' => $nama,
